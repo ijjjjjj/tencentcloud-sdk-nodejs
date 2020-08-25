@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sdk_version_1 = require("./sdk_version");
-const client_profile_1 = require("./profile/client_profile");
 const sign_1 = require("./sign");
 const http_connection_1 = require("./http/http_connection");
 const tencent_cloud_sdk_exception_1 = require("./exception/tencent_cloud_sdk_exception");
@@ -17,12 +16,16 @@ class AbstractClient {
      * @param {string} region 产品地域
      * @param {ClientProfile} profile 可选配置实例
      */
-    constructor(endpoint, version, credential, region, profile) {
+    constructor(endpoint, version, { credential, region, profile }) {
         this.path = "/";
         /**
          * 认证信息实例
          */
-        this.credential = credential || null;
+        this.credential = Object.assign({
+            secretId: null,
+            secretKey: null,
+            token: null,
+        }, credential);
         /**
          * 产品地域
          */
@@ -34,7 +37,15 @@ class AbstractClient {
          * 可选配置实例
          * @type {ClientProfile}
          */
-        this.profile = profile || new client_profile_1.ClientProfile();
+        this.profile = {
+            signMethod: (profile && profile.signMethod) || "HmacSHA256",
+            httpProfile: Object.assign({
+                reqMethod: "POST",
+                endpoint: null,
+                protocol: "https://",
+                reqTimeout: 60,
+            }, profile && profile.httpProfile),
+        };
     }
     /**
      * @inner
@@ -45,9 +56,8 @@ class AbstractClient {
     /**
      * @inner
      */
-    succRequest(resp, cb, data) {
-        resp.deserialize(data);
-        cb(null, resp);
+    succRequest(cb, data) {
+        cb(null, data);
     }
     /**
      * @inner
@@ -58,16 +68,16 @@ class AbstractClient {
     /**
      * @inner
      */
-    request(action, req, resp, options, cb) {
+    request(action, req, options, cb) {
         if (typeof options === "function") {
             cb = options;
             options = {};
         }
         if (this.profile.signMethod === "TC3-HMAC-SHA256") {
-            this.doRequestWithSign3(action, req, options).then((data) => this.succRequest(resp, cb, data), (error) => this.failRequest(error, cb));
+            this.doRequestWithSign3(action, req, options).then((data) => this.succRequest(cb, data), (error) => this.failRequest(error, cb));
         }
         else {
-            this.doRequest(action, req).then((data) => this.succRequest(resp, cb, data), (error) => this.failRequest(error, cb));
+            this.doRequest(action, req).then((data) => this.succRequest(cb, data), (error) => this.failRequest(error, cb));
         }
     }
     /**

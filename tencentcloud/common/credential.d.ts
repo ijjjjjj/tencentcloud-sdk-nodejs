@@ -2,14 +2,17 @@
  * 认证信息类
  * @class
  */
-export declare class Credential {
-    secretId: string;
-    secretKey: string;
-    token: string;
+export interface Credential {
     /**
-     * @param {string} secretId
-     * @param {string} secretKey
-     * @param {string=} token
+     * 腾讯云账户secretId，secretKey
      */
-    constructor(secretId: string, secretKey: string, token?: string);
+    secretId?: string;
+    /**
+     * 腾讯云账户secretKey
+     */
+    secretKey?: string;
+    /**
+     * 腾讯云账户token
+     */
+    token?: string;
 }

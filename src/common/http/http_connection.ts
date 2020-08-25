@@ -17,18 +17,18 @@ export class HttpConnection {
     data,
     timeout,
   }: {
-    method: string
-    url: string
-    data: any
-    timeout: number
+    method: string;
+    url: string;
+    data: any;
+    timeout: number;
   }): Promise<Response> {
     const config: {
-      method: string
-      timeout: number
+      method: string;
+      timeout: number;
       headers: {
-        [key: string]: string
-      }
-      body?: string
+        [key: string]: string;
+      };
+      body?: string;
     } = {
       method: method,
       headers: {},
@@ -58,25 +58,24 @@ export class HttpConnection {
     token,
     requestClient,
   }: {
-    method: string
-    url: string
-    data: any
-    service: string
-    action: string
-    region: string
-    version: string
-    secretId: string
-    secretKey: string
-    multipart?: boolean
-    timeout?: number
-    token: string
-    requestClient: string
+    method: string;
+    url: string;
+    data: any;
+    service: string;
+    action: string;
+    region: string;
+    version: string;
+    secretId: string;
+    secretKey: string;
+    multipart?: boolean;
+    timeout?: number;
+    token: string;
+    requestClient: string;
   }): Promise<Response> {
     // data 中可能带有 readStream，由于需要计算整个 body 的 hash，
     // 所以这里把 readStream 转为 Buffer
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     await convertReadStreamToBuffer(data)
-    console.log(111111)
 
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     data = deepRemoveNull(data)
@@ -94,12 +93,12 @@ export class HttpConnection {
       payload = data
     }
     const config: {
-      method: string
-      timeout: number
+      method: string;
+      timeout: number;
       headers: {
-        [key: string]: any
-      }
-      body?: any
+        [key: string]: any;
+      };
+      body?: any;
     } = {
       method,
       timeout,

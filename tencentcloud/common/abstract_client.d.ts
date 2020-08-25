@@ -1,6 +1,4 @@
-import { ClientProfile } from "./profile/client_profile";
-import { Credential } from "./credential";
-import { AbstractModel } from "./abstract_model";
+import { ClientProfile, Credential } from "./interface";
 import { Response } from "node-fetch";
 declare type ResponseCallback = (error: string, rep: any) => void;
 interface RequestOptions {
@@ -23,6 +21,23 @@ interface ResponseData {
     RequestId: string;
     [key: string]: any;
 }
+export interface ClientConfig {
+    /**
+     * @param {Credential} credential 认证信息
+     * 必选
+     */
+    credential: Credential;
+    /**
+     * @param {string} region 产品地域
+     * 必选
+     */
+    region: string;
+    /**
+     * @param {ClientProfile} profile 可选配置实例
+     * 可选，没有特殊需求可以跳过。
+     */
+    profile?: ClientProfile;
+}
 /**
  * @inner
  */
@@ -42,7 +57,7 @@ export declare class AbstractClient {
      * @param {string} region 产品地域
      * @param {ClientProfile} profile 可选配置实例
      */
-    constructor(endpoint: string, version: string, credential: Credential, region: string, profile: ClientProfile);
+    constructor(endpoint: string, version: string, { credential, region, profile }: ClientConfig);
     /**
      * @inner
      */
@@ -50,7 +65,7 @@ export declare class AbstractClient {
     /**
      * @inner
      */
-    succRequest(resp: AbstractModel, cb: ResponseCallback, data: ResponseData): void;
+    succRequest(cb: ResponseCallback, data: ResponseData): void;
     /**
      * @inner
      */
@@ -58,15 +73,15 @@ export declare class AbstractClient {
     /**
      * @inner
      */
-    request(action: string, req: AbstractModel, resp: AbstractModel, options: ResponseCallback | RequestOptions, cb?: ResponseCallback): void;
+    request(action: string, req: any, options: ResponseCallback | RequestOptions, cb?: ResponseCallback): void;
     /**
      * @inner
      */
-    doRequest(action: string, req: AbstractModel): Promise<ResponseData>;
+    doRequest(action: string, req: any): Promise<ResponseData>;
     /**
      * @inner
      */
-    doRequestWithSign3(action: string, params: AbstractModel, options?: RequestOptions): Promise<ResponseData>;
+    doRequestWithSign3(action: string, params: any, options?: RequestOptions): Promise<ResponseData>;
     parseResponse(res: Response): Promise<ResponseData>;
     /**
      * @inner

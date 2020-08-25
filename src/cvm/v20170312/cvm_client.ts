@@ -15,184 +15,181 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { AbstractClient } from '../../common/abstract_client'
-import { Credential } from "../../common/credential"
-import { ClientProfile } from "../../common/profile/client_profile"
+import { AbstractClient, ClientConfig } from "../../common/abstract_client"
 import {
-   ChargePrepaid,
-   LocalDiskType,
-   AssociateInstancesKeyPairsResponse,
-   RenewInstancesRequest,
-   DescribeImageQuotaResponse,
-   ModifyInstancesProjectRequest,
-   ResetInstancesTypeResponse,
-   HostResource,
-   DeleteDisasterRecoverGroupsRequest,
-   DeleteKeyPairsResponse,
-   TerminateInstancesResponse,
-   ModifyInstancesChargeTypeResponse,
-   CreateDisasterRecoverGroupResponse,
-   InquiryPriceResetInstancesInternetMaxBandwidthResponse,
-   ModifyKeyPairAttributeRequest,
-   AssociateSecurityGroupsRequest,
-   ResetInstancesTypeRequest,
-   InquiryPriceResetInstanceRequest,
-   RunInstancesRequest,
-   DeleteImagesRequest,
-   DescribeInstancesResponse,
-   DescribeHostsResponse,
-   DeleteKeyPairsRequest,
-   SystemDisk,
-   ResetInstanceRequest,
-   InstanceTypeConfig,
-   AllocateHostsRequest,
-   LoginSettings,
-   DescribeRegionsResponse,
-   PurchaseReservedInstancesOfferingRequest,
-   RebootInstancesRequest,
-   AssociateInstancesKeyPairsRequest,
-   ImportKeyPairResponse,
-   DescribeInstancesStatusResponse,
-   ZoneInfo,
-   InquiryPriceModifyInstancesChargeTypeResponse,
-   DescribeKeyPairsResponse,
-   ResetInstancesPasswordRequest,
-   InternetChargeTypeConfig,
-   DescribeImagesResponse,
-   ModifyInstancesVpcAttributeResponse,
-   InquiryPriceResetInstancesTypeRequest,
-   DescribeInstancesOperationLimitRequest,
-   ModifyInstancesChargeTypeRequest,
-   DescribeInstanceVncUrlRequest,
-   ModifyImageSharePermissionRequest,
-   DisassociateInstancesKeyPairsResponse,
-   InquiryPriceResizeInstanceDisksRequest,
-   RunInstancesResponse,
-   ResetInstancesInternetMaxBandwidthResponse,
-   ModifyInstancesAttributeResponse,
-   ModifyImageSharePermissionResponse,
-   DescribeInstancesOperationLimitResponse,
-   SyncImagesResponse,
-   DescribeZoneInstanceConfigInfosResponse,
-   ModifyInstancesAttributeRequest,
-   RenewHostsRequest,
-   DescribeZonesRequest,
-   StartInstancesRequest,
-   Tag,
-   DescribeInstanceInternetBandwidthConfigsResponse,
-   Placement,
-   DescribeDisasterRecoverGroupsRequest,
-   SyncImagesRequest,
-   DisassociateInstancesKeyPairsRequest,
-   DescribeImageQuotaRequest,
-   DescribeInstanceFamilyConfigsResponse,
-   CreateImageResponse,
-   StopInstancesResponse,
-   InstanceMarketOptionsRequest,
-   InquiryPriceResetInstancesInternetMaxBandwidthRequest,
-   ResetInstancesPasswordResponse,
-   InquiryPriceRunInstancesRequest,
-   Image,
-   DescribeDisasterRecoverGroupQuotaResponse,
-   DescribeRegionsRequest,
-   CreateDisasterRecoverGroupRequest,
-   DescribeReservedInstancesResponse,
-   DescribeImportImageOsResponse,
-   ModifyKeyPairAttributeResponse,
-   DataDisk,
-   DescribeKeyPairsRequest,
-   OperationCountLimit,
-   DeleteDisasterRecoverGroupsResponse,
-   HostItem,
-   Externals,
-   InquiryPriceModifyInstancesChargeTypeRequest,
-   CreateImageRequest,
-   Instance,
-   EnhancedService,
-   CreateKeyPairResponse,
-   DescribeInstanceVncUrlResponse,
-   DescribeReservedInstancesOfferingsRequest,
-   DescribeDisasterRecoverGroupsResponse,
-   RunSecurityServiceEnabled,
-   ActionTimer,
-   TagSpecification,
-   ResetInstancesInternetMaxBandwidthRequest,
-   InstanceFamilyConfig,
-   AssociateSecurityGroupsResponse,
-   ImportImageRequest,
-   SpotMarketOptions,
-   DescribeImportImageOsRequest,
-   CreateKeyPairRequest,
-   InstanceStatus,
-   InquiryPriceRenewInstancesResponse,
-   AllocateHostsResponse,
-   DescribeImageSharePermissionRequest,
-   DisasterRecoverGroup,
-   InquiryPriceResetInstanceResponse,
-   DescribeInstanceTypeConfigsRequest,
-   DescribeImageSharePermissionResponse,
-   ModifyHostsAttributeResponse,
-   DescribeDisasterRecoverGroupQuotaRequest,
-   StartInstancesResponse,
-   ModifyInstancesVpcAttributeRequest,
-   DescribeReservedInstancesRequest,
-   DescribeInternetChargeTypeConfigsResponse,
-   DescribeZoneInstanceConfigInfosRequest,
-   DescribeZonesResponse,
-   ItemPrice,
-   InstanceTypeQuotaItem,
-   ImageOsList,
-   InquiryPriceRunInstancesResponse,
-   DescribeHostsRequest,
-   ModifyInstancesRenewFlagResponse,
-   DescribeInstancesStatusRequest,
-   InquiryPriceResizeInstanceDisksResponse,
-   TerminateInstancesRequest,
-   SharePermission,
-   ReservedInstances,
-   DeleteImagesResponse,
-   ImportImageResponse,
-   ModifyDisasterRecoverGroupAttributeRequest,
-   RebootInstancesResponse,
-   InquiryPriceResetInstancesTypeResponse,
-   ReservedInstancesOffering,
-   OsVersion,
-   ModifyImageAttributeResponse,
-   InquiryPriceRenewInstancesRequest,
-   DescribeInstancesRequest,
-   RegionInfo,
-   StopInstancesRequest,
-   DescribeInternetChargeTypeConfigsRequest,
-   DescribeImagesRequest,
-   ModifyImageAttributeRequest,
-   ResizeInstanceDisksResponse,
-   ModifyInstancesRenewFlagRequest,
-   DisassociateSecurityGroupsRequest,
-   ModifyHostsAttributeRequest,
-   ImportKeyPairRequest,
-   KeyPair,
-   DescribeReservedInstancesOfferingsResponse,
-   RenewInstancesResponse,
-   RunMonitorServiceEnabled,
-   ResetInstanceResponse,
-   Filter,
-   VirtualPrivateCloud,
-   InternetBandwidthConfig,
-   ModifyDisasterRecoverGroupAttributeResponse,
-   DescribeInstanceTypeConfigsResponse,
-   ResizeInstanceDisksRequest,
-   DescribeInstanceFamilyConfigsRequest,
-   DescribeInstanceInternetBandwidthConfigsRequest,
-   PurchaseReservedInstancesOfferingResponse,
-   StorageBlock,
-   InternetAccessible,
-   RenewHostsResponse,
-   DisassociateSecurityGroupsResponse,
-   Snapshot,
-   ModifyInstancesProjectResponse,
-   InstanceChargePrepaid,
-   Price,
-
+  ChargePrepaid,
+  LocalDiskType,
+  AssociateInstancesKeyPairsResponse,
+  RenewInstancesRequest,
+  DescribeImageQuotaResponse,
+  ModifyInstancesProjectRequest,
+  ResetInstancesTypeResponse,
+  HostResource,
+  DeleteDisasterRecoverGroupsRequest,
+  DeleteKeyPairsResponse,
+  TerminateInstancesResponse,
+  ModifyInstancesChargeTypeResponse,
+  CreateDisasterRecoverGroupResponse,
+  InquiryPriceResetInstancesInternetMaxBandwidthResponse,
+  ModifyKeyPairAttributeRequest,
+  AssociateSecurityGroupsRequest,
+  ResetInstancesTypeRequest,
+  InquiryPriceResetInstanceRequest,
+  RunInstancesRequest,
+  DeleteImagesRequest,
+  DescribeInstancesResponse,
+  DescribeHostsResponse,
+  DeleteKeyPairsRequest,
+  SystemDisk,
+  ResetInstanceRequest,
+  InstanceTypeConfig,
+  AllocateHostsRequest,
+  LoginSettings,
+  DescribeRegionsResponse,
+  PurchaseReservedInstancesOfferingRequest,
+  RebootInstancesRequest,
+  AssociateInstancesKeyPairsRequest,
+  ImportKeyPairResponse,
+  DescribeInstancesStatusResponse,
+  ZoneInfo,
+  InquiryPriceModifyInstancesChargeTypeResponse,
+  DescribeKeyPairsResponse,
+  ResetInstancesPasswordRequest,
+  InternetChargeTypeConfig,
+  DescribeImagesResponse,
+  ModifyInstancesVpcAttributeResponse,
+  InquiryPriceResetInstancesTypeRequest,
+  DescribeInstancesOperationLimitRequest,
+  ModifyInstancesChargeTypeRequest,
+  DescribeInstanceVncUrlRequest,
+  ModifyImageSharePermissionRequest,
+  DisassociateInstancesKeyPairsResponse,
+  InquiryPriceResizeInstanceDisksRequest,
+  RunInstancesResponse,
+  ResetInstancesInternetMaxBandwidthResponse,
+  ModifyInstancesAttributeResponse,
+  ModifyImageSharePermissionResponse,
+  DescribeInstancesOperationLimitResponse,
+  SyncImagesResponse,
+  DescribeZoneInstanceConfigInfosResponse,
+  ModifyInstancesAttributeRequest,
+  RenewHostsRequest,
+  DescribeZonesRequest,
+  StartInstancesRequest,
+  Tag,
+  DescribeInstanceInternetBandwidthConfigsResponse,
+  Placement,
+  DescribeDisasterRecoverGroupsRequest,
+  SyncImagesRequest,
+  DisassociateInstancesKeyPairsRequest,
+  DescribeImageQuotaRequest,
+  DescribeInstanceFamilyConfigsResponse,
+  CreateImageResponse,
+  StopInstancesResponse,
+  InstanceMarketOptionsRequest,
+  InquiryPriceResetInstancesInternetMaxBandwidthRequest,
+  ResetInstancesPasswordResponse,
+  InquiryPriceRunInstancesRequest,
+  Image,
+  DescribeDisasterRecoverGroupQuotaResponse,
+  DescribeRegionsRequest,
+  CreateDisasterRecoverGroupRequest,
+  DescribeReservedInstancesResponse,
+  DescribeImportImageOsResponse,
+  ModifyKeyPairAttributeResponse,
+  DataDisk,
+  DescribeKeyPairsRequest,
+  OperationCountLimit,
+  DeleteDisasterRecoverGroupsResponse,
+  HostItem,
+  Externals,
+  InquiryPriceModifyInstancesChargeTypeRequest,
+  CreateImageRequest,
+  Instance,
+  EnhancedService,
+  CreateKeyPairResponse,
+  DescribeInstanceVncUrlResponse,
+  DescribeReservedInstancesOfferingsRequest,
+  DescribeDisasterRecoverGroupsResponse,
+  RunSecurityServiceEnabled,
+  ActionTimer,
+  TagSpecification,
+  ResetInstancesInternetMaxBandwidthRequest,
+  InstanceFamilyConfig,
+  AssociateSecurityGroupsResponse,
+  ImportImageRequest,
+  SpotMarketOptions,
+  DescribeImportImageOsRequest,
+  CreateKeyPairRequest,
+  InstanceStatus,
+  InquiryPriceRenewInstancesResponse,
+  AllocateHostsResponse,
+  DescribeImageSharePermissionRequest,
+  DisasterRecoverGroup,
+  InquiryPriceResetInstanceResponse,
+  DescribeInstanceTypeConfigsRequest,
+  DescribeImageSharePermissionResponse,
+  ModifyHostsAttributeResponse,
+  DescribeDisasterRecoverGroupQuotaRequest,
+  StartInstancesResponse,
+  ModifyInstancesVpcAttributeRequest,
+  DescribeReservedInstancesRequest,
+  DescribeInternetChargeTypeConfigsResponse,
+  DescribeZoneInstanceConfigInfosRequest,
+  DescribeZonesResponse,
+  ItemPrice,
+  InstanceTypeQuotaItem,
+  ImageOsList,
+  InquiryPriceRunInstancesResponse,
+  DescribeHostsRequest,
+  ModifyInstancesRenewFlagResponse,
+  DescribeInstancesStatusRequest,
+  InquiryPriceResizeInstanceDisksResponse,
+  TerminateInstancesRequest,
+  SharePermission,
+  ReservedInstances,
+  DeleteImagesResponse,
+  ImportImageResponse,
+  ModifyDisasterRecoverGroupAttributeRequest,
+  RebootInstancesResponse,
+  InquiryPriceResetInstancesTypeResponse,
+  ReservedInstancesOffering,
+  OsVersion,
+  ModifyImageAttributeResponse,
+  InquiryPriceRenewInstancesRequest,
+  DescribeInstancesRequest,
+  RegionInfo,
+  StopInstancesRequest,
+  DescribeInternetChargeTypeConfigsRequest,
+  DescribeImagesRequest,
+  ModifyImageAttributeRequest,
+  ResizeInstanceDisksResponse,
+  ModifyInstancesRenewFlagRequest,
+  DisassociateSecurityGroupsRequest,
+  ModifyHostsAttributeRequest,
+  ImportKeyPairRequest,
+  KeyPair,
+  DescribeReservedInstancesOfferingsResponse,
+  RenewInstancesResponse,
+  RunMonitorServiceEnabled,
+  ResetInstanceResponse,
+  Filter,
+  VirtualPrivateCloud,
+  InternetBandwidthConfig,
+  ModifyDisasterRecoverGroupAttributeResponse,
+  DescribeInstanceTypeConfigsResponse,
+  ResizeInstanceDisksRequest,
+  DescribeInstanceFamilyConfigsRequest,
+  DescribeInstanceInternetBandwidthConfigsRequest,
+  PurchaseReservedInstancesOfferingResponse,
+  StorageBlock,
+  InternetAccessible,
+  RenewHostsResponse,
+  DisassociateSecurityGroupsResponse,
+  Snapshot,
+  ModifyInstancesProjectResponse,
+  InstanceChargePrepaid,
+  Price,
 } from "./cvm_models"
 
 /**
@@ -200,21 +197,22 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(config: ClientConfig) {
+    super("cvm.tencentcloudapi.com", "2017-03-12", config)
+  }
 
-    constructor(credential: Credential, region: string, profile?: ClientProfile) {
-        super("cvm.tencentcloudapi.com", "2017-03-12", credential, region, profile);
-    }
+  /**
+   * 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
+   * @public
+   */
+  DescribeImageQuota(
+    req: DescribeImageQuotaRequest,
+    cb: (error: string, rep: DescribeImageQuotaResponse) => void
+  ): void {
+    this.request("DescribeImageQuota", req, cb)
+  }
 
-    /**
-     * 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
-     * @public
-     */
-    DescribeImageQuota(req: DescribeImageQuotaRequest, cb: (error: string, rep: DescribeImageQuotaResponse) => void): void {
-        const resp = new DescribeImageQuotaResponse();
-        this.request("DescribeImageQuota", req, resp, cb);
-    }
-
-    /**
+  /**
      * 本接口 (StopInstances) 用于关闭一个或多个实例。
 
 * 只有状态为`RUNNING`的实例才可以进行此操作。
@@ -224,24 +222,28 @@ export class Client extends AbstractClient {
 * 本接口为异步接口，关闭实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表关闭实例操作成功。
      * @public
      */
-    StopInstances(req: StopInstancesRequest, cb: (error: string, rep: StopInstancesResponse) => void): void {
-        const resp = new StopInstancesResponse();
-        this.request("StopInstances", req, resp, cb);
-    }
+  StopInstances(
+    req: StopInstancesRequest,
+    cb: (error: string, rep: StopInstancesResponse) => void
+  ): void {
+    this.request("StopInstances", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (DescribeInstancesStatus) 用于查询一个或多个实例的状态。
 
 * 可以根据实例`ID`来查询实例的状态。
 * 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的实例状态。
      * @public
      */
-    DescribeInstancesStatus(req: DescribeInstancesStatusRequest, cb: (error: string, rep: DescribeInstancesStatusResponse) => void): void {
-        const resp = new DescribeInstancesStatusResponse();
-        this.request("DescribeInstancesStatus", req, resp, cb);
-    }
+  DescribeInstancesStatus(
+    req: DescribeInstancesStatusRequest,
+    cb: (error: string, rep: DescribeInstancesStatusResponse) => void
+  ): void {
+    this.request("DescribeInstancesStatus", req, cb)
+  }
 
-    /**
+  /**
      * 本接口（ModifyImageSharePermission）用于修改镜像分享信息。
 
 * 分享镜像后，被分享账户可以通过该镜像创建实例。
@@ -251,54 +253,64 @@ export class Client extends AbstractClient {
 
      * @public
      */
-    ModifyImageSharePermission(req: ModifyImageSharePermissionRequest, cb: (error: string, rep: ModifyImageSharePermissionResponse) => void): void {
-        const resp = new ModifyImageSharePermissionResponse();
-        this.request("ModifyImageSharePermission", req, resp, cb);
-    }
+  ModifyImageSharePermission(
+    req: ModifyImageSharePermissionRequest,
+    cb: (error: string, rep: ModifyImageSharePermissionResponse) => void
+  ): void {
+    this.request("ModifyImageSharePermission", req, cb)
+  }
 
-    /**
-     * 本接口（DescribeImageSharePermission）用于查询镜像分享信息。
-     * @public
-     */
-    DescribeImageSharePermission(req: DescribeImageSharePermissionRequest, cb: (error: string, rep: DescribeImageSharePermissionResponse) => void): void {
-        const resp = new DescribeImageSharePermissionResponse();
-        this.request("DescribeImageSharePermission", req, resp, cb);
-    }
+  /**
+   * 本接口（DescribeImageSharePermission）用于查询镜像分享信息。
+   * @public
+   */
+  DescribeImageSharePermission(
+    req: DescribeImageSharePermissionRequest,
+    cb: (error: string, rep: DescribeImageSharePermissionResponse) => void
+  ): void {
+    this.request("DescribeImageSharePermission", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (InquiryPriceModifyInstancesChargeType) 用于切换实例的计费模式询价。
 
 * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
 * 关机不收费的实例、`BC1`和`BS1`机型族的实例、设置定时销毁的实例、竞价实例不支持该操作。
      * @public
      */
-    InquiryPriceModifyInstancesChargeType(req: InquiryPriceModifyInstancesChargeTypeRequest, cb: (error: string, rep: InquiryPriceModifyInstancesChargeTypeResponse) => void): void {
-        const resp = new InquiryPriceModifyInstancesChargeTypeResponse();
-        this.request("InquiryPriceModifyInstancesChargeType", req, resp, cb);
-    }
+  InquiryPriceModifyInstancesChargeType(
+    req: InquiryPriceModifyInstancesChargeTypeRequest,
+    cb: (error: string, rep: InquiryPriceModifyInstancesChargeTypeResponse) => void
+  ): void {
+    this.request("InquiryPriceModifyInstancesChargeType", req, cb)
+  }
 
-    /**
-     * 本接口（ModifyHostsAttribute）用于修改CDH实例的属性，如实例名称和续费标记等。参数HostName和RenewFlag必须设置其中一个，但不能同时设置。
-     * @public
-     */
-    ModifyHostsAttribute(req: ModifyHostsAttributeRequest, cb: (error: string, rep: ModifyHostsAttributeResponse) => void): void {
-        const resp = new ModifyHostsAttributeResponse();
-        this.request("ModifyHostsAttribute", req, resp, cb);
-    }
+  /**
+   * 本接口（ModifyHostsAttribute）用于修改CDH实例的属性，如实例名称和续费标记等。参数HostName和RenewFlag必须设置其中一个，但不能同时设置。
+   * @public
+   */
+  ModifyHostsAttribute(
+    req: ModifyHostsAttributeRequest,
+    cb: (error: string, rep: ModifyHostsAttributeResponse) => void
+  ): void {
+    this.request("ModifyHostsAttribute", req, cb)
+  }
 
-    /**
+  /**
      * 本接口(DescribeImages) 用于查看镜像列表。
 
 * 可以通过指定镜像ID来查询指定镜像的详细信息，或通过设定过滤器来查询满足过滤条件的镜像的详细信息。
 * 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个镜像信息。
      * @public
      */
-    DescribeImages(req: DescribeImagesRequest, cb: (error: string, rep: DescribeImagesResponse) => void): void {
-        const resp = new DescribeImagesResponse();
-        this.request("DescribeImages", req, resp, cb);
-    }
+  DescribeImages(
+    req: DescribeImagesRequest,
+    cb: (error: string, rep: DescribeImagesResponse) => void
+  ): void {
+    this.request("DescribeImages", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ModifyKeyPairAttribute) 用于修改密钥对属性。
 
 * 修改密钥对ID所指定的密钥对的名称和描述信息。
@@ -306,21 +318,25 @@ export class Client extends AbstractClient {
 * 密钥对ID是密钥对的唯一标识，不可修改。
      * @public
      */
-    ModifyKeyPairAttribute(req: ModifyKeyPairAttributeRequest, cb: (error: string, rep: ModifyKeyPairAttributeResponse) => void): void {
-        const resp = new ModifyKeyPairAttributeResponse();
-        this.request("ModifyKeyPairAttribute", req, resp, cb);
-    }
+  ModifyKeyPairAttribute(
+    req: ModifyKeyPairAttributeRequest,
+    cb: (error: string, rep: ModifyKeyPairAttributeResponse) => void
+  ): void {
+    this.request("ModifyKeyPairAttribute", req, cb)
+  }
 
-    /**
-     * 本接口(DescribeZoneInstanceConfigInfos) 获取可用区的机型信息。
-     * @public
-     */
-    DescribeZoneInstanceConfigInfos(req: DescribeZoneInstanceConfigInfosRequest, cb: (error: string, rep: DescribeZoneInstanceConfigInfosResponse) => void): void {
-        const resp = new DescribeZoneInstanceConfigInfosResponse();
-        this.request("DescribeZoneInstanceConfigInfos", req, resp, cb);
-    }
+  /**
+   * 本接口(DescribeZoneInstanceConfigInfos) 获取可用区的机型信息。
+   * @public
+   */
+  DescribeZoneInstanceConfigInfos(
+    req: DescribeZoneInstanceConfigInfosRequest,
+    cb: (error: string, rep: DescribeZoneInstanceConfigInfosResponse) => void
+  ): void {
+    this.request("DescribeZoneInstanceConfigInfos", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ModifyInstancesAttribute) 用于修改实例的属性（目前只支持修改实例的名称和关联的安全组）。
 
 * “实例名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行实例管理操作的依据。
@@ -329,21 +345,25 @@ export class Client extends AbstractClient {
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    ModifyInstancesAttribute(req: ModifyInstancesAttributeRequest, cb: (error: string, rep: ModifyInstancesAttributeResponse) => void): void {
-        const resp = new ModifyInstancesAttributeResponse();
-        this.request("ModifyInstancesAttribute", req, resp, cb);
-    }
+  ModifyInstancesAttribute(
+    req: ModifyInstancesAttributeRequest,
+    cb: (error: string, rep: ModifyInstancesAttributeResponse) => void
+  ): void {
+    this.request("ModifyInstancesAttribute", req, cb)
+  }
 
-    /**
-     * 本接口(DescribeRegions)用于查询地域信息。
-     * @public
-     */
-    DescribeRegions(req: DescribeRegionsRequest, cb: (error: string, rep: DescribeRegionsResponse) => void): void {
-        const resp = new DescribeRegionsResponse();
-        this.request("DescribeRegions", req, resp, cb);
-    }
+  /**
+   * 本接口(DescribeRegions)用于查询地域信息。
+   * @public
+   */
+  DescribeRegions(
+    req: DescribeRegionsRequest,
+    cb: (error: string, rep: DescribeRegionsResponse) => void
+  ): void {
+    this.request("DescribeRegions", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (InquiryPriceResetInstancesInternetMaxBandwidth) 用于调整实例公网带宽上限询价。
 
 * 不同机型带宽上限范围不一致，具体限制详见[公网带宽上限](https://cloud.tencent.com/document/product/213/12523)。
@@ -354,12 +374,14 @@ export class Client extends AbstractClient {
 * 接口不支持批量调整混合计费方式的带宽。例如不支持同时调整`TRAFFIC_POSTPAID_BY_HOUR`和`BANDWIDTH_PACKAGE`计费方式的带宽。
      * @public
      */
-    InquiryPriceResetInstancesInternetMaxBandwidth(req: InquiryPriceResetInstancesInternetMaxBandwidthRequest, cb: (error: string, rep: InquiryPriceResetInstancesInternetMaxBandwidthResponse) => void): void {
-        const resp = new InquiryPriceResetInstancesInternetMaxBandwidthResponse();
-        this.request("InquiryPriceResetInstancesInternetMaxBandwidth", req, resp, cb);
-    }
+  InquiryPriceResetInstancesInternetMaxBandwidth(
+    req: InquiryPriceResetInstancesInternetMaxBandwidthRequest,
+    cb: (error: string, rep: InquiryPriceResetInstancesInternetMaxBandwidthResponse) => void
+  ): void {
+    this.request("InquiryPriceResetInstancesInternetMaxBandwidth", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (DisassociateInstancesKeyPairs) 用于解除实例的密钥绑定关系。
 
 * 只支持[`STOPPED`](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)状态的`Linux`操作系统的实例。
@@ -368,12 +390,14 @@ export class Client extends AbstractClient {
 * 支持批量操作。每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
      * @public
      */
-    DisassociateInstancesKeyPairs(req: DisassociateInstancesKeyPairsRequest, cb: (error: string, rep: DisassociateInstancesKeyPairsResponse) => void): void {
-        const resp = new DisassociateInstancesKeyPairsResponse();
-        this.request("DisassociateInstancesKeyPairs", req, resp, cb);
-    }
+  DisassociateInstancesKeyPairs(
+    req: DisassociateInstancesKeyPairsRequest,
+    cb: (error: string, rep: DisassociateInstancesKeyPairsResponse) => void
+  ): void {
+    this.request("DisassociateInstancesKeyPairs", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (CreateKeyPair) 用于创建一个 `OpenSSH RSA` 密钥对，可以用于登录 `Linux` 实例。
 
 * 开发者只需指定密钥对名称，即可由系统自动创建密钥对，并返回所生成的密钥对的 `ID` 及其公钥、私钥的内容。
@@ -382,33 +406,39 @@ export class Client extends AbstractClient {
 * 腾讯云不会保存用户的私钥，请妥善保管。
      * @public
      */
-    CreateKeyPair(req: CreateKeyPairRequest, cb: (error: string, rep: CreateKeyPairResponse) => void): void {
-        const resp = new CreateKeyPairResponse();
-        this.request("CreateKeyPair", req, resp, cb);
-    }
+  CreateKeyPair(
+    req: CreateKeyPairRequest,
+    cb: (error: string, rep: CreateKeyPairResponse) => void
+  ): void {
+    this.request("CreateKeyPair", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (DeleteKeyPairs) 用于删除已在腾讯云托管的密钥对。
 
 * 可以同时删除多个密钥对。
 * 不能删除已被实例或镜像引用的密钥对，所以需要独立判断是否所有密钥对都被成功删除。
      * @public
      */
-    DeleteKeyPairs(req: DeleteKeyPairsRequest, cb: (error: string, rep: DeleteKeyPairsResponse) => void): void {
-        const resp = new DeleteKeyPairsResponse();
-        this.request("DeleteKeyPairs", req, resp, cb);
-    }
+  DeleteKeyPairs(
+    req: DeleteKeyPairsRequest,
+    cb: (error: string, rep: DeleteKeyPairsResponse) => void
+  ): void {
+    this.request("DeleteKeyPairs", req, cb)
+  }
 
-    /**
-     * 本接口 (CreateDisasterRecoverGroup)用于创建[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。创建好的置放群组，可在[创建实例](https://cloud.tencent.com/document/api/213/15730)时指定。
-     * @public
-     */
-    CreateDisasterRecoverGroup(req: CreateDisasterRecoverGroupRequest, cb: (error: string, rep: CreateDisasterRecoverGroupResponse) => void): void {
-        const resp = new CreateDisasterRecoverGroupResponse();
-        this.request("CreateDisasterRecoverGroup", req, resp, cb);
-    }
+  /**
+   * 本接口 (CreateDisasterRecoverGroup)用于创建[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。创建好的置放群组，可在[创建实例](https://cloud.tencent.com/document/api/213/15730)时指定。
+   * @public
+   */
+  CreateDisasterRecoverGroup(
+    req: CreateDisasterRecoverGroupRequest,
+    cb: (error: string, rep: CreateDisasterRecoverGroupResponse) => void
+  ): void {
+    this.request("CreateDisasterRecoverGroup", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (DescribeInstances) 用于查询一个或多个实例的详细信息。
 
 * 可以根据实例`ID`、实例名称或者实例计费模式等信息来查询实例的详细信息。过滤信息详细请见过滤器`Filter`。
@@ -416,12 +446,14 @@ export class Client extends AbstractClient {
 * 支持查询实例的最新操作（LatestOperation）以及最新操作状态(LatestOperationState)。
      * @public
      */
-    DescribeInstances(req: DescribeInstancesRequest, cb: (error: string, rep: DescribeInstancesResponse) => void): void {
-        const resp = new DescribeInstancesResponse();
-        this.request("DescribeInstances", req, resp, cb);
-    }
+  DescribeInstances(
+    req: DescribeInstancesRequest,
+    cb: (error: string, rep: DescribeInstancesResponse) => void
+  ): void {
+    this.request("DescribeInstances", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ImportKeyPair) 用于导入密钥对。
 
 * 本接口的功能是将密钥对导入到用户账户，并不会自动绑定到实例。如需绑定可以使用[AssociasteInstancesKeyPair](https://cloud.tencent.com/document/api/213/9404)接口。
@@ -429,12 +461,14 @@ export class Client extends AbstractClient {
 * 如果用户只有私钥，可以通过 `SSL` 工具将私钥转换成公钥后再导入。
      * @public
      */
-    ImportKeyPair(req: ImportKeyPairRequest, cb: (error: string, rep: ImportKeyPairResponse) => void): void {
-        const resp = new ImportKeyPairResponse();
-        this.request("ImportKeyPair", req, resp, cb);
-    }
+  ImportKeyPair(
+    req: ImportKeyPairRequest,
+    cb: (error: string, rep: ImportKeyPairResponse) => void
+  ): void {
+    this.request("ImportKeyPair", req, cb)
+  }
 
-    /**
+  /**
      * 本接口（SyncImages）用于将自定义镜像同步到其它地区。
 
 * 该接口每次调用只支持同步一个镜像。
@@ -442,24 +476,25 @@ export class Client extends AbstractClient {
 * 单个帐号在每个地域最多支持存在10个自定义镜像。
      * @public
      */
-    SyncImages(req: SyncImagesRequest, cb: (error: string, rep: SyncImagesResponse) => void): void {
-        const resp = new SyncImagesResponse();
-        this.request("SyncImages", req, resp, cb);
-    }
+  SyncImages(req: SyncImagesRequest, cb: (error: string, rep: SyncImagesResponse) => void): void {
+    this.request("SyncImages", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (DescribeInstanceInternetBandwidthConfigs) 用于查询实例带宽配置。
 
 * 只支持查询`BANDWIDTH_PREPAID`（ 预付费按带宽结算 ）计费模式的带宽配置。
 * 接口返回实例的所有带宽配置信息（包含历史的带宽配置信息）。
      * @public
      */
-    DescribeInstanceInternetBandwidthConfigs(req: DescribeInstanceInternetBandwidthConfigsRequest, cb: (error: string, rep: DescribeInstanceInternetBandwidthConfigsResponse) => void): void {
-        const resp = new DescribeInstanceInternetBandwidthConfigsResponse();
-        this.request("DescribeInstanceInternetBandwidthConfigs", req, resp, cb);
-    }
+  DescribeInstanceInternetBandwidthConfigs(
+    req: DescribeInstanceInternetBandwidthConfigsRequest,
+    cb: (error: string, rep: DescribeInstanceInternetBandwidthConfigsResponse) => void
+  ): void {
+    this.request("DescribeInstanceInternetBandwidthConfigs", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (AssociateInstancesKeyPairs) 用于将密钥绑定到实例上。
 
 * 将密钥的公钥写入到实例的`SSH`配置当中，用户就可以通过该密钥的私钥来登录实例。
@@ -468,12 +503,14 @@ export class Client extends AbstractClient {
 * 支持批量操作。每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
      * @public
      */
-    AssociateInstancesKeyPairs(req: AssociateInstancesKeyPairsRequest, cb: (error: string, rep: AssociateInstancesKeyPairsResponse) => void): void {
-        const resp = new AssociateInstancesKeyPairsResponse();
-        this.request("AssociateInstancesKeyPairs", req, resp, cb);
-    }
+  AssociateInstancesKeyPairs(
+    req: AssociateInstancesKeyPairsRequest,
+    cb: (error: string, rep: AssociateInstancesKeyPairsResponse) => void
+  ): void {
+    this.request("AssociateInstancesKeyPairs", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (RunInstances) 用于创建一个或多个指定配置的实例。
 
 * 实例创建成功后将自动开机启动，[实例状态](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)变为“运行中”。
@@ -482,12 +519,14 @@ export class Client extends AbstractClient {
 * 本接口为异步接口，当创建实例请求下发成功后会返回一个实例`ID`列表和一个`RequestId`，此时创建实例操作并未立即完成。在此期间实例的状态将会处于“PENDING”，实例创建结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)  接口查询，如果实例状态(InstanceState)由“PENDING”变为“RUNNING”，则代表实例创建成功，“LAUNCH_FAILED”代表实例创建失败。
      * @public
      */
-    RunInstances(req: RunInstancesRequest, cb: (error: string, rep: RunInstancesResponse) => void): void {
-        const resp = new RunInstancesResponse();
-        this.request("RunInstances", req, resp, cb);
-    }
+  RunInstances(
+    req: RunInstancesRequest,
+    cb: (error: string, rep: RunInstancesResponse) => void
+  ): void {
+    this.request("RunInstances", req, cb)
+  }
 
-    /**
+  /**
      * 本接口（DeleteImages）用于删除一个或多个镜像。
 
 * 当[镜像状态](https://cloud.tencent.com/document/product/213/15753#Image)为`创建中`和`使用中`时, 不允许删除。镜像状态可以通过[DescribeImages](https://cloud.tencent.com/document/api/213/9418)获取。
@@ -495,24 +534,28 @@ export class Client extends AbstractClient {
 * 当镜像正在被其它账户分享时，不允许删除。
      * @public
      */
-    DeleteImages(req: DeleteImagesRequest, cb: (error: string, rep: DeleteImagesResponse) => void): void {
-        const resp = new DeleteImagesResponse();
-        this.request("DeleteImages", req, resp, cb);
-    }
+  DeleteImages(
+    req: DeleteImagesRequest,
+    cb: (error: string, rep: DeleteImagesResponse) => void
+  ): void {
+    this.request("DeleteImages", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (InquiryPriceResizeInstanceDisks) 用于扩容实例的数据盘询价。
 
 * 目前只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）询价，且[数据盘类型](https://cloud.tencent.com/document/product/213/15753#DataDisk)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`。
 * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口扩容数据盘询价。* 仅支持包年包月实例随机器购买的数据盘。* 目前只支持扩容一块数据盘询价。
      * @public
      */
-    InquiryPriceResizeInstanceDisks(req: InquiryPriceResizeInstanceDisksRequest, cb: (error: string, rep: InquiryPriceResizeInstanceDisksResponse) => void): void {
-        const resp = new InquiryPriceResizeInstanceDisksResponse();
-        this.request("InquiryPriceResizeInstanceDisks", req, resp, cb);
-    }
+  InquiryPriceResizeInstanceDisks(
+    req: InquiryPriceResizeInstanceDisksRequest,
+    cb: (error: string, rep: InquiryPriceResizeInstanceDisksResponse) => void
+  ): void {
+    this.request("InquiryPriceResizeInstanceDisks", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (TerminateInstances) 用于主动退还实例。
 
 * 不再使用的实例，可通过本接口主动退还。
@@ -521,24 +564,28 @@ export class Client extends AbstractClient {
 * 支持批量操作，每次请求批量实例的上限为100。
      * @public
      */
-    TerminateInstances(req: TerminateInstancesRequest, cb: (error: string, rep: TerminateInstancesResponse) => void): void {
-        const resp = new TerminateInstancesResponse();
-        this.request("TerminateInstances", req, resp, cb);
-    }
+  TerminateInstances(
+    req: TerminateInstancesRequest,
+    cb: (error: string, rep: TerminateInstancesResponse) => void
+  ): void {
+    this.request("TerminateInstances", req, cb)
+  }
 
-    /**
-     * 本接口(ModifyInstancesVpcAttribute)用于修改实例vpc属性，如私有网络ip。
-* 此操作默认会关闭实例，完成后再启动。
-* 当指定私有网络ID和子网ID（子网必须在实例所在的可用区）与指定实例所在私有网络不一致时，会将实例迁移至指定的私有网络的子网下。执行此操作前请确保指定的实例上没有绑定[弹性网卡](https://cloud.tencent.com/document/product/576)和[负载均衡](https://cloud.tencent.com/document/product/214)。
-* 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
-     * @public
-     */
-    ModifyInstancesVpcAttribute(req: ModifyInstancesVpcAttributeRequest, cb: (error: string, rep: ModifyInstancesVpcAttributeResponse) => void): void {
-        const resp = new ModifyInstancesVpcAttributeResponse();
-        this.request("ModifyInstancesVpcAttribute", req, resp, cb);
-    }
+  /**
+   * 本接口(ModifyInstancesVpcAttribute)用于修改实例vpc属性，如私有网络ip。
+   * 此操作默认会关闭实例，完成后再启动。
+   * 当指定私有网络ID和子网ID（子网必须在实例所在的可用区）与指定实例所在私有网络不一致时，会将实例迁移至指定的私有网络的子网下。执行此操作前请确保指定的实例上没有绑定[弹性网卡](https://cloud.tencent.com/document/product/576)和[负载均衡](https://cloud.tencent.com/document/product/214)。
+   * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+   * @public
+   */
+  ModifyInstancesVpcAttribute(
+    req: ModifyInstancesVpcAttributeRequest,
+    cb: (error: string, rep: ModifyInstancesVpcAttributeResponse) => void
+  ): void {
+    this.request("ModifyInstancesVpcAttribute", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (InquiryPriceResetInstance) 用于重装实例询价。
 
 * 如果指定了`ImageId`参数，则使用指定的镜像进行重装询价；否则按照当前实例使用的镜像进行重装询价。
@@ -546,21 +593,25 @@ export class Client extends AbstractClient {
 * 目前不支持境外地域的实例使用该接口实现`Linux`和`Windows`操作系统切换的重装询价。
      * @public
      */
-    InquiryPriceResetInstance(req: InquiryPriceResetInstanceRequest, cb: (error: string, rep: InquiryPriceResetInstanceResponse) => void): void {
-        const resp = new InquiryPriceResetInstanceResponse();
-        this.request("InquiryPriceResetInstance", req, resp, cb);
-    }
+  InquiryPriceResetInstance(
+    req: InquiryPriceResetInstanceRequest,
+    cb: (error: string, rep: InquiryPriceResetInstanceResponse) => void
+  ): void {
+    this.request("InquiryPriceResetInstance", req, cb)
+  }
 
-    /**
-     * 本接口 (DescribeDisasterRecoverGroupQuota)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)配额。
-     * @public
-     */
-    DescribeDisasterRecoverGroupQuota(req: DescribeDisasterRecoverGroupQuotaRequest, cb: (error: string, rep: DescribeDisasterRecoverGroupQuotaResponse) => void): void {
-        const resp = new DescribeDisasterRecoverGroupQuotaResponse();
-        this.request("DescribeDisasterRecoverGroupQuota", req, resp, cb);
-    }
+  /**
+   * 本接口 (DescribeDisasterRecoverGroupQuota)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)配额。
+   * @public
+   */
+  DescribeDisasterRecoverGroupQuota(
+    req: DescribeDisasterRecoverGroupQuotaRequest,
+    cb: (error: string, rep: DescribeDisasterRecoverGroupQuotaResponse) => void
+  ): void {
+    this.request("DescribeDisasterRecoverGroupQuota", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ResetInstancesPassword) 用于将实例操作系统的密码重置为用户指定的密码。
 
 *如果是修改系统管理云密码：实例的操作系统不同，管理员帐号也会不一样(`Windows`为`Administrator`，`Ubuntu`为`ubuntu`，其它系统为`root`)。
@@ -569,12 +620,14 @@ export class Client extends AbstractClient {
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    ResetInstancesPassword(req: ResetInstancesPasswordRequest, cb: (error: string, rep: ResetInstancesPasswordResponse) => void): void {
-        const resp = new ResetInstancesPasswordResponse();
-        this.request("ResetInstancesPassword", req, resp, cb);
-    }
+  ResetInstancesPassword(
+    req: ResetInstancesPasswordRequest,
+    cb: (error: string, rep: ResetInstancesPasswordResponse) => void
+  ): void {
+    this.request("ResetInstancesPassword", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ModifyInstancesRenewFlag) 用于修改包年包月实例续费标识。
 
 * 实例被标识为自动续费后，每次在实例到期时，会自动续费一个月。
@@ -582,21 +635,25 @@ export class Client extends AbstractClient {
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    ModifyInstancesRenewFlag(req: ModifyInstancesRenewFlagRequest, cb: (error: string, rep: ModifyInstancesRenewFlagResponse) => void): void {
-        const resp = new ModifyInstancesRenewFlagResponse();
-        this.request("ModifyInstancesRenewFlag", req, resp, cb);
-    }
+  ModifyInstancesRenewFlag(
+    req: ModifyInstancesRenewFlagRequest,
+    cb: (error: string, rep: ModifyInstancesRenewFlagResponse) => void
+  ): void {
+    this.request("ModifyInstancesRenewFlag", req, cb)
+  }
 
-    /**
-     * 本接口(PurchaseReservedInstancesOffering)用于用户购买一个或者多个指定配置的预留实例
-     * @public
-     */
-    PurchaseReservedInstancesOffering(req: PurchaseReservedInstancesOfferingRequest, cb: (error: string, rep: PurchaseReservedInstancesOfferingResponse) => void): void {
-        const resp = new PurchaseReservedInstancesOfferingResponse();
-        this.request("PurchaseReservedInstancesOffering", req, resp, cb);
-    }
+  /**
+   * 本接口(PurchaseReservedInstancesOffering)用于用户购买一个或者多个指定配置的预留实例
+   * @public
+   */
+  PurchaseReservedInstancesOffering(
+    req: PurchaseReservedInstancesOfferingRequest,
+    cb: (error: string, rep: PurchaseReservedInstancesOfferingResponse) => void
+  ): void {
+    this.request("PurchaseReservedInstancesOffering", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ResizeInstanceDisks) 用于扩容实例的数据盘。
 
 * 目前只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性），且[数据盘类型](https://cloud.tencent.com/document/api/213/15753#DataDisk)为：`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`和[CDH](https://cloud.tencent.com/document/product/416)实例的`LOCAL_BASIC`、`LOCAL_SSD`类型数据盘。
@@ -605,83 +662,99 @@ export class Client extends AbstractClient {
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    ResizeInstanceDisks(req: ResizeInstanceDisksRequest, cb: (error: string, rep: ResizeInstanceDisksResponse) => void): void {
-        const resp = new ResizeInstanceDisksResponse();
-        this.request("ResizeInstanceDisks", req, resp, cb);
-    }
+  ResizeInstanceDisks(
+    req: ResizeInstanceDisksRequest,
+    cb: (error: string, rep: ResizeInstanceDisksResponse) => void
+  ): void {
+    this.request("ResizeInstanceDisks", req, cb)
+  }
 
-    /**
-     * 本接口(DescribeReservedInstances)可提供列出用户已购买的预留实例
-     * @public
-     */
-    DescribeReservedInstances(req: DescribeReservedInstancesRequest, cb: (error: string, rep: DescribeReservedInstancesResponse) => void): void {
-        const resp = new DescribeReservedInstancesResponse();
-        this.request("DescribeReservedInstances", req, resp, cb);
-    }
+  /**
+   * 本接口(DescribeReservedInstances)可提供列出用户已购买的预留实例
+   * @public
+   */
+  DescribeReservedInstances(
+    req: DescribeReservedInstancesRequest,
+    cb: (error: string, rep: DescribeReservedInstancesResponse) => void
+  ): void {
+    this.request("DescribeReservedInstances", req, cb)
+  }
 
-    /**
-     * 本接口(DescribeZones)用于查询可用区信息。
-     * @public
-     */
-    DescribeZones(req: DescribeZonesRequest, cb: (error: string, rep: DescribeZonesResponse) => void): void {
-        const resp = new DescribeZonesResponse();
-        this.request("DescribeZones", req, resp, cb);
-    }
+  /**
+   * 本接口(DescribeZones)用于查询可用区信息。
+   * @public
+   */
+  DescribeZones(
+    req: DescribeZonesRequest,
+    cb: (error: string, rep: DescribeZonesResponse) => void
+  ): void {
+    this.request("DescribeZones", req, cb)
+  }
 
-    /**
-     * 本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
-     * @public
-     */
-    CreateImage(req: CreateImageRequest, cb: (error: string, rep: CreateImageResponse) => void): void {
-        const resp = new CreateImageResponse();
-        this.request("CreateImage", req, resp, cb);
-    }
+  /**
+   * 本接口(CreateImage)用于将实例的系统盘制作为新镜像，创建后的镜像可以用于创建实例。
+   * @public
+   */
+  CreateImage(
+    req: CreateImageRequest,
+    cb: (error: string, rep: CreateImageResponse) => void
+  ): void {
+    this.request("CreateImage", req, cb)
+  }
 
-    /**
-     * 本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
-* 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
-     * @public
-     */
-    AssociateSecurityGroups(req: AssociateSecurityGroupsRequest, cb: (error: string, rep: AssociateSecurityGroupsResponse) => void): void {
-        const resp = new AssociateSecurityGroupsResponse();
-        this.request("AssociateSecurityGroups", req, resp, cb);
-    }
+  /**
+   * 本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
+   * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+   * @public
+   */
+  AssociateSecurityGroups(
+    req: AssociateSecurityGroupsRequest,
+    cb: (error: string, rep: AssociateSecurityGroupsResponse) => void
+  ): void {
+    this.request("AssociateSecurityGroups", req, cb)
+  }
 
-    /**
-     * 本接口 (ResetInstancesType) 用于调整实例的机型。
-* 目前只支持[系统盘类型](/document/api/213/9452#block_device)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口进行机型调整。
-* 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口调整机型。对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
-* 本接口为异步接口，调整实例配置请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表调整实例配置操作成功。
-     * @public
-     */
-    ResetInstancesType(req: ResetInstancesTypeRequest, cb: (error: string, rep: ResetInstancesTypeResponse) => void): void {
-        const resp = new ResetInstancesTypeResponse();
-        this.request("ResetInstancesType", req, resp, cb);
-    }
+  /**
+   * 本接口 (ResetInstancesType) 用于调整实例的机型。
+   * 目前只支持[系统盘类型](/document/api/213/9452#block_device)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口进行机型调整。
+   * 目前不支持[CDH](https://cloud.tencent.com/document/product/416)实例使用该接口调整机型。对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
+   * 本接口为异步接口，调整实例配置请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表调整实例配置操作成功。
+   * @public
+   */
+  ResetInstancesType(
+    req: ResetInstancesTypeRequest,
+    cb: (error: string, rep: ResetInstancesTypeResponse) => void
+  ): void {
+    this.request("ResetInstancesType", req, cb)
+  }
 
-    /**
+  /**
      * 本接口（ModifyImageAttribute）用于修改镜像属性。
 
 * 已分享的镜像无法修改属性。
      * @public
      */
-    ModifyImageAttribute(req: ModifyImageAttributeRequest, cb: (error: string, rep: ModifyImageAttributeResponse) => void): void {
-        const resp = new ModifyImageAttributeResponse();
-        this.request("ModifyImageAttribute", req, resp, cb);
-    }
+  ModifyImageAttribute(
+    req: ModifyImageAttributeRequest,
+    cb: (error: string, rep: ModifyImageAttributeResponse) => void
+  ): void {
+    this.request("ModifyImageAttribute", req, cb)
+  }
 
-    /**
+  /**
      * 本接口（DescribeInstancesOperationLimit）用于查询实例操作限制。
 
 * 目前支持调整配置操作限制次数查询。
      * @public
      */
-    DescribeInstancesOperationLimit(req: DescribeInstancesOperationLimitRequest, cb: (error: string, rep: DescribeInstancesOperationLimitResponse) => void): void {
-        const resp = new DescribeInstancesOperationLimitResponse();
-        this.request("DescribeInstancesOperationLimit", req, resp, cb);
-    }
+  DescribeInstancesOperationLimit(
+    req: DescribeInstancesOperationLimitRequest,
+    cb: (error: string, rep: DescribeInstancesOperationLimitResponse) => void
+  ): void {
+    this.request("DescribeInstancesOperationLimit", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (InquiryPriceResetInstancesType) 用于调整实例的机型询价。
 
 * 目前只支持[系统盘类型](https://cloud.tencent.com/document/product/213/15753#SystemDisk)是`CLOUD_BASIC`、`CLOUD_PREMIUM`、`CLOUD_SSD`类型的实例使用该接口进行调整机型询价。
@@ -689,39 +762,47 @@ export class Client extends AbstractClient {
 * 对于包年包月实例，使用该接口会涉及扣费，请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
      * @public
      */
-    InquiryPriceResetInstancesType(req: InquiryPriceResetInstancesTypeRequest, cb: (error: string, rep: InquiryPriceResetInstancesTypeResponse) => void): void {
-        const resp = new InquiryPriceResetInstancesTypeResponse();
-        this.request("InquiryPriceResetInstancesType", req, resp, cb);
-    }
+  InquiryPriceResetInstancesType(
+    req: InquiryPriceResetInstancesTypeRequest,
+    cb: (error: string, rep: InquiryPriceResetInstancesTypeResponse) => void
+  ): void {
+    this.request("InquiryPriceResetInstancesType", req, cb)
+  }
 
-    /**
-     * 本接口（DescribeInstanceFamilyConfigs）查询当前用户和地域所支持的机型族列表信息。
-     * @public
-     */
-    DescribeInstanceFamilyConfigs(req: DescribeInstanceFamilyConfigsRequest, cb: (error: string, rep: DescribeInstanceFamilyConfigsResponse) => void): void {
-        const resp = new DescribeInstanceFamilyConfigsResponse();
-        this.request("DescribeInstanceFamilyConfigs", req, resp, cb);
-    }
+  /**
+   * 本接口（DescribeInstanceFamilyConfigs）查询当前用户和地域所支持的机型族列表信息。
+   * @public
+   */
+  DescribeInstanceFamilyConfigs(
+    req: DescribeInstanceFamilyConfigsRequest,
+    cb: (error: string, rep: DescribeInstanceFamilyConfigsResponse) => void
+  ): void {
+    this.request("DescribeInstanceFamilyConfigs", req, cb)
+  }
 
-    /**
-     * 本接口 (DeleteDisasterRecoverGroups)用于删除[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。只有空的置放群组才能被删除，非空的群组需要先销毁组内所有云服务器，才能执行删除操作，不然会产生删除置放群组失败的错误。
-     * @public
-     */
-    DeleteDisasterRecoverGroups(req: DeleteDisasterRecoverGroupsRequest, cb: (error: string, rep: DeleteDisasterRecoverGroupsResponse) => void): void {
-        const resp = new DeleteDisasterRecoverGroupsResponse();
-        this.request("DeleteDisasterRecoverGroups", req, resp, cb);
-    }
+  /**
+   * 本接口 (DeleteDisasterRecoverGroups)用于删除[分散置放群组](https://cloud.tencent.com/document/product/213/15486)。只有空的置放群组才能被删除，非空的群组需要先销毁组内所有云服务器，才能执行删除操作，不然会产生删除置放群组失败的错误。
+   * @public
+   */
+  DeleteDisasterRecoverGroups(
+    req: DeleteDisasterRecoverGroupsRequest,
+    cb: (error: string, rep: DeleteDisasterRecoverGroupsResponse) => void
+  ): void {
+    this.request("DeleteDisasterRecoverGroups", req, cb)
+  }
 
-    /**
-     * 查看可以导入的镜像操作系统信息。
-     * @public
-     */
-    DescribeImportImageOs(req: DescribeImportImageOsRequest, cb: (error: string, rep: DescribeImportImageOsResponse) => void): void {
-        const resp = new DescribeImportImageOsResponse();
-        this.request("DescribeImportImageOs", req, resp, cb);
-    }
+  /**
+   * 查看可以导入的镜像操作系统信息。
+   * @public
+   */
+  DescribeImportImageOs(
+    req: DescribeImportImageOsRequest,
+    cb: (error: string, rep: DescribeImportImageOsResponse) => void
+  ): void {
+    this.request("DescribeImportImageOs", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ModifyInstancesProject) 用于修改实例所属项目。
 
 * 项目为一个虚拟概念，用户可以在一个账户下面建立多个项目，每个项目中管理不同的资源；将多个不同实例分属到不同项目中，后续使用 [`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口查询实例，项目ID可用于过滤结果。
@@ -731,12 +812,14 @@ export class Client extends AbstractClient {
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    ModifyInstancesProject(req: ModifyInstancesProjectRequest, cb: (error: string, rep: ModifyInstancesProjectResponse) => void): void {
-        const resp = new ModifyInstancesProjectResponse();
-        this.request("ModifyInstancesProject", req, resp, cb);
-    }
+  ModifyInstancesProject(
+    req: ModifyInstancesProjectRequest,
+    cb: (error: string, rep: ModifyInstancesProjectResponse) => void
+  ): void {
+    this.request("ModifyInstancesProject", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ResetInstance) 用于重装指定实例上的操作系统。
 
 * 如果指定了`ImageId`参数，则使用指定的镜像重装；否则按照当前实例使用的镜像进行重装。
@@ -748,41 +831,49 @@ export class Client extends AbstractClient {
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    ResetInstance(req: ResetInstanceRequest, cb: (error: string, rep: ResetInstanceResponse) => void): void {
-        const resp = new ResetInstanceResponse();
-        this.request("ResetInstance", req, resp, cb);
-    }
+  ResetInstance(
+    req: ResetInstanceRequest,
+    cb: (error: string, rep: ResetInstanceResponse) => void
+  ): void {
+    this.request("ResetInstance", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (InquiryPriceRenewInstances) 用于续费包年包月实例询价。
 
 * 只支持查询包年包月实例的续费价格。
      * @public
      */
-    InquiryPriceRenewInstances(req: InquiryPriceRenewInstancesRequest, cb: (error: string, rep: InquiryPriceRenewInstancesResponse) => void): void {
-        const resp = new InquiryPriceRenewInstancesResponse();
-        this.request("InquiryPriceRenewInstances", req, resp, cb);
-    }
+  InquiryPriceRenewInstances(
+    req: InquiryPriceRenewInstancesRequest,
+    cb: (error: string, rep: InquiryPriceRenewInstancesResponse) => void
+  ): void {
+    this.request("InquiryPriceRenewInstances", req, cb)
+  }
 
-    /**
-     * 本接口(InquiryPriceRunInstances)用于创建实例询价。本接口仅允许针对购买限制范围内的实例配置进行询价, 详见：[创建实例](https://cloud.tencent.com/document/api/213/15730)。
-     * @public
-     */
-    InquiryPriceRunInstances(req: InquiryPriceRunInstancesRequest, cb: (error: string, rep: InquiryPriceRunInstancesResponse) => void): void {
-        const resp = new InquiryPriceRunInstancesResponse();
-        this.request("InquiryPriceRunInstances", req, resp, cb);
-    }
+  /**
+   * 本接口(InquiryPriceRunInstances)用于创建实例询价。本接口仅允许针对购买限制范围内的实例配置进行询价, 详见：[创建实例](https://cloud.tencent.com/document/api/213/15730)。
+   * @public
+   */
+  InquiryPriceRunInstances(
+    req: InquiryPriceRunInstancesRequest,
+    cb: (error: string, rep: InquiryPriceRunInstancesResponse) => void
+  ): void {
+    this.request("InquiryPriceRunInstances", req, cb)
+  }
 
-    /**
-     * 本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。
-     * @public
-     */
-    ImportImage(req: ImportImageRequest, cb: (error: string, rep: ImportImageResponse) => void): void {
-        const resp = new ImportImageResponse();
-        this.request("ImportImage", req, resp, cb);
-    }
+  /**
+   * 本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。
+   * @public
+   */
+  ImportImage(
+    req: ImportImageRequest,
+    cb: (error: string, rep: ImportImageResponse) => void
+  ): void {
+    this.request("ImportImage", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (RenewInstances) 用于续费包年包月实例。
 
 * 只支持操作包年包月实例。
@@ -790,21 +881,25 @@ export class Client extends AbstractClient {
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    RenewInstances(req: RenewInstancesRequest, cb: (error: string, rep: RenewInstancesResponse) => void): void {
-        const resp = new RenewInstancesResponse();
-        this.request("RenewInstances", req, resp, cb);
-    }
+  RenewInstances(
+    req: RenewInstancesRequest,
+    cb: (error: string, rep: RenewInstancesResponse) => void
+  ): void {
+    this.request("RenewInstances", req, cb)
+  }
 
-    /**
-     * 本接口 (ModifyDisasterRecoverGroupAttribute)用于修改[分散置放群组](https://cloud.tencent.com/document/product/213/15486)属性。
-     * @public
-     */
-    ModifyDisasterRecoverGroupAttribute(req: ModifyDisasterRecoverGroupAttributeRequest, cb: (error: string, rep: ModifyDisasterRecoverGroupAttributeResponse) => void): void {
-        const resp = new ModifyDisasterRecoverGroupAttributeResponse();
-        this.request("ModifyDisasterRecoverGroupAttribute", req, resp, cb);
-    }
+  /**
+   * 本接口 (ModifyDisasterRecoverGroupAttribute)用于修改[分散置放群组](https://cloud.tencent.com/document/product/213/15486)属性。
+   * @public
+   */
+  ModifyDisasterRecoverGroupAttribute(
+    req: ModifyDisasterRecoverGroupAttributeRequest,
+    cb: (error: string, rep: ModifyDisasterRecoverGroupAttributeResponse) => void
+  ): void {
+    this.request("ModifyDisasterRecoverGroupAttribute", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 ( DescribeInstanceVncUrl ) 用于查询实例管理终端地址，获取的地址可用于实例的 VNC 登录。
 
 * 处于 `STOPPED` 状态的机器无法使用此功能。
@@ -823,12 +918,14 @@ https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F
 
      * @public
      */
-    DescribeInstanceVncUrl(req: DescribeInstanceVncUrlRequest, cb: (error: string, rep: DescribeInstanceVncUrlResponse) => void): void {
-        const resp = new DescribeInstanceVncUrlResponse();
-        this.request("DescribeInstanceVncUrl", req, resp, cb);
-    }
+  DescribeInstanceVncUrl(
+    req: DescribeInstanceVncUrlRequest,
+    cb: (error: string, rep: DescribeInstanceVncUrlResponse) => void
+  ): void {
+    this.request("DescribeInstanceVncUrl", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ModifyInstancesChargeType) 用于切换实例的计费模式。
 
 * 只支持从 `POSTPAID_BY_HOUR` 计费模式切换为`PREPAID`计费模式。
@@ -836,33 +933,36 @@ https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    ModifyInstancesChargeType(req: ModifyInstancesChargeTypeRequest, cb: (error: string, rep: ModifyInstancesChargeTypeResponse) => void): void {
-        const resp = new ModifyInstancesChargeTypeResponse();
-        this.request("ModifyInstancesChargeType", req, resp, cb);
-    }
+  ModifyInstancesChargeType(
+    req: ModifyInstancesChargeTypeRequest,
+    cb: (error: string, rep: ModifyInstancesChargeTypeResponse) => void
+  ): void {
+    this.request("ModifyInstancesChargeType", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (RenewHosts) 用于续费包年包月CDH实例。
 
 * 只支持操作包年包月实例，否则操作会以特定[错误码](#6.-.E9.94.99.E8.AF.AF.E7.A0.81)返回。
 * 续费时请确保账户余额充足。可通过[`DescribeAccountBalance`](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
      * @public
      */
-    RenewHosts(req: RenewHostsRequest, cb: (error: string, rep: RenewHostsResponse) => void): void {
-        const resp = new RenewHostsResponse();
-        this.request("RenewHosts", req, resp, cb);
-    }
+  RenewHosts(req: RenewHostsRequest, cb: (error: string, rep: RenewHostsResponse) => void): void {
+    this.request("RenewHosts", req, cb)
+  }
 
-    /**
-     * 本接口 (DescribeDisasterRecoverGroups)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)信息。
-     * @public
-     */
-    DescribeDisasterRecoverGroups(req: DescribeDisasterRecoverGroupsRequest, cb: (error: string, rep: DescribeDisasterRecoverGroupsResponse) => void): void {
-        const resp = new DescribeDisasterRecoverGroupsResponse();
-        this.request("DescribeDisasterRecoverGroups", req, resp, cb);
-    }
+  /**
+   * 本接口 (DescribeDisasterRecoverGroups)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)信息。
+   * @public
+   */
+  DescribeDisasterRecoverGroups(
+    req: DescribeDisasterRecoverGroupsRequest,
+    cb: (error: string, rep: DescribeDisasterRecoverGroupsResponse) => void
+  ): void {
+    this.request("DescribeDisasterRecoverGroups", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (StartInstances) 用于启动一个或多个实例。
 
 * 只有状态为`STOPPED`的实例才可以进行此操作。
@@ -871,12 +971,14 @@ https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F
 * 本接口为异步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表启动实例操作成功。
      * @public
      */
-    StartInstances(req: StartInstancesRequest, cb: (error: string, rep: StartInstancesResponse) => void): void {
-        const resp = new StartInstancesResponse();
-        this.request("StartInstances", req, resp, cb);
-    }
+  StartInstances(
+    req: StartInstancesRequest,
+    cb: (error: string, rep: StartInstancesResponse) => void
+  ): void {
+    this.request("StartInstances", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (ResetInstancesInternetMaxBandwidth) 用于调整实例公网带宽上限。
 
 * 不同机型带宽上限范围不一致，具体限制详见[公网带宽上限](https://cloud.tencent.com/document/product/213/12523)。
@@ -888,60 +990,72 @@ https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    ResetInstancesInternetMaxBandwidth(req: ResetInstancesInternetMaxBandwidthRequest, cb: (error: string, rep: ResetInstancesInternetMaxBandwidthResponse) => void): void {
-        const resp = new ResetInstancesInternetMaxBandwidthResponse();
-        this.request("ResetInstancesInternetMaxBandwidth", req, resp, cb);
-    }
+  ResetInstancesInternetMaxBandwidth(
+    req: ResetInstancesInternetMaxBandwidthRequest,
+    cb: (error: string, rep: ResetInstancesInternetMaxBandwidthResponse) => void
+  ): void {
+    this.request("ResetInstancesInternetMaxBandwidth", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (DescribeKeyPairs) 用于查询密钥对信息。
 
 * 密钥对是通过一种算法生成的一对密钥，在生成的密钥对中，一个向外界公开，称为公钥；另一个用户自己保留，称为私钥。密钥对的公钥内容可以通过这个接口查询，但私钥内容系统不保留。
      * @public
      */
-    DescribeKeyPairs(req: DescribeKeyPairsRequest, cb: (error: string, rep: DescribeKeyPairsResponse) => void): void {
-        const resp = new DescribeKeyPairsResponse();
-        this.request("DescribeKeyPairs", req, resp, cb);
-    }
+  DescribeKeyPairs(
+    req: DescribeKeyPairsRequest,
+    cb: (error: string, rep: DescribeKeyPairsResponse) => void
+  ): void {
+    this.request("DescribeKeyPairs", req, cb)
+  }
 
-    /**
-     * 本接口(DescribeReservedInstancesOfferings)供用户列出可购买的预留实例配置
-     * @public
-     */
-    DescribeReservedInstancesOfferings(req: DescribeReservedInstancesOfferingsRequest, cb: (error: string, rep: DescribeReservedInstancesOfferingsResponse) => void): void {
-        const resp = new DescribeReservedInstancesOfferingsResponse();
-        this.request("DescribeReservedInstancesOfferings", req, resp, cb);
-    }
+  /**
+   * 本接口(DescribeReservedInstancesOfferings)供用户列出可购买的预留实例配置
+   * @public
+   */
+  DescribeReservedInstancesOfferings(
+    req: DescribeReservedInstancesOfferingsRequest,
+    cb: (error: string, rep: DescribeReservedInstancesOfferingsResponse) => void
+  ): void {
+    this.request("DescribeReservedInstancesOfferings", req, cb)
+  }
 
-    /**
-     * 本接口 (DescribeHosts) 用于获取一个或多个CDH实例的详细信息。
-     * @public
-     */
-    DescribeHosts(req: DescribeHostsRequest, cb: (error: string, rep: DescribeHostsResponse) => void): void {
-        const resp = new DescribeHostsResponse();
-        this.request("DescribeHosts", req, resp, cb);
-    }
+  /**
+   * 本接口 (DescribeHosts) 用于获取一个或多个CDH实例的详细信息。
+   * @public
+   */
+  DescribeHosts(
+    req: DescribeHostsRequest,
+    cb: (error: string, rep: DescribeHostsResponse) => void
+  ): void {
+    this.request("DescribeHosts", req, cb)
+  }
 
-    /**
-     * 本接口 (AllocateHosts) 用于创建一个或多个指定配置的CDH实例。
-* 当HostChargeType为PREPAID时，必须指定HostChargePrepaid参数。
-     * @public
-     */
-    AllocateHosts(req: AllocateHostsRequest, cb: (error: string, rep: AllocateHostsResponse) => void): void {
-        const resp = new AllocateHostsResponse();
-        this.request("AllocateHosts", req, resp, cb);
-    }
+  /**
+   * 本接口 (AllocateHosts) 用于创建一个或多个指定配置的CDH实例。
+   * 当HostChargeType为PREPAID时，必须指定HostChargePrepaid参数。
+   * @public
+   */
+  AllocateHosts(
+    req: AllocateHostsRequest,
+    cb: (error: string, rep: AllocateHostsResponse) => void
+  ): void {
+    this.request("AllocateHosts", req, cb)
+  }
 
-    /**
-     * 本接口（DescribeInternetChargeTypeConfigs）用于查询网络的计费类型。
-     * @public
-     */
-    DescribeInternetChargeTypeConfigs(req: DescribeInternetChargeTypeConfigsRequest, cb: (error: string, rep: DescribeInternetChargeTypeConfigsResponse) => void): void {
-        const resp = new DescribeInternetChargeTypeConfigsResponse();
-        this.request("DescribeInternetChargeTypeConfigs", req, resp, cb);
-    }
+  /**
+   * 本接口（DescribeInternetChargeTypeConfigs）用于查询网络的计费类型。
+   * @public
+   */
+  DescribeInternetChargeTypeConfigs(
+    req: DescribeInternetChargeTypeConfigsRequest,
+    cb: (error: string, rep: DescribeInternetChargeTypeConfigsResponse) => void
+  ): void {
+    this.request("DescribeInternetChargeTypeConfigs", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (RebootInstances) 用于重启实例。
 
 * 只有状态为`RUNNING`的实例才可以进行此操作。
@@ -951,32 +1065,36 @@ https://img.qcloud.com/qcloud/app/active_vnc/index.html?InstanceVncUrl=wss%3A%2F
 * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
      * @public
      */
-    RebootInstances(req: RebootInstancesRequest, cb: (error: string, rep: RebootInstancesResponse) => void): void {
-        const resp = new RebootInstancesResponse();
-        this.request("RebootInstances", req, resp, cb);
-    }
+  RebootInstances(
+    req: RebootInstancesRequest,
+    cb: (error: string, rep: RebootInstancesResponse) => void
+  ): void {
+    this.request("RebootInstances", req, cb)
+  }
 
-    /**
+  /**
      * 本接口 (DescribeInstanceTypeConfigs) 用于查询实例机型配置。
 
 * 可以根据`zone`、`instance-family`来查询实例机型配置。过滤条件详见过滤器[`Filter`](https://cloud.tencent.com/document/api/213/15753#Filter)。
 * 如果参数为空，返回指定地域的所有实例机型配置。
      * @public
      */
-    DescribeInstanceTypeConfigs(req: DescribeInstanceTypeConfigsRequest, cb: (error: string, rep: DescribeInstanceTypeConfigsResponse) => void): void {
-        const resp = new DescribeInstanceTypeConfigsResponse();
-        this.request("DescribeInstanceTypeConfigs", req, resp, cb);
-    }
+  DescribeInstanceTypeConfigs(
+    req: DescribeInstanceTypeConfigsRequest,
+    cb: (error: string, rep: DescribeInstanceTypeConfigsResponse) => void
+  ): void {
+    this.request("DescribeInstanceTypeConfigs", req, cb)
+  }
 
-    /**
-     * 本接口 (DisassociateSecurityGroups) 用于解绑实例的指定安全组。
-* 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
-     * @public
-     */
-    DisassociateSecurityGroups(req: DisassociateSecurityGroupsRequest, cb: (error: string, rep: DisassociateSecurityGroupsResponse) => void): void {
-        const resp = new DisassociateSecurityGroupsResponse();
-        this.request("DisassociateSecurityGroups", req, resp, cb);
-    }
-
-
+  /**
+   * 本接口 (DisassociateSecurityGroups) 用于解绑实例的指定安全组。
+   * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+   * @public
+   */
+  DisassociateSecurityGroups(
+    req: DisassociateSecurityGroupsRequest,
+    cb: (error: string, rep: DisassociateSecurityGroupsResponse) => void
+  ): void {
+    this.request("DisassociateSecurityGroups", req, cb)
+  }
 }

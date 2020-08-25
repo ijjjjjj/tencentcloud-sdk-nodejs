@@ -31,7 +31,6 @@ class HttpConnection {
         // 所以这里把 readStream 转为 Buffer
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
         await convertReadStreamToBuffer(data);
-        console.log(111111);
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
         data = deepRemoveNull(data);
         const timestamp = parseInt(String(new Date().getTime() / 1000));

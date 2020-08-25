@@ -1,32 +1,48 @@
 import { sdkVersion } from "./sdk_version"
-import { ClientProfile } from "./profile/client_profile"
+import { ClientProfile, Credential } from "./interface"
 import Sign from "./sign"
 import { HttpConnection } from "./http/http_connection"
-import { Credential } from "./credential"
 import TencentCloudSDKHttpException from "./exception/tencent_cloud_sdk_exception"
-import { AbstractModel } from "./abstract_model"
 import { Response } from "node-fetch"
 
 type ResponseCallback = (error: string, rep: any) => void
 interface RequestOptions {
-  multipart: boolean
+  multipart: boolean;
 }
 interface RequestData {
-  Action: string
-  RequestClient: string
-  Nonce: number
-  Timestamp: number
-  Version: string
-  Signature: string
-  SecretId?: string
-  region?: string
-  Token?: string
-  SinatureMethod?: string
-  [key: string]: any
+  Action: string;
+  RequestClient: string;
+  Nonce: number;
+  Timestamp: number;
+  Version: string;
+  Signature: string;
+  SecretId?: string;
+  region?: string;
+  Token?: string;
+  SinatureMethod?: string;
+  [key: string]: any;
 }
 interface ResponseData {
-  RequestId: string
-  [key: string]: any
+  RequestId: string;
+  [key: string]: any;
+}
+
+export interface ClientConfig {
+  /**
+   * @param {Credential} credential 认证信息
+   * 必选
+   */
+  credential: Credential;
+  /**
+   * @param {string} region 产品地域
+   * 必选
+   */
+  region: string;
+  /**
+   * @param {ClientProfile} profile 可选配置实例
+   * 可选，没有特殊需求可以跳过。
+   */
+  profile?: ClientProfile;
 }
 /**
  * @inner
@@ -47,19 +63,20 @@ export class AbstractClient {
    * @param {string} region 产品地域
    * @param {ClientProfile} profile 可选配置实例
    */
-  constructor(
-    endpoint: string,
-    version: string,
-    credential: Credential,
-    region: string,
-    profile: ClientProfile
-  ) {
+  constructor(endpoint: string, version: string, { credential, region, profile }: ClientConfig) {
     this.path = "/"
 
     /**
      * 认证信息实例
      */
-    this.credential = credential || null
+    this.credential = Object.assign(
+      {
+        secretId: null,
+        secretKey: null,
+        token: null,
+      },
+      credential
+    )
 
     /**
      * 产品地域
@@ -73,7 +90,18 @@ export class AbstractClient {
      * 可选配置实例
      * @type {ClientProfile}
      */
-    this.profile = profile || new ClientProfile()
+    this.profile = {
+      signMethod: (profile && profile.signMethod) || "HmacSHA256",
+      httpProfile: Object.assign(
+        {
+          reqMethod: "POST",
+          endpoint: null,
+          protocol: "https://",
+          reqTimeout: 60,
+        },
+        profile && profile.httpProfile
+      ),
+    }
   }
 
   /**
@@ -86,9 +114,8 @@ export class AbstractClient {
   /**
    * @inner
    */
-  succRequest(resp: AbstractModel, cb: ResponseCallback, data: ResponseData): void {
-    resp.deserialize(data)
-    cb(null, resp)
+  succRequest(cb: ResponseCallback, data: ResponseData): void {
+    cb(null, data)
   }
 
   /**
@@ -103,8 +130,7 @@ export class AbstractClient {
    */
   request(
     action: string,
-    req: AbstractModel,
-    resp: AbstractModel,
+    req: any,
     options: ResponseCallback | RequestOptions,
     cb?: ResponseCallback
   ): void {
@@ -114,12 +140,12 @@ export class AbstractClient {
     }
     if (this.profile.signMethod === "TC3-HMAC-SHA256") {
       this.doRequestWithSign3(action, req, options as RequestOptions).then(
-        (data) => this.succRequest(resp, cb, data),
+        (data) => this.succRequest(cb, data),
         (error) => this.failRequest(error, cb)
       )
     } else {
       this.doRequest(action, req).then(
-        (data) => this.succRequest(resp, cb, data),
+        (data) => this.succRequest(cb, data),
         (error) => this.failRequest(error, cb)
       )
     }
@@ -128,7 +154,7 @@ export class AbstractClient {
   /**
    * @inner
    */
-  async doRequest(action: string, req: AbstractModel): Promise<ResponseData> {
+  async doRequest(action: string, req: any): Promise<ResponseData> {
     let params = this.mergeData(req)
     params = this.formatRequestData(action, params)
     let res
@@ -150,7 +176,7 @@ export class AbstractClient {
    */
   async doRequestWithSign3(
     action: string,
-    params: AbstractModel,
+    params: any,
     options?: RequestOptions
   ): Promise<ResponseData> {
     let res
