@@ -84,7 +84,7 @@ export class AbstractClient {
     this.region = region || null
     this.sdkVersion = "SDK_NODEJS_" + sdkVersion
     this.apiVersion = version
-    this.endpoint = endpoint
+    this.endpoint = (profile && profile.httpProfile && profile.httpProfile.endpoint) || endpoint
 
     /**
      * 可选配置实例
@@ -107,61 +107,44 @@ export class AbstractClient {
   /**
    * @inner
    */
-  getEndpoint(): string {
-    return this.profile.httpProfile.endpoint || this.endpoint
-  }
-
-  /**
-   * @inner
-   */
-  succRequest(cb: ResponseCallback, data: ResponseData): void {
-    cb(null, data)
-  }
-
-  /**
-   * @inner
-   */
-  failRequest(err: string, cb: ResponseCallback): void {
-    cb(err, null)
-  }
-
-  /**
-   * @inner
-   */
-  request(
+  async request(
     action: string,
     req: any,
-    options: ResponseCallback | RequestOptions,
+    options?: ResponseCallback | RequestOptions,
     cb?: ResponseCallback
-  ): void {
+  ): Promise<ResponseData> {
     if (typeof options === "function") {
       cb = options
       options = {} as RequestOptions
     }
-    if (this.profile.signMethod === "TC3-HMAC-SHA256") {
-      this.doRequestWithSign3(action, req, options as RequestOptions).then(
-        (data) => this.succRequest(cb, data),
-        (error) => this.failRequest(error, cb)
-      )
-    } else {
-      this.doRequest(action, req).then(
-        (data) => this.succRequest(cb, data),
-        (error) => this.failRequest(error, cb)
-      )
+    try {
+      const result = await this.doRequest(action, req, options as RequestOptions)
+      cb && cb(null, result)
+      return result
+    } catch (e) {
+      cb && cb(e && e.message, null)
+      throw e.message
     }
   }
 
   /**
    * @inner
    */
-  async doRequest(action: string, req: any): Promise<ResponseData> {
+  private async doRequest(
+    action: string,
+    req: any,
+    options?: RequestOptions
+  ): Promise<ResponseData> {
+    if (this.profile.signMethod === "TC3-HMAC-SHA256") {
+      return await this.doRequestWithSign3(action, req, options)
+    }
     let params = this.mergeData(req)
     params = this.formatRequestData(action, params)
     let res
     try {
       res = await HttpConnection.doRequest({
         method: this.profile.httpProfile.reqMethod,
-        url: this.profile.httpProfile.protocol + this.getEndpoint() + this.path,
+        url: this.profile.httpProfile.protocol + this.endpoint + this.path,
         data: params,
         timeout: this.profile.httpProfile.reqTimeout * 1000,
       })
@@ -174,7 +157,7 @@ export class AbstractClient {
   /**
    * @inner
    */
-  async doRequestWithSign3(
+  private async doRequestWithSign3(
     action: string,
     params: any,
     options?: RequestOptions
@@ -183,15 +166,15 @@ export class AbstractClient {
     try {
       res = await HttpConnection.doRequestWithSign3({
         method: this.profile.httpProfile.reqMethod,
-        url: this.profile.httpProfile.protocol + this.getEndpoint() + this.path,
+        url: this.profile.httpProfile.protocol + this.endpoint + this.path,
         secretId: this.credential.secretId,
         secretKey: this.credential.secretKey,
         region: this.region,
         data: params,
-        service: this.getEndpoint().split(".")[0],
+        service: this.endpoint.split(".")[0],
         action: action,
         version: this.apiVersion,
-        multipart: options.multipart,
+        multipart: options && options.multipart,
         timeout: this.profile.httpProfile.reqTimeout * 1000,
         token: this.credential.token,
         requestClient: this.sdkVersion,
@@ -202,7 +185,7 @@ export class AbstractClient {
     return await this.parseResponse(res)
   }
 
-  async parseResponse(res: Response): Promise<ResponseData> {
+  private async parseResponse(res: Response): Promise<ResponseData> {
     if (res.status !== 200) {
       const tcError = new TencentCloudSDKHttpException(res.statusText)
       tcError.httpCode = res.status
@@ -225,7 +208,7 @@ export class AbstractClient {
   /**
    * @inner
    */
-  mergeData(data: any, prefix = "") {
+  private mergeData(data: any, prefix = "") {
     const ret: any = {}
     for (const k in data) {
       if (data[k] === null) {
@@ -243,7 +226,7 @@ export class AbstractClient {
   /**
    * @inner
    */
-  formatRequestData(action: string, params: RequestData): RequestData {
+  private formatRequestData(action: string, params: RequestData): RequestData {
     params.Action = action
     params.RequestClient = this.sdkVersion
     params.Nonce = Math.round(Math.random() * 65535)
@@ -274,7 +257,7 @@ export class AbstractClient {
   /**
    * @inner
    */
-  formatSignString(params: RequestData): string {
+  private formatSignString(params: RequestData): string {
     let strParam = ""
     const keys = Object.keys(params)
     keys.sort()
@@ -284,7 +267,7 @@ export class AbstractClient {
     }
     const strSign =
       this.profile.httpProfile.reqMethod.toLocaleUpperCase() +
-      this.getEndpoint() +
+      this.endpoint +
       this.path +
       "?" +
       strParam.slice(1)

@@ -32,7 +32,7 @@ class AbstractClient {
         this.region = region || null;
         this.sdkVersion = "SDK_NODEJS_" + sdk_version_1.sdkVersion;
         this.apiVersion = version;
-        this.endpoint = endpoint;
+        this.endpoint = (profile && profile.httpProfile && profile.httpProfile.endpoint) || endpoint;
         /**
          * 可选配置实例
          * @type {ClientProfile}
@@ -50,47 +50,35 @@ class AbstractClient {
     /**
      * @inner
      */
-    getEndpoint() {
-        return this.profile.httpProfile.endpoint || this.endpoint;
-    }
-    /**
-     * @inner
-     */
-    succRequest(cb, data) {
-        cb(null, data);
-    }
-    /**
-     * @inner
-     */
-    failRequest(err, cb) {
-        cb(err, null);
-    }
-    /**
-     * @inner
-     */
-    request(action, req, options, cb) {
+    async request(action, req, options, cb) {
         if (typeof options === "function") {
             cb = options;
             options = {};
         }
-        if (this.profile.signMethod === "TC3-HMAC-SHA256") {
-            this.doRequestWithSign3(action, req, options).then((data) => this.succRequest(cb, data), (error) => this.failRequest(error, cb));
+        try {
+            const result = await this.doRequest(action, req, options);
+            cb && cb(null, result);
+            return result;
         }
-        else {
-            this.doRequest(action, req).then((data) => this.succRequest(cb, data), (error) => this.failRequest(error, cb));
+        catch (e) {
+            cb && cb(e && e.message, null);
+            throw e.message;
         }
     }
     /**
      * @inner
      */
-    async doRequest(action, req) {
+    async doRequest(action, req, options) {
+        if (this.profile.signMethod === "TC3-HMAC-SHA256") {
+            return await this.doRequestWithSign3(action, req, options);
+        }
         let params = this.mergeData(req);
         params = this.formatRequestData(action, params);
         let res;
         try {
             res = await http_connection_1.HttpConnection.doRequest({
                 method: this.profile.httpProfile.reqMethod,
-                url: this.profile.httpProfile.protocol + this.getEndpoint() + this.path,
+                url: this.profile.httpProfile.protocol + this.endpoint + this.path,
                 data: params,
                 timeout: this.profile.httpProfile.reqTimeout * 1000,
             });
@@ -108,15 +96,15 @@ class AbstractClient {
         try {
             res = await http_connection_1.HttpConnection.doRequestWithSign3({
                 method: this.profile.httpProfile.reqMethod,
-                url: this.profile.httpProfile.protocol + this.getEndpoint() + this.path,
+                url: this.profile.httpProfile.protocol + this.endpoint + this.path,
                 secretId: this.credential.secretId,
                 secretKey: this.credential.secretKey,
                 region: this.region,
                 data: params,
-                service: this.getEndpoint().split(".")[0],
+                service: this.endpoint.split(".")[0],
                 action: action,
                 version: this.apiVersion,
-                multipart: options.multipart,
+                multipart: options && options.multipart,
                 timeout: this.profile.httpProfile.reqTimeout * 1000,
                 token: this.credential.token,
                 requestClient: this.sdkVersion,
@@ -200,7 +188,7 @@ class AbstractClient {
             strParam += "&" + keys[k] + "=" + params[keys[k]];
         }
         const strSign = this.profile.httpProfile.reqMethod.toLocaleUpperCase() +
-            this.getEndpoint() +
+            this.endpoint +
             this.path +
             "?" +
             strParam.slice(1);

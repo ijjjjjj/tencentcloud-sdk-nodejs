@@ -1,21 +1,7 @@
 import { ClientProfile, Credential } from "./interface";
-import { Response } from "node-fetch";
 declare type ResponseCallback = (error: string, rep: any) => void;
 interface RequestOptions {
     multipart: boolean;
-}
-interface RequestData {
-    Action: string;
-    RequestClient: string;
-    Nonce: number;
-    Timestamp: number;
-    Version: string;
-    Signature: string;
-    SecretId?: string;
-    region?: string;
-    Token?: string;
-    SinatureMethod?: string;
-    [key: string]: any;
 }
 interface ResponseData {
     RequestId: string;
@@ -61,39 +47,27 @@ export declare class AbstractClient {
     /**
      * @inner
      */
-    getEndpoint(): string;
+    request(action: string, req: any, options?: ResponseCallback | RequestOptions, cb?: ResponseCallback): Promise<ResponseData>;
     /**
      * @inner
      */
-    succRequest(cb: ResponseCallback, data: ResponseData): void;
+    private doRequest;
     /**
      * @inner
      */
-    failRequest(err: string, cb: ResponseCallback): void;
+    private doRequestWithSign3;
+    private parseResponse;
     /**
      * @inner
      */
-    request(action: string, req: any, options: ResponseCallback | RequestOptions, cb?: ResponseCallback): void;
+    private mergeData;
     /**
      * @inner
      */
-    doRequest(action: string, req: any): Promise<ResponseData>;
+    private formatRequestData;
     /**
      * @inner
      */
-    doRequestWithSign3(action: string, params: any, options?: RequestOptions): Promise<ResponseData>;
-    parseResponse(res: Response): Promise<ResponseData>;
-    /**
-     * @inner
-     */
-    mergeData(data: any, prefix?: string): any;
-    /**
-     * @inner
-     */
-    formatRequestData(action: string, params: RequestData): RequestData;
-    /**
-     * @inner
-     */
-    formatSignString(params: RequestData): string;
+    private formatSignString;
 }
 export {};
