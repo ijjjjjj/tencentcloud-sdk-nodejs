@@ -202,7 +202,7 @@ export class Client extends AbstractClient {
     constructor(clientConfig: ClientConfig) {
         super("cvm.tencentcloudapi.com", "2017-03-12", clientConfig);
     }
-
+    
     /**
      * 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
      * @public
@@ -724,7 +724,7 @@ export class Client extends AbstractClient {
     }
 
     /**
-     * 本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。
+     * 本接口(ImportImage)用于导入镜像，导入后的镜像可用于创建实例。 
      * @public
      */
     async ImportImage(req: ImportImageRequest, cb?: (error: string, rep: ImportImageResponse) => void): Promise<ImportImageResponse> {
