@@ -197,8 +197,8 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
-  constructor(config: ClientConfig) {
-    super("cvm.tencentcloudapi.com", "2017-03-12", config)
+  constructor(clientConfig: ClientConfig) {
+    super("cvm.tencentcloudapi.com", "2017-03-12", clientConfig)
   }
 
   /**

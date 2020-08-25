@@ -41,6 +41,6 @@ client.DescribeInstances(
       return
     }
     // 请求正常返回，打印response对象
-    console.log(response)
+    console.log(response.RequestId)
   }
 )

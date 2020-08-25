@@ -23,8 +23,8 @@ const abstract_client_1 = require("../../common/abstract_client");
  * @class
  */
 class Client extends abstract_client_1.AbstractClient {
-    constructor(config) {
-        super("cvm.tencentcloudapi.com", "2017-03-12", config);
+    constructor(clientConfig) {
+        super("cvm.tencentcloudapi.com", "2017-03-12", clientConfig);
     }
     /**
      * 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。

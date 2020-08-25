@@ -5,7 +5,7 @@ import { AssociateInstancesKeyPairsResponse, RenewInstancesRequest, DescribeImag
  * @class
  */
 export declare class Client extends AbstractClient {
-    constructor(config: ClientConfig);
+    constructor(clientConfig: ClientConfig);
     /**
      * 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
      * @public
