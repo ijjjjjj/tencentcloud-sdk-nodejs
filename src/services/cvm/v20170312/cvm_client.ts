@@ -15,7 +15,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { AbstractClient, ClientConfig } from "../../common/abstract_client"
+import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
   ChargePrepaid,
   LocalDiskType,
