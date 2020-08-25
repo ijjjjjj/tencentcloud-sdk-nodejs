@@ -39,13 +39,18 @@ client
     function (err: string, response) {
       // 请求异常返回，打印异常信息
       if (err) {
-        console.log(err)
+        console.error("error", err)
         return
       }
       // 请求正常返回，打印response对象
       console.log(response)
     }
   )
-  .then((data) => {
-    console.log(data)
-  })
+  .then(
+    (data) => {
+      console.log(data)
+    },
+    (err) => {
+      console.error("error", err)
+    }
+  )
