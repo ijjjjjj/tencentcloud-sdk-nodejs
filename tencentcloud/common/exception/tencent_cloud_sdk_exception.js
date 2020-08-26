@@ -30,4 +30,3 @@ class TencentCloudSDKHttpException extends Error {
     }
 }
 exports.default = TencentCloudSDKHttpException;
-//# sourceMappingURL=tencent_cloud_sdk_exception.js.map

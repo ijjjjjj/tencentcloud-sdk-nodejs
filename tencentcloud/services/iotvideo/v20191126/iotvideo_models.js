@@ -16,4 +16,3 @@
  * under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=iotvideo_models.js.map

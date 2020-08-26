@@ -16,4 +16,3 @@
  * under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=postgres_models.js.map

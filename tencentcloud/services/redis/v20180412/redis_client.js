@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Client = void 0;
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /*
  * Copyright (c) 2018 THL A29 Limited, a Tencent company. All Rights Reserved.
@@ -428,4 +427,3 @@ class Client extends abstract_client_1.AbstractClient {
     }
 }
 exports.Client = Client;
-//# sourceMappingURL=redis_client.js.map

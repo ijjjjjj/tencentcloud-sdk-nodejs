@@ -6,7 +6,7 @@ export interface ClientProfile {
      * 签名方法，当前支持(HmacSHA1 HmacSHA256)
      * @type {string}
      */
-    signMethod: string;
+    signMethod: "TC3-HMAC-SHA256" | "HmacSHA256";
     /**
      * http相关选项实例
      * @type {httpProfile}

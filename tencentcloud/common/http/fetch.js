@@ -10,4 +10,3 @@ function default_1(url, options) {
     return node_fetch_1.default(url, instanceOptions);
 }
 exports.default = default_1;
-//# sourceMappingURL=fetch.js.map

@@ -105,4 +105,3 @@ function getDate(timestamp) {
     const day = ("0" + date.getUTCDate()).slice(-2);
     return `${year}-${month}-${day}`;
 }
-//# sourceMappingURL=sign.js.map

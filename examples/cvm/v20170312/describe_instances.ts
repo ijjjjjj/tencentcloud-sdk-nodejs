@@ -35,15 +35,6 @@ client
           Values: ["POSTPAID_BY_HOUR"],
         },
       ],
-    },
-    function (err: string, response) {
-      // 请求异常返回，打印异常信息
-      if (err) {
-        console.error("error", err)
-        return
-      }
-      // 请求正常返回，打印response对象
-      console.log(response)
     }
   )
   .then(

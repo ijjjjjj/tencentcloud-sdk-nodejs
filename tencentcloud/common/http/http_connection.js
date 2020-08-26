@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HttpConnection = void 0;
 const QueryString = require("querystring");
 const url_1 = require("url");
 const isStream = require("is-stream");
@@ -145,4 +144,3 @@ function isObject(x) {
 function isNull(x) {
     return x === null;
 }
-//# sourceMappingURL=http_connection.js.map
