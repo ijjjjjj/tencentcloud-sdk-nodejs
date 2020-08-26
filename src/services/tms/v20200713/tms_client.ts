@@ -17,13 +17,12 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   RiskDetails,
-   TextModerationRequest,
-   DetailResults,
-   User,
-   Device,
-   TextModerationResponse,
-
+  RiskDetails,
+  TextModerationRequest,
+  DetailResults,
+  User,
+  Device,
+  TextModerationResponse,
 } from "./tms_models"
 
 /**
@@ -31,18 +30,18 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("tms.tencentcloudapi.com", "2020-07-13", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("tms.tencentcloudapi.com", "2020-07-13", clientConfig);
-    }
-    
-    /**
-     * 文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
-     * @public
-     */
-    async TextModeration(req: TextModerationRequest, cb?: (error: string, rep: TextModerationResponse) => void): Promise<TextModerationResponse> {
-        return await this.request("TextModeration", req, cb);
-    }
-
-
+  /**
+   * 文本内容检测（Text Moderation）服务使用了深度学习技术，识别涉黄、涉政、涉恐等有害内容，同时支持用户配置词库，打击自定义的违规文本。
+   * @public
+   */
+  async TextModeration(
+    req: TextModerationRequest,
+    cb?: (error: string, rep: TextModerationResponse) => void
+  ): Promise<TextModerationResponse> {
+    return this.request("TextModeration", req, cb)
+  }
 }

@@ -17,18 +17,17 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribeDomainInfoResponse,
-   DescribeIpInfoRequest,
-   DescribeThreatInfoResponse,
-   DescribeDomainInfoRequest,
-   IntelligenceType,
-   FileInfoType,
-   TagType,
-   DescribeFileInfoResponse,
-   DescribeThreatInfoRequest,
-   DescribeFileInfoRequest,
-   DescribeIpInfoResponse,
-
+  DescribeDomainInfoResponse,
+  DescribeIpInfoRequest,
+  DescribeThreatInfoResponse,
+  DescribeDomainInfoRequest,
+  IntelligenceType,
+  FileInfoType,
+  TagType,
+  DescribeFileInfoResponse,
+  DescribeThreatInfoRequest,
+  DescribeFileInfoRequest,
+  DescribeIpInfoResponse,
 } from "./tics_models"
 
 /**
@@ -36,42 +35,51 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("tics.tencentcloudapi.com", "2018-11-15", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("tics.tencentcloudapi.com", "2018-11-15", clientConfig);
-    }
-    
-    /**
-     * 提供文件相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
-     * @public
-     */
-    async DescribeFileInfo(req: DescribeFileInfoRequest, cb?: (error: string, rep: DescribeFileInfoResponse) => void): Promise<DescribeFileInfoResponse> {
-        return await this.request("DescribeFileInfo", req, cb);
-    }
+  /**
+   * 提供文件相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+   * @public
+   */
+  async DescribeFileInfo(
+    req: DescribeFileInfoRequest,
+    cb?: (error: string, rep: DescribeFileInfoResponse) => void
+  ): Promise<DescribeFileInfoResponse> {
+    return this.request("DescribeFileInfo", req, cb)
+  }
 
-    /**
-     * 提供IP相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
-     * @public
-     */
-    async DescribeIpInfo(req: DescribeIpInfoRequest, cb?: (error: string, rep: DescribeIpInfoResponse) => void): Promise<DescribeIpInfoResponse> {
-        return await this.request("DescribeIpInfo", req, cb);
-    }
+  /**
+   * 提供IP相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+   * @public
+   */
+  async DescribeIpInfo(
+    req: DescribeIpInfoRequest,
+    cb?: (error: string, rep: DescribeIpInfoResponse) => void
+  ): Promise<DescribeIpInfoResponse> {
+    return this.request("DescribeIpInfo", req, cb)
+  }
 
-    /**
-     * 提供域名相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
-     * @public
-     */
-    async DescribeDomainInfo(req: DescribeDomainInfoRequest, cb?: (error: string, rep: DescribeDomainInfoResponse) => void): Promise<DescribeDomainInfoResponse> {
-        return await this.request("DescribeDomainInfo", req, cb);
-    }
+  /**
+   * 提供域名相关的基础信息以及与攻击事件（团伙、家族）、恶意文件等相关联信息。
+   * @public
+   */
+  async DescribeDomainInfo(
+    req: DescribeDomainInfoRequest,
+    cb?: (error: string, rep: DescribeDomainInfoResponse) => void
+  ): Promise<DescribeDomainInfoResponse> {
+    return this.request("DescribeDomainInfo", req, cb)
+  }
 
-    /**
-     * 提供IP和域名相关威胁情报信息查询，这些信息可以辅助检测失陷主机、帮助SIEM/SOC等系统做研判决策、帮助运营团队对设备报警的编排处理。
-     * @public
-     */
-    async DescribeThreatInfo(req: DescribeThreatInfoRequest, cb?: (error: string, rep: DescribeThreatInfoResponse) => void): Promise<DescribeThreatInfoResponse> {
-        return await this.request("DescribeThreatInfo", req, cb);
-    }
-
-
+  /**
+   * 提供IP和域名相关威胁情报信息查询，这些信息可以辅助检测失陷主机、帮助SIEM/SOC等系统做研判决策、帮助运营团队对设备报警的编排处理。
+   * @public
+   */
+  async DescribeThreatInfo(
+    req: DescribeThreatInfoRequest,
+    cb?: (error: string, rep: DescribeThreatInfoResponse) => void
+  ): Promise<DescribeThreatInfoResponse> {
+    return this.request("DescribeThreatInfo", req, cb)
+  }
 }

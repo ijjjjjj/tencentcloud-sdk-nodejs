@@ -17,16 +17,15 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   SearchResult,
-   SearchResultSeg,
-   DataManipulationResult,
-   SearchResultItem,
-   DataSearchResponse,
-   DataSearchRequest,
-   DataManipulationResultItem,
-   DataManipulationRequest,
-   DataManipulationResponse,
-
+  SearchResult,
+  SearchResultSeg,
+  DataManipulationResult,
+  SearchResultItem,
+  DataSearchResponse,
+  DataSearchRequest,
+  DataManipulationResultItem,
+  DataManipulationRequest,
+  DataManipulationResponse,
 } from "./yunsou_models"
 
 /**
@@ -34,28 +33,31 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("yunsou.tencentcloudapi.com", "2019-11-15", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("yunsou.tencentcloudapi.com", "2019-11-15", clientConfig);
-    }
-    
-    /**
+  /**
      * 上传云搜数据的API接口。
 
      * @public
      */
-    async DataManipulation(req: DataManipulationRequest, cb?: (error: string, rep: DataManipulationResponse) => void): Promise<DataManipulationResponse> {
-        return await this.request("DataManipulation", req, cb);
-    }
+  async DataManipulation(
+    req: DataManipulationRequest,
+    cb?: (error: string, rep: DataManipulationResponse) => void
+  ): Promise<DataManipulationResponse> {
+    return this.request("DataManipulation", req, cb)
+  }
 
-    /**
+  /**
      * 用于检索云搜中的数据。
 
      * @public
      */
-    async DataSearch(req: DataSearchRequest, cb?: (error: string, rep: DataSearchResponse) => void): Promise<DataSearchResponse> {
-        return await this.request("DataSearch", req, cb);
-    }
-
-
+  async DataSearch(
+    req: DataSearchRequest,
+    cb?: (error: string, rep: DataSearchResponse) => void
+  ): Promise<DataSearchResponse> {
+    return this.request("DataSearch", req, cb)
+  }
 }

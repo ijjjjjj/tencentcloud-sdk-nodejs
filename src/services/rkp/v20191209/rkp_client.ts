@@ -17,16 +17,15 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   GetTokenResponse,
-   QueryDevAndRiskRequest,
-   DevInfoQ,
-   RiskDetail,
-   RiskInfo,
-   GetOpenIdRequest,
-   QueryDevAndRiskResponse,
-   GetTokenRequest,
-   GetOpenIdResponse,
-
+  GetTokenResponse,
+  QueryDevAndRiskRequest,
+  DevInfoQ,
+  RiskDetail,
+  RiskInfo,
+  GetOpenIdRequest,
+  QueryDevAndRiskResponse,
+  GetTokenRequest,
+  GetOpenIdResponse,
 } from "./rkp_models"
 
 /**
@@ -34,34 +33,40 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("rkp.tencentcloudapi.com", "2019-12-09", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("rkp.tencentcloudapi.com", "2019-12-09", clientConfig);
-    }
-    
-    /**
-     * 根据DevicceToken查询OpenID。
-     * @public
-     */
-    async GetOpenId(req: GetOpenIdRequest, cb?: (error: string, rep: GetOpenIdResponse) => void): Promise<GetOpenIdResponse> {
-        return await this.request("GetOpenId", req, cb);
-    }
+  /**
+   * 根据DevicceToken查询OpenID。
+   * @public
+   */
+  async GetOpenId(
+    req: GetOpenIdRequest,
+    cb?: (error: string, rep: GetOpenIdResponse) => void
+  ): Promise<GetOpenIdResponse> {
+    return this.request("GetOpenId", req, cb)
+  }
 
-    /**
-     * 获取token接口。
-     * @public
-     */
-    async GetToken(req: GetTokenRequest, cb?: (error: string, rep: GetTokenResponse) => void): Promise<GetTokenResponse> {
-        return await this.request("GetToken", req, cb);
-    }
+  /**
+   * 获取token接口。
+   * @public
+   */
+  async GetToken(
+    req: GetTokenRequest,
+    cb?: (error: string, rep: GetTokenResponse) => void
+  ): Promise<GetTokenResponse> {
+    return this.request("GetToken", req, cb)
+  }
 
-    /**
-     * 腾讯天御设备风险查询接口，输入由客户应用自主采集的设备信息， 通过腾讯大数据风控能力，可以准确根据输入设备信息，还原设备库中的设备ID，并且识别设备的风险，解决客户业务过程中的设备风险，降低企业损失。
-     * @public
-     */
-    async QueryDevAndRisk(req: QueryDevAndRiskRequest, cb?: (error: string, rep: QueryDevAndRiskResponse) => void): Promise<QueryDevAndRiskResponse> {
-        return await this.request("QueryDevAndRisk", req, cb);
-    }
-
-
+  /**
+   * 腾讯天御设备风险查询接口，输入由客户应用自主采集的设备信息， 通过腾讯大数据风控能力，可以准确根据输入设备信息，还原设备库中的设备ID，并且识别设备的风险，解决客户业务过程中的设备风险，降低企业损失。
+   * @public
+   */
+  async QueryDevAndRisk(
+    req: QueryDevAndRiskRequest,
+    cb?: (error: string, rep: QueryDevAndRiskResponse) => void
+  ): Promise<QueryDevAndRiskResponse> {
+    return this.request("QueryDevAndRisk", req, cb)
+  }
 }

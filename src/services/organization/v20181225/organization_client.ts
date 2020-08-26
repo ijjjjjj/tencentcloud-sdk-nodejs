@@ -17,50 +17,49 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   MoveOrganizationMembersToNodeRequest,
-   GetOrganizationRequest,
-   ListOrganizationMembersRequest,
-   DeleteOrganizationMemberFromNodeRequest,
-   OrgMember,
-   UpdateOrganizationNodeResponse,
-   GetOrganizationMemberResponse,
-   CreateOrganizationRequest,
-   DeleteOrganizationRequest,
-   QuitOrganizationResponse,
-   UpdateOrganizationMemberResponse,
-   DeleteOrganizationMembersRequest,
-   CreateOrganizationResponse,
-   DeleteOrganizationNodesRequest,
-   AddOrganizationNodeResponse,
-   ListOrganizationInvitationsResponse,
-   AcceptOrganizationInvitationRequest,
-   ListOrganizationNodeMembersResponse,
-   GetOrganizationMemberRequest,
-   DenyOrganizationInvitationResponse,
-   SendOrganizationInvitationResponse,
-   OrgInvitation,
-   UpdateOrganizationMemberRequest,
-   QuitOrganizationRequest,
-   ListOrganizationInvitationsRequest,
-   AddOrganizationNodeRequest,
-   ListOrganizationNodeMembersRequest,
-   UpdateOrganizationNodeRequest,
-   CancelOrganizationInvitationRequest,
-   DeleteOrganizationMemberFromNodeResponse,
-   DenyOrganizationInvitationRequest,
-   DeleteOrganizationNodesResponse,
-   DeleteOrganizationResponse,
-   CancelOrganizationInvitationResponse,
-   AcceptOrganizationInvitationResponse,
-   ListOrganizationNodesRequest,
-   SendOrganizationInvitationRequest,
-   DeleteOrganizationMembersResponse,
-   GetOrganizationResponse,
-   ListOrganizationMembersResponse,
-   ListOrganizationNodesResponse,
-   MoveOrganizationMembersToNodeResponse,
-   OrgNode,
-
+  MoveOrganizationMembersToNodeRequest,
+  GetOrganizationRequest,
+  ListOrganizationMembersRequest,
+  DeleteOrganizationMemberFromNodeRequest,
+  OrgMember,
+  UpdateOrganizationNodeResponse,
+  GetOrganizationMemberResponse,
+  CreateOrganizationRequest,
+  DeleteOrganizationRequest,
+  QuitOrganizationResponse,
+  UpdateOrganizationMemberResponse,
+  DeleteOrganizationMembersRequest,
+  CreateOrganizationResponse,
+  DeleteOrganizationNodesRequest,
+  AddOrganizationNodeResponse,
+  ListOrganizationInvitationsResponse,
+  AcceptOrganizationInvitationRequest,
+  ListOrganizationNodeMembersResponse,
+  GetOrganizationMemberRequest,
+  DenyOrganizationInvitationResponse,
+  SendOrganizationInvitationResponse,
+  OrgInvitation,
+  UpdateOrganizationMemberRequest,
+  QuitOrganizationRequest,
+  ListOrganizationInvitationsRequest,
+  AddOrganizationNodeRequest,
+  ListOrganizationNodeMembersRequest,
+  UpdateOrganizationNodeRequest,
+  CancelOrganizationInvitationRequest,
+  DeleteOrganizationMemberFromNodeResponse,
+  DenyOrganizationInvitationRequest,
+  DeleteOrganizationNodesResponse,
+  DeleteOrganizationResponse,
+  CancelOrganizationInvitationResponse,
+  AcceptOrganizationInvitationResponse,
+  ListOrganizationNodesRequest,
+  SendOrganizationInvitationRequest,
+  DeleteOrganizationMembersResponse,
+  GetOrganizationResponse,
+  ListOrganizationMembersResponse,
+  ListOrganizationNodesResponse,
+  MoveOrganizationMembersToNodeResponse,
+  OrgNode,
 } from "./organization_models"
 
 /**
@@ -68,170 +67,227 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("organization.tencentcloudapi.com", "2018-12-25", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("organization.tencentcloudapi.com", "2018-12-25", clientConfig);
-    }
-    
-    /**
-     * 拒绝企业组织邀请
-     * @public
-     */
-    async DenyOrganizationInvitation(req: DenyOrganizationInvitationRequest, cb?: (error: string, rep: DenyOrganizationInvitationResponse) => void): Promise<DenyOrganizationInvitationResponse> {
-        return await this.request("DenyOrganizationInvitation", req, cb);
-    }
+  /**
+   * 拒绝企业组织邀请
+   * @public
+   */
+  async DenyOrganizationInvitation(
+    req: DenyOrganizationInvitationRequest,
+    cb?: (error: string, rep: DenyOrganizationInvitationResponse) => void
+  ): Promise<DenyOrganizationInvitationResponse> {
+    return this.request("DenyOrganizationInvitation", req, cb)
+  }
 
-    /**
-     * 获取邀请信息列表
-     * @public
-     */
-    async ListOrganizationInvitations(req: ListOrganizationInvitationsRequest, cb?: (error: string, rep: ListOrganizationInvitationsResponse) => void): Promise<ListOrganizationInvitationsResponse> {
-        return await this.request("ListOrganizationInvitations", req, cb);
-    }
+  /**
+   * 获取邀请信息列表
+   * @public
+   */
+  async ListOrganizationInvitations(
+    req: ListOrganizationInvitationsRequest,
+    cb?: (error: string, rep: ListOrganizationInvitationsResponse) => void
+  ): Promise<ListOrganizationInvitationsResponse> {
+    return this.request("ListOrganizationInvitations", req, cb)
+  }
 
-    /**
-     * 更新企业组织单元
-     * @public
-     */
-    async UpdateOrganizationNode(req: UpdateOrganizationNodeRequest, cb?: (error: string, rep: UpdateOrganizationNodeResponse) => void): Promise<UpdateOrganizationNodeResponse> {
-        return await this.request("UpdateOrganizationNode", req, cb);
-    }
+  /**
+   * 更新企业组织单元
+   * @public
+   */
+  async UpdateOrganizationNode(
+    req: UpdateOrganizationNodeRequest,
+    cb?: (error: string, rep: UpdateOrganizationNodeResponse) => void
+  ): Promise<UpdateOrganizationNodeResponse> {
+    return this.request("UpdateOrganizationNode", req, cb)
+  }
 
-    /**
-     * 接受加入企业组织邀请
-     * @public
-     */
-    async AcceptOrganizationInvitation(req: AcceptOrganizationInvitationRequest, cb?: (error: string, rep: AcceptOrganizationInvitationResponse) => void): Promise<AcceptOrganizationInvitationResponse> {
-        return await this.request("AcceptOrganizationInvitation", req, cb);
-    }
+  /**
+   * 接受加入企业组织邀请
+   * @public
+   */
+  async AcceptOrganizationInvitation(
+    req: AcceptOrganizationInvitationRequest,
+    cb?: (error: string, rep: AcceptOrganizationInvitationResponse) => void
+  ): Promise<AcceptOrganizationInvitationResponse> {
+    return this.request("AcceptOrganizationInvitation", req, cb)
+  }
 
-    /**
-     * 获取企业组织成员
-     * @public
-     */
-    async GetOrganizationMember(req: GetOrganizationMemberRequest, cb?: (error: string, rep: GetOrganizationMemberResponse) => void): Promise<GetOrganizationMemberResponse> {
-        return await this.request("GetOrganizationMember", req, cb);
-    }
+  /**
+   * 获取企业组织成员
+   * @public
+   */
+  async GetOrganizationMember(
+    req: GetOrganizationMemberRequest,
+    cb?: (error: string, rep: GetOrganizationMemberResponse) => void
+  ): Promise<GetOrganizationMemberResponse> {
+    return this.request("GetOrganizationMember", req, cb)
+  }
 
-    /**
-     * 获取企业组织信息
-     * @public
-     */
-    async GetOrganization(req: GetOrganizationRequest, cb?: (error: string, rep: GetOrganizationResponse) => void): Promise<GetOrganizationResponse> {
-        return await this.request("GetOrganization", req, cb);
-    }
+  /**
+   * 获取企业组织信息
+   * @public
+   */
+  async GetOrganization(
+    req: GetOrganizationRequest,
+    cb?: (error: string, rep: GetOrganizationResponse) => void
+  ): Promise<GetOrganizationResponse> {
+    return this.request("GetOrganization", req, cb)
+  }
 
-    /**
-     * 获取企业组织单元列表
-     * @public
-     */
-    async ListOrganizationNodes(req: ListOrganizationNodesRequest, cb?: (error: string, rep: ListOrganizationNodesResponse) => void): Promise<ListOrganizationNodesResponse> {
-        return await this.request("ListOrganizationNodes", req, cb);
-    }
+  /**
+   * 获取企业组织单元列表
+   * @public
+   */
+  async ListOrganizationNodes(
+    req: ListOrganizationNodesRequest,
+    cb?: (error: string, rep: ListOrganizationNodesResponse) => void
+  ): Promise<ListOrganizationNodesResponse> {
+    return this.request("ListOrganizationNodes", req, cb)
+  }
 
-    /**
-     * 更新企业成员信息
-     * @public
-     */
-    async UpdateOrganizationMember(req: UpdateOrganizationMemberRequest, cb?: (error: string, rep: UpdateOrganizationMemberResponse) => void): Promise<UpdateOrganizationMemberResponse> {
-        return await this.request("UpdateOrganizationMember", req, cb);
-    }
+  /**
+   * 更新企业成员信息
+   * @public
+   */
+  async UpdateOrganizationMember(
+    req: UpdateOrganizationMemberRequest,
+    cb?: (error: string, rep: UpdateOrganizationMemberResponse) => void
+  ): Promise<UpdateOrganizationMemberResponse> {
+    return this.request("UpdateOrganizationMember", req, cb)
+  }
 
-    /**
-     * 退出企业组织
-     * @public
-     */
-    async QuitOrganization(req: QuitOrganizationRequest, cb?: (error: string, rep: QuitOrganizationResponse) => void): Promise<QuitOrganizationResponse> {
-        return await this.request("QuitOrganization", req, cb);
-    }
+  /**
+   * 退出企业组织
+   * @public
+   */
+  async QuitOrganization(
+    req: QuitOrganizationRequest,
+    cb?: (error: string, rep: QuitOrganizationResponse) => void
+  ): Promise<QuitOrganizationResponse> {
+    return this.request("QuitOrganization", req, cb)
+  }
 
-    /**
-     * 批量删除企业组织单元
-     * @public
-     */
-    async DeleteOrganizationNodes(req: DeleteOrganizationNodesRequest, cb?: (error: string, rep: DeleteOrganizationNodesResponse) => void): Promise<DeleteOrganizationNodesResponse> {
-        return await this.request("DeleteOrganizationNodes", req, cb);
-    }
+  /**
+   * 批量删除企业组织单元
+   * @public
+   */
+  async DeleteOrganizationNodes(
+    req: DeleteOrganizationNodesRequest,
+    cb?: (error: string, rep: DeleteOrganizationNodesResponse) => void
+  ): Promise<DeleteOrganizationNodesResponse> {
+    return this.request("DeleteOrganizationNodes", req, cb)
+  }
 
-    /**
-     * 获取企业组织成员列表
-     * @public
-     */
-    async ListOrganizationMembers(req: ListOrganizationMembersRequest, cb?: (error: string, rep: ListOrganizationMembersResponse) => void): Promise<ListOrganizationMembersResponse> {
-        return await this.request("ListOrganizationMembers", req, cb);
-    }
+  /**
+   * 获取企业组织成员列表
+   * @public
+   */
+  async ListOrganizationMembers(
+    req: ListOrganizationMembersRequest,
+    cb?: (error: string, rep: ListOrganizationMembersResponse) => void
+  ): Promise<ListOrganizationMembersResponse> {
+    return this.request("ListOrganizationMembers", req, cb)
+  }
 
-    /**
-     * 删除企业组织成员
-     * @public
-     */
-    async DeleteOrganizationMemberFromNode(req: DeleteOrganizationMemberFromNodeRequest, cb?: (error: string, rep: DeleteOrganizationMemberFromNodeResponse) => void): Promise<DeleteOrganizationMemberFromNodeResponse> {
-        return await this.request("DeleteOrganizationMemberFromNode", req, cb);
-    }
+  /**
+   * 删除企业组织成员
+   * @public
+   */
+  async DeleteOrganizationMemberFromNode(
+    req: DeleteOrganizationMemberFromNodeRequest,
+    cb?: (error: string, rep: DeleteOrganizationMemberFromNodeResponse) => void
+  ): Promise<DeleteOrganizationMemberFromNodeResponse> {
+    return this.request("DeleteOrganizationMemberFromNode", req, cb)
+  }
 
-    /**
-     * 添加企业组织单元
-     * @public
-     */
-    async AddOrganizationNode(req: AddOrganizationNodeRequest, cb?: (error: string, rep: AddOrganizationNodeResponse) => void): Promise<AddOrganizationNodeResponse> {
-        return await this.request("AddOrganizationNode", req, cb);
-    }
+  /**
+   * 添加企业组织单元
+   * @public
+   */
+  async AddOrganizationNode(
+    req: AddOrganizationNodeRequest,
+    cb?: (error: string, rep: AddOrganizationNodeResponse) => void
+  ): Promise<AddOrganizationNodeResponse> {
+    return this.request("AddOrganizationNode", req, cb)
+  }
 
-    /**
-     * 发送企业组织邀请
-     * @public
-     */
-    async SendOrganizationInvitation(req: SendOrganizationInvitationRequest, cb?: (error: string, rep: SendOrganizationInvitationResponse) => void): Promise<SendOrganizationInvitationResponse> {
-        return await this.request("SendOrganizationInvitation", req, cb);
-    }
+  /**
+   * 发送企业组织邀请
+   * @public
+   */
+  async SendOrganizationInvitation(
+    req: SendOrganizationInvitationRequest,
+    cb?: (error: string, rep: SendOrganizationInvitationResponse) => void
+  ): Promise<SendOrganizationInvitationResponse> {
+    return this.request("SendOrganizationInvitation", req, cb)
+  }
 
-    /**
-     * 取消企业组织邀请
-     * @public
-     */
-    async CancelOrganizationInvitation(req: CancelOrganizationInvitationRequest, cb?: (error: string, rep: CancelOrganizationInvitationResponse) => void): Promise<CancelOrganizationInvitationResponse> {
-        return await this.request("CancelOrganizationInvitation", req, cb);
-    }
+  /**
+   * 取消企业组织邀请
+   * @public
+   */
+  async CancelOrganizationInvitation(
+    req: CancelOrganizationInvitationRequest,
+    cb?: (error: string, rep: CancelOrganizationInvitationResponse) => void
+  ): Promise<CancelOrganizationInvitationResponse> {
+    return this.request("CancelOrganizationInvitation", req, cb)
+  }
 
-    /**
-     * 删除企业组织
-     * @public
-     */
-    async DeleteOrganization(req: DeleteOrganizationRequest, cb?: (error: string, rep: DeleteOrganizationResponse) => void): Promise<DeleteOrganizationResponse> {
-        return await this.request("DeleteOrganization", req, cb);
-    }
+  /**
+   * 删除企业组织
+   * @public
+   */
+  async DeleteOrganization(
+    req: DeleteOrganizationRequest,
+    cb?: (error: string, rep: DeleteOrganizationResponse) => void
+  ): Promise<DeleteOrganizationResponse> {
+    return this.request("DeleteOrganization", req, cb)
+  }
 
-    /**
-     * 批量删除企业组织成员
-     * @public
-     */
-    async DeleteOrganizationMembers(req: DeleteOrganizationMembersRequest, cb?: (error: string, rep: DeleteOrganizationMembersResponse) => void): Promise<DeleteOrganizationMembersResponse> {
-        return await this.request("DeleteOrganizationMembers", req, cb);
-    }
+  /**
+   * 批量删除企业组织成员
+   * @public
+   */
+  async DeleteOrganizationMembers(
+    req: DeleteOrganizationMembersRequest,
+    cb?: (error: string, rep: DeleteOrganizationMembersResponse) => void
+  ): Promise<DeleteOrganizationMembersResponse> {
+    return this.request("DeleteOrganizationMembers", req, cb)
+  }
 
-    /**
-     * 获取企业组织单元成员列表
-     * @public
-     */
-    async ListOrganizationNodeMembers(req: ListOrganizationNodeMembersRequest, cb?: (error: string, rep: ListOrganizationNodeMembersResponse) => void): Promise<ListOrganizationNodeMembersResponse> {
-        return await this.request("ListOrganizationNodeMembers", req, cb);
-    }
+  /**
+   * 获取企业组织单元成员列表
+   * @public
+   */
+  async ListOrganizationNodeMembers(
+    req: ListOrganizationNodeMembersRequest,
+    cb?: (error: string, rep: ListOrganizationNodeMembersResponse) => void
+  ): Promise<ListOrganizationNodeMembersResponse> {
+    return this.request("ListOrganizationNodeMembers", req, cb)
+  }
 
-    /**
-     * 创建企业组织
-     * @public
-     */
-    async CreateOrganization(req: CreateOrganizationRequest, cb?: (error: string, rep: CreateOrganizationResponse) => void): Promise<CreateOrganizationResponse> {
-        return await this.request("CreateOrganization", req, cb);
-    }
+  /**
+   * 创建企业组织
+   * @public
+   */
+  async CreateOrganization(
+    req: CreateOrganizationRequest,
+    cb?: (error: string, rep: CreateOrganizationResponse) => void
+  ): Promise<CreateOrganizationResponse> {
+    return this.request("CreateOrganization", req, cb)
+  }
 
-    /**
-     * 移动成员到指定企业组织单元
-     * @public
-     */
-    async MoveOrganizationMembersToNode(req: MoveOrganizationMembersToNodeRequest, cb?: (error: string, rep: MoveOrganizationMembersToNodeResponse) => void): Promise<MoveOrganizationMembersToNodeResponse> {
-        return await this.request("MoveOrganizationMembersToNode", req, cb);
-    }
-
-
+  /**
+   * 移动成员到指定企业组织单元
+   * @public
+   */
+  async MoveOrganizationMembersToNode(
+    req: MoveOrganizationMembersToNodeRequest,
+    cb?: (error: string, rep: MoveOrganizationMembersToNodeResponse) => void
+  ): Promise<MoveOrganizationMembersToNodeResponse> {
+    return this.request("MoveOrganizationMembersToNode", req, cb)
+  }
 }

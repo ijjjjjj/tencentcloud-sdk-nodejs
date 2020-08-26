@@ -17,52 +17,51 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   UnbindEipAclsRequest,
-   EipAclMap,
-   ModifyEipChargeResponse,
-   ModifyEipAclResponse,
-   DescribeEipsResponse,
-   ModifyEipAclRequest,
-   UnbindVpcIpRequest,
-   BindRsResponse,
-   BindEipAclsResponse,
-   CreateEipRequest,
-   EipAclRule,
-   UnbindHostedResponse,
-   DeleteEipAclRequest,
-   EipInfo,
-   UnbindEipAclsResponse,
-   DescribeEipAclsResponse,
-   ModifyEipNameResponse,
-   DescribeEipQuotaResponse,
-   UnbindRsResponse,
-   BindRsRequest,
-   UnbindHostedRequest,
-   UnbindRsListResponse,
-   BindVpcIpResponse,
-   DescribeEipsRequest,
-   ModifyEipNameRequest,
-   DeleteEipResponse,
-   BindHostedResponse,
-   BindVpcIpRequest,
-   CreateEipAclRequest,
-   EipAcl,
-   CreateEipResponse,
-   BindHostedRequest,
-   DescribeEipTaskResponse,
-   ModifyEipChargeRequest,
-   DescribeEipQuotaRequest,
-   DeleteEipRequest,
-   EipRsMap,
-   UnbindRsListRequest,
-   DeleteEipAclResponse,
-   DescribeEipAclsRequest,
-   BindEipAclsRequest,
-   DescribeEipTaskRequest,
-   UnbindRsRequest,
-   UnbindVpcIpResponse,
-   CreateEipAclResponse,
-
+  UnbindEipAclsRequest,
+  EipAclMap,
+  ModifyEipChargeResponse,
+  ModifyEipAclResponse,
+  DescribeEipsResponse,
+  ModifyEipAclRequest,
+  UnbindVpcIpRequest,
+  BindRsResponse,
+  BindEipAclsResponse,
+  CreateEipRequest,
+  EipAclRule,
+  UnbindHostedResponse,
+  DeleteEipAclRequest,
+  EipInfo,
+  UnbindEipAclsResponse,
+  DescribeEipAclsResponse,
+  ModifyEipNameResponse,
+  DescribeEipQuotaResponse,
+  UnbindRsResponse,
+  BindRsRequest,
+  UnbindHostedRequest,
+  UnbindRsListResponse,
+  BindVpcIpResponse,
+  DescribeEipsRequest,
+  ModifyEipNameRequest,
+  DeleteEipResponse,
+  BindHostedResponse,
+  BindVpcIpRequest,
+  CreateEipAclRequest,
+  EipAcl,
+  CreateEipResponse,
+  BindHostedRequest,
+  DescribeEipTaskResponse,
+  ModifyEipChargeRequest,
+  DescribeEipQuotaRequest,
+  DeleteEipRequest,
+  EipRsMap,
+  UnbindRsListRequest,
+  DeleteEipAclResponse,
+  DescribeEipAclsRequest,
+  BindEipAclsRequest,
+  DescribeEipTaskRequest,
+  UnbindRsRequest,
+  UnbindVpcIpResponse,
+  CreateEipAclResponse,
 } from "./bmeip_models"
 
 /**
@@ -70,170 +69,227 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("bmeip.tencentcloudapi.com", "2018-06-25", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("bmeip.tencentcloudapi.com", "2018-06-25", clientConfig);
-    }
-    
-    /**
-     * 解绑黑石EIP
-     * @public
-     */
-    async UnbindRs(req: UnbindRsRequest, cb?: (error: string, rep: UnbindRsResponse) => void): Promise<UnbindRsResponse> {
-        return await this.request("UnbindRs", req, cb);
-    }
+  /**
+   * 解绑黑石EIP
+   * @public
+   */
+  async UnbindRs(
+    req: UnbindRsRequest,
+    cb?: (error: string, rep: UnbindRsResponse) => void
+  ): Promise<UnbindRsResponse> {
+    return this.request("UnbindRs", req, cb)
+  }
 
-    /**
-     * BindHosted接口用于绑定黑石弹性公网IP到黑石托管机器上
-     * @public
-     */
-    async BindHosted(req: BindHostedRequest, cb?: (error: string, rep: BindHostedResponse) => void): Promise<BindHostedResponse> {
-        return await this.request("BindHosted", req, cb);
-    }
+  /**
+   * BindHosted接口用于绑定黑石弹性公网IP到黑石托管机器上
+   * @public
+   */
+  async BindHosted(
+    req: BindHostedRequest,
+    cb?: (error: string, rep: BindHostedResponse) => void
+  ): Promise<BindHostedResponse> {
+    return this.request("BindHosted", req, cb)
+  }
 
-    /**
-     * 创建黑石弹性公网 EIPACL
-     * @public
-     */
-    async CreateEipAcl(req: CreateEipAclRequest, cb?: (error: string, rep: CreateEipAclResponse) => void): Promise<CreateEipAclResponse> {
-        return await this.request("CreateEipAcl", req, cb);
-    }
+  /**
+   * 创建黑石弹性公网 EIPACL
+   * @public
+   */
+  async CreateEipAcl(
+    req: CreateEipAclRequest,
+    cb?: (error: string, rep: CreateEipAclResponse) => void
+  ): Promise<CreateEipAclResponse> {
+    return this.request("CreateEipAcl", req, cb)
+  }
 
-    /**
-     * 创建黑石弹性公网IP
-     * @public
-     */
-    async CreateEip(req: CreateEipRequest, cb?: (error: string, rep: CreateEipResponse) => void): Promise<CreateEipResponse> {
-        return await this.request("CreateEip", req, cb);
-    }
+  /**
+   * 创建黑石弹性公网IP
+   * @public
+   */
+  async CreateEip(
+    req: CreateEipRequest,
+    cb?: (error: string, rep: CreateEipResponse) => void
+  ): Promise<CreateEipResponse> {
+    return this.request("CreateEip", req, cb)
+  }
 
-    /**
-     * 修改弹性公网IP ACL
-     * @public
-     */
-    async ModifyEipAcl(req: ModifyEipAclRequest, cb?: (error: string, rep: ModifyEipAclResponse) => void): Promise<ModifyEipAclResponse> {
-        return await this.request("ModifyEipAcl", req, cb);
-    }
+  /**
+   * 修改弹性公网IP ACL
+   * @public
+   */
+  async ModifyEipAcl(
+    req: ModifyEipAclRequest,
+    cb?: (error: string, rep: ModifyEipAclResponse) => void
+  ): Promise<ModifyEipAclResponse> {
+    return this.request("ModifyEipAcl", req, cb)
+  }
 
-    /**
-     * 查询黑石EIP 限额
-     * @public
-     */
-    async DescribeEipQuota(req: DescribeEipQuotaRequest, cb?: (error: string, rep: DescribeEipQuotaResponse) => void): Promise<DescribeEipQuotaResponse> {
-        return await this.request("DescribeEipQuota", req, cb);
-    }
+  /**
+   * 查询黑石EIP 限额
+   * @public
+   */
+  async DescribeEipQuota(
+    req: DescribeEipQuotaRequest,
+    cb?: (error: string, rep: DescribeEipQuotaResponse) => void
+  ): Promise<DescribeEipQuotaResponse> {
+    return this.request("DescribeEipQuota", req, cb)
+  }
 
-    /**
-     * 绑定黑石EIP
-     * @public
-     */
-    async BindRs(req: BindRsRequest, cb?: (error: string, rep: BindRsResponse) => void): Promise<BindRsResponse> {
-        return await this.request("BindRs", req, cb);
-    }
+  /**
+   * 绑定黑石EIP
+   * @public
+   */
+  async BindRs(
+    req: BindRsRequest,
+    cb?: (error: string, rep: BindRsResponse) => void
+  ): Promise<BindRsResponse> {
+    return this.request("BindRs", req, cb)
+  }
 
-    /**
-     * 黑石EIP查询任务状态
-     * @public
-     */
-    async DescribeEipTask(req: DescribeEipTaskRequest, cb?: (error: string, rep: DescribeEipTaskResponse) => void): Promise<DescribeEipTaskResponse> {
-        return await this.request("DescribeEipTask", req, cb);
-    }
+  /**
+   * 黑石EIP查询任务状态
+   * @public
+   */
+  async DescribeEipTask(
+    req: DescribeEipTaskRequest,
+    cb?: (error: string, rep: DescribeEipTaskResponse) => void
+  ): Promise<DescribeEipTaskResponse> {
+    return this.request("DescribeEipTask", req, cb)
+  }
 
-    /**
-     * UnbindHosted接口用于解绑托管机器上的EIP
-     * @public
-     */
-    async UnbindHosted(req: UnbindHostedRequest, cb?: (error: string, rep: UnbindHostedResponse) => void): Promise<UnbindHostedResponse> {
-        return await this.request("UnbindHosted", req, cb);
-    }
+  /**
+   * UnbindHosted接口用于解绑托管机器上的EIP
+   * @public
+   */
+  async UnbindHosted(
+    req: UnbindHostedRequest,
+    cb?: (error: string, rep: UnbindHostedResponse) => void
+  ): Promise<UnbindHostedResponse> {
+    return this.request("UnbindHosted", req, cb)
+  }
 
-    /**
-     * 黑石EIP解绑VPCIP
-     * @public
-     */
-    async UnbindVpcIp(req: UnbindVpcIpRequest, cb?: (error: string, rep: UnbindVpcIpResponse) => void): Promise<UnbindVpcIpResponse> {
-        return await this.request("UnbindVpcIp", req, cb);
-    }
+  /**
+   * 黑石EIP解绑VPCIP
+   * @public
+   */
+  async UnbindVpcIp(
+    req: UnbindVpcIpRequest,
+    cb?: (error: string, rep: UnbindVpcIpResponse) => void
+  ): Promise<UnbindVpcIpResponse> {
+    return this.request("UnbindVpcIp", req, cb)
+  }
 
-    /**
-     * 释放黑石弹性公网IP
-     * @public
-     */
-    async DeleteEip(req: DeleteEipRequest, cb?: (error: string, rep: DeleteEipResponse) => void): Promise<DeleteEipResponse> {
-        return await this.request("DeleteEip", req, cb);
-    }
+  /**
+   * 释放黑石弹性公网IP
+   * @public
+   */
+  async DeleteEip(
+    req: DeleteEipRequest,
+    cb?: (error: string, rep: DeleteEipResponse) => void
+  ): Promise<DeleteEipResponse> {
+    return this.request("DeleteEip", req, cb)
+  }
 
-    /**
-     * 黑石EIP修改计费方式
-     * @public
-     */
-    async ModifyEipCharge(req: ModifyEipChargeRequest, cb?: (error: string, rep: ModifyEipChargeResponse) => void): Promise<ModifyEipChargeResponse> {
-        return await this.request("ModifyEipCharge", req, cb);
-    }
+  /**
+   * 黑石EIP修改计费方式
+   * @public
+   */
+  async ModifyEipCharge(
+    req: ModifyEipChargeRequest,
+    cb?: (error: string, rep: ModifyEipChargeResponse) => void
+  ): Promise<ModifyEipChargeResponse> {
+    return this.request("ModifyEipCharge", req, cb)
+  }
 
-    /**
-     * 更新黑石EIP名称
-     * @public
-     */
-    async ModifyEipName(req: ModifyEipNameRequest, cb?: (error: string, rep: ModifyEipNameResponse) => void): Promise<ModifyEipNameResponse> {
-        return await this.request("ModifyEipName", req, cb);
-    }
+  /**
+   * 更新黑石EIP名称
+   * @public
+   */
+  async ModifyEipName(
+    req: ModifyEipNameRequest,
+    cb?: (error: string, rep: ModifyEipNameResponse) => void
+  ): Promise<ModifyEipNameResponse> {
+    return this.request("ModifyEipName", req, cb)
+  }
 
-    /**
-     * 此接口用于为某个 EIP 关联 ACL。
-     * @public
-     */
-    async BindEipAcls(req: BindEipAclsRequest, cb?: (error: string, rep: BindEipAclsResponse) => void): Promise<BindEipAclsResponse> {
-        return await this.request("BindEipAcls", req, cb);
-    }
+  /**
+   * 此接口用于为某个 EIP 关联 ACL。
+   * @public
+   */
+  async BindEipAcls(
+    req: BindEipAclsRequest,
+    cb?: (error: string, rep: BindEipAclsResponse) => void
+  ): Promise<BindEipAclsResponse> {
+    return this.request("BindEipAcls", req, cb)
+  }
 
-    /**
-     * 删除弹性公网IP ACL
-     * @public
-     */
-    async DeleteEipAcl(req: DeleteEipAclRequest, cb?: (error: string, rep: DeleteEipAclResponse) => void): Promise<DeleteEipAclResponse> {
-        return await this.request("DeleteEipAcl", req, cb);
-    }
+  /**
+   * 删除弹性公网IP ACL
+   * @public
+   */
+  async DeleteEipAcl(
+    req: DeleteEipAclRequest,
+    cb?: (error: string, rep: DeleteEipAclResponse) => void
+  ): Promise<DeleteEipAclResponse> {
+    return this.request("DeleteEipAcl", req, cb)
+  }
 
-    /**
-     * 解绑弹性公网IP ACL
-     * @public
-     */
-    async UnbindEipAcls(req: UnbindEipAclsRequest, cb?: (error: string, rep: UnbindEipAclsResponse) => void): Promise<UnbindEipAclsResponse> {
-        return await this.request("UnbindEipAcls", req, cb);
-    }
+  /**
+   * 解绑弹性公网IP ACL
+   * @public
+   */
+  async UnbindEipAcls(
+    req: UnbindEipAclsRequest,
+    cb?: (error: string, rep: UnbindEipAclsResponse) => void
+  ): Promise<UnbindEipAclsResponse> {
+    return this.request("UnbindEipAcls", req, cb)
+  }
 
-    /**
-     * 黑石EIP查询接口
-     * @public
-     */
-    async DescribeEips(req: DescribeEipsRequest, cb?: (error: string, rep: DescribeEipsResponse) => void): Promise<DescribeEipsResponse> {
-        return await this.request("DescribeEips", req, cb);
-    }
+  /**
+   * 黑石EIP查询接口
+   * @public
+   */
+  async DescribeEips(
+    req: DescribeEipsRequest,
+    cb?: (error: string, rep: DescribeEipsResponse) => void
+  ): Promise<DescribeEipsResponse> {
+    return this.request("DescribeEips", req, cb)
+  }
 
-    /**
-     * 黑石EIP绑定VPCIP
-     * @public
-     */
-    async BindVpcIp(req: BindVpcIpRequest, cb?: (error: string, rep: BindVpcIpResponse) => void): Promise<BindVpcIpResponse> {
-        return await this.request("BindVpcIp", req, cb);
-    }
+  /**
+   * 黑石EIP绑定VPCIP
+   * @public
+   */
+  async BindVpcIp(
+    req: BindVpcIpRequest,
+    cb?: (error: string, rep: BindVpcIpResponse) => void
+  ): Promise<BindVpcIpResponse> {
+    return this.request("BindVpcIp", req, cb)
+  }
 
-    /**
-     * 批量解绑物理机弹性公网IP接口
-     * @public
-     */
-    async UnbindRsList(req: UnbindRsListRequest, cb?: (error: string, rep: UnbindRsListResponse) => void): Promise<UnbindRsListResponse> {
-        return await this.request("UnbindRsList", req, cb);
-    }
+  /**
+   * 批量解绑物理机弹性公网IP接口
+   * @public
+   */
+  async UnbindRsList(
+    req: UnbindRsListRequest,
+    cb?: (error: string, rep: UnbindRsListResponse) => void
+  ): Promise<UnbindRsListResponse> {
+    return this.request("UnbindRsList", req, cb)
+  }
 
-    /**
-     * 查询弹性公网IP ACL
-     * @public
-     */
-    async DescribeEipAcls(req: DescribeEipAclsRequest, cb?: (error: string, rep: DescribeEipAclsResponse) => void): Promise<DescribeEipAclsResponse> {
-        return await this.request("DescribeEipAcls", req, cb);
-    }
-
-
+  /**
+   * 查询弹性公网IP ACL
+   * @public
+   */
+  async DescribeEipAcls(
+    req: DescribeEipAclsRequest,
+    cb?: (error: string, rep: DescribeEipAclsResponse) => void
+  ): Promise<DescribeEipAclsResponse> {
+    return this.request("DescribeEipAcls", req, cb)
+  }
 }

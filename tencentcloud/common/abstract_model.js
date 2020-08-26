@@ -1,10 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+"use strict"
+Object.defineProperty(exports, "__esModule", { value: true })
 /**
  * @inner
  */
 class AbstractModel {
-    constructor() { }
+  constructor() {}
 }
-exports.AbstractModel = AbstractModel;
+exports.AbstractModel = AbstractModel
 //# sourceMappingURL=abstract_model.js.map

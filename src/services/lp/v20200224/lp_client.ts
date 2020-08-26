@@ -16,29 +16,25 @@
  * under the License.
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
-import {
-   QueryLoginProtectionRequest,
-   QueryLoginProtectionResponse,
-
-} from "./lp_models"
+import { QueryLoginProtectionRequest, QueryLoginProtectionResponse } from "./lp_models"
 
 /**
  * lp client
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("lp.tencentcloudapi.com", "2020-02-24", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("lp.tencentcloudapi.com", "2020-02-24", clientConfig);
-    }
-    
-    /**
-     * 登录保护服务（LoginProtection，LP）针对网站和 APP 的用户登录场景，实时检测是否存在盗号、撞库等恶意登录行为，帮助开发者发现异常登录，降低恶意用户登录给业务带来的风险。
-     * @public
-     */
-    async QueryLoginProtection(req: QueryLoginProtectionRequest, cb?: (error: string, rep: QueryLoginProtectionResponse) => void): Promise<QueryLoginProtectionResponse> {
-        return await this.request("QueryLoginProtection", req, cb);
-    }
-
-
+  /**
+   * 登录保护服务（LoginProtection，LP）针对网站和 APP 的用户登录场景，实时检测是否存在盗号、撞库等恶意登录行为，帮助开发者发现异常登录，降低恶意用户登录给业务带来的风险。
+   * @public
+   */
+  async QueryLoginProtection(
+    req: QueryLoginProtectionRequest,
+    cb?: (error: string, rep: QueryLoginProtectionResponse) => void
+  ): Promise<QueryLoginProtectionResponse> {
+    return this.request("QueryLoginProtection", req, cb)
+  }
 }

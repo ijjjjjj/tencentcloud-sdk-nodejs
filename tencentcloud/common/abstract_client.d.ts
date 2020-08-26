@@ -3,10 +3,7 @@ declare type ResponseCallback = (error: string, rep: any) => void;
 interface RequestOptions {
     multipart: boolean;
 }
-interface ResponseData {
-    RequestId: string;
-    [key: string]: any;
-}
+declare type ResponseData = any;
 export interface ClientConfig {
     /**
      * @param {Credential} credential 认证信息

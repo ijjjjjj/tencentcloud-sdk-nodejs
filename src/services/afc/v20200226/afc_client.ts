@@ -16,32 +16,27 @@
  * under the License.
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
-import {
-   QueryAntiFraudVipRequest,
-   RiskDetail,
-   QueryAntiFraudVipResponse,
-
-} from "./afc_models"
+import { QueryAntiFraudVipRequest, RiskDetail, QueryAntiFraudVipResponse } from "./afc_models"
 
 /**
  * afc client
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("afc.tencentcloudapi.com", "2020-02-26", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("afc.tencentcloudapi.com", "2020-02-26", clientConfig);
-    }
-    
-    /**
+  /**
      * 天御反欺诈服务，主要应用于银行、证券、保险、P2P等金融行业客户，通过腾讯的大数据风控能力，
 可以准确识别恶意用户信息，解决客户在支付、活动、理财，风控等业务环节遇到的欺诈威胁，降低企业
 的损失。
      * @public
      */
-    async QueryAntiFraudVip(req: QueryAntiFraudVipRequest, cb?: (error: string, rep: QueryAntiFraudVipResponse) => void): Promise<QueryAntiFraudVipResponse> {
-        return await this.request("QueryAntiFraudVip", req, cb);
-    }
-
-
+  async QueryAntiFraudVip(
+    req: QueryAntiFraudVipRequest,
+    cb?: (error: string, rep: QueryAntiFraudVipResponse) => void
+  ): Promise<QueryAntiFraudVipResponse> {
+    return this.request("QueryAntiFraudVip", req, cb)
+  }
 }

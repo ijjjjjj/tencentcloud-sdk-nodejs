@@ -17,36 +17,35 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   BgpPeer,
-   RejectDirectConnectTunnelRequest,
-   ModifyDirectConnectAttributeRequest,
-   DeleteDirectConnectTunnelRequest,
-   CreateDirectConnectResponse,
-   DirectConnect,
-   DescribeAccessPointsResponse,
-   AcceptDirectConnectTunnelResponse,
-   DescribeDirectConnectTunnelsRequest,
-   ModifyDirectConnectTunnelAttributeResponse,
-   RouteFilterPrefix,
-   AcceptDirectConnectTunnelRequest,
-   CreateDirectConnectTunnelRequest,
-   DeleteDirectConnectResponse,
-   DescribeDirectConnectsResponse,
-   DescribeAccessPointsRequest,
-   DescribeDirectConnectsRequest,
-   ModifyDirectConnectTunnelAttributeRequest,
-   Filter,
-   CreateDirectConnectRequest,
-   ModifyDirectConnectAttributeResponse,
-   RejectDirectConnectTunnelResponse,
-   CreateDirectConnectTunnelResponse,
-   DeleteDirectConnectTunnelResponse,
-   AccessPoint,
-   DeleteDirectConnectRequest,
-   DescribeDirectConnectTunnelsResponse,
-   Tag,
-   DirectConnectTunnel,
-
+  BgpPeer,
+  RejectDirectConnectTunnelRequest,
+  ModifyDirectConnectAttributeRequest,
+  DeleteDirectConnectTunnelRequest,
+  CreateDirectConnectResponse,
+  DirectConnect,
+  DescribeAccessPointsResponse,
+  AcceptDirectConnectTunnelResponse,
+  DescribeDirectConnectTunnelsRequest,
+  ModifyDirectConnectTunnelAttributeResponse,
+  RouteFilterPrefix,
+  AcceptDirectConnectTunnelRequest,
+  CreateDirectConnectTunnelRequest,
+  DeleteDirectConnectResponse,
+  DescribeDirectConnectsResponse,
+  DescribeAccessPointsRequest,
+  DescribeDirectConnectsRequest,
+  ModifyDirectConnectTunnelAttributeRequest,
+  Filter,
+  CreateDirectConnectRequest,
+  ModifyDirectConnectAttributeResponse,
+  RejectDirectConnectTunnelResponse,
+  CreateDirectConnectTunnelResponse,
+  DeleteDirectConnectTunnelResponse,
+  AccessPoint,
+  DeleteDirectConnectRequest,
+  DescribeDirectConnectTunnelsResponse,
+  Tag,
+  DirectConnectTunnel,
 } from "./dc_models"
 
 /**
@@ -54,103 +53,133 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("dc.tencentcloudapi.com", "2018-04-10", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("dc.tencentcloudapi.com", "2018-04-10", clientConfig);
-    }
-    
-    /**
-     * 修改物理专线的属性。
-     * @public
-     */
-    async ModifyDirectConnectAttribute(req: ModifyDirectConnectAttributeRequest, cb?: (error: string, rep: ModifyDirectConnectAttributeResponse) => void): Promise<ModifyDirectConnectAttributeResponse> {
-        return await this.request("ModifyDirectConnectAttribute", req, cb);
-    }
+  /**
+   * 修改物理专线的属性。
+   * @public
+   */
+  async ModifyDirectConnectAttribute(
+    req: ModifyDirectConnectAttributeRequest,
+    cb?: (error: string, rep: ModifyDirectConnectAttributeResponse) => void
+  ): Promise<ModifyDirectConnectAttributeResponse> {
+    return this.request("ModifyDirectConnectAttribute", req, cb)
+  }
 
-    /**
-     * 用于创建专用通道的接口
-     * @public
-     */
-    async CreateDirectConnectTunnel(req: CreateDirectConnectTunnelRequest, cb?: (error: string, rep: CreateDirectConnectTunnelResponse) => void): Promise<CreateDirectConnectTunnelResponse> {
-        return await this.request("CreateDirectConnectTunnel", req, cb);
-    }
+  /**
+   * 用于创建专用通道的接口
+   * @public
+   */
+  async CreateDirectConnectTunnel(
+    req: CreateDirectConnectTunnelRequest,
+    cb?: (error: string, rep: CreateDirectConnectTunnelResponse) => void
+  ): Promise<CreateDirectConnectTunnelResponse> {
+    return this.request("CreateDirectConnectTunnel", req, cb)
+  }
 
-    /**
+  /**
      * 删除物理专线。
 只能删除处于已连接状态的物理专线。
      * @public
      */
-    async DeleteDirectConnect(req: DeleteDirectConnectRequest, cb?: (error: string, rep: DeleteDirectConnectResponse) => void): Promise<DeleteDirectConnectResponse> {
-        return await this.request("DeleteDirectConnect", req, cb);
-    }
+  async DeleteDirectConnect(
+    req: DeleteDirectConnectRequest,
+    cb?: (error: string, rep: DeleteDirectConnectResponse) => void
+  ): Promise<DeleteDirectConnectResponse> {
+    return this.request("DeleteDirectConnect", req, cb)
+  }
 
-    /**
-     * 接受专用通道申请
-     * @public
-     */
-    async AcceptDirectConnectTunnel(req: AcceptDirectConnectTunnelRequest, cb?: (error: string, rep: AcceptDirectConnectTunnelResponse) => void): Promise<AcceptDirectConnectTunnelResponse> {
-        return await this.request("AcceptDirectConnectTunnel", req, cb);
-    }
+  /**
+   * 接受专用通道申请
+   * @public
+   */
+  async AcceptDirectConnectTunnel(
+    req: AcceptDirectConnectTunnelRequest,
+    cb?: (error: string, rep: AcceptDirectConnectTunnelResponse) => void
+  ): Promise<AcceptDirectConnectTunnelResponse> {
+    return this.request("AcceptDirectConnectTunnel", req, cb)
+  }
 
-    /**
-     * 删除专用通道
-     * @public
-     */
-    async DeleteDirectConnectTunnel(req: DeleteDirectConnectTunnelRequest, cb?: (error: string, rep: DeleteDirectConnectTunnelResponse) => void): Promise<DeleteDirectConnectTunnelResponse> {
-        return await this.request("DeleteDirectConnectTunnel", req, cb);
-    }
+  /**
+   * 删除专用通道
+   * @public
+   */
+  async DeleteDirectConnectTunnel(
+    req: DeleteDirectConnectTunnelRequest,
+    cb?: (error: string, rep: DeleteDirectConnectTunnelResponse) => void
+  ): Promise<DeleteDirectConnectTunnelResponse> {
+    return this.request("DeleteDirectConnectTunnel", req, cb)
+  }
 
-    /**
+  /**
      * 查询物理专线接入点
 
      * @public
      */
-    async DescribeAccessPoints(req: DescribeAccessPointsRequest, cb?: (error: string, rep: DescribeAccessPointsResponse) => void): Promise<DescribeAccessPointsResponse> {
-        return await this.request("DescribeAccessPoints", req, cb);
-    }
+  async DescribeAccessPoints(
+    req: DescribeAccessPointsRequest,
+    cb?: (error: string, rep: DescribeAccessPointsResponse) => void
+  ): Promise<DescribeAccessPointsResponse> {
+    return this.request("DescribeAccessPoints", req, cb)
+  }
 
-    /**
-     * 用于查询专用通道列表。
-     * @public
-     */
-    async DescribeDirectConnectTunnels(req: DescribeDirectConnectTunnelsRequest, cb?: (error: string, rep: DescribeDirectConnectTunnelsResponse) => void): Promise<DescribeDirectConnectTunnelsResponse> {
-        return await this.request("DescribeDirectConnectTunnels", req, cb);
-    }
+  /**
+   * 用于查询专用通道列表。
+   * @public
+   */
+  async DescribeDirectConnectTunnels(
+    req: DescribeDirectConnectTunnelsRequest,
+    cb?: (error: string, rep: DescribeDirectConnectTunnelsResponse) => void
+  ): Promise<DescribeDirectConnectTunnelsResponse> {
+    return this.request("DescribeDirectConnectTunnels", req, cb)
+  }
 
-    /**
+  /**
      * 申请物理专线接入。
 调用该接口时，请注意：
 账号要进行实名认证，否则不允许申请物理专线；
 若账户下存在欠费状态的物理专线，则不能申请更多的物理专线。
      * @public
      */
-    async CreateDirectConnect(req: CreateDirectConnectRequest, cb?: (error: string, rep: CreateDirectConnectResponse) => void): Promise<CreateDirectConnectResponse> {
-        return await this.request("CreateDirectConnect", req, cb);
-    }
+  async CreateDirectConnect(
+    req: CreateDirectConnectRequest,
+    cb?: (error: string, rep: CreateDirectConnectResponse) => void
+  ): Promise<CreateDirectConnectResponse> {
+    return this.request("CreateDirectConnect", req, cb)
+  }
 
-    /**
-     * 拒绝专用通道申请
-     * @public
-     */
-    async RejectDirectConnectTunnel(req: RejectDirectConnectTunnelRequest, cb?: (error: string, rep: RejectDirectConnectTunnelResponse) => void): Promise<RejectDirectConnectTunnelResponse> {
-        return await this.request("RejectDirectConnectTunnel", req, cb);
-    }
+  /**
+   * 拒绝专用通道申请
+   * @public
+   */
+  async RejectDirectConnectTunnel(
+    req: RejectDirectConnectTunnelRequest,
+    cb?: (error: string, rep: RejectDirectConnectTunnelResponse) => void
+  ): Promise<RejectDirectConnectTunnelResponse> {
+    return this.request("RejectDirectConnectTunnel", req, cb)
+  }
 
-    /**
-     * 查询物理专线列表。
-     * @public
-     */
-    async DescribeDirectConnects(req: DescribeDirectConnectsRequest, cb?: (error: string, rep: DescribeDirectConnectsResponse) => void): Promise<DescribeDirectConnectsResponse> {
-        return await this.request("DescribeDirectConnects", req, cb);
-    }
+  /**
+   * 查询物理专线列表。
+   * @public
+   */
+  async DescribeDirectConnects(
+    req: DescribeDirectConnectsRequest,
+    cb?: (error: string, rep: DescribeDirectConnectsResponse) => void
+  ): Promise<DescribeDirectConnectsResponse> {
+    return this.request("DescribeDirectConnects", req, cb)
+  }
 
-    /**
-     * 修改专用通道属性
-     * @public
-     */
-    async ModifyDirectConnectTunnelAttribute(req: ModifyDirectConnectTunnelAttributeRequest, cb?: (error: string, rep: ModifyDirectConnectTunnelAttributeResponse) => void): Promise<ModifyDirectConnectTunnelAttributeResponse> {
-        return await this.request("ModifyDirectConnectTunnelAttribute", req, cb);
-    }
-
-
+  /**
+   * 修改专用通道属性
+   * @public
+   */
+  async ModifyDirectConnectTunnelAttribute(
+    req: ModifyDirectConnectTunnelAttributeRequest,
+    cb?: (error: string, rep: ModifyDirectConnectTunnelAttributeResponse) => void
+  ): Promise<ModifyDirectConnectTunnelAttributeResponse> {
+    return this.request("ModifyDirectConnectTunnelAttribute", req, cb)
+  }
 }

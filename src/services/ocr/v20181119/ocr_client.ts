@@ -17,172 +17,171 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   VerifyBizLicenseRequest,
-   BusinessCardOCRResponse,
-   TextArithmetic,
-   HKIDCardOCRRequest,
-   CarInvoiceOCRRequest,
-   MixedInvoiceItem,
-   TrainTicketOCRRequest,
-   EstateCertOCRResponse,
-   FlightInvoiceOCRRequest,
-   MLIDPassportOCRRequest,
-   TextDetectResponse,
-   VerifyBizLicenseResponse,
-   FinanBillSliceOCRResponse,
-   DriverLicenseOCRResponse,
-   Words,
-   TextDetectionEn,
-   PermitOCRResponse,
-   InvoiceGeneralOCRRequest,
-   Rect,
-   WaybillOCRResponse,
-   SingleInvoiceInfo,
-   TextFormula,
-   MLIDCardOCRRequest,
-   VatInvoiceItem,
-   VehicleRegCertInfo,
-   VehicleLicenseOCRRequest,
-   EnterpriseLicenseOCRResponse,
-   InvoiceGeneralInfo,
-   WordCoordPoint,
-   InstitutionOCRResponse,
-   DriverLicenseOCRRequest,
-   BizLicenseVerifyResult,
-   TextDetection,
-   TextEduPaper,
-   QrcodeOCRResponse,
-   WaybillObj,
-   InvoiceDetectInfo,
-   MainlandPermitOCRRequest,
-   EnterpriseLicenseOCRRequest,
-   BankCardOCRRequest,
-   PropOwnerCertOCRResponse,
-   FinanBillInfo,
-   TrainTicketOCRResponse,
-   TollInvoiceInfo,
-   ArithmeticOCRResponse,
-   FormulaOCRResponse,
-   BusInvoiceInfo,
-   TextVatInvoice,
-   GeneralHandwritingOCRRequest,
-   BizLicenseOCRRequest,
-   MixedInvoiceDetectResponse,
-   InsuranceBillOCRResponse,
-   GeneralEfficientOCRResponse,
-   HmtResidentPermitOCRRequest,
-   QrcodeOCRRequest,
-   TaxiInvoiceOCRResponse,
-   GeneralBasicOCRResponse,
-   VinOCRRequest,
-   QuotaInvoiceOCRRequest,
-   MixedInvoiceOCRResponse,
-   ClassifyDetectOCRResponse,
-   VehicleLicenseOCRResponse,
-   VatInvoiceOCRRequest,
-   IDCardOCRResponse,
-   ClassifyDetectOCRRequest,
-   DutyPaidProofOCRResponse,
-   TollInvoiceOCRRequest,
-   LicensePlateOCRResponse,
-   HKIDCardOCRResponse,
-   PermitOCRRequest,
-   InvoiceGeneralOCRResponse,
-   TaxiInvoiceOCRRequest,
-   PropOwnerCertOCRRequest,
-   TextDetectRequest,
-   VatRollInvoiceOCRResponse,
-   VatInvoiceVerifyRequest,
-   EduPaperOCRResponse,
-   BusinessCardInfo,
-   TextGeneralHandwriting,
-   TableOCRRequest,
-   QrcodeImgSize,
-   VerifyBasicBizLicenseResponse,
-   VehicleRegCertOCRRequest,
-   ProductDataRecord,
-   LicensePlateOCRRequest,
-   GeneralBasicOCRRequest,
-   TextVehicleBack,
-   GeneralEfficientOCRRequest,
-   TollInvoiceOCRResponse,
-   RideHailingDriverLicenseOCRResponse,
-   EnglishOCRRequest,
-   VatInvoiceVerifyResponse,
-   PassportOCRResponse,
-   GeneralAccurateOCRRequest,
-   OrgCodeCertOCRRequest,
-   FlightInvoiceOCRResponse,
-   InstitutionOCRRequest,
-   CarInvoiceInfo,
-   FlightInvoiceInfo,
-   TextVehicleFront,
-   FinanBillSliceInfo,
-   QueryBarCodeResponse,
-   ArithmeticOCRRequest,
-   FinanBillSliceOCRRequest,
-   MLIDPassportOCRResponse,
-   VatRollInvoiceOCRRequest,
-   Coord,
-   SealOCRResponse,
-   DutyPaidProofInfo,
-   FinanBillOCRResponse,
-   TextWaybill,
-   QuestionObj,
-   VinOCRResponse,
-   EduPaperOCRRequest,
-   FormulaOCRRequest,
-   PassportOCRRequest,
-   DutyPaidProofOCRRequest,
-   RideHailingDriverLicenseOCRRequest,
-   QueryBarCodeRequest,
-   ItemCoord,
-   OrgCodeCertOCRResponse,
-   MixedInvoiceOCRRequest,
-   ResidenceBookletOCRResponse,
-   CarInvoiceOCRResponse,
-   GeneralFastOCRRequest,
-   ShipInvoiceOCRResponse,
-   InsuranceBillInfo,
-   VehicleRegCertOCRResponse,
-   ClassifyDetectInfo,
-   GeneralAccurateOCRResponse,
-   SealOCRRequest,
-   TextTable,
-   ResidenceBookletOCRRequest,
-   BusInvoiceOCRResponse,
-   QrcodeResultsInfo,
-   MainlandPermitOCRResponse,
-   VatInvoice,
-   HmtResidentPermitOCRResponse,
-   EnglishOCRResponse,
-   BusInvoiceOCRRequest,
-   QuotaInvoiceOCRResponse,
-   RideHailingTransportLicenseOCRResponse,
-   CandWord,
-   EnterpriseLicenseInfo,
-   InsuranceBillOCRRequest,
-   GeneralHandwritingOCRResponse,
-   TableOCRResponse,
-   QuestionBlockObj,
-   WaybillOCRRequest,
-   VatRollInvoiceInfo,
-   ShipInvoiceInfo,
-   IDCardOCRRequest,
-   MixedInvoiceDetectRequest,
-   RideHailingTransportLicenseOCRRequest,
-   MLIDCardOCRResponse,
-   EstateCertOCRRequest,
-   VerifyBasicBizLicenseRequest,
-   BizLicenseOCRResponse,
-   VatInvoiceOCRResponse,
-   ShipInvoiceOCRRequest,
-   BankCardOCRResponse,
-   BusinessCardOCRRequest,
-   FinanBillOCRRequest,
-   GeneralFastOCRResponse,
-   QrcodePositionObj,
-
+  VerifyBizLicenseRequest,
+  BusinessCardOCRResponse,
+  TextArithmetic,
+  HKIDCardOCRRequest,
+  CarInvoiceOCRRequest,
+  MixedInvoiceItem,
+  TrainTicketOCRRequest,
+  EstateCertOCRResponse,
+  FlightInvoiceOCRRequest,
+  MLIDPassportOCRRequest,
+  TextDetectResponse,
+  VerifyBizLicenseResponse,
+  FinanBillSliceOCRResponse,
+  DriverLicenseOCRResponse,
+  Words,
+  TextDetectionEn,
+  PermitOCRResponse,
+  InvoiceGeneralOCRRequest,
+  Rect,
+  WaybillOCRResponse,
+  SingleInvoiceInfo,
+  TextFormula,
+  MLIDCardOCRRequest,
+  VatInvoiceItem,
+  VehicleRegCertInfo,
+  VehicleLicenseOCRRequest,
+  EnterpriseLicenseOCRResponse,
+  InvoiceGeneralInfo,
+  WordCoordPoint,
+  InstitutionOCRResponse,
+  DriverLicenseOCRRequest,
+  BizLicenseVerifyResult,
+  TextDetection,
+  TextEduPaper,
+  QrcodeOCRResponse,
+  WaybillObj,
+  InvoiceDetectInfo,
+  MainlandPermitOCRRequest,
+  EnterpriseLicenseOCRRequest,
+  BankCardOCRRequest,
+  PropOwnerCertOCRResponse,
+  FinanBillInfo,
+  TrainTicketOCRResponse,
+  TollInvoiceInfo,
+  ArithmeticOCRResponse,
+  FormulaOCRResponse,
+  BusInvoiceInfo,
+  TextVatInvoice,
+  GeneralHandwritingOCRRequest,
+  BizLicenseOCRRequest,
+  MixedInvoiceDetectResponse,
+  InsuranceBillOCRResponse,
+  GeneralEfficientOCRResponse,
+  HmtResidentPermitOCRRequest,
+  QrcodeOCRRequest,
+  TaxiInvoiceOCRResponse,
+  GeneralBasicOCRResponse,
+  VinOCRRequest,
+  QuotaInvoiceOCRRequest,
+  MixedInvoiceOCRResponse,
+  ClassifyDetectOCRResponse,
+  VehicleLicenseOCRResponse,
+  VatInvoiceOCRRequest,
+  IDCardOCRResponse,
+  ClassifyDetectOCRRequest,
+  DutyPaidProofOCRResponse,
+  TollInvoiceOCRRequest,
+  LicensePlateOCRResponse,
+  HKIDCardOCRResponse,
+  PermitOCRRequest,
+  InvoiceGeneralOCRResponse,
+  TaxiInvoiceOCRRequest,
+  PropOwnerCertOCRRequest,
+  TextDetectRequest,
+  VatRollInvoiceOCRResponse,
+  VatInvoiceVerifyRequest,
+  EduPaperOCRResponse,
+  BusinessCardInfo,
+  TextGeneralHandwriting,
+  TableOCRRequest,
+  QrcodeImgSize,
+  VerifyBasicBizLicenseResponse,
+  VehicleRegCertOCRRequest,
+  ProductDataRecord,
+  LicensePlateOCRRequest,
+  GeneralBasicOCRRequest,
+  TextVehicleBack,
+  GeneralEfficientOCRRequest,
+  TollInvoiceOCRResponse,
+  RideHailingDriverLicenseOCRResponse,
+  EnglishOCRRequest,
+  VatInvoiceVerifyResponse,
+  PassportOCRResponse,
+  GeneralAccurateOCRRequest,
+  OrgCodeCertOCRRequest,
+  FlightInvoiceOCRResponse,
+  InstitutionOCRRequest,
+  CarInvoiceInfo,
+  FlightInvoiceInfo,
+  TextVehicleFront,
+  FinanBillSliceInfo,
+  QueryBarCodeResponse,
+  ArithmeticOCRRequest,
+  FinanBillSliceOCRRequest,
+  MLIDPassportOCRResponse,
+  VatRollInvoiceOCRRequest,
+  Coord,
+  SealOCRResponse,
+  DutyPaidProofInfo,
+  FinanBillOCRResponse,
+  TextWaybill,
+  QuestionObj,
+  VinOCRResponse,
+  EduPaperOCRRequest,
+  FormulaOCRRequest,
+  PassportOCRRequest,
+  DutyPaidProofOCRRequest,
+  RideHailingDriverLicenseOCRRequest,
+  QueryBarCodeRequest,
+  ItemCoord,
+  OrgCodeCertOCRResponse,
+  MixedInvoiceOCRRequest,
+  ResidenceBookletOCRResponse,
+  CarInvoiceOCRResponse,
+  GeneralFastOCRRequest,
+  ShipInvoiceOCRResponse,
+  InsuranceBillInfo,
+  VehicleRegCertOCRResponse,
+  ClassifyDetectInfo,
+  GeneralAccurateOCRResponse,
+  SealOCRRequest,
+  TextTable,
+  ResidenceBookletOCRRequest,
+  BusInvoiceOCRResponse,
+  QrcodeResultsInfo,
+  MainlandPermitOCRResponse,
+  VatInvoice,
+  HmtResidentPermitOCRResponse,
+  EnglishOCRResponse,
+  BusInvoiceOCRRequest,
+  QuotaInvoiceOCRResponse,
+  RideHailingTransportLicenseOCRResponse,
+  CandWord,
+  EnterpriseLicenseInfo,
+  InsuranceBillOCRRequest,
+  GeneralHandwritingOCRResponse,
+  TableOCRResponse,
+  QuestionBlockObj,
+  WaybillOCRRequest,
+  VatRollInvoiceInfo,
+  ShipInvoiceInfo,
+  IDCardOCRRequest,
+  MixedInvoiceDetectRequest,
+  RideHailingTransportLicenseOCRRequest,
+  MLIDCardOCRResponse,
+  EstateCertOCRRequest,
+  VerifyBasicBizLicenseRequest,
+  BizLicenseOCRResponse,
+  VatInvoiceOCRResponse,
+  ShipInvoiceOCRRequest,
+  BankCardOCRResponse,
+  BusinessCardOCRRequest,
+  FinanBillOCRRequest,
+  GeneralFastOCRResponse,
+  QrcodePositionObj,
 } from "./ocr_models"
 
 /**
@@ -190,36 +189,44 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("ocr.tencentcloudapi.com", "2018-11-19", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("ocr.tencentcloudapi.com", "2018-11-19", clientConfig);
-    }
-    
-    /**
-     * 本接口支持病案首页、费用清单、结算单、医疗发票四种保险理赔单据的文本识别和结构化输出。
-     * @public
-     */
-    async InsuranceBillOCR(req: InsuranceBillOCRRequest, cb?: (error: string, rep: InsuranceBillOCRResponse) => void): Promise<InsuranceBillOCRResponse> {
-        return await this.request("InsuranceBillOCR", req, cb);
-    }
+  /**
+   * 本接口支持病案首页、费用清单、结算单、医疗发票四种保险理赔单据的文本识别和结构化输出。
+   * @public
+   */
+  async InsuranceBillOCR(
+    req: InsuranceBillOCRRequest,
+    cb?: (error: string, rep: InsuranceBillOCRResponse) => void
+  ): Promise<InsuranceBillOCRResponse> {
+    return this.request("InsuranceBillOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持营业执照信息的识别与准确性核验。您可以通过输入营业执照关键字段或传入营业执照图片提供所需的验证信息，接口返回真实的企业工商照面信息及核验结果，包括统一社会信用代码、经营期限、法人姓名、经营状态、经营业务范围、状态信息、原注册号、要核验的工商注册号、工商注册号、要核验的企业名称、企业名称、要核验的注册住址、注册住址、核验结果、注册资本共16个基础字段。
-     * @public
-     */
-    async VerifyBasicBizLicense(req: VerifyBasicBizLicenseRequest, cb?: (error: string, rep: VerifyBasicBizLicenseResponse) => void): Promise<VerifyBasicBizLicenseResponse> {
-        return await this.request("VerifyBasicBizLicense", req, cb);
-    }
+  /**
+   * 本接口支持营业执照信息的识别与准确性核验。您可以通过输入营业执照关键字段或传入营业执照图片提供所需的验证信息，接口返回真实的企业工商照面信息及核验结果，包括统一社会信用代码、经营期限、法人姓名、经营状态、经营业务范围、状态信息、原注册号、要核验的工商注册号、工商注册号、要核验的企业名称、企业名称、要核验的注册住址、注册住址、核验结果、注册资本共16个基础字段。
+   * @public
+   */
+  async VerifyBasicBizLicense(
+    req: VerifyBasicBizLicenseRequest,
+    cb?: (error: string, rep: VerifyBasicBizLicenseResponse) => void
+  ): Promise<VerifyBasicBizLicenseResponse> {
+    return this.request("VerifyBasicBizLicense", req, cb)
+  }
 
-    /**
-     * 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
-     * @public
-     */
-    async VatInvoiceVerify(req: VatInvoiceVerifyRequest, cb?: (error: string, rep: VatInvoiceVerifyResponse) => void): Promise<VatInvoiceVerifyResponse> {
-        return await this.request("VatInvoiceVerify", req, cb);
-    }
+  /**
+   * 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
+   * @public
+   */
+  async VatInvoiceVerify(
+    req: VatInvoiceVerifyRequest,
+    cb?: (error: string, rep: VatInvoiceVerifyResponse) => void
+  ): Promise<VatInvoiceVerifyResponse> {
+    return this.request("VatInvoiceVerify", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持条形码备案信息查询，返回条形码查询结果的相关信息，包括产品名称、产品英文名称、品牌名称、规格型号、宽度、高度、深度、关键字、产品描述、厂家名称、厂家地址、企业社会信用代码13个字段信息。
 
 产品优势：直联中国物品编码中心，查询结果更加准确、可靠。
@@ -227,27 +234,36 @@ export class Client extends AbstractClient {
 本接口目前为内测阶段，如需使用服务，请<a href="https://cloud.tencent.com/act/event/connect-service" target="_blank">联系商务</a>开通。
      * @public
      */
-    async QueryBarCode(req: QueryBarCodeRequest, cb?: (error: string, rep: QueryBarCodeResponse) => void): Promise<QueryBarCodeResponse> {
-        return await this.request("QueryBarCode", req, cb);
-    }
+  async QueryBarCode(
+    req: QueryBarCodeRequest,
+    cb?: (error: string, rep: QueryBarCodeResponse) => void
+  ): Promise<QueryBarCodeResponse> {
+    return this.request("QueryBarCode", req, cb)
+  }
 
-    /**
-     * 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围等关键字段。
-     * @public
-     */
-    async EnterpriseLicenseOCR(req: EnterpriseLicenseOCRRequest, cb?: (error: string, rep: EnterpriseLicenseOCRResponse) => void): Promise<EnterpriseLicenseOCRResponse> {
-        return await this.request("EnterpriseLicenseOCR", req, cb);
-    }
+  /**
+   * 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围等关键字段。
+   * @public
+   */
+  async EnterpriseLicenseOCR(
+    req: EnterpriseLicenseOCRRequest,
+    cb?: (error: string, rep: EnterpriseLicenseOCRResponse) => void
+  ): Promise<EnterpriseLicenseOCRResponse> {
+    return this.request("EnterpriseLicenseOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
-     * @public
-     */
-    async BusinessCardOCR(req: BusinessCardOCRRequest, cb?: (error: string, rep: BusinessCardOCRResponse) => void): Promise<BusinessCardOCRResponse> {
-        return await this.request("BusinessCardOCR", req, cb);
-    }
+  /**
+   * 本接口支持名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
+   * @public
+   */
+  async BusinessCardOCR(
+    req: BusinessCardOCRRequest,
+    cb?: (error: string, rep: BusinessCardOCRResponse) => void
+  ): Promise<BusinessCardOCRResponse> {
+    return this.request("BusinessCardOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持中国大陆居民二代身份证正反面所有字段的识别，包括姓名、性别、民族、出生日期、住址、公民身份证号、签发机关、有效期限，识别准确度达到99%以上。
 
 另外，本接口还支持多种增值能力，满足不同场景的需求。如身份证照片、人像照片的裁剪功能，同时具备9种告警功能，如下表所示。
@@ -296,37 +312,49 @@ export class Client extends AbstractClient {
     </table>
      * @public
      */
-    async IDCardOCR(req: IDCardOCRRequest, cb?: (error: string, rep: IDCardOCRResponse) => void): Promise<IDCardOCRResponse> {
-        return await this.request("IDCardOCR", req, cb);
-    }
+  async IDCardOCR(
+    req: IDCardOCRRequest,
+    cb?: (error: string, rep: IDCardOCRResponse) => void
+  ): Promise<IDCardOCRResponse> {
+    return this.request("IDCardOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持对过路过桥费发票的发票代码、发票号码、日期、小写金额等关键字段的识别。
-     * @public
-     */
-    async TollInvoiceOCR(req: TollInvoiceOCRRequest, cb?: (error: string, rep: TollInvoiceOCRResponse) => void): Promise<TollInvoiceOCRResponse> {
-        return await this.request("TollInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持对过路过桥费发票的发票代码、发票号码、日期、小写金额等关键字段的识别。
+   * @public
+   */
+  async TollInvoiceOCR(
+    req: TollInvoiceOCRRequest,
+    cb?: (error: string, rep: TollInvoiceOCRResponse) => void
+  ): Promise<TollInvoiceOCRResponse> {
+    return this.request("TollInvoiceOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持马来西亚身份证识别，识别字段包括身份证号、姓名、性别、地址；具备身份证人像照片的裁剪功能和翻拍、复印件告警功能。
 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
 
      * @public
      */
-    async MLIDCardOCR(req: MLIDCardOCRRequest, cb?: (error: string, rep: MLIDCardOCRResponse) => void): Promise<MLIDCardOCRResponse> {
-        return await this.request("MLIDCardOCR", req, cb);
-    }
+  async MLIDCardOCR(
+    req: MLIDCardOCRRequest,
+    cb?: (error: string, rep: MLIDCardOCRResponse) => void
+  ): Promise<MLIDCardOCRResponse> {
+    return this.request("MLIDCardOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持条形码和二维码的识别（包括 DataMatrix 和 PDF417）。
-     * @public
-     */
-    async QrcodeOCR(req: QrcodeOCRRequest, cb?: (error: string, rep: QrcodeOCRResponse) => void): Promise<QrcodeOCRResponse> {
-        return await this.request("QrcodeOCR", req, cb);
-    }
+  /**
+   * 本接口支持条形码和二维码的识别（包括 DataMatrix 和 PDF417）。
+   * @public
+   */
+  async QrcodeOCR(
+    req: QrcodeOCRRequest,
+    cb?: (error: string, rep: QrcodeOCRResponse) => void
+  ): Promise<QrcodeOCRResponse> {
+    return this.request("QrcodeOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持图像整体文字的检测和识别。支持中文、英文、中英文、数字和特殊字符号的识别，并返回文字框位置和文字内容。
 
 适用于文字较多、版式复杂、对识别准召率要求较高的场景，如试卷试题、网络图片、街景店招牌、法律卷宗等场景。
@@ -390,151 +418,205 @@ export class Client extends AbstractClient {
     </table>
      * @public
      */
-    async GeneralAccurateOCR(req: GeneralAccurateOCRRequest, cb?: (error: string, rep: GeneralAccurateOCRResponse) => void): Promise<GeneralAccurateOCRResponse> {
-        return await this.request("GeneralAccurateOCR", req, cb);
-    }
+  async GeneralAccurateOCR(
+    req: GeneralAccurateOCRRequest,
+    cb?: (error: string, rep: GeneralAccurateOCRResponse) => void
+  ): Promise<GeneralAccurateOCRResponse> {
+    return this.request("GeneralAccurateOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持机票行程单关键字段的识别，包括姓名、身份证件号码、航班号、票价 、合计、电子客票号码、填开日期等。
-     * @public
-     */
-    async FlightInvoiceOCR(req: FlightInvoiceOCRRequest, cb?: (error: string, rep: FlightInvoiceOCRResponse) => void): Promise<FlightInvoiceOCRResponse> {
-        return await this.request("FlightInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持机票行程单关键字段的识别，包括姓名、身份证件号码、航班号、票价 、合计、电子客票号码、填开日期等。
+   * @public
+   */
+  async FlightInvoiceOCR(
+    req: FlightInvoiceOCRRequest,
+    cb?: (error: string, rep: FlightInvoiceOCRResponse) => void
+  ): Promise<FlightInvoiceOCRResponse> {
+    return this.request("FlightInvoiceOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持多张、多类型票据的混合检测和自动分类，返回对应票据类型。目前已支持增值税发票、增值税发票（卷票）、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票、酒店账单、客运限额发票、购物小票、完税证明共15种票据。
-     * @public
-     */
-    async MixedInvoiceDetect(req: MixedInvoiceDetectRequest, cb?: (error: string, rep: MixedInvoiceDetectResponse) => void): Promise<MixedInvoiceDetectResponse> {
-        return await this.request("MixedInvoiceDetect", req, cb);
-    }
+  /**
+   * 本接口支持多张、多类型票据的混合检测和自动分类，返回对应票据类型。目前已支持增值税发票、增值税发票（卷票）、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票、酒店账单、客运限额发票、购物小票、完税证明共15种票据。
+   * @public
+   */
+  async MixedInvoiceDetect(
+    req: MixedInvoiceDetectRequest,
+    cb?: (error: string, rep: MixedInvoiceDetectResponse) => void
+  ): Promise<MixedInvoiceDetectResponse> {
+    return this.request("MixedInvoiceDetect", req, cb)
+  }
 
-    /**
-     * 本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价等字段。
-     * @public
-     */
-    async ShipInvoiceOCR(req: ShipInvoiceOCRRequest, cb?: (error: string, rep: ShipInvoiceOCRResponse) => void): Promise<ShipInvoiceOCRResponse> {
-        return await this.request("ShipInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价等字段。
+   * @public
+   */
+  async ShipInvoiceOCR(
+    req: ShipInvoiceOCRRequest,
+    cb?: (error: string, rep: ShipInvoiceOCRResponse) => void
+  ): Promise<ShipInvoiceOCRResponse> {
+    return this.request("ShipInvoiceOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持中国港澳台地区以及其他国家、地区的护照。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍；具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
      * @public
      */
-    async MLIDPassportOCR(req: MLIDPassportOCRRequest, cb?: (error: string, rep: MLIDPassportOCRResponse) => void): Promise<MLIDPassportOCRResponse> {
-        return await this.request("MLIDPassportOCR", req, cb);
-    }
+  async MLIDPassportOCR(
+    req: MLIDPassportOCRRequest,
+    cb?: (error: string, rep: MLIDPassportOCRResponse) => void
+  ): Promise<MLIDPassportOCRResponse> {
+    return this.request("MLIDPassportOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持对增值税发票（卷票）的发票代码、发票号码、日期、校验码、合计金额（小写）等关键字段的识别。
-     * @public
-     */
-    async VatRollInvoiceOCR(req: VatRollInvoiceOCRRequest, cb?: (error: string, rep: VatRollInvoiceOCRResponse) => void): Promise<VatRollInvoiceOCRResponse> {
-        return await this.request("VatRollInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持对增值税发票（卷票）的发票代码、发票号码、日期、校验码、合计金额（小写）等关键字段的识别。
+   * @public
+   */
+  async VatRollInvoiceOCR(
+    req: VatRollInvoiceOCRRequest,
+    cb?: (error: string, rep: VatRollInvoiceOCRResponse) => void
+  ): Promise<VatRollInvoiceOCRResponse> {
+    return this.request("VatRollInvoiceOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
-     * @public
-     */
-    async QuotaInvoiceOCR(req: QuotaInvoiceOCRRequest, cb?: (error: string, rep: QuotaInvoiceOCRResponse) => void): Promise<QuotaInvoiceOCRResponse> {
-        return await this.request("QuotaInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
+   * @public
+   */
+  async QuotaInvoiceOCR(
+    req: QuotaInvoiceOCRRequest,
+    cb?: (error: string, rep: QuotaInvoiceOCRResponse) => void
+  ): Promise<QuotaInvoiceOCRResponse> {
+    return this.request("QuotaInvoiceOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持图片内车辆识别代号（VIN）的检测和识别。
-     * @public
-     */
-    async VinOCR(req: VinOCRRequest, cb?: (error: string, rep: VinOCRResponse) => void): Promise<VinOCRResponse> {
-        return await this.request("VinOCR", req, cb);
-    }
+  /**
+   * 本接口支持图片内车辆识别代号（VIN）的检测和识别。
+   * @public
+   */
+  async VinOCR(
+    req: VinOCRRequest,
+    cb?: (error: string, rep: VinOCRResponse) => void
+  ): Promise<VinOCRResponse> {
+    return this.request("VinOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持图片中整体文字的检测和识别，返回文字框位置与文字内容。相比通用印刷体识别接口，识别速度更快、支持的 QPS 更高。
-     * @public
-     */
-    async GeneralFastOCR(req: GeneralFastOCRRequest, cb?: (error: string, rep: GeneralFastOCRResponse) => void): Promise<GeneralFastOCRResponse> {
-        return await this.request("GeneralFastOCR", req, cb);
-    }
+  /**
+   * 本接口支持图片中整体文字的检测和识别，返回文字框位置与文字内容。相比通用印刷体识别接口，识别速度更快、支持的 QPS 更高。
+   * @public
+   */
+  async GeneralFastOCR(
+    req: GeneralFastOCRRequest,
+    cb?: (error: string, rep: GeneralFastOCRResponse) => void
+  ): Promise<GeneralFastOCRResponse> {
+    return this.request("GeneralFastOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
-     * @public
-     */
-    async PropOwnerCertOCR(req: PropOwnerCertOCRRequest, cb?: (error: string, rep: PropOwnerCertOCRResponse) => void): Promise<PropOwnerCertOCRResponse> {
-        return await this.request("PropOwnerCertOCR", req, cb);
-    }
+  /**
+   * 本接口支持房产证关键字段的识别，包括房地产权利人、共有情况、登记时间、规划用途、房屋性质、房屋坐落等。
+   * @public
+   */
+  async PropOwnerCertOCR(
+    req: PropOwnerCertOCRRequest,
+    cb?: (error: string, rep: PropOwnerCertOCRResponse) => void
+  ): Promise<PropOwnerCertOCRResponse> {
+    return this.request("PropOwnerCertOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持快速精准识别营业执照上的字段，包括统一社会信用代码、公司名称、经营场所、主体类型、法定代表人、注册资金、组成形式、成立日期、营业期限和经营范围等字段。
-     * @public
-     */
-    async BizLicenseOCR(req: BizLicenseOCRRequest, cb?: (error: string, rep: BizLicenseOCRResponse) => void): Promise<BizLicenseOCRResponse> {
-        return await this.request("BizLicenseOCR", req, cb);
-    }
+  /**
+   * 本接口支持快速精准识别营业执照上的字段，包括统一社会信用代码、公司名称、经营场所、主体类型、法定代表人、注册资金、组成形式、成立日期、营业期限和经营范围等字段。
+   * @public
+   */
+  async BizLicenseOCR(
+    req: BizLicenseOCRRequest,
+    cb?: (error: string, rep: BizLicenseOCRResponse) => void
+  ): Promise<BizLicenseOCRResponse> {
+    return this.request("BizLicenseOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持图片内手写体文字的检测和识别，针对手写字体无规则、字迹潦草、模糊等特点进行了识别能力的增强。
-     * @public
-     */
-    async GeneralHandwritingOCR(req: GeneralHandwritingOCRRequest, cb?: (error: string, rep: GeneralHandwritingOCRResponse) => void): Promise<GeneralHandwritingOCRResponse> {
-        return await this.request("GeneralHandwritingOCR", req, cb);
-    }
+  /**
+   * 本接口支持图片内手写体文字的检测和识别，针对手写字体无规则、字迹潦草、模糊等特点进行了识别能力的增强。
+   * @public
+   */
+  async GeneralHandwritingOCR(
+    req: GeneralHandwritingOCRRequest,
+    cb?: (error: string, rep: GeneralHandwritingOCRResponse) => void
+  ): Promise<GeneralHandwritingOCRResponse> {
+    return this.request("GeneralHandwritingOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段。
-     * @public
-     */
-    async WaybillOCR(req: WaybillOCRRequest, cb?: (error: string, rep: WaybillOCRResponse) => void): Promise<WaybillOCRResponse> {
-        return await this.request("WaybillOCR", req, cb);
-    }
+  /**
+   * 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段。
+   * @public
+   */
+  async WaybillOCR(
+    req: WaybillOCRRequest,
+    cb?: (error: string, rep: WaybillOCRResponse) => void
+  ): Promise<WaybillOCRResponse> {
+    return this.request("WaybillOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持对通用机打发票的发票代码、发票号码、日期、购买方识别号、销售方识别号、校验码、小写金额等关键字段的识别。
-     * @public
-     */
-    async InvoiceGeneralOCR(req: InvoiceGeneralOCRRequest, cb?: (error: string, rep: InvoiceGeneralOCRResponse) => void): Promise<InvoiceGeneralOCRResponse> {
-        return await this.request("InvoiceGeneralOCR", req, cb);
-    }
+  /**
+   * 本接口支持对通用机打发票的发票代码、发票号码、日期、购买方识别号、销售方识别号、校验码、小写金额等关键字段的识别。
+   * @public
+   */
+  async InvoiceGeneralOCR(
+    req: InvoiceGeneralOCRRequest,
+    cb?: (error: string, rep: InvoiceGeneralOCRResponse) => void
+  ): Promise<InvoiceGeneralOCRResponse> {
+    return this.request("InvoiceGeneralOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持中国香港身份证人像面中关键字段的识别，包括中文姓名、英文姓名、姓名电码、出生日期、性别、证件符号、首次签发日期、最近领用日期、身份证号、是否是永久性居民身份证；具备防伪识别、人像照片裁剪等扩展功能。
 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
 
      * @public
      */
-    async HKIDCardOCR(req: HKIDCardOCRRequest, cb?: (error: string, rep: HKIDCardOCRResponse) => void): Promise<HKIDCardOCRResponse> {
-        return await this.request("HKIDCardOCR", req, cb);
-    }
+  async HKIDCardOCR(
+    req: HKIDCardOCRRequest,
+    cb?: (error: string, rep: HKIDCardOCRResponse) => void
+  ): Promise<HKIDCardOCRResponse> {
+    return this.request("HKIDCardOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持增值税专用发票、增值税普通发票、增值税电子发票全字段的内容检测和识别，包括发票代码、发票号码、打印发票代码、打印发票号码、开票日期、合计金额、校验码、税率、合计税额、价税合计、购买方识别号、复核、销售方识别号、开票人、密码区1、密码区2、密码区3、密码区4、发票名称、购买方名称、销售方名称、服务名称、备注、规格型号、数量、单价、金额、税额、收款人等字段。
-     * @public
-     */
-    async VatInvoiceOCR(req: VatInvoiceOCRRequest, cb?: (error: string, rep: VatInvoiceOCRResponse) => void): Promise<VatInvoiceOCRResponse> {
-        return await this.request("VatInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持增值税专用发票、增值税普通发票、增值税电子发票全字段的内容检测和识别，包括发票代码、发票号码、打印发票代码、打印发票号码、开票日期、合计金额、校验码、税率、合计税额、价税合计、购买方识别号、复核、销售方识别号、开票人、密码区1、密码区2、密码区3、密码区4、发票名称、购买方名称、销售方名称、服务名称、备注、规格型号、数量、单价、金额、税额、收款人等字段。
+   * @public
+   */
+  async VatInvoiceOCR(
+    req: VatInvoiceOCRRequest,
+    cb?: (error: string, rep: VatInvoiceOCRResponse) => void
+  ): Promise<VatInvoiceOCRResponse> {
+    return this.request("VatInvoiceOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持营业执照信息的识别与准确性核验，返回的营业执照信息比营业执照识别及核验（基础版）接口更详细。
 您可以通过输入营业执照关键字段或传入营业执照图片提供所需的验证信息，接口返回真实的企业工商照面信息及核验结果，包括统一社会信用代码、组织机构代码、经营期限、法人姓名、经营状态、经营业务范围及方式、注册资金、注册币种、登记机关、开业日期、企业（机构）类型、注销日期、吊销日期、许可经营项目、一般经营项目、核准时间、省、地级市、区/县、住所所在行政区划代码、行业门类代码、行业门类名称、国民经济行业代码、国民经济行业名称、经营（业务）范围、要核验的工商注册号、工商注册号、要核验的企业名称、企业名称、要核验的注册住址、注册住址、核验结果共33个详细字段。
      * @public
      */
-    async VerifyBizLicense(req: VerifyBizLicenseRequest, cb?: (error: string, rep: VerifyBizLicenseResponse) => void): Promise<VerifyBizLicenseResponse> {
-        return await this.request("VerifyBizLicense", req, cb);
-    }
+  async VerifyBizLicense(
+    req: VerifyBizLicenseRequest,
+    cb?: (error: string, rep: VerifyBizLicenseResponse) => void
+  ): Promise<VerifyBizLicenseResponse> {
+    return this.request("VerifyBizLicense", req, cb)
+  }
 
-    /**
-     * 本接口支持对完税证明的税号、纳税人识别号、纳税人名称、金额合计大写、金额合计小写、填发日期、税务机关、填票人等关键字段的识别。
-     * @public
-     */
-    async DutyPaidProofOCR(req: DutyPaidProofOCRRequest, cb?: (error: string, rep: DutyPaidProofOCRResponse) => void): Promise<DutyPaidProofOCRResponse> {
-        return await this.request("DutyPaidProofOCR", req, cb);
-    }
+  /**
+   * 本接口支持对完税证明的税号、纳税人识别号、纳税人名称、金额合计大写、金额合计小写、填发日期、税务机关、填票人等关键字段的识别。
+   * @public
+   */
+  async DutyPaidProofOCR(
+    req: DutyPaidProofOCRRequest,
+    cb?: (error: string, rep: DutyPaidProofOCRResponse) => void
+  ): Promise<DutyPaidProofOCRResponse> {
+    return this.request("DutyPaidProofOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持图像整体文字的检测和识别。可以识别中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语19种语言，且各种语言均支持与英文混合的文字识别。
 
 适用于印刷文档识别、网络图片识别、广告图文字识别、街景店招牌识别、菜单识别、视频标题识别、头像文字识别等场景。
@@ -598,128 +680,173 @@ export class Client extends AbstractClient {
     </table>
      * @public
      */
-    async GeneralBasicOCR(req: GeneralBasicOCRRequest, cb?: (error: string, rep: GeneralBasicOCRResponse) => void): Promise<GeneralBasicOCRResponse> {
-        return await this.request("GeneralBasicOCR", req, cb);
-    }
+  async GeneralBasicOCR(
+    req: GeneralBasicOCRRequest,
+    cb?: (error: string, rep: GeneralBasicOCRResponse) => void
+  ): Promise<GeneralBasicOCRResponse> {
+    return this.request("GeneralBasicOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持对卡式港澳台通行证的识别，包括签发地点、签发机关、有效期限、性别、出生日期、英文姓名、姓名、证件号等字段。
-     * @public
-     */
-    async PermitOCR(req: PermitOCRRequest, cb?: (error: string, rep: PermitOCRResponse) => void): Promise<PermitOCRResponse> {
-        return await this.request("PermitOCR", req, cb);
-    }
+  /**
+   * 本接口支持对卡式港澳台通行证的识别，包括签发地点、签发机关、有效期限、性别、出生日期、英文姓名、姓名、证件号等字段。
+   * @public
+   */
+  async PermitOCR(
+    req: PermitOCRRequest,
+    cb?: (error: string, rep: PermitOCRResponse) => void
+  ): Promise<PermitOCRResponse> {
+    return this.request("PermitOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
-     * @public
-     */
-    async OrgCodeCertOCR(req: OrgCodeCertOCRRequest, cb?: (error: string, rep: OrgCodeCertOCRResponse) => void): Promise<OrgCodeCertOCRResponse> {
-        return await this.request("OrgCodeCertOCR", req, cb);
-    }
+  /**
+   * 本接口支持组织机构代码证关键字段的识别，包括代码、有效期、地址、机构名称等。
+   * @public
+   */
+  async OrgCodeCertOCR(
+    req: OrgCodeCertOCRRequest,
+    cb?: (error: string, rep: OrgCodeCertOCRResponse) => void
+  ): Promise<OrgCodeCertOCRResponse> {
+    return this.request("OrgCodeCertOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持常见银行票据的自动分类和识别。切片识别包括金融行业常见票据的重要切片字段识别，包括金额、账号、日期、凭证号码等。（金融票据切片：金融票据中待识别字段及其周围局部区域的裁剪图像。）
-     * @public
-     */
-    async FinanBillSliceOCR(req: FinanBillSliceOCRRequest, cb?: (error: string, rep: FinanBillSliceOCRResponse) => void): Promise<FinanBillSliceOCRResponse> {
-        return await this.request("FinanBillSliceOCR", req, cb);
-    }
+  /**
+   * 本接口支持常见银行票据的自动分类和识别。切片识别包括金融行业常见票据的重要切片字段识别，包括金额、账号、日期、凭证号码等。（金融票据切片：金融票据中待识别字段及其周围局部区域的裁剪图像。）
+   * @public
+   */
+  async FinanBillSliceOCR(
+    req: FinanBillSliceOCRRequest,
+    cb?: (error: string, rep: FinanBillSliceOCRResponse) => void
+  ): Promise<FinanBillSliceOCRResponse> {
+    return this.request("FinanBillSliceOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持识别公路汽车客票的发票代码、发票号码、日期、姓名、票价等字段。
-     * @public
-     */
-    async BusInvoiceOCR(req: BusInvoiceOCRRequest, cb?: (error: string, rep: BusInvoiceOCRResponse) => void): Promise<BusInvoiceOCRResponse> {
-        return await this.request("BusInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持识别公路汽车客票的发票代码、发票号码、日期、姓名、票价等字段。
+   * @public
+   */
+  async BusInvoiceOCR(
+    req: BusInvoiceOCRRequest,
+    cb?: (error: string, rep: BusInvoiceOCRResponse) => void
+  ): Promise<BusInvoiceOCRResponse> {
+    return this.request("BusInvoiceOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持图片内表格文档的检测和识别，返回每个单元格的文字内容，支持将识别结果保存为 Excel 格式。
-     * @public
-     */
-    async TableOCR(req: TableOCRRequest, cb?: (error: string, rep: TableOCRResponse) => void): Promise<TableOCRResponse> {
-        return await this.request("TableOCR", req, cb);
-    }
+  /**
+   * 本接口支持图片内表格文档的检测和识别，返回每个单元格的文字内容，支持将识别结果保存为 Excel 格式。
+   * @public
+   */
+  async TableOCR(
+    req: TableOCRRequest,
+    cb?: (error: string, rep: TableOCRResponse) => void
+  ): Promise<TableOCRResponse> {
+    return this.request("TableOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持网约车驾驶证关键字段的识别，包括姓名、证号、起始日期、截止日期、发证日期。
-     * @public
-     */
-    async RideHailingDriverLicenseOCR(req: RideHailingDriverLicenseOCRRequest, cb?: (error: string, rep: RideHailingDriverLicenseOCRResponse) => void): Promise<RideHailingDriverLicenseOCRResponse> {
-        return await this.request("RideHailingDriverLicenseOCR", req, cb);
-    }
+  /**
+   * 本接口支持网约车驾驶证关键字段的识别，包括姓名、证号、起始日期、截止日期、发证日期。
+   * @public
+   */
+  async RideHailingDriverLicenseOCR(
+    req: RideHailingDriverLicenseOCRRequest,
+    cb?: (error: string, rep: RideHailingDriverLicenseOCRResponse) => void
+  ): Promise<RideHailingDriverLicenseOCRResponse> {
+    return this.request("RideHailingDriverLicenseOCR", req, cb)
+  }
 
-    /**
-     * 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
-     * @public
-     */
-    async HmtResidentPermitOCR(req: HmtResidentPermitOCRRequest, cb?: (error: string, rep: HmtResidentPermitOCRResponse) => void): Promise<HmtResidentPermitOCRResponse> {
-        return await this.request("HmtResidentPermitOCR", req, cb);
-    }
+  /**
+   * 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
+   * @public
+   */
+  async HmtResidentPermitOCR(
+    req: HmtResidentPermitOCRRequest,
+    cb?: (error: string, rep: HmtResidentPermitOCRResponse) => void
+  ): Promise<HmtResidentPermitOCRResponse> {
+    return this.request("HmtResidentPermitOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持作业算式题目的自动识别，目前覆盖 K12 学力范围内的 14 种题型，包括加减乘除四则运算、分数四则运算、竖式四则运算、脱式计算等。
-     * @public
-     */
-    async ArithmeticOCR(req: ArithmeticOCRRequest, cb?: (error: string, rep: ArithmeticOCRResponse) => void): Promise<ArithmeticOCRResponse> {
-        return await this.request("ArithmeticOCR", req, cb);
-    }
+  /**
+   * 本接口支持作业算式题目的自动识别，目前覆盖 K12 学力范围内的 14 种题型，包括加减乘除四则运算、分数四则运算、竖式四则运算、脱式计算等。
+   * @public
+   */
+  async ArithmeticOCR(
+    req: ArithmeticOCRRequest,
+    cb?: (error: string, rep: ArithmeticOCRResponse) => void
+  ): Promise<ArithmeticOCRResponse> {
+    return this.request("ArithmeticOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持对中国大陆机动车车牌的自动定位和识别，返回地域编号和车牌号信息。
-     * @public
-     */
-    async LicensePlateOCR(req: LicensePlateOCRRequest, cb?: (error: string, rep: LicensePlateOCRResponse) => void): Promise<LicensePlateOCRResponse> {
-        return await this.request("LicensePlateOCR", req, cb);
-    }
+  /**
+   * 本接口支持对中国大陆机动车车牌的自动定位和识别，返回地域编号和车牌号信息。
+   * @public
+   */
+  async LicensePlateOCR(
+    req: LicensePlateOCRRequest,
+    cb?: (error: string, rep: LicensePlateOCRResponse) => void
+  ): Promise<LicensePlateOCRResponse> {
+    return this.request("LicensePlateOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持不动产权证关键字段的识别，包括使用期限、面积、用途、权利性质、权利类型、坐落、共有情况、权利人、权利其他状况等。
 
 
 
      * @public
      */
-    async EstateCertOCR(req: EstateCertOCRRequest, cb?: (error: string, rep: EstateCertOCRResponse) => void): Promise<EstateCertOCRResponse> {
-        return await this.request("EstateCertOCR", req, cb);
-    }
+  async EstateCertOCR(
+    req: EstateCertOCRRequest,
+    cb?: (error: string, rep: EstateCertOCRResponse) => void
+  ): Promise<EstateCertOCRResponse> {
+    return this.request("EstateCertOCR", req, cb)
+  }
 
-    /**
+  /**
      * 支持身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照的智能分类。
 
      * @public
      */
-    async ClassifyDetectOCR(req: ClassifyDetectOCRRequest, cb?: (error: string, rep: ClassifyDetectOCRResponse) => void): Promise<ClassifyDetectOCRResponse> {
-        return await this.request("ClassifyDetectOCR", req, cb);
-    }
+  async ClassifyDetectOCR(
+    req: ClassifyDetectOCRRequest,
+    cb?: (error: string, rep: ClassifyDetectOCRResponse) => void
+  ): Promise<ClassifyDetectOCRResponse> {
+    return this.request("ClassifyDetectOCR", req, cb)
+  }
 
-    /**
-     * 印章识别已支持各类印章，包括发票章，财务章等，适用于公文，票据等场景。
-     * @public
-     */
-    async SealOCR(req: SealOCRRequest, cb?: (error: string, rep: SealOCRResponse) => void): Promise<SealOCRResponse> {
-        return await this.request("SealOCR", req, cb);
-    }
+  /**
+   * 印章识别已支持各类印章，包括发票章，财务章等，适用于公文，票据等场景。
+   * @public
+   */
+  async SealOCR(
+    req: SealOCRRequest,
+    cb?: (error: string, rep: SealOCRResponse) => void
+  ): Promise<SealOCRResponse> {
+    return this.request("SealOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持火车票全字段的识别，包括编号、票价、姓名、座位号、出发时间、出发站、到达站、车次、席别、发票类型及序列号等。
 
      * @public
      */
-    async TrainTicketOCR(req: TrainTicketOCRRequest, cb?: (error: string, rep: TrainTicketOCRResponse) => void): Promise<TrainTicketOCRResponse> {
-        return await this.request("TrainTicketOCR", req, cb);
-    }
+  async TrainTicketOCR(
+    req: TrainTicketOCRRequest,
+    cb?: (error: string, rep: TrainTicketOCRResponse) => void
+  ): Promise<TrainTicketOCRResponse> {
+    return this.request("TrainTicketOCR", req, cb)
+  }
 
-    /**
-     * 本接口通过检测图片中的文字信息特征，快速判断图片中有无文字并返回判断结果，帮助用户过滤无文字的图片。
-     * @public
-     */
-    async TextDetect(req: TextDetectRequest, cb?: (error: string, rep: TextDetectResponse) => void): Promise<TextDetectResponse> {
-        return await this.request("TextDetect", req, cb);
-    }
+  /**
+   * 本接口通过检测图片中的文字信息特征，快速判断图片中有无文字并返回判断结果，帮助用户过滤无文字的图片。
+   * @public
+   */
+  async TextDetect(
+    req: TextDetectRequest,
+    cb?: (error: string, rep: TextDetectResponse) => void
+  ): Promise<TextDetectResponse> {
+    return this.request("TextDetect", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持图像整体文字的检测和识别。支持中文、英文、中英文、数字和特殊字符号的识别，并返回文字框位置和文字内容。
 
 适用于快速文本识别场景。
@@ -797,67 +924,91 @@ export class Client extends AbstractClient {
     </table>
      * @public
      */
-    async GeneralEfficientOCR(req: GeneralEfficientOCRRequest, cb?: (error: string, rep: GeneralEfficientOCRResponse) => void): Promise<GeneralEfficientOCRResponse> {
-        return await this.request("GeneralEfficientOCR", req, cb);
-    }
+  async GeneralEfficientOCR(
+    req: GeneralEfficientOCRRequest,
+    cb?: (error: string, rep: GeneralEfficientOCRResponse) => void
+  ): Promise<GeneralEfficientOCRResponse> {
+    return this.request("GeneralEfficientOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持出租车发票关键字段的识别，包括发票号码、发票代码、金额、日期、上下车时间、里程、车牌号、发票类型及所属地区等字段。
-     * @public
-     */
-    async TaxiInvoiceOCR(req: TaxiInvoiceOCRRequest, cb?: (error: string, rep: TaxiInvoiceOCRResponse) => void): Promise<TaxiInvoiceOCRResponse> {
-        return await this.request("TaxiInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持出租车发票关键字段的识别，包括发票号码、发票代码、金额、日期、上下车时间、里程、车牌号、发票类型及所属地区等字段。
+   * @public
+   */
+  async TaxiInvoiceOCR(
+    req: TaxiInvoiceOCRRequest,
+    cb?: (error: string, rep: TaxiInvoiceOCRResponse) => void
+  ): Promise<TaxiInvoiceOCRResponse> {
+    return this.request("TaxiInvoiceOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持国内机动车登记证书主要字段的结构化识别，包括机动车所有人、身份证明名称、号码、车辆型号、车辆识别代号、发动机号、制造厂名称等。
-     * @public
-     */
-    async VehicleRegCertOCR(req: VehicleRegCertOCRRequest, cb?: (error: string, rep: VehicleRegCertOCRResponse) => void): Promise<VehicleRegCertOCRResponse> {
-        return await this.request("VehicleRegCertOCR", req, cb);
-    }
+  /**
+   * 本接口支持国内机动车登记证书主要字段的结构化识别，包括机动车所有人、身份证明名称、号码、车辆型号、车辆识别代号、发动机号、制造厂名称等。
+   * @public
+   */
+  async VehicleRegCertOCR(
+    req: VehicleRegCertOCRRequest,
+    cb?: (error: string, rep: VehicleRegCertOCRResponse) => void
+  ): Promise<VehicleRegCertOCRResponse> {
+    return this.request("VehicleRegCertOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
-     * @public
-     */
-    async InstitutionOCR(req: InstitutionOCRRequest, cb?: (error: string, rep: InstitutionOCRResponse) => void): Promise<InstitutionOCRResponse> {
-        return await this.request("InstitutionOCR", req, cb);
-    }
+  /**
+   * 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
+   * @public
+   */
+  async InstitutionOCR(
+    req: InstitutionOCRRequest,
+    cb?: (error: string, rep: InstitutionOCRResponse) => void
+  ): Promise<InstitutionOCRResponse> {
+    return this.request("InstitutionOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持图像英文文字的检测和识别，返回文字框位置与文字内容。支持多场景、任意版面下的英文、字母、数字和常见字符的识别，同时覆盖英文印刷体和英文手写体识别。
-     * @public
-     */
-    async EnglishOCR(req: EnglishOCRRequest, cb?: (error: string, rep: EnglishOCRResponse) => void): Promise<EnglishOCRResponse> {
-        return await this.request("EnglishOCR", req, cb);
-    }
+  /**
+   * 本接口支持图像英文文字的检测和识别，返回文字框位置与文字内容。支持多场景、任意版面下的英文、字母、数字和常见字符的识别，同时覆盖英文印刷体和英文手写体识别。
+   * @public
+   */
+  async EnglishOCR(
+    req: EnglishOCRRequest,
+    cb?: (error: string, rep: EnglishOCRResponse) => void
+  ): Promise<EnglishOCRResponse> {
+    return this.request("EnglishOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持居民户口簿户主页及成员页关键字段的识别，包括姓名、户别、地址、籍贯、身份证号码等。
-     * @public
-     */
-    async ResidenceBookletOCR(req: ResidenceBookletOCRRequest, cb?: (error: string, rep: ResidenceBookletOCRResponse) => void): Promise<ResidenceBookletOCRResponse> {
-        return await this.request("ResidenceBookletOCR", req, cb);
-    }
+  /**
+   * 本接口支持居民户口簿户主页及成员页关键字段的识别，包括姓名、户别、地址、籍贯、身份证号码等。
+   * @public
+   */
+  async ResidenceBookletOCR(
+    req: ResidenceBookletOCRRequest,
+    cb?: (error: string, rep: ResidenceBookletOCRResponse) => void
+  ): Promise<ResidenceBookletOCRResponse> {
+    return this.request("ResidenceBookletOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持对中国大陆主流银行卡的卡号、银行信息、有效期等关键字段的检测与识别。
-     * @public
-     */
-    async BankCardOCR(req: BankCardOCRRequest, cb?: (error: string, rep: BankCardOCRResponse) => void): Promise<BankCardOCRResponse> {
-        return await this.request("BankCardOCR", req, cb);
-    }
+  /**
+   * 本接口支持对中国大陆主流银行卡的卡号、银行信息、有效期等关键字段的检测与识别。
+   * @public
+   */
+  async BankCardOCR(
+    req: BankCardOCRRequest,
+    cb?: (error: string, rep: BankCardOCRResponse) => void
+  ): Promise<BankCardOCRResponse> {
+    return this.request("BankCardOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持机动车销售统一发票和二手车销售统一发票的识别，包括发票号码、发票代码、合计金额、合计税额等二十多个字段。
-     * @public
-     */
-    async CarInvoiceOCR(req: CarInvoiceOCRRequest, cb?: (error: string, rep: CarInvoiceOCRResponse) => void): Promise<CarInvoiceOCRResponse> {
-        return await this.request("CarInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持机动车销售统一发票和二手车销售统一发票的识别，包括发票号码、发票代码、合计金额、合计税额等二十多个字段。
+   * @public
+   */
+  async CarInvoiceOCR(
+    req: CarInvoiceOCRRequest,
+    cb?: (error: string, rep: CarInvoiceOCRResponse) => void
+  ): Promise<CarInvoiceOCRResponse> {
+    return this.request("CarInvoiceOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持驾驶证主页和副页所有字段的自动定位与识别，重点字段的识别准确度达到99%以上。
 
 驾驶证主页：包括证号、姓名、性别、国籍、住址、出生日期、初次领证日期、准驾车型、有效期限。
@@ -867,68 +1018,92 @@ export class Client extends AbstractClient {
 另外，本接口还支持复印件、翻拍和PS告警功能。
      * @public
      */
-    async DriverLicenseOCR(req: DriverLicenseOCRRequest, cb?: (error: string, rep: DriverLicenseOCRResponse) => void): Promise<DriverLicenseOCRResponse> {
-        return await this.request("DriverLicenseOCR", req, cb);
-    }
+  async DriverLicenseOCR(
+    req: DriverLicenseOCRRequest,
+    cb?: (error: string, rep: DriverLicenseOCRResponse) => void
+  ): Promise<DriverLicenseOCRResponse> {
+    return this.request("DriverLicenseOCR", req, cb)
+  }
 
-    /**
-     * 智能识别并结构化港澳台居民来往内地通行证正面全部字段，包含中文姓名、英文姓名、性别、出生日期、签发机关、有效期限、证件号、签发地点、签发次数、证件类别。
-     * @public
-     */
-    async MainlandPermitOCR(req: MainlandPermitOCRRequest, cb?: (error: string, rep: MainlandPermitOCRResponse) => void): Promise<MainlandPermitOCRResponse> {
-        return await this.request("MainlandPermitOCR", req, cb);
-    }
+  /**
+   * 智能识别并结构化港澳台居民来往内地通行证正面全部字段，包含中文姓名、英文姓名、性别、出生日期、签发机关、有效期限、证件号、签发地点、签发次数、证件类别。
+   * @public
+   */
+  async MainlandPermitOCR(
+    req: MainlandPermitOCRRequest,
+    cb?: (error: string, rep: MainlandPermitOCRResponse) => void
+  ): Promise<MainlandPermitOCRResponse> {
+    return this.request("MainlandPermitOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持识别主流初高中数学符号和公式，返回公式的 Latex 格式文本。
-     * @public
-     */
-    async FormulaOCR(req: FormulaOCRRequest, cb?: (error: string, rep: FormulaOCRResponse) => void): Promise<FormulaOCRResponse> {
-        return await this.request("FormulaOCR", req, cb);
-    }
+  /**
+   * 本接口支持识别主流初高中数学符号和公式，返回公式的 Latex 格式文本。
+   * @public
+   */
+  async FormulaOCR(
+    req: FormulaOCRRequest,
+    cb?: (error: string, rep: FormulaOCRResponse) => void
+  ): Promise<FormulaOCRResponse> {
+    return this.request("FormulaOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持中国大陆地区护照个人资料页多个字段的检测与识别。已支持字段包括英文姓名、中文姓名、国家码、护照号、出生地、出生日期、国籍英文、性别英文、有效期、签发地点英文、签发日期、持证人签名、护照机读码（MRZ码）等。
-     * @public
-     */
-    async PassportOCR(req: PassportOCRRequest, cb?: (error: string, rep: PassportOCRResponse) => void): Promise<PassportOCRResponse> {
-        return await this.request("PassportOCR", req, cb);
-    }
+  /**
+   * 本接口支持中国大陆地区护照个人资料页多个字段的检测与识别。已支持字段包括英文姓名、中文姓名、国家码、护照号、出生地、出生日期、国籍英文、性别英文、有效期、签发地点英文、签发日期、持证人签名、护照机读码（MRZ码）等。
+   * @public
+   */
+  async PassportOCR(
+    req: PassportOCRRequest,
+    cb?: (error: string, rep: PassportOCRResponse) => void
+  ): Promise<PassportOCRResponse> {
+    return this.request("PassportOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
-     * @public
-     */
-    async FinanBillOCR(req: FinanBillOCRRequest, cb?: (error: string, rep: FinanBillOCRResponse) => void): Promise<FinanBillOCRResponse> {
-        return await this.request("FinanBillOCR", req, cb);
-    }
+  /**
+   * 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
+   * @public
+   */
+  async FinanBillOCR(
+    req: FinanBillOCRRequest,
+    cb?: (error: string, rep: FinanBillOCRResponse) => void
+  ): Promise<FinanBillOCRResponse> {
+    return this.request("FinanBillOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持多张、多类型票据的混合识别，系统自动实现分割、分类和识别，同时支持自选需要识别的票据类型。目前已支持增值税发票、增值税发票（卷票）、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共11种票据。
-     * @public
-     */
-    async MixedInvoiceOCR(req: MixedInvoiceOCRRequest, cb?: (error: string, rep: MixedInvoiceOCRResponse) => void): Promise<MixedInvoiceOCRResponse> {
-        return await this.request("MixedInvoiceOCR", req, cb);
-    }
+  /**
+   * 本接口支持多张、多类型票据的混合识别，系统自动实现分割、分类和识别，同时支持自选需要识别的票据类型。目前已支持增值税发票、增值税发票（卷票）、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共11种票据。
+   * @public
+   */
+  async MixedInvoiceOCR(
+    req: MixedInvoiceOCRRequest,
+    cb?: (error: string, rep: MixedInvoiceOCRResponse) => void
+  ): Promise<MixedInvoiceOCRResponse> {
+    return this.request("MixedInvoiceOCR", req, cb)
+  }
 
-    /**
-     * 本接口支持数学试题内容的识别和结构化输出，包括通用文本解析和小学/初中/高中数学公式解析能力（包括91种题型，180种符号）。
-     * @public
-     */
-    async EduPaperOCR(req: EduPaperOCRRequest, cb?: (error: string, rep: EduPaperOCRResponse) => void): Promise<EduPaperOCRResponse> {
-        return await this.request("EduPaperOCR", req, cb);
-    }
+  /**
+   * 本接口支持数学试题内容的识别和结构化输出，包括通用文本解析和小学/初中/高中数学公式解析能力（包括91种题型，180种符号）。
+   * @public
+   */
+  async EduPaperOCR(
+    req: EduPaperOCRRequest,
+    cb?: (error: string, rep: EduPaperOCRResponse) => void
+  ): Promise<EduPaperOCRResponse> {
+    return this.request("EduPaperOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持网约车运输证关键字段的识别，包括交运管许可字号、车辆所有人、车辆号牌、起始日期、截止日期、发证日期。
            
      * @public
      */
-    async RideHailingTransportLicenseOCR(req: RideHailingTransportLicenseOCRRequest, cb?: (error: string, rep: RideHailingTransportLicenseOCRResponse) => void): Promise<RideHailingTransportLicenseOCRResponse> {
-        return await this.request("RideHailingTransportLicenseOCR", req, cb);
-    }
+  async RideHailingTransportLicenseOCR(
+    req: RideHailingTransportLicenseOCRRequest,
+    cb?: (error: string, rep: RideHailingTransportLicenseOCRResponse) => void
+  ): Promise<RideHailingTransportLicenseOCRResponse> {
+    return this.request("RideHailingTransportLicenseOCR", req, cb)
+  }
 
-    /**
+  /**
      * 本接口支持行驶证主页和副页所有字段的自动定位与识别。
 
 行驶证主页：车牌号码、车辆类型、所有人、住址、使用性质、品牌型号、识别代码、发动机号、注册日期、发证日期、发证单位。
@@ -938,9 +1113,10 @@ export class Client extends AbstractClient {
 另外，本接口还支持复印件、翻拍和PS告警功能。
      * @public
      */
-    async VehicleLicenseOCR(req: VehicleLicenseOCRRequest, cb?: (error: string, rep: VehicleLicenseOCRResponse) => void): Promise<VehicleLicenseOCRResponse> {
-        return await this.request("VehicleLicenseOCR", req, cb);
-    }
-
-
+  async VehicleLicenseOCR(
+    req: VehicleLicenseOCRRequest,
+    cb?: (error: string, rep: VehicleLicenseOCRResponse) => void
+  ): Promise<VehicleLicenseOCRResponse> {
+    return this.request("VehicleLicenseOCR", req, cb)
+  }
 }

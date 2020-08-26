@@ -17,73 +17,72 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribeProjectResponse,
-   ControlDeviceDataResponse,
-   DescribeDeviceDataHistoryRequest,
-   SearchStudioProductResponse,
-   DeviceData,
-   DescribeStudioProductRequest,
-   DeleteProjectRequest,
-   ListEventHistoryRequest,
-   ListEventHistoryResponse,
-   DeviceDataHistoryItem,
-   ProductEntry,
-   GetStudioProductListResponse,
-   DescribeModelDefinitionResponse,
-   ModifyModelDefinitionResponse,
-   GetLoRaGatewayListResponse,
-   ProjectEntry,
-   GetProjectListRequest,
-   DeleteStudioProductResponse,
-   EventHistoryItem,
-   DeleteDeviceRequest,
-   GetDeviceListResponse,
-   ModifyStudioProductResponse,
-   ControlDeviceDataRequest,
-   SearchStudioProductRequest,
-   ReleaseStudioProductResponse,
-   DescribeStudioProductResponse,
-   DeleteLoRaGatewayRequest,
-   ModifyProjectResponse,
-   ModifyModelDefinitionRequest,
-   LoRaGatewayLocation,
-   CreateStudioProductResponse,
-   CallDeviceActionSyncRequest,
-   DeleteStudioProductRequest,
-   ModifyProjectRequest,
-   ModifyLoRaGatewayResponse,
-   CallDeviceActionSyncResponse,
-   CreateLoRaGatewayRequest,
-   ModifyStudioProductRequest,
-   DescribeDeviceDataHistoryResponse,
-   CreateStudioProductRequest,
-   ProductModelDefinition,
-   CreateProjectResponse,
-   ReleaseStudioProductRequest,
-   DescribeModelDefinitionRequest,
-   DeleteProjectResponse,
-   CallDeviceActionAsyncResponse,
-   CallDeviceActionAsyncRequest,
-   ProjectEntryEx,
-   DescribeDeviceDataResponse,
-   CreateDeviceResponse,
-   GetLoRaGatewayListRequest,
-   CreateDeviceRequest,
-   DescribeProjectRequest,
-   GetStudioProductListRequest,
-   DescribeDeviceDataRequest,
-   DeleteDeviceResponse,
-   DeviceInfo,
-   CreateLoRaGatewayResponse,
-   DescribeDeviceRequest,
-   GetDeviceListRequest,
-   ModifyLoRaGatewayRequest,
-   DeleteLoRaGatewayResponse,
-   LoRaGatewayItem,
-   DescribeDeviceResponse,
-   GetProjectListResponse,
-   CreateProjectRequest,
-
+  DescribeProjectResponse,
+  ControlDeviceDataResponse,
+  DescribeDeviceDataHistoryRequest,
+  SearchStudioProductResponse,
+  DeviceData,
+  DescribeStudioProductRequest,
+  DeleteProjectRequest,
+  ListEventHistoryRequest,
+  ListEventHistoryResponse,
+  DeviceDataHistoryItem,
+  ProductEntry,
+  GetStudioProductListResponse,
+  DescribeModelDefinitionResponse,
+  ModifyModelDefinitionResponse,
+  GetLoRaGatewayListResponse,
+  ProjectEntry,
+  GetProjectListRequest,
+  DeleteStudioProductResponse,
+  EventHistoryItem,
+  DeleteDeviceRequest,
+  GetDeviceListResponse,
+  ModifyStudioProductResponse,
+  ControlDeviceDataRequest,
+  SearchStudioProductRequest,
+  ReleaseStudioProductResponse,
+  DescribeStudioProductResponse,
+  DeleteLoRaGatewayRequest,
+  ModifyProjectResponse,
+  ModifyModelDefinitionRequest,
+  LoRaGatewayLocation,
+  CreateStudioProductResponse,
+  CallDeviceActionSyncRequest,
+  DeleteStudioProductRequest,
+  ModifyProjectRequest,
+  ModifyLoRaGatewayResponse,
+  CallDeviceActionSyncResponse,
+  CreateLoRaGatewayRequest,
+  ModifyStudioProductRequest,
+  DescribeDeviceDataHistoryResponse,
+  CreateStudioProductRequest,
+  ProductModelDefinition,
+  CreateProjectResponse,
+  ReleaseStudioProductRequest,
+  DescribeModelDefinitionRequest,
+  DeleteProjectResponse,
+  CallDeviceActionAsyncResponse,
+  CallDeviceActionAsyncRequest,
+  ProjectEntryEx,
+  DescribeDeviceDataResponse,
+  CreateDeviceResponse,
+  GetLoRaGatewayListRequest,
+  CreateDeviceRequest,
+  DescribeProjectRequest,
+  GetStudioProductListRequest,
+  DescribeDeviceDataRequest,
+  DeleteDeviceResponse,
+  DeviceInfo,
+  CreateLoRaGatewayResponse,
+  DescribeDeviceRequest,
+  GetDeviceListRequest,
+  ModifyLoRaGatewayRequest,
+  DeleteLoRaGatewayResponse,
+  LoRaGatewayItem,
+  DescribeDeviceResponse,
+  GetProjectListResponse,
+  CreateProjectRequest,
 } from "./iotexplorer_models"
 
 /**
@@ -91,234 +90,315 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("iotexplorer.tencentcloudapi.com", "2019-04-23", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("iotexplorer.tencentcloudapi.com", "2019-04-23", clientConfig);
-    }
-    
-    /**
-     * 提供修改产品的名称和描述等信息的能力，对于已发布产品不允许进行修改。
-     * @public
-     */
-    async ModifyStudioProduct(req: ModifyStudioProductRequest, cb?: (error: string, rep: ModifyStudioProductResponse) => void): Promise<ModifyStudioProductResponse> {
-        return await this.request("ModifyStudioProduct", req, cb);
-    }
+  /**
+   * 提供修改产品的名称和描述等信息的能力，对于已发布产品不允许进行修改。
+   * @public
+   */
+  async ModifyStudioProduct(
+    req: ModifyStudioProductRequest,
+    cb?: (error: string, rep: ModifyStudioProductResponse) => void
+  ): Promise<ModifyStudioProductResponse> {
+    return this.request("ModifyStudioProduct", req, cb)
+  }
 
-    /**
-     * 提供删除某个项目下产品的能力
-     * @public
-     */
-    async DeleteStudioProduct(req: DeleteStudioProductRequest, cb?: (error: string, rep: DeleteStudioProductResponse) => void): Promise<DeleteStudioProductResponse> {
-        return await this.request("DeleteStudioProduct", req, cb);
-    }
+  /**
+   * 提供删除某个项目下产品的能力
+   * @public
+   */
+  async DeleteStudioProduct(
+    req: DeleteStudioProductRequest,
+    cb?: (error: string, rep: DeleteStudioProductResponse) => void
+  ): Promise<DeleteStudioProductResponse> {
+    return this.request("DeleteStudioProduct", req, cb)
+  }
 
-    /**
-     * 根据设备产品ID、设备名称，获取设备上报的属性数据。
-     * @public
-     */
-    async DescribeDeviceData(req: DescribeDeviceDataRequest, cb?: (error: string, rep: DescribeDeviceDataResponse) => void): Promise<DescribeDeviceDataResponse> {
-        return await this.request("DescribeDeviceData", req, cb);
-    }
+  /**
+   * 根据设备产品ID、设备名称，获取设备上报的属性数据。
+   * @public
+   */
+  async DescribeDeviceData(
+    req: DescribeDeviceDataRequest,
+    cb?: (error: string, rep: DescribeDeviceDataResponse) => void
+  ): Promise<DescribeDeviceDataResponse> {
+    return this.request("DescribeDeviceData", req, cb)
+  }
 
-    /**
-     * 删除  LoRa 网关的接口
-     * @public
-     */
-    async DeleteLoRaGateway(req: DeleteLoRaGatewayRequest, cb?: (error: string, rep: DeleteLoRaGatewayResponse) => void): Promise<DeleteLoRaGatewayResponse> {
-        return await this.request("DeleteLoRaGateway", req, cb);
-    }
+  /**
+   * 删除  LoRa 网关的接口
+   * @public
+   */
+  async DeleteLoRaGateway(
+    req: DeleteLoRaGatewayRequest,
+    cb?: (error: string, rep: DeleteLoRaGatewayResponse) => void
+  ): Promise<DeleteLoRaGatewayResponse> {
+    return this.request("DeleteLoRaGateway", req, cb)
+  }
 
-    /**
-     * 为用户提供新建产品的能力，用于管理用户的设备
-     * @public
-     */
-    async CreateStudioProduct(req: CreateStudioProductRequest, cb?: (error: string, rep: CreateStudioProductResponse) => void): Promise<CreateStudioProductResponse> {
-        return await this.request("CreateStudioProduct", req, cb);
-    }
+  /**
+   * 为用户提供新建产品的能力，用于管理用户的设备
+   * @public
+   */
+  async CreateStudioProduct(
+    req: CreateStudioProductRequest,
+    cb?: (error: string, rep: CreateStudioProductResponse) => void
+  ): Promise<CreateStudioProductResponse> {
+    return this.request("CreateStudioProduct", req, cb)
+  }
 
-    /**
-     * 用于查看某个设备的详细信息
-     * @public
-     */
-    async DescribeDevice(req: DescribeDeviceRequest, cb?: (error: string, rep: DescribeDeviceResponse) => void): Promise<DescribeDeviceResponse> {
-        return await this.request("DescribeDevice", req, cb);
-    }
+  /**
+   * 用于查看某个设备的详细信息
+   * @public
+   */
+  async DescribeDevice(
+    req: DescribeDeviceRequest,
+    cb?: (error: string, rep: DescribeDeviceResponse) => void
+  ): Promise<DescribeDeviceResponse> {
+    return this.request("DescribeDevice", req, cb)
+  }
 
-    /**
-     * 创建新 LoRa 网关设备接口
-     * @public
-     */
-    async CreateLoRaGateway(req: CreateLoRaGatewayRequest, cb?: (error: string, rep: CreateLoRaGatewayResponse) => void): Promise<CreateLoRaGatewayResponse> {
-        return await this.request("CreateLoRaGateway", req, cb);
-    }
+  /**
+   * 创建新 LoRa 网关设备接口
+   * @public
+   */
+  async CreateLoRaGateway(
+    req: CreateLoRaGatewayRequest,
+    cb?: (error: string, rep: CreateLoRaGatewayResponse) => void
+  ): Promise<CreateLoRaGatewayResponse> {
+    return this.request("CreateLoRaGateway", req, cb)
+  }
 
-    /**
-     * 修改 LoRa 网关信息
-     * @public
-     */
-    async ModifyLoRaGateway(req: ModifyLoRaGatewayRequest, cb?: (error: string, rep: ModifyLoRaGatewayResponse) => void): Promise<ModifyLoRaGatewayResponse> {
-        return await this.request("ModifyLoRaGateway", req, cb);
-    }
+  /**
+   * 修改 LoRa 网关信息
+   * @public
+   */
+  async ModifyLoRaGateway(
+    req: ModifyLoRaGatewayRequest,
+    cb?: (error: string, rep: ModifyLoRaGatewayResponse) => void
+  ): Promise<ModifyLoRaGatewayResponse> {
+    return this.request("ModifyLoRaGateway", req, cb)
+  }
 
-    /**
-     * 提供根据产品名称查找产品的能力
-     * @public
-     */
-    async SearchStudioProduct(req: SearchStudioProductRequest, cb?: (error: string, rep: SearchStudioProductResponse) => void): Promise<SearchStudioProductResponse> {
-        return await this.request("SearchStudioProduct", req, cb);
-    }
+  /**
+   * 提供根据产品名称查找产品的能力
+   * @public
+   */
+  async SearchStudioProduct(
+    req: SearchStudioProductRequest,
+    cb?: (error: string, rep: SearchStudioProductResponse) => void
+  ): Promise<SearchStudioProductResponse> {
+    return this.request("SearchStudioProduct", req, cb)
+  }
 
-    /**
-     * 提供查询用户所创建的项目列表查询功能。
-     * @public
-     */
-    async GetProjectList(req: GetProjectListRequest, cb?: (error: string, rep: GetProjectListResponse) => void): Promise<GetProjectListResponse> {
-        return await this.request("GetProjectList", req, cb);
-    }
+  /**
+   * 提供查询用户所创建的项目列表查询功能。
+   * @public
+   */
+  async GetProjectList(
+    req: GetProjectListRequest,
+    cb?: (error: string, rep: GetProjectListResponse) => void
+  ): Promise<GetProjectListResponse> {
+    return this.request("GetProjectList", req, cb)
+  }
 
-    /**
-     * 获取设备在指定时间范围内上报的历史数据。
-     * @public
-     */
-    async DescribeDeviceDataHistory(req: DescribeDeviceDataHistoryRequest, cb?: (error: string, rep: DescribeDeviceDataHistoryResponse) => void): Promise<DescribeDeviceDataHistoryResponse> {
-        return await this.request("DescribeDeviceDataHistory", req, cb);
-    }
+  /**
+   * 获取设备在指定时间范围内上报的历史数据。
+   * @public
+   */
+  async DescribeDeviceDataHistory(
+    req: DescribeDeviceDataHistoryRequest,
+    cb?: (error: string, rep: DescribeDeviceDataHistoryResponse) => void
+  ): Promise<DescribeDeviceDataHistoryResponse> {
+    return this.request("DescribeDeviceDataHistory", req, cb)
+  }
 
-    /**
-     * 为用户提供同步调用设备行为的能力。
-     * @public
-     */
-    async CallDeviceActionSync(req: CallDeviceActionSyncRequest, cb?: (error: string, rep: CallDeviceActionSyncResponse) => void): Promise<CallDeviceActionSyncResponse> {
-        return await this.request("CallDeviceActionSync", req, cb);
-    }
+  /**
+   * 为用户提供同步调用设备行为的能力。
+   * @public
+   */
+  async CallDeviceActionSync(
+    req: CallDeviceActionSyncRequest,
+    cb?: (error: string, rep: CallDeviceActionSyncResponse) => void
+  ): Promise<CallDeviceActionSyncResponse> {
+    return this.request("CallDeviceActionSync", req, cb)
+  }
 
-    /**
-     * 提供查看茶品详细信息的能力，包括产品的ID、数据协议、认证类型等重要参数
-     * @public
-     */
-    async DescribeStudioProduct(req: DescribeStudioProductRequest, cb?: (error: string, rep: DescribeStudioProductResponse) => void): Promise<DescribeStudioProductResponse> {
-        return await this.request("DescribeStudioProduct", req, cb);
-    }
+  /**
+   * 提供查看茶品详细信息的能力，包括产品的ID、数据协议、认证类型等重要参数
+   * @public
+   */
+  async DescribeStudioProduct(
+    req: DescribeStudioProductRequest,
+    cb?: (error: string, rep: DescribeStudioProductResponse) => void
+  ): Promise<DescribeStudioProductResponse> {
+    return this.request("DescribeStudioProduct", req, cb)
+  }
 
-    /**
-     * 修改项目
-     * @public
-     */
-    async ModifyProject(req: ModifyProjectRequest, cb?: (error: string, rep: ModifyProjectResponse) => void): Promise<ModifyProjectResponse> {
-        return await this.request("ModifyProject", req, cb);
-    }
+  /**
+   * 修改项目
+   * @public
+   */
+  async ModifyProject(
+    req: ModifyProjectRequest,
+    cb?: (error: string, rep: ModifyProjectResponse) => void
+  ): Promise<ModifyProjectResponse> {
+    return this.request("ModifyProject", req, cb)
+  }
 
-    /**
-     * 用于查询某个产品下的设备列表
-     * @public
-     */
-    async GetDeviceList(req: GetDeviceListRequest, cb?: (error: string, rep: GetDeviceListResponse) => void): Promise<GetDeviceListResponse> {
-        return await this.request("GetDeviceList", req, cb);
-    }
+  /**
+   * 用于查询某个产品下的设备列表
+   * @public
+   */
+  async GetDeviceList(
+    req: GetDeviceListRequest,
+    cb?: (error: string, rep: GetDeviceListResponse) => void
+  ): Promise<GetDeviceListResponse> {
+    return this.request("GetDeviceList", req, cb)
+  }
 
-    /**
-     * 创建设备
-     * @public
-     */
-    async CreateDevice(req: CreateDeviceRequest, cb?: (error: string, rep: CreateDeviceResponse) => void): Promise<CreateDeviceResponse> {
-        return await this.request("CreateDevice", req, cb);
-    }
+  /**
+   * 创建设备
+   * @public
+   */
+  async CreateDevice(
+    req: CreateDeviceRequest,
+    cb?: (error: string, rep: CreateDeviceResponse) => void
+  ): Promise<CreateDeviceResponse> {
+    return this.request("CreateDevice", req, cb)
+  }
 
-    /**
-     * 获取设备的历史事件
-     * @public
-     */
-    async ListEventHistory(req: ListEventHistoryRequest, cb?: (error: string, rep: ListEventHistoryResponse) => void): Promise<ListEventHistoryResponse> {
-        return await this.request("ListEventHistory", req, cb);
-    }
+  /**
+   * 获取设备的历史事件
+   * @public
+   */
+  async ListEventHistory(
+    req: ListEventHistoryRequest,
+    cb?: (error: string, rep: ListEventHistoryResponse) => void
+  ): Promise<ListEventHistoryResponse> {
+    return this.request("ListEventHistory", req, cb)
+  }
 
-    /**
-     * 删除设备
-     * @public
-     */
-    async DeleteDevice(req: DeleteDeviceRequest, cb?: (error: string, rep: DeleteDeviceResponse) => void): Promise<DeleteDeviceResponse> {
-        return await this.request("DeleteDevice", req, cb);
-    }
+  /**
+   * 删除设备
+   * @public
+   */
+  async DeleteDevice(
+    req: DeleteDeviceRequest,
+    cb?: (error: string, rep: DeleteDeviceResponse) => void
+  ): Promise<DeleteDeviceResponse> {
+    return this.request("DeleteDevice", req, cb)
+  }
 
-    /**
-     * 获取 LoRa 网关列表接口
-     * @public
-     */
-    async GetLoRaGatewayList(req: GetLoRaGatewayListRequest, cb?: (error: string, rep: GetLoRaGatewayListResponse) => void): Promise<GetLoRaGatewayListResponse> {
-        return await this.request("GetLoRaGatewayList", req, cb);
-    }
+  /**
+   * 获取 LoRa 网关列表接口
+   * @public
+   */
+  async GetLoRaGatewayList(
+    req: GetLoRaGatewayListRequest,
+    cb?: (error: string, rep: GetLoRaGatewayListResponse) => void
+  ): Promise<GetLoRaGatewayListResponse> {
+    return this.request("GetLoRaGatewayList", req, cb)
+  }
 
-    /**
-     * 产品开发完成并测试通过后，通过发布产品将产品设置为发布状态
-     * @public
-     */
-    async ReleaseStudioProduct(req: ReleaseStudioProductRequest, cb?: (error: string, rep: ReleaseStudioProductResponse) => void): Promise<ReleaseStudioProductResponse> {
-        return await this.request("ReleaseStudioProduct", req, cb);
-    }
+  /**
+   * 产品开发完成并测试通过后，通过发布产品将产品设置为发布状态
+   * @public
+   */
+  async ReleaseStudioProduct(
+    req: ReleaseStudioProductRequest,
+    cb?: (error: string, rep: ReleaseStudioProductResponse) => void
+  ): Promise<ReleaseStudioProductResponse> {
+    return this.request("ReleaseStudioProduct", req, cb)
+  }
 
-    /**
-     * 提供修改产品的数据模板的能力
-     * @public
-     */
-    async ModifyModelDefinition(req: ModifyModelDefinitionRequest, cb?: (error: string, rep: ModifyModelDefinitionResponse) => void): Promise<ModifyModelDefinitionResponse> {
-        return await this.request("ModifyModelDefinition", req, cb);
-    }
+  /**
+   * 提供修改产品的数据模板的能力
+   * @public
+   */
+  async ModifyModelDefinition(
+    req: ModifyModelDefinitionRequest,
+    cb?: (error: string, rep: ModifyModelDefinitionResponse) => void
+  ): Promise<ModifyModelDefinitionResponse> {
+    return this.request("ModifyModelDefinition", req, cb)
+  }
 
-    /**
-     * 查询项目详情
-     * @public
-     */
-    async DescribeProject(req: DescribeProjectRequest, cb?: (error: string, rep: DescribeProjectResponse) => void): Promise<DescribeProjectResponse> {
-        return await this.request("DescribeProject", req, cb);
-    }
+  /**
+   * 查询项目详情
+   * @public
+   */
+  async DescribeProject(
+    req: DescribeProjectRequest,
+    cb?: (error: string, rep: DescribeProjectResponse) => void
+  ): Promise<DescribeProjectResponse> {
+    return this.request("DescribeProject", req, cb)
+  }
 
-    /**
-     * 查询产品配置的数据模板信息
-     * @public
-     */
-    async DescribeModelDefinition(req: DescribeModelDefinitionRequest, cb?: (error: string, rep: DescribeModelDefinitionResponse) => void): Promise<DescribeModelDefinitionResponse> {
-        return await this.request("DescribeModelDefinition", req, cb);
-    }
+  /**
+   * 查询产品配置的数据模板信息
+   * @public
+   */
+  async DescribeModelDefinition(
+    req: DescribeModelDefinitionRequest,
+    cb?: (error: string, rep: DescribeModelDefinitionResponse) => void
+  ): Promise<DescribeModelDefinitionResponse> {
+    return this.request("DescribeModelDefinition", req, cb)
+  }
 
-    /**
-     * 为用户提供新建项目的能力，用于集中管理产品和应用。
-     * @public
-     */
-    async CreateProject(req: CreateProjectRequest, cb?: (error: string, rep: CreateProjectResponse) => void): Promise<CreateProjectResponse> {
-        return await this.request("CreateProject", req, cb);
-    }
+  /**
+   * 为用户提供新建项目的能力，用于集中管理产品和应用。
+   * @public
+   */
+  async CreateProject(
+    req: CreateProjectRequest,
+    cb?: (error: string, rep: CreateProjectResponse) => void
+  ): Promise<CreateProjectResponse> {
+    return this.request("CreateProject", req, cb)
+  }
 
-    /**
-     * 提供给用户异步调用设备行为的能力
-     * @public
-     */
-    async CallDeviceActionAsync(req: CallDeviceActionAsyncRequest, cb?: (error: string, rep: CallDeviceActionAsyncResponse) => void): Promise<CallDeviceActionAsyncResponse> {
-        return await this.request("CallDeviceActionAsync", req, cb);
-    }
+  /**
+   * 提供给用户异步调用设备行为的能力
+   * @public
+   */
+  async CallDeviceActionAsync(
+    req: CallDeviceActionAsyncRequest,
+    cb?: (error: string, rep: CallDeviceActionAsyncResponse) => void
+  ): Promise<CallDeviceActionAsyncResponse> {
+    return this.request("CallDeviceActionAsync", req, cb)
+  }
 
-    /**
-     * 提供删除某个项目的能力
-     * @public
-     */
-    async DeleteProject(req: DeleteProjectRequest, cb?: (error: string, rep: DeleteProjectResponse) => void): Promise<DeleteProjectResponse> {
-        return await this.request("DeleteProject", req, cb);
-    }
+  /**
+   * 提供删除某个项目的能力
+   * @public
+   */
+  async DeleteProject(
+    req: DeleteProjectRequest,
+    cb?: (error: string, rep: DeleteProjectResponse) => void
+  ): Promise<DeleteProjectResponse> {
+    return this.request("DeleteProject", req, cb)
+  }
 
-    /**
-     * 根据设备产品ID、设备名称，设置控制设备的属性数据。
-     * @public
-     */
-    async ControlDeviceData(req: ControlDeviceDataRequest, cb?: (error: string, rep: ControlDeviceDataResponse) => void): Promise<ControlDeviceDataResponse> {
-        return await this.request("ControlDeviceData", req, cb);
-    }
+  /**
+   * 根据设备产品ID、设备名称，设置控制设备的属性数据。
+   * @public
+   */
+  async ControlDeviceData(
+    req: ControlDeviceDataRequest,
+    cb?: (error: string, rep: ControlDeviceDataResponse) => void
+  ): Promise<ControlDeviceDataResponse> {
+    return this.request("ControlDeviceData", req, cb)
+  }
 
-    /**
-     * 提供查询某个项目下所有产品信息的能力。
-     * @public
-     */
-    async GetStudioProductList(req: GetStudioProductListRequest, cb?: (error: string, rep: GetStudioProductListResponse) => void): Promise<GetStudioProductListResponse> {
-        return await this.request("GetStudioProductList", req, cb);
-    }
-
-
+  /**
+   * 提供查询某个项目下所有产品信息的能力。
+   * @public
+   */
+  async GetStudioProductList(
+    req: GetStudioProductListRequest,
+    cb?: (error: string, rep: GetStudioProductListResponse) => void
+  ): Promise<GetStudioProductListResponse> {
+    return this.request("GetStudioProductList", req, cb)
+  }
 }

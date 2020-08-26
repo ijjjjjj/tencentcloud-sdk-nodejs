@@ -17,14 +17,13 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   TextProcessResponse,
-   Group,
-   SlotInfo,
-   TextResetRequest,
-   TextResetResponse,
-   ResponseMessage,
-   TextProcessRequest,
-
+  TextProcessResponse,
+  Group,
+  SlotInfo,
+  TextResetRequest,
+  TextResetResponse,
+  ResponseMessage,
+  TextProcessRequest,
 } from "./tbp_models"
 
 /**
@@ -32,26 +31,29 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("tbp.tencentcloudapi.com", "2019-06-27", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("tbp.tencentcloudapi.com", "2019-06-27", clientConfig);
-    }
-    
-    /**
-     * 会话重置接口。
-     * @public
-     */
-    async TextReset(req: TextResetRequest, cb?: (error: string, rep: TextResetResponse) => void): Promise<TextResetResponse> {
-        return await this.request("TextReset", req, cb);
-    }
+  /**
+   * 会话重置接口。
+   * @public
+   */
+  async TextReset(
+    req: TextResetRequest,
+    cb?: (error: string, rep: TextResetResponse) => void
+  ): Promise<TextResetResponse> {
+    return this.request("TextReset", req, cb)
+  }
 
-    /**
-     * 接收调用侧的文本输入，返回应答文本。
-     * @public
-     */
-    async TextProcess(req: TextProcessRequest, cb?: (error: string, rep: TextProcessResponse) => void): Promise<TextProcessResponse> {
-        return await this.request("TextProcess", req, cb);
-    }
-
-
+  /**
+   * 接收调用侧的文本输入，返回应答文本。
+   * @public
+   */
+  async TextProcess(
+    req: TextProcessRequest,
+    cb?: (error: string, rep: TextProcessResponse) => void
+  ): Promise<TextProcessResponse> {
+    return this.request("TextProcess", req, cb)
+  }
 }

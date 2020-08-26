@@ -17,17 +17,16 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   AssumeRoleWithSAMLResponse,
-   ApiKey,
-   AssumeRoleWithSAMLRequest,
-   GetFederationTokenResponse,
-   QueryApiKeyResponse,
-   AssumeRoleResponse,
-   QueryApiKeyRequest,
-   GetFederationTokenRequest,
-   Credentials,
-   AssumeRoleRequest,
-
+  AssumeRoleWithSAMLResponse,
+  ApiKey,
+  AssumeRoleWithSAMLRequest,
+  GetFederationTokenResponse,
+  QueryApiKeyResponse,
+  AssumeRoleResponse,
+  QueryApiKeyRequest,
+  GetFederationTokenRequest,
+  Credentials,
+  AssumeRoleRequest,
 } from "./sts_models"
 
 /**
@@ -35,42 +34,51 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("sts.tencentcloudapi.com", "2018-08-13", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("sts.tencentcloudapi.com", "2018-08-13", clientConfig);
-    }
-    
-    /**
-     * 获取联合身份临时访问凭证
-     * @public
-     */
-    async GetFederationToken(req: GetFederationTokenRequest, cb?: (error: string, rep: GetFederationTokenResponse) => void): Promise<GetFederationTokenResponse> {
-        return await this.request("GetFederationToken", req, cb);
-    }
+  /**
+   * 获取联合身份临时访问凭证
+   * @public
+   */
+  async GetFederationToken(
+    req: GetFederationTokenRequest,
+    cb?: (error: string, rep: GetFederationTokenResponse) => void
+  ): Promise<GetFederationTokenResponse> {
+    return this.request("GetFederationToken", req, cb)
+  }
 
-    /**
-     * 拉取API密钥列表
-     * @public
-     */
-    async QueryApiKey(req: QueryApiKeyRequest, cb?: (error: string, rep: QueryApiKeyResponse) => void): Promise<QueryApiKeyResponse> {
-        return await this.request("QueryApiKey", req, cb);
-    }
+  /**
+   * 拉取API密钥列表
+   * @public
+   */
+  async QueryApiKey(
+    req: QueryApiKeyRequest,
+    cb?: (error: string, rep: QueryApiKeyResponse) => void
+  ): Promise<QueryApiKeyResponse> {
+    return this.request("QueryApiKey", req, cb)
+  }
 
-    /**
-     * 本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时凭证。
-     * @public
-     */
-    async AssumeRoleWithSAML(req: AssumeRoleWithSAMLRequest, cb?: (error: string, rep: AssumeRoleWithSAMLResponse) => void): Promise<AssumeRoleWithSAMLResponse> {
-        return await this.request("AssumeRoleWithSAML", req, cb);
-    }
+  /**
+   * 本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时凭证。
+   * @public
+   */
+  async AssumeRoleWithSAML(
+    req: AssumeRoleWithSAMLRequest,
+    cb?: (error: string, rep: AssumeRoleWithSAMLResponse) => void
+  ): Promise<AssumeRoleWithSAMLResponse> {
+    return this.request("AssumeRoleWithSAML", req, cb)
+  }
 
-    /**
-     * 申请扮演角色
-     * @public
-     */
-    async AssumeRole(req: AssumeRoleRequest, cb?: (error: string, rep: AssumeRoleResponse) => void): Promise<AssumeRoleResponse> {
-        return await this.request("AssumeRole", req, cb);
-    }
-
-
+  /**
+   * 申请扮演角色
+   * @public
+   */
+  async AssumeRole(
+    req: AssumeRoleRequest,
+    cb?: (error: string, rep: AssumeRoleResponse) => void
+  ): Promise<AssumeRoleResponse> {
+    return this.request("AssumeRole", req, cb)
+  }
 }

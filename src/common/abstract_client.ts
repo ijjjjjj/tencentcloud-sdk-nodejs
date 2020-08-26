@@ -7,42 +7,39 @@ import { Response } from "node-fetch"
 
 type ResponseCallback = (error: string, rep: any) => void
 interface RequestOptions {
-  multipart: boolean;
+  multipart: boolean
 }
 interface RequestData {
-  Action: string;
-  RequestClient: string;
-  Nonce: number;
-  Timestamp: number;
-  Version: string;
-  Signature: string;
-  SecretId?: string;
-  region?: string;
-  Token?: string;
-  SinatureMethod?: string;
-  [key: string]: any;
+  Action: string
+  RequestClient: string
+  Nonce: number
+  Timestamp: number
+  Version: string
+  Signature: string
+  SecretId?: string
+  region?: string
+  Token?: string
+  SinatureMethod?: string
+  [key: string]: any
 }
-interface ResponseData {
-  RequestId: string;
-  [key: string]: any;
-}
+type ResponseData = any
 
 export interface ClientConfig {
   /**
    * @param {Credential} credential 认证信息
    * 必选
    */
-  credential: Credential;
+  credential: Credential
   /**
    * @param {string} region 产品地域
    * 必选
    */
-  region: string;
+  region: string
   /**
    * @param {ClientProfile} profile 可选配置实例
    * 可选，没有特殊需求可以跳过。
    */
-  profile?: ClientProfile;
+  profile?: ClientProfile
 }
 /**
  * @inner

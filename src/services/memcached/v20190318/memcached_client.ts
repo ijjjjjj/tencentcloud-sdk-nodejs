@@ -17,11 +17,10 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribeInstancesRequest,
-   TagInfo,
-   DescribeInstancesResponse,
-   InstanceListInfo,
-
+  DescribeInstancesRequest,
+  TagInfo,
+  DescribeInstancesResponse,
+  InstanceListInfo,
 } from "./memcached_models"
 
 /**
@@ -29,18 +28,18 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("memcached.tencentcloudapi.com", "2019-03-18", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("memcached.tencentcloudapi.com", "2019-03-18", clientConfig);
-    }
-    
-    /**
-     * 获取Cmem实例列表
-     * @public
-     */
-    async DescribeInstances(req: DescribeInstancesRequest, cb?: (error: string, rep: DescribeInstancesResponse) => void): Promise<DescribeInstancesResponse> {
-        return await this.request("DescribeInstances", req, cb);
-    }
-
-
+  /**
+   * 获取Cmem实例列表
+   * @public
+   */
+  async DescribeInstances(
+    req: DescribeInstancesRequest,
+    cb?: (error: string, rep: DescribeInstancesResponse) => void
+  ): Promise<DescribeInstancesResponse> {
+    return this.request("DescribeInstances", req, cb)
+  }
 }

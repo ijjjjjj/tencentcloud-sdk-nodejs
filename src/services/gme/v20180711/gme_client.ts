@@ -17,38 +17,37 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   ScanVoiceResponse,
-   AppStatisticsItem,
-   ModifyAppStatusRequest,
-   DescribeScanResultListResponse,
-   VoiceFilterRequest,
-   VoiceMessageStatisticsItem,
-   DescribeScanResultListRequest,
-   RealTimeSpeechStatisticsItem,
-   VoiceFilterResponse,
-   Tag,
-   VoiceMessageConf,
-   DescribeFilterResultListResponse,
-   DescribeAppStatisticsResponse,
-   Task,
-   VoiceFilterStatisticsItem,
-   VoiceFilterInfo,
-   DescribeFilterResultResponse,
-   DescribeScanResult,
-   DescribeFilterResultListRequest,
-   VoiceFilter,
-   ScanDetail,
-   CreateAppRequest,
-   RealtimeSpeechConf,
-   ScanVoiceResult,
-   CreateAppResponse,
-   DescribeAppStatisticsRequest,
-   ScanPiece,
-   ModifyAppStatusResponse,
-   DescribeFilterResultRequest,
-   VoiceFilterConf,
-   ScanVoiceRequest,
-
+  ScanVoiceResponse,
+  AppStatisticsItem,
+  ModifyAppStatusRequest,
+  DescribeScanResultListResponse,
+  VoiceFilterRequest,
+  VoiceMessageStatisticsItem,
+  DescribeScanResultListRequest,
+  RealTimeSpeechStatisticsItem,
+  VoiceFilterResponse,
+  Tag,
+  VoiceMessageConf,
+  DescribeFilterResultListResponse,
+  DescribeAppStatisticsResponse,
+  Task,
+  VoiceFilterStatisticsItem,
+  VoiceFilterInfo,
+  DescribeFilterResultResponse,
+  DescribeScanResult,
+  DescribeFilterResultListRequest,
+  VoiceFilter,
+  ScanDetail,
+  CreateAppRequest,
+  RealtimeSpeechConf,
+  ScanVoiceResult,
+  CreateAppResponse,
+  DescribeAppStatisticsRequest,
+  ScanPiece,
+  ModifyAppStatusResponse,
+  DescribeFilterResultRequest,
+  VoiceFilterConf,
+  ScanVoiceRequest,
 } from "./gme_models"
 
 /**
@@ -56,55 +55,69 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("gme.tencentcloudapi.com", "2018-07-11", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("gme.tencentcloudapi.com", "2018-07-11", clientConfig);
-    }
-    
-    /**
-     * 根据应用ID和文件ID查询识别结果
-     * @public
-     */
-    async DescribeFilterResult(req: DescribeFilterResultRequest, cb?: (error: string, rep: DescribeFilterResultResponse) => void): Promise<DescribeFilterResultResponse> {
-        return await this.request("DescribeFilterResult", req, cb);
-    }
+  /**
+   * 根据应用ID和文件ID查询识别结果
+   * @public
+   */
+  async DescribeFilterResult(
+    req: DescribeFilterResultRequest,
+    cb?: (error: string, rep: DescribeFilterResultResponse) => void
+  ): Promise<DescribeFilterResultResponse> {
+    return this.request("DescribeFilterResult", req, cb)
+  }
 
-    /**
-     * 本接口(DescribeAppStatistics)用于获取某个GME应用的用量数据。包括实时语音，语音消息及转文本，语音分析等。最长查询周期为最近30天。
-     * @public
-     */
-    async DescribeAppStatistics(req: DescribeAppStatisticsRequest, cb?: (error: string, rep: DescribeAppStatisticsResponse) => void): Promise<DescribeAppStatisticsResponse> {
-        return await this.request("DescribeAppStatistics", req, cb);
-    }
+  /**
+   * 本接口(DescribeAppStatistics)用于获取某个GME应用的用量数据。包括实时语音，语音消息及转文本，语音分析等。最长查询周期为最近30天。
+   * @public
+   */
+  async DescribeAppStatistics(
+    req: DescribeAppStatisticsRequest,
+    cb?: (error: string, rep: DescribeAppStatisticsResponse) => void
+  ): Promise<DescribeAppStatisticsResponse> {
+    return this.request("DescribeAppStatistics", req, cb)
+  }
 
-    /**
+  /**
      * 本接口(DescribeScanResultList)用于查询语音检测结果，查询任务列表最多支持100个。
 <p style="color:red">如果在提交语音检测任务时未设置 Callback 字段，则需要通过本接口获取检测结果</p>
      * @public
      */
-    async DescribeScanResultList(req: DescribeScanResultListRequest, cb?: (error: string, rep: DescribeScanResultListResponse) => void): Promise<DescribeScanResultListResponse> {
-        return await this.request("DescribeScanResultList", req, cb);
-    }
+  async DescribeScanResultList(
+    req: DescribeScanResultListRequest,
+    cb?: (error: string, rep: DescribeScanResultListResponse) => void
+  ): Promise<DescribeScanResultListResponse> {
+    return this.request("DescribeScanResultList", req, cb)
+  }
 
-    /**
+  /**
      * 本接口用于识别涉黄、涉政等违规音频，成功会回调配置在应用的回调地址。回调示例如下：
 {"BizId":0,"FileId":"test_file_id","FileName":"test_file_name","FileUrl":"test_file_url","OpenId":"test_open_id","TimeStamp":"0000-00-00 00:00:00","Data":[{"Type":1,"Word":"xx"}]}
 Type表示过滤类型，1：政治，2：色情，3：谩骂
      * @public
      */
-    async VoiceFilter(req: VoiceFilterRequest, cb?: (error: string, rep: VoiceFilterResponse) => void): Promise<VoiceFilterResponse> {
-        return await this.request("VoiceFilter", req, cb);
-    }
+  async VoiceFilter(
+    req: VoiceFilterRequest,
+    cb?: (error: string, rep: VoiceFilterResponse) => void
+  ): Promise<VoiceFilterResponse> {
+    return this.request("VoiceFilter", req, cb)
+  }
 
-    /**
-     * 根据日期查询识别结果列表
-     * @public
-     */
-    async DescribeFilterResultList(req: DescribeFilterResultListRequest, cb?: (error: string, rep: DescribeFilterResultListResponse) => void): Promise<DescribeFilterResultListResponse> {
-        return await this.request("DescribeFilterResultList", req, cb);
-    }
+  /**
+   * 根据日期查询识别结果列表
+   * @public
+   */
+  async DescribeFilterResultList(
+    req: DescribeFilterResultListRequest,
+    cb?: (error: string, rep: DescribeFilterResultListResponse) => void
+  ): Promise<DescribeFilterResultListResponse> {
+    return this.request("DescribeFilterResultList", req, cb)
+  }
 
-    /**
+  /**
      * 本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音分析服务。
 </br></br>
 
@@ -244,25 +257,32 @@ Type表示过滤类型，1：政治，2：色情，3：谩骂
 </code></pre>
      * @public
      */
-    async ScanVoice(req: ScanVoiceRequest, cb?: (error: string, rep: ScanVoiceResponse) => void): Promise<ScanVoiceResponse> {
-        return await this.request("ScanVoice", req, cb);
-    }
+  async ScanVoice(
+    req: ScanVoiceRequest,
+    cb?: (error: string, rep: ScanVoiceResponse) => void
+  ): Promise<ScanVoiceResponse> {
+    return this.request("ScanVoice", req, cb)
+  }
 
-    /**
-     * 本接口(CreateApp)用于创建一个GME应用。
-     * @public
-     */
-    async CreateApp(req: CreateAppRequest, cb?: (error: string, rep: CreateAppResponse) => void): Promise<CreateAppResponse> {
-        return await this.request("CreateApp", req, cb);
-    }
+  /**
+   * 本接口(CreateApp)用于创建一个GME应用。
+   * @public
+   */
+  async CreateApp(
+    req: CreateAppRequest,
+    cb?: (error: string, rep: CreateAppResponse) => void
+  ): Promise<CreateAppResponse> {
+    return this.request("CreateApp", req, cb)
+  }
 
-    /**
-     * 本接口(ModifyAppStatus)用于修改应用总开关状态。
-     * @public
-     */
-    async ModifyAppStatus(req: ModifyAppStatusRequest, cb?: (error: string, rep: ModifyAppStatusResponse) => void): Promise<ModifyAppStatusResponse> {
-        return await this.request("ModifyAppStatus", req, cb);
-    }
-
-
+  /**
+   * 本接口(ModifyAppStatus)用于修改应用总开关状态。
+   * @public
+   */
+  async ModifyAppStatus(
+    req: ModifyAppStatusRequest,
+    cb?: (error: string, rep: ModifyAppStatusResponse) => void
+  ): Promise<ModifyAppStatusResponse> {
+    return this.request("ModifyAppStatus", req, cb)
+  }
 }

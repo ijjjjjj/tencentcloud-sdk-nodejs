@@ -17,47 +17,46 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribeAbnormalEventResponse,
-   RealtimeData,
-   DescribeAbnormalEventRequest,
-   LayoutParams,
-   TimeValue,
-   StopMCUMixTranscodeResponse,
-   DescribeRealtimeScaleResponse,
-   DismissRoomResponse,
-   DescribeRealtimeNetworkResponse,
-   RemoveUserRequest,
-   DescribeCallDetailRequest,
-   DescribeRealtimeNetworkRequest,
-   DismissRoomRequest,
-   EncodeParams,
-   StartMCUMixTranscodeRequest,
-   DescribeRealtimeQualityResponse,
-   StopMCUMixTranscodeRequest,
-   UserInformation,
-   DescribeHistoryScaleRequest,
-   DescribeRoomInformationResponse,
-   OutputParams,
-   EventMessage,
-   CreateTroubleInfoResponse,
-   QualityData,
-   AbnormalEvent,
-   DescribeRealtimeQualityRequest,
-   ScaleInfomation,
-   CreateTroubleInfoRequest,
-   EventList,
-   DescribeDetailEventResponse,
-   StartMCUMixTranscodeResponse,
-   SmallVideoLayoutParams,
-   DescribeRealtimeScaleRequest,
-   DescribeCallDetailResponse,
-   DescribeRoomInformationRequest,
-   DescribeDetailEventRequest,
-   AbnormalExperience,
-   RoomState,
-   RemoveUserResponse,
-   DescribeHistoryScaleResponse,
-
+  DescribeAbnormalEventResponse,
+  RealtimeData,
+  DescribeAbnormalEventRequest,
+  LayoutParams,
+  TimeValue,
+  StopMCUMixTranscodeResponse,
+  DescribeRealtimeScaleResponse,
+  DismissRoomResponse,
+  DescribeRealtimeNetworkResponse,
+  RemoveUserRequest,
+  DescribeCallDetailRequest,
+  DescribeRealtimeNetworkRequest,
+  DismissRoomRequest,
+  EncodeParams,
+  StartMCUMixTranscodeRequest,
+  DescribeRealtimeQualityResponse,
+  StopMCUMixTranscodeRequest,
+  UserInformation,
+  DescribeHistoryScaleRequest,
+  DescribeRoomInformationResponse,
+  OutputParams,
+  EventMessage,
+  CreateTroubleInfoResponse,
+  QualityData,
+  AbnormalEvent,
+  DescribeRealtimeQualityRequest,
+  ScaleInfomation,
+  CreateTroubleInfoRequest,
+  EventList,
+  DescribeDetailEventResponse,
+  StartMCUMixTranscodeResponse,
+  SmallVideoLayoutParams,
+  DescribeRealtimeScaleRequest,
+  DescribeCallDetailResponse,
+  DescribeRoomInformationRequest,
+  DescribeDetailEventRequest,
+  AbnormalExperience,
+  RoomState,
+  RemoveUserResponse,
+  DescribeHistoryScaleResponse,
 } from "./trtc_models"
 
 /**
@@ -65,36 +64,44 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("trtc.tencentcloudapi.com", "2019-07-22", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("trtc.tencentcloudapi.com", "2019-07-22", clientConfig);
-    }
-    
-    /**
-     * 接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
-     * @public
-     */
-    async RemoveUser(req: RemoveUserRequest, cb?: (error: string, rep: RemoveUserResponse) => void): Promise<RemoveUserResponse> {
-        return await this.request("RemoveUser", req, cb);
-    }
+  /**
+   * 接口说明：将用户从房间移出，适用于主播/房主/管理员踢人等场景。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+   * @public
+   */
+  async RemoveUser(
+    req: RemoveUserRequest,
+    cb?: (error: string, rep: RemoveUserResponse) => void
+  ): Promise<RemoveUserResponse> {
+    return this.request("RemoveUser", req, cb)
+  }
 
-    /**
-     * 创建异常信息
-     * @public
-     */
-    async CreateTroubleInfo(req: CreateTroubleInfoRequest, cb?: (error: string, rep: CreateTroubleInfoResponse) => void): Promise<CreateTroubleInfoResponse> {
-        return await this.request("CreateTroubleInfo", req, cb);
-    }
+  /**
+   * 创建异常信息
+   * @public
+   */
+  async CreateTroubleInfo(
+    req: CreateTroubleInfoRequest,
+    cb?: (error: string, rep: CreateTroubleInfoResponse) => void
+  ): Promise<CreateTroubleInfoResponse> {
+    return this.request("CreateTroubleInfo", req, cb)
+  }
 
-    /**
-     * 可查询sdkqppid 每天的房间数和用户数，每分钟1次，可查询最近5天的数据。当天未结束，无法查到当天的房间数与用户数。
-     * @public
-     */
-    async DescribeHistoryScale(req: DescribeHistoryScaleRequest, cb?: (error: string, rep: DescribeHistoryScaleResponse) => void): Promise<DescribeHistoryScaleResponse> {
-        return await this.request("DescribeHistoryScale", req, cb);
-    }
+  /**
+   * 可查询sdkqppid 每天的房间数和用户数，每分钟1次，可查询最近5天的数据。当天未结束，无法查到当天的房间数与用户数。
+   * @public
+   */
+  async DescribeHistoryScale(
+    req: DescribeHistoryScaleRequest,
+    cb?: (error: string, rep: DescribeHistoryScaleResponse) => void
+  ): Promise<DescribeHistoryScaleResponse> {
+    return this.request("DescribeHistoryScale", req, cb)
+  }
 
-    /**
+  /**
      * 接口说明：启动云端混流，并指定混流画面中各路画面的布局位置。
 
 TRTC 的一个房间中可能会同时存在多路音视频流，您可以通过此 API 接口，通知腾讯云服务端将多路视频画面合成一路，并指定每一路画面的位置，同时将多路声音进行混音，最终形成一路音视频流，以便用于录制和直播观看。
@@ -112,81 +119,109 @@ TRTC 的一个房间中可能会同时存在多路音视频流，您可以通过
 - 画中画模板：适用于混合大小两路视频画面和其他用户混音，或者混合一路大画面和其他用户混音的场景。小画面悬浮于大画面之上，可以指定大小画面的用户以及小画面的显示位置。
      * @public
      */
-    async StartMCUMixTranscode(req: StartMCUMixTranscodeRequest, cb?: (error: string, rep: StartMCUMixTranscodeResponse) => void): Promise<StartMCUMixTranscodeResponse> {
-        return await this.request("StartMCUMixTranscode", req, cb);
-    }
+  async StartMCUMixTranscode(
+    req: StartMCUMixTranscodeRequest,
+    cb?: (error: string, rep: StartMCUMixTranscodeResponse) => void
+  ): Promise<StartMCUMixTranscodeResponse> {
+    return this.request("StartMCUMixTranscode", req, cb)
+  }
 
-    /**
-     * 查询sdkappid维度下实时规模，可查询24小时内数据，查询起止时间不超过1个小时。
-     * @public
-     */
-    async DescribeRealtimeScale(req: DescribeRealtimeScaleRequest, cb?: (error: string, rep: DescribeRealtimeScaleResponse) => void): Promise<DescribeRealtimeScaleResponse> {
-        return await this.request("DescribeRealtimeScale", req, cb);
-    }
+  /**
+   * 查询sdkappid维度下实时规模，可查询24小时内数据，查询起止时间不超过1个小时。
+   * @public
+   */
+  async DescribeRealtimeScale(
+    req: DescribeRealtimeScaleRequest,
+    cb?: (error: string, rep: DescribeRealtimeScaleResponse) => void
+  ): Promise<DescribeRealtimeScaleResponse> {
+    return this.request("DescribeRealtimeScale", req, cb)
+  }
 
-    /**
-     * 查询sdkappid维度下实时网络状态，包括上行丢包与下行丢包。可查询24小时内数据，查询起止时间不超过1个小时。
-     * @public
-     */
-    async DescribeRealtimeNetwork(req: DescribeRealtimeNetworkRequest, cb?: (error: string, rep: DescribeRealtimeNetworkResponse) => void): Promise<DescribeRealtimeNetworkResponse> {
-        return await this.request("DescribeRealtimeNetwork", req, cb);
-    }
+  /**
+   * 查询sdkappid维度下实时网络状态，包括上行丢包与下行丢包。可查询24小时内数据，查询起止时间不超过1个小时。
+   * @public
+   */
+  async DescribeRealtimeNetwork(
+    req: DescribeRealtimeNetworkRequest,
+    cb?: (error: string, rep: DescribeRealtimeNetworkResponse) => void
+  ): Promise<DescribeRealtimeNetworkResponse> {
+    return this.request("DescribeRealtimeNetwork", req, cb)
+  }
 
-    /**
-     * 查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询5天内的数据。
-     * @public
-     */
-    async DescribeRoomInformation(req: DescribeRoomInformationRequest, cb?: (error: string, rep: DescribeRoomInformationResponse) => void): Promise<DescribeRoomInformationResponse> {
-        return await this.request("DescribeRoomInformation", req, cb);
-    }
+  /**
+   * 查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询5天内的数据。
+   * @public
+   */
+  async DescribeRoomInformation(
+    req: DescribeRoomInformationRequest,
+    cb?: (error: string, rep: DescribeRoomInformationResponse) => void
+  ): Promise<DescribeRoomInformationResponse> {
+    return this.request("DescribeRoomInformation", req, cb)
+  }
 
-    /**
-     * 查询用户某次通话内的进退房，视频开关等详细事件。可查询5天内数据。
-     * @public
-     */
-    async DescribeDetailEvent(req: DescribeDetailEventRequest, cb?: (error: string, rep: DescribeDetailEventResponse) => void): Promise<DescribeDetailEventResponse> {
-        return await this.request("DescribeDetailEvent", req, cb);
-    }
+  /**
+   * 查询用户某次通话内的进退房，视频开关等详细事件。可查询5天内数据。
+   * @public
+   */
+  async DescribeDetailEvent(
+    req: DescribeDetailEventRequest,
+    cb?: (error: string, rep: DescribeDetailEventResponse) => void
+  ): Promise<DescribeDetailEventResponse> {
+    return this.request("DescribeDetailEvent", req, cb)
+  }
 
-    /**
-     * 查询指定时间内的用户列表及用户通话质量数据。可查询5天内数据，查询起止时间不超过1个小时，查询用户不超过6个，不支持跨天查询。
-     * @public
-     */
-    async DescribeCallDetail(req: DescribeCallDetailRequest, cb?: (error: string, rep: DescribeCallDetailResponse) => void): Promise<DescribeCallDetailResponse> {
-        return await this.request("DescribeCallDetail", req, cb);
-    }
+  /**
+   * 查询指定时间内的用户列表及用户通话质量数据。可查询5天内数据，查询起止时间不超过1个小时，查询用户不超过6个，不支持跨天查询。
+   * @public
+   */
+  async DescribeCallDetail(
+    req: DescribeCallDetailRequest,
+    cb?: (error: string, rep: DescribeCallDetailResponse) => void
+  ): Promise<DescribeCallDetailResponse> {
+    return this.request("DescribeCallDetail", req, cb)
+  }
 
-    /**
-     * 接口说明：结束云端混流
-     * @public
-     */
-    async StopMCUMixTranscode(req: StopMCUMixTranscodeRequest, cb?: (error: string, rep: StopMCUMixTranscodeResponse) => void): Promise<StopMCUMixTranscodeResponse> {
-        return await this.request("StopMCUMixTranscode", req, cb);
-    }
+  /**
+   * 接口说明：结束云端混流
+   * @public
+   */
+  async StopMCUMixTranscode(
+    req: StopMCUMixTranscodeRequest,
+    cb?: (error: string, rep: StopMCUMixTranscodeResponse) => void
+  ): Promise<StopMCUMixTranscodeResponse> {
+    return this.request("StopMCUMixTranscode", req, cb)
+  }
 
-    /**
-     * 查询SDKAppID下用户的异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询24小时内数据，查询起止时间不超过1个小时。支持跨天查询。异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
-     * @public
-     */
-    async DescribeAbnormalEvent(req: DescribeAbnormalEventRequest, cb?: (error: string, rep: DescribeAbnormalEventResponse) => void): Promise<DescribeAbnormalEventResponse> {
-        return await this.request("DescribeAbnormalEvent", req, cb);
-    }
+  /**
+   * 查询SDKAppID下用户的异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询24小时内数据，查询起止时间不超过1个小时。支持跨天查询。异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
+   * @public
+   */
+  async DescribeAbnormalEvent(
+    req: DescribeAbnormalEventRequest,
+    cb?: (error: string, rep: DescribeAbnormalEventResponse) => void
+  ): Promise<DescribeAbnormalEventResponse> {
+    return this.request("DescribeAbnormalEvent", req, cb)
+  }
 
-    /**
-     * 查询sdkappid维度下实时质量数据，包括：进房成功率，首帧秒开率，音频卡顿率，视频卡顿率。可查询24小时内数据，查询起止时间不超过1个小时。
-     * @public
-     */
-    async DescribeRealtimeQuality(req: DescribeRealtimeQualityRequest, cb?: (error: string, rep: DescribeRealtimeQualityResponse) => void): Promise<DescribeRealtimeQualityResponse> {
-        return await this.request("DescribeRealtimeQuality", req, cb);
-    }
+  /**
+   * 查询sdkappid维度下实时质量数据，包括：进房成功率，首帧秒开率，音频卡顿率，视频卡顿率。可查询24小时内数据，查询起止时间不超过1个小时。
+   * @public
+   */
+  async DescribeRealtimeQuality(
+    req: DescribeRealtimeQualityRequest,
+    cb?: (error: string, rep: DescribeRealtimeQualityResponse) => void
+  ): Promise<DescribeRealtimeQualityResponse> {
+    return this.request("DescribeRealtimeQuality", req, cb)
+  }
 
-    /**
-     * 接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
-     * @public
-     */
-    async DismissRoom(req: DismissRoomRequest, cb?: (error: string, rep: DismissRoomResponse) => void): Promise<DismissRoomResponse> {
-        return await this.request("DismissRoom", req, cb);
-    }
-
-
+  /**
+   * 接口说明：把房间所有用户从房间移出，解散房间。支持所有平台，Android、iOS、Windows 和 macOS 需升级到 TRTC SDK 6.6及以上版本。
+   * @public
+   */
+  async DismissRoom(
+    req: DismissRoomRequest,
+    cb?: (error: string, rep: DismissRoomResponse) => void
+  ): Promise<DismissRoomResponse> {
+    return this.request("DismissRoom", req, cb)
+  }
 }

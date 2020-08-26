@@ -17,60 +17,59 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   SegmentPortraitPicResponse,
-   DetectBodyJointsResponse,
-   Candidate,
-   DeletePersonRequest,
-   ModifyGroupResponse,
-   UpperBodyClothSleeve,
-   BodyAttributeInfo,
-   GetGroupListResponse,
-   GroupInfo,
-   SegmentationOptions,
-   ModifyGroupRequest,
-   CreatePersonRequest,
-   ModifyPersonInfoResponse,
-   Trace,
-   DeleteGroupRequest,
-   ModifyPersonInfoRequest,
-   Gender,
-   SegmentCustomizedPortraitPicRequest,
-   CreateGroupRequest,
-   LowerBodyCloth,
-   UpperBodyClothTexture,
-   TraceInfo,
-   DeleteGroupResponse,
-   BodyRect,
-   DetectBodyRequest,
-   Age,
-   SearchTraceRequest,
-   KeyPointInfo,
-   DetectBodyResponse,
-   PersonInfo,
-   Bag,
-   SegmentCustomizedPortraitPicResponse,
-   DetectBodyJointsRequest,
-   SegmentPortraitPicRequest,
-   UpperBodyClothColor,
-   GetGroupListRequest,
-   BodyDetectResult,
-   Orientation,
-   BodyJointsResult,
-   UpperBodyCloth,
-   LowerBodyClothLength,
-   SearchTraceResponse,
-   CreateTraceResponse,
-   CreatePersonResponse,
-   BoundRect,
-   LowerBodyClothColor,
-   GetPersonListResponse,
-   GetPersonListRequest,
-   LowerBodyClothType,
-   CreateTraceRequest,
-   DeletePersonResponse,
-   AttributesOptions,
-   CreateGroupResponse,
-
+  SegmentPortraitPicResponse,
+  DetectBodyJointsResponse,
+  Candidate,
+  DeletePersonRequest,
+  ModifyGroupResponse,
+  UpperBodyClothSleeve,
+  BodyAttributeInfo,
+  GetGroupListResponse,
+  GroupInfo,
+  SegmentationOptions,
+  ModifyGroupRequest,
+  CreatePersonRequest,
+  ModifyPersonInfoResponse,
+  Trace,
+  DeleteGroupRequest,
+  ModifyPersonInfoRequest,
+  Gender,
+  SegmentCustomizedPortraitPicRequest,
+  CreateGroupRequest,
+  LowerBodyCloth,
+  UpperBodyClothTexture,
+  TraceInfo,
+  DeleteGroupResponse,
+  BodyRect,
+  DetectBodyRequest,
+  Age,
+  SearchTraceRequest,
+  KeyPointInfo,
+  DetectBodyResponse,
+  PersonInfo,
+  Bag,
+  SegmentCustomizedPortraitPicResponse,
+  DetectBodyJointsRequest,
+  SegmentPortraitPicRequest,
+  UpperBodyClothColor,
+  GetGroupListRequest,
+  BodyDetectResult,
+  Orientation,
+  BodyJointsResult,
+  UpperBodyCloth,
+  LowerBodyClothLength,
+  SearchTraceResponse,
+  CreateTraceResponse,
+  CreatePersonResponse,
+  BoundRect,
+  LowerBodyClothColor,
+  GetPersonListResponse,
+  GetPersonListRequest,
+  LowerBodyClothType,
+  CreateTraceRequest,
+  DeletePersonResponse,
+  AttributesOptions,
+  CreateGroupResponse,
 } from "./bda_models"
 
 /**
@@ -78,12 +77,11 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("bda.tencentcloudapi.com", "2020-03-24", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("bda.tencentcloudapi.com", "2020-03-24", clientConfig);
-    }
-    
-    /**
+  /**
      * 本接口用于对一组待识别的人体轨迹（Trace）图片，在人体库中识别出最相似的 TopK 人体，按照相似度从大到小排列。
 
 人体轨迹（Trace）图片要求：图片中当且仅包含一个人体。人体完整、无遮挡。
@@ -94,38 +92,50 @@ export class Client extends AbstractClient {
 - 构成人体轨迹单张图片大小不得超过2M，分辨率不得超过1920*1080。
      * @public
      */
-    async SearchTrace(req: SearchTraceRequest, cb?: (error: string, rep: SearchTraceResponse) => void): Promise<SearchTraceResponse> {
-        return await this.request("SearchTrace", req, cb);
-    }
+  async SearchTrace(
+    req: SearchTraceRequest,
+    cb?: (error: string, rep: SearchTraceResponse) => void
+  ): Promise<SearchTraceResponse> {
+    return this.request("SearchTrace", req, cb)
+  }
 
-    /**
+  /**
      * 检测给定图片中的人体（Body）的位置信息及属性信息。
 
      * @public
      */
-    async DetectBody(req: DetectBodyRequest, cb?: (error: string, rep: DetectBodyResponse) => void): Promise<DetectBodyResponse> {
-        return await this.request("DetectBody", req, cb);
-    }
+  async DetectBody(
+    req: DetectBodyRequest,
+    cb?: (error: string, rep: DetectBodyResponse) => void
+  ): Promise<DetectBodyResponse> {
+    return this.request("DetectBody", req, cb)
+  }
 
-    /**
+  /**
      * 识别传入图片中人体的完整轮廓，进行抠像。
 
      * @public
      */
-    async SegmentPortraitPic(req: SegmentPortraitPicRequest, cb?: (error: string, rep: SegmentPortraitPicResponse) => void): Promise<SegmentPortraitPicResponse> {
-        return await this.request("SegmentPortraitPic", req, cb);
-    }
+  async SegmentPortraitPic(
+    req: SegmentPortraitPicRequest,
+    cb?: (error: string, rep: SegmentPortraitPicResponse) => void
+  ): Promise<SegmentPortraitPicResponse> {
+    return this.request("SegmentPortraitPic", req, cb)
+  }
 
-    /**
+  /**
      * 检测图片中人体的14个关键点。建议用于人体图像清晰、无遮挡的场景。支持一张图片中存在多个人体的识别。
 
      * @public
      */
-    async DetectBodyJoints(req: DetectBodyJointsRequest, cb?: (error: string, rep: DetectBodyJointsResponse) => void): Promise<DetectBodyJointsResponse> {
-        return await this.request("DetectBodyJoints", req, cb);
-    }
+  async DetectBodyJoints(
+    req: DetectBodyJointsRequest,
+    cb?: (error: string, rep: DetectBodyJointsResponse) => void
+  ): Promise<DetectBodyJointsResponse> {
+    return this.request("DetectBodyJoints", req, cb)
+  }
 
-    /**
+  /**
      * 将一个人体轨迹添加到一个人员中。一个人员最多允许包含 5 个人体轨迹。同一人的人体轨迹越多，搜索识别效果越好。
 
 >请注意：
@@ -136,51 +146,69 @@ export class Client extends AbstractClient {
 - 构成人体轨迹单张图片大小限制为2M，分辨率限制为1920*1080。
      * @public
      */
-    async CreateTrace(req: CreateTraceRequest, cb?: (error: string, rep: CreateTraceResponse) => void): Promise<CreateTraceResponse> {
-        return await this.request("CreateTrace", req, cb);
-    }
+  async CreateTrace(
+    req: CreateTraceRequest,
+    cb?: (error: string, rep: CreateTraceResponse) => void
+  ): Promise<CreateTraceResponse> {
+    return this.request("CreateTrace", req, cb)
+  }
 
-    /**
-     * 删除该人体库及包含的所有的人员。
-     * @public
-     */
-    async DeleteGroup(req: DeleteGroupRequest, cb?: (error: string, rep: DeleteGroupResponse) => void): Promise<DeleteGroupResponse> {
-        return await this.request("DeleteGroup", req, cb);
-    }
+  /**
+   * 删除该人体库及包含的所有的人员。
+   * @public
+   */
+  async DeleteGroup(
+    req: DeleteGroupRequest,
+    cb?: (error: string, rep: DeleteGroupResponse) => void
+  ): Promise<DeleteGroupResponse> {
+    return this.request("DeleteGroup", req, cb)
+  }
 
-    /**
-     * 删除人员。
-     * @public
-     */
-    async DeletePerson(req: DeletePersonRequest, cb?: (error: string, rep: DeletePersonResponse) => void): Promise<DeletePersonResponse> {
-        return await this.request("DeletePerson", req, cb);
-    }
+  /**
+   * 删除人员。
+   * @public
+   */
+  async DeletePerson(
+    req: DeletePersonRequest,
+    cb?: (error: string, rep: DeletePersonResponse) => void
+  ): Promise<DeletePersonResponse> {
+    return this.request("DeletePerson", req, cb)
+  }
 
-    /**
-     * 修改人员信息。
-     * @public
-     */
-    async ModifyPersonInfo(req: ModifyPersonInfoRequest, cb?: (error: string, rep: ModifyPersonInfoResponse) => void): Promise<ModifyPersonInfoResponse> {
-        return await this.request("ModifyPersonInfo", req, cb);
-    }
+  /**
+   * 修改人员信息。
+   * @public
+   */
+  async ModifyPersonInfo(
+    req: ModifyPersonInfoRequest,
+    cb?: (error: string, rep: ModifyPersonInfoResponse) => void
+  ): Promise<ModifyPersonInfoResponse> {
+    return this.request("ModifyPersonInfo", req, cb)
+  }
 
-    /**
-     * 修改人体库名称、备注。
-     * @public
-     */
-    async ModifyGroup(req: ModifyGroupRequest, cb?: (error: string, rep: ModifyGroupResponse) => void): Promise<ModifyGroupResponse> {
-        return await this.request("ModifyGroup", req, cb);
-    }
+  /**
+   * 修改人体库名称、备注。
+   * @public
+   */
+  async ModifyGroup(
+    req: ModifyGroupRequest,
+    cb?: (error: string, rep: ModifyGroupResponse) => void
+  ): Promise<ModifyGroupResponse> {
+    return this.request("ModifyGroup", req, cb)
+  }
 
-    /**
-     * 获取人体库列表。
-     * @public
-     */
-    async GetGroupList(req: GetGroupListRequest, cb?: (error: string, rep: GetGroupListResponse) => void): Promise<GetGroupListResponse> {
-        return await this.request("GetGroupList", req, cb);
-    }
+  /**
+   * 获取人体库列表。
+   * @public
+   */
+  async GetGroupList(
+    req: GetGroupListRequest,
+    cb?: (error: string, rep: GetGroupListResponse) => void
+  ): Promise<GetGroupListResponse> {
+    return this.request("GetGroupList", req, cb)
+  }
 
-    /**
+  /**
      * 用于创建一个空的人体库，如果人体库已存在返回错误。
 
 1个APPID下最多有2000W个人体轨迹（Trace），最多1W个人体库（Group）。
@@ -190,11 +218,14 @@ export class Client extends AbstractClient {
 单个人员（Person）最多添加 5 个人体轨迹（Trace）。
      * @public
      */
-    async CreateGroup(req: CreateGroupRequest, cb?: (error: string, rep: CreateGroupResponse) => void): Promise<CreateGroupResponse> {
-        return await this.request("CreateGroup", req, cb);
-    }
+  async CreateGroup(
+    req: CreateGroupRequest,
+    cb?: (error: string, rep: CreateGroupResponse) => void
+  ): Promise<CreateGroupResponse> {
+    return this.request("CreateGroup", req, cb)
+  }
 
-    /**
+  /**
      * 创建人员，添加对应人员的人体轨迹信息。
 
 请注意：
@@ -205,25 +236,32 @@ export class Client extends AbstractClient {
 - 构成人体轨迹单张图片大小不得超过2M，分辨率不得超过1920*1080。
      * @public
      */
-    async CreatePerson(req: CreatePersonRequest, cb?: (error: string, rep: CreatePersonResponse) => void): Promise<CreatePersonResponse> {
-        return await this.request("CreatePerson", req, cb);
-    }
+  async CreatePerson(
+    req: CreatePersonRequest,
+    cb?: (error: string, rep: CreatePersonResponse) => void
+  ): Promise<CreatePersonResponse> {
+    return this.request("CreatePerson", req, cb)
+  }
 
-    /**
-     * 在前后景分割的基础上优化多分类分割，支持对头发、五官等的分割，既作为换发型、挂件等底层技术，也可用于扣人头、扣人脸等玩法
-     * @public
-     */
-    async SegmentCustomizedPortraitPic(req: SegmentCustomizedPortraitPicRequest, cb?: (error: string, rep: SegmentCustomizedPortraitPicResponse) => void): Promise<SegmentCustomizedPortraitPicResponse> {
-        return await this.request("SegmentCustomizedPortraitPic", req, cb);
-    }
+  /**
+   * 在前后景分割的基础上优化多分类分割，支持对头发、五官等的分割，既作为换发型、挂件等底层技术，也可用于扣人头、扣人脸等玩法
+   * @public
+   */
+  async SegmentCustomizedPortraitPic(
+    req: SegmentCustomizedPortraitPicRequest,
+    cb?: (error: string, rep: SegmentCustomizedPortraitPicResponse) => void
+  ): Promise<SegmentCustomizedPortraitPicResponse> {
+    return this.request("SegmentCustomizedPortraitPic", req, cb)
+  }
 
-    /**
-     * 获取指定人体库中的人员列表。
-     * @public
-     */
-    async GetPersonList(req: GetPersonListRequest, cb?: (error: string, rep: GetPersonListResponse) => void): Promise<GetPersonListResponse> {
-        return await this.request("GetPersonList", req, cb);
-    }
-
-
+  /**
+   * 获取指定人体库中的人员列表。
+   * @public
+   */
+  async GetPersonList(
+    req: GetPersonListRequest,
+    cb?: (error: string, rep: GetPersonListResponse) => void
+  ): Promise<GetPersonListResponse> {
+    return this.request("GetPersonList", req, cb)
+  }
 }

@@ -16,32 +16,27 @@
  * under the License.
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
-import {
-   MarketingValueJudgementRequest,
-   Data,
-   MarketingValueJudgementResponse,
-
-} from "./mvj_models"
+import { MarketingValueJudgementRequest, Data, MarketingValueJudgementResponse } from "./mvj_models"
 
 /**
  * mvj client
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("mvj.tencentcloudapi.com", "2019-09-26", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("mvj.tencentcloudapi.com", "2019-09-26", clientConfig);
-    }
-    
-    /**
+  /**
      * 欢迎使用营销价值判断（Marketing Value Judgement，简称 MVJ）。
 
 营销价值判断（MVJ）是针对零售场景的风控服务，通过识别高价值顾客，以帮助零售商保障营销资金
      * @public
      */
-    async MarketingValueJudgement(req: MarketingValueJudgementRequest, cb?: (error: string, rep: MarketingValueJudgementResponse) => void): Promise<MarketingValueJudgementResponse> {
-        return await this.request("MarketingValueJudgement", req, cb);
-    }
-
-
+  async MarketingValueJudgement(
+    req: MarketingValueJudgementRequest,
+    cb?: (error: string, rep: MarketingValueJudgementResponse) => void
+  ): Promise<MarketingValueJudgementResponse> {
+    return this.request("MarketingValueJudgement", req, cb)
+  }
 }

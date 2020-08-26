@@ -17,16 +17,15 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   TextProcessResponse,
-   SlotInfo,
-   TextResetRequest,
-   ResetRequest,
-   TextResetResponse,
-   CreateBotResponse,
-   ResetResponse,
-   CreateBotRequest,
-   TextProcessRequest,
-
+  TextProcessResponse,
+  SlotInfo,
+  TextResetRequest,
+  ResetRequest,
+  TextResetResponse,
+  CreateBotResponse,
+  ResetResponse,
+  CreateBotRequest,
+  TextProcessRequest,
 } from "./tbp_models"
 
 /**
@@ -34,42 +33,51 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("tbp.tencentcloudapi.com", "2019-03-11", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("tbp.tencentcloudapi.com", "2019-03-11", clientConfig);
-    }
-    
-    /**
-     * 对当前机器人的会话状态进行复位
-     * @public
-     */
-    async Reset(req: ResetRequest, cb?: (error: string, rep: ResetResponse) => void): Promise<ResetResponse> {
-        return await this.request("Reset", req, cb);
-    }
+  /**
+   * 对当前机器人的会话状态进行复位
+   * @public
+   */
+  async Reset(
+    req: ResetRequest,
+    cb?: (error: string, rep: ResetResponse) => void
+  ): Promise<ResetResponse> {
+    return this.request("Reset", req, cb)
+  }
 
-    /**
-     * 创建机器人
-     * @public
-     */
-    async CreateBot(req: CreateBotRequest, cb?: (error: string, rep: CreateBotResponse) => void): Promise<CreateBotResponse> {
-        return await this.request("CreateBot", req, cb);
-    }
+  /**
+   * 创建机器人
+   * @public
+   */
+  async CreateBot(
+    req: CreateBotRequest,
+    cb?: (error: string, rep: CreateBotResponse) => void
+  ): Promise<CreateBotResponse> {
+    return this.request("CreateBot", req, cb)
+  }
 
-    /**
-     * 会话重置接口。已废弃，推荐使用最新版TextReset接口。
-     * @public
-     */
-    async TextReset(req: TextResetRequest, cb?: (error: string, rep: TextResetResponse) => void): Promise<TextResetResponse> {
-        return await this.request("TextReset", req, cb);
-    }
+  /**
+   * 会话重置接口。已废弃，推荐使用最新版TextReset接口。
+   * @public
+   */
+  async TextReset(
+    req: TextResetRequest,
+    cb?: (error: string, rep: TextResetResponse) => void
+  ): Promise<TextResetResponse> {
+    return this.request("TextReset", req, cb)
+  }
 
-    /**
-     * 接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
-     * @public
-     */
-    async TextProcess(req: TextProcessRequest, cb?: (error: string, rep: TextProcessResponse) => void): Promise<TextProcessResponse> {
-        return await this.request("TextProcess", req, cb);
-    }
-
-
+  /**
+   * 接收调用侧的文本输入，返回应答文本。已废弃，推荐使用最新版TextProcess接口。
+   * @public
+   */
+  async TextProcess(
+    req: TextProcessRequest,
+    cb?: (error: string, rep: TextProcessResponse) => void
+  ): Promise<TextProcessResponse> {
+    return this.request("TextProcess", req, cb)
+  }
 }

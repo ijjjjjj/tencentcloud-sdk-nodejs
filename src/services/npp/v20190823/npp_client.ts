@@ -17,28 +17,27 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribeCallBackStatusRequest,
-   DescribeCallBackCdrRequest,
-   CreateCallBackRequest,
-   DeleteCallBackRequest,
-   GetVirtualNumResponse,
-   DelVirtualNumResponse,
-   CallBackCdr,
-   RreCallerHandle,
-   DescribeCallerDisplayListRequest,
-   DescribeCallerDisplayListResponse,
-   CallBackPhoneCode,
-   CreateCallBackResponse,
-   DelVirtualNumRequest,
-   GetVirtualNumRequest,
-   DeleteCallBackResponse,
-   Get400CdrRequest,
-   DescribeCallBackCdrResponse,
-   KeyList,
-   VirturalNumCdr,
-   Get400CdrResponse,
-   DescribeCallBackStatusResponse,
-
+  DescribeCallBackStatusRequest,
+  DescribeCallBackCdrRequest,
+  CreateCallBackRequest,
+  DeleteCallBackRequest,
+  GetVirtualNumResponse,
+  DelVirtualNumResponse,
+  CallBackCdr,
+  RreCallerHandle,
+  DescribeCallerDisplayListRequest,
+  DescribeCallerDisplayListResponse,
+  CallBackPhoneCode,
+  CreateCallBackResponse,
+  DelVirtualNumRequest,
+  GetVirtualNumRequest,
+  DeleteCallBackResponse,
+  Get400CdrRequest,
+  DescribeCallBackCdrResponse,
+  KeyList,
+  VirturalNumCdr,
+  Get400CdrResponse,
+  DescribeCallBackStatusResponse,
 } from "./npp_models"
 
 /**
@@ -46,74 +45,95 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("npp.tencentcloudapi.com", "2019-08-23", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("npp.tencentcloudapi.com", "2019-08-23", clientConfig);
-    }
-    
-    /**
-     * 回拨呼叫取消
-     * @public
-     */
-    async DeleteCallBack(req: DeleteCallBackRequest, cb?: (error: string, rep: DeleteCallBackResponse) => void): Promise<DeleteCallBackResponse> {
-        return await this.request("DeleteCallBack", req, cb);
-    }
+  /**
+   * 回拨呼叫取消
+   * @public
+   */
+  async DeleteCallBack(
+    req: DeleteCallBackRequest,
+    cb?: (error: string, rep: DeleteCallBackResponse) => void
+  ): Promise<DeleteCallBackResponse> {
+    return this.request("DeleteCallBack", req, cb)
+  }
 
-    /**
-     * 回拨拉取主叫显号号码集合
-     * @public
-     */
-    async DescribeCallerDisplayList(req: DescribeCallerDisplayListRequest, cb?: (error: string, rep: DescribeCallerDisplayListResponse) => void): Promise<DescribeCallerDisplayListResponse> {
-        return await this.request("DescribeCallerDisplayList", req, cb);
-    }
+  /**
+   * 回拨拉取主叫显号号码集合
+   * @public
+   */
+  async DescribeCallerDisplayList(
+    req: DescribeCallerDisplayListRequest,
+    cb?: (error: string, rep: DescribeCallerDisplayListResponse) => void
+  ): Promise<DescribeCallerDisplayListResponse> {
+    return this.request("DescribeCallerDisplayList", req, cb)
+  }
 
-    /**
-     * 直拨解绑中间号
-     * @public
-     */
-    async DelVirtualNum(req: DelVirtualNumRequest, cb?: (error: string, rep: DelVirtualNumResponse) => void): Promise<DelVirtualNumResponse> {
-        return await this.request("DelVirtualNum", req, cb);
-    }
+  /**
+   * 直拨解绑中间号
+   * @public
+   */
+  async DelVirtualNum(
+    req: DelVirtualNumRequest,
+    cb?: (error: string, rep: DelVirtualNumResponse) => void
+  ): Promise<DelVirtualNumResponse> {
+    return this.request("DelVirtualNum", req, cb)
+  }
 
-    /**
-     * 直拨获取中间号（App 使用方发起）
-     * @public
-     */
-    async GetVirtualNum(req: GetVirtualNumRequest, cb?: (error: string, rep: GetVirtualNumResponse) => void): Promise<GetVirtualNumResponse> {
-        return await this.request("GetVirtualNum", req, cb);
-    }
+  /**
+   * 直拨获取中间号（App 使用方发起）
+   * @public
+   */
+  async GetVirtualNum(
+    req: GetVirtualNumRequest,
+    cb?: (error: string, rep: GetVirtualNumResponse) => void
+  ): Promise<GetVirtualNumResponse> {
+    return this.request("GetVirtualNum", req, cb)
+  }
 
-    /**
-     * 直拨话单获取接口
-     * @public
-     */
-    async Get400Cdr(req: Get400CdrRequest, cb?: (error: string, rep: Get400CdrResponse) => void): Promise<Get400CdrResponse> {
-        return await this.request("Get400Cdr", req, cb);
-    }
+  /**
+   * 直拨话单获取接口
+   * @public
+   */
+  async Get400Cdr(
+    req: Get400CdrRequest,
+    cb?: (error: string, rep: Get400CdrResponse) => void
+  ): Promise<Get400CdrResponse> {
+    return this.request("Get400Cdr", req, cb)
+  }
 
-    /**
-     * 回拨通话状态获取
-     * @public
-     */
-    async DescribeCallBackStatus(req: DescribeCallBackStatusRequest, cb?: (error: string, rep: DescribeCallBackStatusResponse) => void): Promise<DescribeCallBackStatusResponse> {
-        return await this.request("DescribeCallBackStatus", req, cb);
-    }
+  /**
+   * 回拨通话状态获取
+   * @public
+   */
+  async DescribeCallBackStatus(
+    req: DescribeCallBackStatusRequest,
+    cb?: (error: string, rep: DescribeCallBackStatusResponse) => void
+  ): Promise<DescribeCallBackStatusResponse> {
+    return this.request("DescribeCallBackStatus", req, cb)
+  }
 
-    /**
-     * 回拨呼叫请求
-     * @public
-     */
-    async CreateCallBack(req: CreateCallBackRequest, cb?: (error: string, rep: CreateCallBackResponse) => void): Promise<CreateCallBackResponse> {
-        return await this.request("CreateCallBack", req, cb);
-    }
+  /**
+   * 回拨呼叫请求
+   * @public
+   */
+  async CreateCallBack(
+    req: CreateCallBackRequest,
+    cb?: (error: string, rep: CreateCallBackResponse) => void
+  ): Promise<CreateCallBackResponse> {
+    return this.request("CreateCallBack", req, cb)
+  }
 
-    /**
-     * 回拨话单获取接口
-     * @public
-     */
-    async DescribeCallBackCdr(req: DescribeCallBackCdrRequest, cb?: (error: string, rep: DescribeCallBackCdrResponse) => void): Promise<DescribeCallBackCdrResponse> {
-        return await this.request("DescribeCallBackCdr", req, cb);
-    }
-
-
+  /**
+   * 回拨话单获取接口
+   * @public
+   */
+  async DescribeCallBackCdr(
+    req: DescribeCallBackCdrRequest,
+    cb?: (error: string, rep: DescribeCallBackCdrResponse) => void
+  ): Promise<DescribeCallBackCdrResponse> {
+    return this.request("DescribeCallBackCdr", req, cb)
+  }
 }

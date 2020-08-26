@@ -17,27 +17,26 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DstInfo,
-   SrcInfo,
-   DescribeMigrationTaskRequest,
-   TimeObj,
-   ModifyMigrationTaskBelongToProjectRequest,
-   TaskStatus,
-   ModifyMigrationTaskStatusResponse,
-   ListMigrationTaskRequest,
-   DeregisterMigrationTaskResponse,
-   Project,
-   ModifyMigrationTaskBelongToProjectResponse,
-   ListMigrationProjectResponse,
-   Task,
-   RegisterMigrationTaskResponse,
-   ModifyMigrationTaskStatusRequest,
-   ListMigrationProjectRequest,
-   DeregisterMigrationTaskRequest,
-   ListMigrationTaskResponse,
-   DescribeMigrationTaskResponse,
-   RegisterMigrationTaskRequest,
-
+  DstInfo,
+  SrcInfo,
+  DescribeMigrationTaskRequest,
+  TimeObj,
+  ModifyMigrationTaskBelongToProjectRequest,
+  TaskStatus,
+  ModifyMigrationTaskStatusResponse,
+  ListMigrationTaskRequest,
+  DeregisterMigrationTaskResponse,
+  Project,
+  ModifyMigrationTaskBelongToProjectResponse,
+  ListMigrationProjectResponse,
+  Task,
+  RegisterMigrationTaskResponse,
+  ModifyMigrationTaskStatusRequest,
+  ListMigrationProjectRequest,
+  DeregisterMigrationTaskRequest,
+  ListMigrationTaskResponse,
+  DescribeMigrationTaskResponse,
+  RegisterMigrationTaskRequest,
 } from "./msp_models"
 
 /**
@@ -45,66 +44,84 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("msp.tencentcloudapi.com", "2018-03-19", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("msp.tencentcloudapi.com", "2018-03-19", clientConfig);
-    }
-    
-    /**
-     * 获取迁移任务列表
-     * @public
-     */
-    async ListMigrationTask(req: ListMigrationTaskRequest, cb?: (error: string, rep: ListMigrationTaskResponse) => void): Promise<ListMigrationTaskResponse> {
-        return await this.request("ListMigrationTask", req, cb);
-    }
+  /**
+   * 获取迁移任务列表
+   * @public
+   */
+  async ListMigrationTask(
+    req: ListMigrationTaskRequest,
+    cb?: (error: string, rep: ListMigrationTaskResponse) => void
+  ): Promise<ListMigrationTaskResponse> {
+    return this.request("ListMigrationTask", req, cb)
+  }
 
-    /**
-     * 注册迁移任务
-     * @public
-     */
-    async RegisterMigrationTask(req: RegisterMigrationTaskRequest, cb?: (error: string, rep: RegisterMigrationTaskResponse) => void): Promise<RegisterMigrationTaskResponse> {
-        return await this.request("RegisterMigrationTask", req, cb);
-    }
+  /**
+   * 注册迁移任务
+   * @public
+   */
+  async RegisterMigrationTask(
+    req: RegisterMigrationTaskRequest,
+    cb?: (error: string, rep: RegisterMigrationTaskResponse) => void
+  ): Promise<RegisterMigrationTaskResponse> {
+    return this.request("RegisterMigrationTask", req, cb)
+  }
 
-    /**
-     * 更新迁移任务状态
-     * @public
-     */
-    async ModifyMigrationTaskStatus(req: ModifyMigrationTaskStatusRequest, cb?: (error: string, rep: ModifyMigrationTaskStatusResponse) => void): Promise<ModifyMigrationTaskStatusResponse> {
-        return await this.request("ModifyMigrationTaskStatus", req, cb);
-    }
+  /**
+   * 更新迁移任务状态
+   * @public
+   */
+  async ModifyMigrationTaskStatus(
+    req: ModifyMigrationTaskStatusRequest,
+    cb?: (error: string, rep: ModifyMigrationTaskStatusResponse) => void
+  ): Promise<ModifyMigrationTaskStatusResponse> {
+    return this.request("ModifyMigrationTaskStatus", req, cb)
+  }
 
-    /**
-     * 取消注册迁移任务
-     * @public
-     */
-    async DeregisterMigrationTask(req: DeregisterMigrationTaskRequest, cb?: (error: string, rep: DeregisterMigrationTaskResponse) => void): Promise<DeregisterMigrationTaskResponse> {
-        return await this.request("DeregisterMigrationTask", req, cb);
-    }
+  /**
+   * 取消注册迁移任务
+   * @public
+   */
+  async DeregisterMigrationTask(
+    req: DeregisterMigrationTaskRequest,
+    cb?: (error: string, rep: DeregisterMigrationTaskResponse) => void
+  ): Promise<DeregisterMigrationTaskResponse> {
+    return this.request("DeregisterMigrationTask", req, cb)
+  }
 
-    /**
-     * 获取指定迁移任务详情
-     * @public
-     */
-    async DescribeMigrationTask(req: DescribeMigrationTaskRequest, cb?: (error: string, rep: DescribeMigrationTaskResponse) => void): Promise<DescribeMigrationTaskResponse> {
-        return await this.request("DescribeMigrationTask", req, cb);
-    }
+  /**
+   * 获取指定迁移任务详情
+   * @public
+   */
+  async DescribeMigrationTask(
+    req: DescribeMigrationTaskRequest,
+    cb?: (error: string, rep: DescribeMigrationTaskResponse) => void
+  ): Promise<DescribeMigrationTaskResponse> {
+    return this.request("DescribeMigrationTask", req, cb)
+  }
 
-    /**
-     * 更改迁移任务所属项目
-     * @public
-     */
-    async ModifyMigrationTaskBelongToProject(req: ModifyMigrationTaskBelongToProjectRequest, cb?: (error: string, rep: ModifyMigrationTaskBelongToProjectResponse) => void): Promise<ModifyMigrationTaskBelongToProjectResponse> {
-        return await this.request("ModifyMigrationTaskBelongToProject", req, cb);
-    }
+  /**
+   * 更改迁移任务所属项目
+   * @public
+   */
+  async ModifyMigrationTaskBelongToProject(
+    req: ModifyMigrationTaskBelongToProjectRequest,
+    cb?: (error: string, rep: ModifyMigrationTaskBelongToProjectResponse) => void
+  ): Promise<ModifyMigrationTaskBelongToProjectResponse> {
+    return this.request("ModifyMigrationTaskBelongToProject", req, cb)
+  }
 
-    /**
-     * 获取迁移项目名称列表
-     * @public
-     */
-    async ListMigrationProject(req: ListMigrationProjectRequest, cb?: (error: string, rep: ListMigrationProjectResponse) => void): Promise<ListMigrationProjectResponse> {
-        return await this.request("ListMigrationProject", req, cb);
-    }
-
-
+  /**
+   * 获取迁移项目名称列表
+   * @public
+   */
+  async ListMigrationProject(
+    req: ListMigrationProjectRequest,
+    cb?: (error: string, rep: ListMigrationProjectResponse) => void
+  ): Promise<ListMigrationProjectResponse> {
+    return this.request("ListMigrationProject", req, cb)
+  }
 }

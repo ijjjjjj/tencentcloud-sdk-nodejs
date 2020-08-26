@@ -17,31 +17,30 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   InputKolDataList,
-   OutputKolData,
-   InputKolBspData,
-   EnhanceTaDegreeRequest,
-   OutputRecognizeTargetAudienceValue,
-   SendTrafficSecuritySmsMessageRequest,
-   DetectFraudKOLResponse,
-   RecognizeCustomizedAudienceResponse,
-   OutputKolValue,
-   EnhanceTaDegreeResponse,
-   InputTaBspData,
-   OutputSendTrafficSecuritySmsMsg,
-   SendTrafficSecuritySmsMessageResponse,
-   DetectFraudKOLRequest,
-   RecognizeCustomizedAudienceRequest,
-   RecognizeTargetAudienceResponse,
-   InputRecognizeTargetAudience,
-   OutputTaData,
-   OutputTaValue,
-   RecognizePreciseTargetAudienceRequest,
-   RecognizeTargetAudienceRequest,
-   RecognizePreciseTargetAudienceResponse,
-   OutputRecognizeTargetAudience,
-   InputSendTrafficSecuritySmsMsg,
-
+  InputKolDataList,
+  OutputKolData,
+  InputKolBspData,
+  EnhanceTaDegreeRequest,
+  OutputRecognizeTargetAudienceValue,
+  SendTrafficSecuritySmsMessageRequest,
+  DetectFraudKOLResponse,
+  RecognizeCustomizedAudienceResponse,
+  OutputKolValue,
+  EnhanceTaDegreeResponse,
+  InputTaBspData,
+  OutputSendTrafficSecuritySmsMsg,
+  SendTrafficSecuritySmsMessageResponse,
+  DetectFraudKOLRequest,
+  RecognizeCustomizedAudienceRequest,
+  RecognizeTargetAudienceResponse,
+  InputRecognizeTargetAudience,
+  OutputTaData,
+  OutputTaValue,
+  RecognizePreciseTargetAudienceRequest,
+  RecognizeTargetAudienceRequest,
+  RecognizePreciseTargetAudienceResponse,
+  OutputRecognizeTargetAudience,
+  InputSendTrafficSecuritySmsMsg,
 } from "./taf_models"
 
 /**
@@ -49,58 +48,73 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("taf.tencentcloudapi.com", "2020-02-10", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("taf.tencentcloudapi.com", "2020-02-10", clientConfig);
-    }
-    
-    /**
-     * 流量反欺诈-虚假TA识别
-     * @public
-     */
-    async EnhanceTaDegree(req: EnhanceTaDegreeRequest, cb?: (error: string, rep: EnhanceTaDegreeResponse) => void): Promise<EnhanceTaDegreeResponse> {
-        return await this.request("EnhanceTaDegree", req, cb);
-    }
+  /**
+   * 流量反欺诈-虚假TA识别
+   * @public
+   */
+  async EnhanceTaDegree(
+    req: EnhanceTaDegreeRequest,
+    cb?: (error: string, rep: EnhanceTaDegreeResponse) => void
+  ): Promise<EnhanceTaDegreeResponse> {
+    return this.request("EnhanceTaDegree", req, cb)
+  }
 
-    /**
-     * 流量反欺诈-流量验准
-     * @public
-     */
-    async RecognizeTargetAudience(req: RecognizeTargetAudienceRequest, cb?: (error: string, rep: RecognizeTargetAudienceResponse) => void): Promise<RecognizeTargetAudienceResponse> {
-        return await this.request("RecognizeTargetAudience", req, cb);
-    }
+  /**
+   * 流量反欺诈-流量验准
+   * @public
+   */
+  async RecognizeTargetAudience(
+    req: RecognizeTargetAudienceRequest,
+    cb?: (error: string, rep: RecognizeTargetAudienceResponse) => void
+  ): Promise<RecognizeTargetAudienceResponse> {
+    return this.request("RecognizeTargetAudience", req, cb)
+  }
 
-    /**
-     * 流量反欺诈-流量验准定制版
-     * @public
-     */
-    async RecognizeCustomizedAudience(req: RecognizeCustomizedAudienceRequest, cb?: (error: string, rep: RecognizeCustomizedAudienceResponse) => void): Promise<RecognizeCustomizedAudienceResponse> {
-        return await this.request("RecognizeCustomizedAudience", req, cb);
-    }
+  /**
+   * 流量反欺诈-流量验准定制版
+   * @public
+   */
+  async RecognizeCustomizedAudience(
+    req: RecognizeCustomizedAudienceRequest,
+    cb?: (error: string, rep: RecognizeCustomizedAudienceResponse) => void
+  ): Promise<RecognizeCustomizedAudienceResponse> {
+    return this.request("RecognizeCustomizedAudience", req, cb)
+  }
 
-    /**
-     * DetectFraudKOL
-     * @public
-     */
-    async DetectFraudKOL(req: DetectFraudKOLRequest, cb?: (error: string, rep: DetectFraudKOLResponse) => void): Promise<DetectFraudKOLResponse> {
-        return await this.request("DetectFraudKOL", req, cb);
-    }
+  /**
+   * DetectFraudKOL
+   * @public
+   */
+  async DetectFraudKOL(
+    req: DetectFraudKOLRequest,
+    cb?: (error: string, rep: DetectFraudKOLResponse) => void
+  ): Promise<DetectFraudKOLResponse> {
+    return this.request("DetectFraudKOL", req, cb)
+  }
 
-    /**
-     * 流量反欺诈-流量验准高级版
-     * @public
-     */
-    async RecognizePreciseTargetAudience(req: RecognizePreciseTargetAudienceRequest, cb?: (error: string, rep: RecognizePreciseTargetAudienceResponse) => void): Promise<RecognizePreciseTargetAudienceResponse> {
-        return await this.request("RecognizePreciseTargetAudience", req, cb);
-    }
+  /**
+   * 流量反欺诈-流量验准高级版
+   * @public
+   */
+  async RecognizePreciseTargetAudience(
+    req: RecognizePreciseTargetAudienceRequest,
+    cb?: (error: string, rep: RecognizePreciseTargetAudienceResponse) => void
+  ): Promise<RecognizePreciseTargetAudienceResponse> {
+    return this.request("RecognizePreciseTargetAudience", req, cb)
+  }
 
-    /**
-     * SendTrafficSecuritySmsMessage
-     * @public
-     */
-    async SendTrafficSecuritySmsMessage(req: SendTrafficSecuritySmsMessageRequest, cb?: (error: string, rep: SendTrafficSecuritySmsMessageResponse) => void): Promise<SendTrafficSecuritySmsMessageResponse> {
-        return await this.request("SendTrafficSecuritySmsMessage", req, cb);
-    }
-
-
+  /**
+   * SendTrafficSecuritySmsMessage
+   * @public
+   */
+  async SendTrafficSecuritySmsMessage(
+    req: SendTrafficSecuritySmsMessageRequest,
+    cb?: (error: string, rep: SendTrafficSecuritySmsMessageResponse) => void
+  ): Promise<SendTrafficSecuritySmsMessageResponse> {
+    return this.request("SendTrafficSecuritySmsMessage", req, cb)
+  }
 }

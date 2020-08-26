@@ -17,14 +17,13 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   SwapGenderPicRequest,
-   AgeInfo,
-   GenderInfo,
-   SwapGenderPicResponse,
-   ChangeAgePicResponse,
-   FaceRect,
-   ChangeAgePicRequest,
-
+  SwapGenderPicRequest,
+  AgeInfo,
+  GenderInfo,
+  SwapGenderPicResponse,
+  ChangeAgePicResponse,
+  FaceRect,
+  ChangeAgePicRequest,
 } from "./ft_models"
 
 /**
@@ -32,26 +31,29 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("ft.tencentcloudapi.com", "2020-03-04", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("ft.tencentcloudapi.com", "2020-03-04", clientConfig);
-    }
-    
-    /**
-     * 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。 
-     * @public
-     */
-    async SwapGenderPic(req: SwapGenderPicRequest, cb?: (error: string, rep: SwapGenderPicResponse) => void): Promise<SwapGenderPicResponse> {
-        return await this.request("SwapGenderPic", req, cb);
-    }
+  /**
+   * 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸性别转换的图片。男变女可实现美颜、淡妆、加刘海和长发的效果；女变男可实现加胡须、变短发的效果。
+   * @public
+   */
+  async SwapGenderPic(
+    req: SwapGenderPicRequest,
+    cb?: (error: string, rep: SwapGenderPicResponse) => void
+  ): Promise<SwapGenderPicResponse> {
+    return this.request("SwapGenderPic", req, cb)
+  }
 
-    /**
-     * 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸变老或变年轻的图片，支持实现人脸不同年龄的变化。
-     * @public
-     */
-    async ChangeAgePic(req: ChangeAgePicRequest, cb?: (error: string, rep: ChangeAgePicResponse) => void): Promise<ChangeAgePicResponse> {
-        return await this.request("ChangeAgePic", req, cb);
-    }
-
-
+  /**
+   * 用户上传一张人脸图片，基于人脸编辑与生成算法，输出一张人脸变老或变年轻的图片，支持实现人脸不同年龄的变化。
+   * @public
+   */
+  async ChangeAgePic(
+    req: ChangeAgePicRequest,
+    cb?: (error: string, rep: ChangeAgePicResponse) => void
+  ): Promise<ChangeAgePicResponse> {
+    return this.request("ChangeAgePic", req, cb)
+  }
 }

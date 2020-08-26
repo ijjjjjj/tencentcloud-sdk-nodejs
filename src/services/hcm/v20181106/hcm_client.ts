@@ -16,31 +16,25 @@
  * under the License.
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
-import {
-   Item,
-   EvaluationRequest,
-   EvaluationResponse,
-   ItemCoord,
-
-} from "./hcm_models"
+import { Item, EvaluationRequest, EvaluationResponse, ItemCoord } from "./hcm_models"
 
 /**
  * hcm client
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("hcm.tencentcloudapi.com", "2018-11-06", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("hcm.tencentcloudapi.com", "2018-11-06", clientConfig);
-    }
-    
-    /**
-     * 速算题目批改接口，根据用户上传的图片或图片的URL识别图片中的数学算式，进而给出算式的正确性评估。
-     * @public
-     */
-    async Evaluation(req: EvaluationRequest, cb?: (error: string, rep: EvaluationResponse) => void): Promise<EvaluationResponse> {
-        return await this.request("Evaluation", req, cb);
-    }
-
-
+  /**
+   * 速算题目批改接口，根据用户上传的图片或图片的URL识别图片中的数学算式，进而给出算式的正确性评估。
+   * @public
+   */
+  async Evaluation(
+    req: EvaluationRequest,
+    cb?: (error: string, rep: EvaluationResponse) => void
+  ): Promise<EvaluationResponse> {
+    return this.request("Evaluation", req, cb)
+  }
 }

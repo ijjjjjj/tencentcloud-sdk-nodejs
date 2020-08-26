@@ -1,4 +1,5 @@
 node_modules
 npm-debug.log
 dist
-examples/config
+examples/config/config.js
+examples/config/index.ts

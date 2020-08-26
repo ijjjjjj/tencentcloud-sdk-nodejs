@@ -17,15 +17,14 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DeleteCertRequest,
-   UploadCertResponse,
-   DeleteCertResponse,
-   DescribeCertListResponse,
-   UploadCertRequest,
-   SSLCertificate,
-   DescribeCertListRequest,
-   SSLProjectInfo,
-
+  DeleteCertRequest,
+  UploadCertResponse,
+  DeleteCertResponse,
+  DescribeCertListResponse,
+  UploadCertRequest,
+  SSLCertificate,
+  DescribeCertListRequest,
+  SSLProjectInfo,
 } from "./wss_models"
 
 /**
@@ -33,34 +32,40 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("wss.tencentcloudapi.com", "2018-04-26", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("wss.tencentcloudapi.com", "2018-04-26", clientConfig);
-    }
-    
-    /**
-     * 本接口（DeleteCert）用于删除证书。
-     * @public
-     */
-    async DeleteCert(req: DeleteCertRequest, cb?: (error: string, rep: DeleteCertResponse) => void): Promise<DeleteCertResponse> {
-        return await this.request("DeleteCert", req, cb);
-    }
+  /**
+   * 本接口（DeleteCert）用于删除证书。
+   * @public
+   */
+  async DeleteCert(
+    req: DeleteCertRequest,
+    cb?: (error: string, rep: DeleteCertResponse) => void
+  ): Promise<DeleteCertResponse> {
+    return this.request("DeleteCert", req, cb)
+  }
 
-    /**
-     * 本接口(DescribeCertList)用于获取证书列表。
-     * @public
-     */
-    async DescribeCertList(req: DescribeCertListRequest, cb?: (error: string, rep: DescribeCertListResponse) => void): Promise<DescribeCertListResponse> {
-        return await this.request("DescribeCertList", req, cb);
-    }
+  /**
+   * 本接口(DescribeCertList)用于获取证书列表。
+   * @public
+   */
+  async DescribeCertList(
+    req: DescribeCertListRequest,
+    cb?: (error: string, rep: DescribeCertListResponse) => void
+  ): Promise<DescribeCertListResponse> {
+    return this.request("DescribeCertList", req, cb)
+  }
 
-    /**
-     * 本接口（UploadCert）用于上传证书。
-     * @public
-     */
-    async UploadCert(req: UploadCertRequest, cb?: (error: string, rep: UploadCertResponse) => void): Promise<UploadCertResponse> {
-        return await this.request("UploadCert", req, cb);
-    }
-
-
+  /**
+   * 本接口（UploadCert）用于上传证书。
+   * @public
+   */
+  async UploadCert(
+    req: UploadCertRequest,
+    cb?: (error: string, rep: UploadCertResponse) => void
+  ): Promise<UploadCertResponse> {
+    return this.request("UploadCert", req, cb)
+  }
 }

@@ -19,129 +19,124 @@
  * 核身视频信息
  */
 export interface DetectInfoVideoData {
-
-    /**
+  /**
       * 活体视频的base64编码
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    LivenessVideo: string;
+  LivenessVideo: string
 }
 
 /**
  * GetDetectInfoEnhanced请求参数结构体
  */
 export interface GetDetectInfoEnhancedRequest {
+  /**
+   * 人脸核身流程的标识，调用DetectAuth接口时生成。
+   */
+  BizToken: string
 
-    /**
-      * 人脸核身流程的标识，调用DetectAuth接口时生成。
-      */
-    BizToken: string;
-        
-    /**
-      * 用于细分客户使用场景，由腾讯侧在线下对接时分配。
-      */
-    RuleId: string;
-        
-    /**
+  /**
+   * 用于细分客户使用场景，由腾讯侧在线下对接时分配。
+   */
+  RuleId: string
+
+  /**
       * 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：视频最佳截图信息；4：视频信息）。
 如 134表示拉取文本类、视频最佳截图信息、视频信息。
 默认值：0
       */
-    InfoType?: string;
-        
-    /**
-      * 从活体视频中截取一定张数的最佳帧。默认为0，最大为10，超出10的最多只给10张。（InfoType需要包含3）
-      */
-    BestFramesCount?: number;
-        
-    /**
-      * 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
-      */
-    IsCutIdCardImage?: boolean;
-        
-    /**
-      * 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
-      */
-    IsNeedIdCardAvatar?: boolean;
+  InfoType?: string
+
+  /**
+   * 从活体视频中截取一定张数的最佳帧。默认为0，最大为10，超出10的最多只给10张。（InfoType需要包含3）
+   */
+  BestFramesCount?: number
+
+  /**
+   * 是否对身份证照片进行裁边。默认为false。（InfoType需要包含2）
+   */
+  IsCutIdCardImage?: boolean
+
+  /**
+   * 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
+   */
+  IsNeedIdCardAvatar?: boolean
 }
 
 /**
  * Liveness请求参数结构体
  */
 export interface LivenessRequest {
-
-    /**
+  /**
       * 用于活体检测的视频，视频的BASE64值；
 BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
       */
-    VideoBase64: string;
-        
-    /**
+  VideoBase64: string
+
+  /**
       * 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
       */
-    LivenessType: string;
-        
-    /**
+  LivenessType: string
+
+  /**
       * 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 静默模式传参：不需要传递此参数。
       */
-    ValidateData?: string;
-        
-    /**
+  ValidateData?: string
+
+  /**
       * 额外配置，传入JSON字符串。
 {
 "BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
 }
       */
-    Optional?: string;
+  Optional?: string
 }
 
 /**
  * LivenessCompare返回参数结构体
  */
 export interface LivenessCompareResponse {
-
-    /**
+  /**
       * 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrameBase64?: string;
-        
-    /**
-      * 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
-      */
-    Sim?: number;
-        
-    /**
-      * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
-      */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
+  BestFrameBase64?: string
+
+  /**
+   * 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
+   */
+  Sim?: number
+
+  /**
+   * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+   */
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
       * 最佳截图列表，仅在配置了返回多张最佳截图时返回。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrameList?: Array<string>;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  BestFrameList?: Array<string>
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * MobileNetworkTimeVerification返回参数结构体
  */
 export interface MobileNetworkTimeVerificationResponse {
-
-    /**
+  /**
       * 认证结果码，收费情况如下。
 收费结果码：
 0: 成功
@@ -151,23 +146,23 @@ export interface MobileNetworkTimeVerificationResponse {
 -1: 手机号格式不正确
 -4: 验证中心服务繁忙
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
       * 在网时长区间。
 格式为(a,b]，表示在网时长在a个月以上，b个月以下。若b为+时表示没有上限。
       */
-    Range?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  Range?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
@@ -179,119 +174,115 @@ export type GetLiveCodeRequest = null
  * IdCardVerification请求参数结构体
  */
 export interface IdCardVerificationRequest {
+  /**
+   * 身份证号
+   */
+  IdCard: string
 
-    /**
-      * 身份证号
-      */
-    IdCard: string;
-        
-    /**
-      * 姓名
-      */
-    Name: string;
+  /**
+   * 姓名
+   */
+  Name: string
 }
 
 /**
  * BankCardVerification请求参数结构体
  */
 export interface BankCardVerificationRequest {
+  /**
+   * 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
+   */
+  IdCard: string
 
-    /**
-      * 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
-      */
-    IdCard: string;
-        
-    /**
-      * 姓名
-      */
-    Name: string;
-        
-    /**
-      * 银行卡
-      */
-    BankCard: string;
-        
-    /**
+  /**
+   * 姓名
+   */
+  Name: string
+
+  /**
+   * 银行卡
+   */
+  BankCard: string
+
+  /**
       * 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
 目前默认：0 身份证，其他证件类型需求可以联系小助手faceid001确认。
       */
-    CertType?: number;
+  CertType?: number
 }
 
 /**
  * 核身最佳帧信息
  */
 export interface DetectInfoBestFrame {
-
-    /**
+  /**
       * 活体比对最佳帧。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrame: string;
-        
-    /**
+  BestFrame: string
+
+  /**
       * 自截帧。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrames: Array<string>;
+  BestFrames: Array<string>
 }
 
 /**
  * CheckIdCardInformation返回参数结构体
  */
 export interface CheckIdCardInformationResponse {
+  /**
+   * 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+   */
+  Sim?: number
 
-    /**
-      * 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
-      */
-    Sim?: number;
-        
-    /**
-      * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
-      */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
-      * 姓名
-      */
-    Name?: string;
-        
-    /**
-      * 性别
-      */
-    Sex?: string;
-        
-    /**
-      * 民族
-      */
-    Nation?: string;
-        
-    /**
-      * 出生日期
-      */
-    Birth?: string;
-        
-    /**
-      * 地址
-      */
-    Address?: string;
-        
-    /**
-      * 身份证号
-      */
-    IdNum?: string;
-        
-    /**
-      * 身份证头像照片的base64编码，如果抠图失败会拿整张身份证做比对并返回空。
-      */
-    Portrait?: string;
-        
-    /**
+  /**
+   * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+   */
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
+   * 姓名
+   */
+  Name?: string
+
+  /**
+   * 性别
+   */
+  Sex?: string
+
+  /**
+   * 民族
+   */
+  Nation?: string
+
+  /**
+   * 出生日期
+   */
+  Birth?: string
+
+  /**
+   * 地址
+   */
+  Address?: string
+
+  /**
+   * 身份证号
+   */
+  IdNum?: string
+
+  /**
+   * 身份证头像照片的base64编码，如果抠图失败会拿整张身份证做比对并返回空。
+   */
+  Portrait?: string
+
+  /**
       * 告警信息，当在Config中配置了告警信息会停止人像比对，Result返回错误（FailedOperation.OcrWarningOccurred）并有此告警信息，Code 告警码列表和释义：
 
 -9101 身份证边框不完整告警，
@@ -302,108 +293,104 @@ export interface CheckIdCardInformationResponse {
 -9106 身份证 PS 告警。
 多个会 |  隔开如 "-9101|-9106|-9104"
       */
-    Warnings?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  Warnings?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * GetDetectInfoEnhanced返回参数结构体
  */
 export interface GetDetectInfoEnhancedResponse {
-
-    /**
+  /**
       * 文本类信息。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Text?: DetectInfoText;
-        
-    /**
+  Text?: DetectInfoText
+
+  /**
       * 身份证照片信息。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    IdCardData?: DetectInfoIdCardData;
-        
-    /**
+  IdCardData?: DetectInfoIdCardData
+
+  /**
       * 最佳帧信息。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrame?: DetectInfoBestFrame;
-        
-    /**
+  BestFrame?: DetectInfoBestFrame
+
+  /**
       * 视频信息。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    VideoData?: DetectInfoVideoData;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  VideoData?: DetectInfoVideoData
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * PhoneVerification请求参数结构体
  */
 export interface PhoneVerificationRequest {
+  /**
+   * 身份证号
+   */
+  IdCard: string
 
-    /**
-      * 身份证号
-      */
-    IdCard: string;
-        
-    /**
-      * 姓名
-      */
-    Name: string;
-        
-    /**
-      * 手机号
-      */
-    Phone: string;
-        
-    /**
-      * 有加密需求的用户，接入传入kms的CiphertextBlob
-      */
-    CiphertextBlob?: string;
-        
-    /**
-      * 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个
-      */
-    EncryptList?: Array<string>;
+  /**
+   * 姓名
+   */
+  Name: string
+
+  /**
+   * 手机号
+   */
+  Phone: string
+
+  /**
+   * 有加密需求的用户，接入传入kms的CiphertextBlob
+   */
+  CiphertextBlob?: string
+
+  /**
+   * 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的IdCard，Name，Phone中的一个或多个
+   */
+  EncryptList?: Array<string>
 }
 
 /**
  * DetectAuth返回参数结构体
  */
 export interface DetectAuthResponse {
+  /**
+   * 用于发起核身流程的URL，仅微信H5场景使用。
+   */
+  Url?: string
 
-    /**
-      * 用于发起核身流程的URL，仅微信H5场景使用。
-      */
-    Url?: string;
-        
-    /**
+  /**
       * 一次核身流程的标识，有效时间为7,200秒；
 完成核身后，可用该标识获取验证结果信息。
       */
-    BizToken?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  BizToken?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * PhoneVerification返回参数结构体
  */
 export interface PhoneVerificationResponse {
-
-    /**
+  /**
       * 认证结果码:
 收费结果码
 0: 认证通过
@@ -420,58 +407,56 @@ export interface PhoneVerificationResponse {
 -10: 认证未通过
 -11: 验证中心服务繁忙
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * IdCardOCRVerification请求参数结构体
  */
 export interface IdCardOCRVerificationRequest {
-
-    /**
+  /**
       * 身份证号
 姓名和身份证号、ImageBase64、ImageUrl三者必须提供其中之一。若都提供了，则按照姓名和身份证号>ImageBase64>ImageUrl的优先级使用参数。
       */
-    IdCard?: string;
-        
-    /**
-      * 姓名
-      */
-    Name?: string;
-        
-    /**
+  IdCard?: string
+
+  /**
+   * 姓名
+   */
+  Name?: string
+
+  /**
       * 身份证人像面的 Base64 值
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 3M。图片下载时间不超过 3 秒。
       */
-    ImageBase64?: string;
-        
-    /**
+  ImageBase64?: string
+
+  /**
       * 身份证人像面的 Url 地址
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
       */
-    ImageUrl?: string;
+  ImageUrl?: string
 }
 
 /**
  * BankCard4EVerification返回参数结构体
  */
 export interface BankCard4EVerificationResponse {
-
-    /**
+  /**
       * 认证结果码
 收费结果码：
 '0': '认证通过'
@@ -495,144 +480,138 @@ export interface BankCard4EVerificationResponse {
 '-5': '手机号码不合法'
 '-18': '验证中心服务繁忙'
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * MobileStatus请求参数结构体
  */
 export interface MobileStatusRequest {
-
-    /**
-      * 手机号码
-      */
-    Mobile: string;
+  /**
+   * 手机号码
+   */
+  Mobile: string
 }
 
 /**
  * LivenessRecognition返回参数结构体
  */
 export interface LivenessRecognitionResponse {
-
-    /**
+  /**
       * 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrameBase64?: string;
-        
-    /**
-      * 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
-      */
-    Sim?: number;
-        
-    /**
-      * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
-      */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
+  BestFrameBase64?: string
+
+  /**
+   * 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+   */
+  Sim?: number
+
+  /**
+   * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+   */
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
       * 最佳截图列表，仅在配置了返回多张最佳截图时返回。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrameList?: Array<string>;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  BestFrameList?: Array<string>
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * BankCard2EVerification请求参数结构体
  */
 export interface BankCard2EVerificationRequest {
+  /**
+   * 姓名
+   */
+  Name: string
 
-    /**
-      * 姓名
-      */
-    Name: string;
-        
-    /**
-      * 银行卡
-      */
-    BankCard: string;
+  /**
+   * 银行卡
+   */
+  BankCard: string
 }
 
 /**
  * LivenessRecognition请求参数结构体
  */
 export interface LivenessRecognitionRequest {
+  /**
+   * 身份证号
+   */
+  IdCard: string
 
-    /**
-      * 身份证号
-      */
-    IdCard: string;
-        
-    /**
-      * 姓名。中文请使用UTF-8编码。
-      */
-    Name: string;
-        
-    /**
+  /**
+   * 姓名。中文请使用UTF-8编码。
+   */
+  Name: string
+
+  /**
       * 用于活体检测的视频，视频的BASE64值；
 BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
       */
-    VideoBase64: string;
-        
-    /**
+  VideoBase64: string
+
+  /**
       * 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
       */
-    LivenessType: string;
-        
-    /**
+  LivenessType: string
+
+  /**
       * 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 静默模式传参：空。
       */
-    ValidateData?: string;
-        
-    /**
+  ValidateData?: string
+
+  /**
       * 额外配置，传入JSON字符串。
 {
 "BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
 }
       */
-    Optional?: string;
+  Optional?: string
 }
 
 /**
  * MobileNetworkTimeVerification请求参数结构体
  */
 export interface MobileNetworkTimeVerificationRequest {
-
-    /**
-      * 手机号码。不支持电信手机号。
-      */
-    Mobile: string;
+  /**
+   * 手机号码。不支持电信手机号。
+   */
+  Mobile: string
 }
 
 /**
  * IdCardOCRVerification返回参数结构体
  */
 export interface IdCardOCRVerificationResponse {
-
-    /**
+  /**
       * 认证结果码，收费情况如下。
 收费结果码：
 0: 姓名和身份证号一致
@@ -643,59 +622,58 @@ export interface IdCardOCRVerificationResponse {
 -4: 证件库服务异常
 -5: 证件库中无此身份证记录
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
-      * 用于验证的姓名
-      */
-    Name?: string;
-        
-    /**
-      * 用于验证的身份证号
-      */
-    IdCard?: string;
-        
-    /**
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
+   * 用于验证的姓名
+   */
+  Name?: string
+
+  /**
+   * 用于验证的身份证号
+   */
+  IdCard?: string
+
+  /**
       * OCR得到的性别
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Sex?: string;
-        
-    /**
+  Sex?: string
+
+  /**
       * OCR得到的民族
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Nation?: string;
-        
-    /**
+  Nation?: string
+
+  /**
       * OCR得到的生日
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Birth?: string;
-        
-    /**
+  Birth?: string
+
+  /**
       * OCR得到的地址
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Address?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  Address?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * MobileStatus返回参数结构体
  */
 export interface MobileStatusResponse {
-
-    /**
+  /**
       * 认证结果码，收费情况如下。
 收费结果码：
 0：成功
@@ -704,14 +682,14 @@ export interface MobileStatusResponse {
 -2：手机号格式不正确
 -3：验证中心服务繁忙
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
       * 状态码：
 0：正常
 1：停机
@@ -720,70 +698,68 @@ export interface MobileStatusResponse {
 4：不在网
 99：未知状态
       */
-    StatusCode?: number;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  StatusCode?: number
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * Liveness返回参数结构体
  */
 export interface LivenessResponse {
-
-    /**
+  /**
       * 验证通过后的视频最佳截图照片，照片为BASE64编码后的值，jpg格式。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrameBase64?: string;
-        
-    /**
-      * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
-      */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
+  BestFrameBase64?: string
+
+  /**
+   * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+   */
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
       * 最佳最佳截图列表，仅在配置了返回多张最佳截图时有效。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    BestFrameList?: Array<string>;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  BestFrameList?: Array<string>
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * CheckIdCardInformation请求参数结构体
  */
 export interface CheckIdCardInformationRequest {
-
-    /**
+  /**
       * 身份证人像面的 Base64 值
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
 ImageBase64、ImageUrl二者必须提供其中之一。若都提供了，则按照ImageUrl>ImageBase64的优先级使用参数。
       */
-    ImageBase64?: string;
-        
-    /**
+  ImageBase64?: string
+
+  /**
       * 身份证人像面的 Url 地址
 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 支持的图片大小：所下载图片经 Base64 编码后不超过 3M。图片下载时间不超过 3 秒。
 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
       */
-    ImageUrl?: string;
-        
-    /**
+  ImageUrl?: string
+
+  /**
       * 以下可选字段均为bool 类型，默认false：
 CopyWarn，复印件告警
 BorderCheckWarn，边框和框内遮挡告警
@@ -796,190 +772,187 @@ Config = Json.stringify({"CopyWarn":true,"ReshootWarn":true})
 API 3.0 Explorer 设置方式参考：
 Config = {"CopyWarn":true,"ReshootWarn":true}
       */
-    Config?: string;
+  Config?: string
 }
 
 /**
  * 核身文本信息
  */
 export interface DetectInfoText {
-
-    /**
+  /**
       * 本次流程最终验证结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    ErrCode: number;
-        
-    /**
+  ErrCode: number
+
+  /**
       * 本次流程最终验证结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    ErrMsg: string;
-        
-    /**
+  ErrMsg: string
+
+  /**
       * 本次验证使用的身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    IdCard: string;
-        
-    /**
+  IdCard: string
+
+  /**
       * 本次验证使用的姓名。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Name: string;
-        
-    /**
+  Name: string
+
+  /**
       * Ocr识别结果。民族。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrNation: string;
-        
-    /**
+  OcrNation: string
+
+  /**
       * Ocr识别结果。家庭住址。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrAddress: string;
-        
-    /**
+  OcrAddress: string
+
+  /**
       * Ocr识别结果。生日。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrBirth: string;
-        
-    /**
+  OcrBirth: string
+
+  /**
       * Ocr识别结果。签发机关。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrAuthority: string;
-        
-    /**
+  OcrAuthority: string
+
+  /**
       * Ocr识别结果。有效日期。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrValidDate: string;
-        
-    /**
+  OcrValidDate: string
+
+  /**
       * Ocr识别结果。姓名。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrName: string;
-        
-    /**
+  OcrName: string
+
+  /**
       * Ocr识别结果。身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrIdCard: string;
-        
-    /**
+  OcrIdCard: string
+
+  /**
       * Ocr识别结果。性别。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrGender: string;
-        
-    /**
+  OcrGender: string
+
+  /**
       * 本次流程最终活体结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    LiveStatus: number;
-        
-    /**
+  LiveStatus: number
+
+  /**
       * 本次流程最终活体结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    LiveMsg: string;
-        
-    /**
+  LiveMsg: string
+
+  /**
       * 本次流程最终一比一结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Comparestatus: number;
-        
-    /**
+  Comparestatus: number
+
+  /**
       * 本次流程最终一比一结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Comparemsg: string;
-        
-    /**
+  Comparemsg: string
+
+  /**
       * 本次流程活体一比一的分数。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Sim: string;
-        
-    /**
+  Sim: string
+
+  /**
       * 地理位置经纬度。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Location: string;
-        
-    /**
+  Location: string
+
+  /**
       * Auth接口带入额外信息。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Extra: string;
-        
-    /**
+  Extra: string
+
+  /**
       * 本次流程进行的活体一比一流水。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    LivenessDetail: Array<DetectDetail>;
-        
-    /**
+  LivenessDetail: Array<DetectDetail>
+
+  /**
       * 手机号码。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Mobile: string;
+  Mobile: string
 }
 
 /**
  * DetectAuth请求参数结构体
  */
 export interface DetectAuthRequest {
+  /**
+   * 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请加慧眼小助手微信（faceid001）进行咨询。
+   */
+  RuleId: string
 
-    /**
-      * 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请加慧眼小助手微信（faceid001）进行咨询。
-      */
-    RuleId: string;
-        
-    /**
-      * 本接口不需要传递此参数。
-      */
-    TerminalType?: string;
-        
-    /**
+  /**
+   * 本接口不需要传递此参数。
+   */
+  TerminalType?: string
+
+  /**
       * 身份标识（未使用OCR服务时，必须传入）。
 规则：a-zA-Z0-9组合。最长长度32位。
       */
-    IdCard?: string;
-        
-    /**
-      * 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
-      */
-    Name?: string;
-        
-    /**
-      * 认证结束后重定向的回调链接地址。最长长度1024位。
-      */
-    RedirectUrl?: string;
-        
-    /**
-      * 透传字段，在获取验证结果时返回。
-      */
-    Extra?: string;
-        
-    /**
+  IdCard?: string
+
+  /**
+   * 姓名。（未使用OCR服务时，必须传入）最长长度32位。中文请使用UTF-8编码。
+   */
+  Name?: string
+
+  /**
+   * 认证结束后重定向的回调链接地址。最长长度1024位。
+   */
+  RedirectUrl?: string
+
+  /**
+   * 透传字段，在获取验证结果时返回。
+   */
+  Extra?: string
+
+  /**
       * 用于人脸比对的照片，图片的BASE64值；
 BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
       */
-    ImageBase64?: string;
+  ImageBase64?: string
 }
 
 /**
  * MinorsVerification返回参数结构体
  */
 export interface MinorsVerificationResponse {
-
-    /**
+  /**
       * 结果码，收费情况如下。
 收费结果码：
 0: 成年
@@ -994,31 +967,30 @@ export interface MinorsVerificationResponse {
 -7: 未查询到身份信息
 -8: 权威数据源升级中，请稍后再试
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
       * 当结果码为0或者-1时，该字段的值为年龄区间。
 格式为[a,b)，表示年龄在a岁以上（包括a岁），b岁以下（不包括b岁）。若b为+时表示没有上限。
       */
-    AgeRange?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  AgeRange?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * BankCardVerification返回参数结构体
  */
 export interface BankCardVerificationResponse {
-
-    /**
+  /**
       * 认证结果码
 收费结果码：
 '0': '认证通过'
@@ -1041,167 +1013,160 @@ export interface BankCardVerificationResponse {
 '-4': '银行卡号码有误'
 '-17': '验证中心服务繁忙'
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * ImageRecognition请求参数结构体
  */
 export interface ImageRecognitionRequest {
+  /**
+   * 身份证号
+   */
+  IdCard: string
 
-    /**
-      * 身份证号
-      */
-    IdCard: string;
-        
-    /**
-      * 姓名。中文请使用UTF-8编码。
-      */
-    Name: string;
-        
-    /**
+  /**
+   * 姓名。中文请使用UTF-8编码。
+   */
+  Name: string
+
+  /**
       * 用于人脸比对的照片，图片的BASE64值；
 BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
       */
-    ImageBase64: string;
-        
-    /**
-      * 本接口不需要传递此参数。
-      */
-    Optional?: string;
+  ImageBase64: string
+
+  /**
+   * 本接口不需要传递此参数。
+   */
+  Optional?: string
 }
 
 /**
  * BankCard4EVerification请求参数结构体
  */
 export interface BankCard4EVerificationRequest {
+  /**
+   * 姓名
+   */
+  Name: string
 
-    /**
-      * 姓名
-      */
-    Name: string;
-        
-    /**
-      * 银行卡
-      */
-    BankCard: string;
-        
-    /**
-      * 手机号码
-      */
-    Phone: string;
-        
-    /**
-      * 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
-      */
-    IdCard: string;
-        
-    /**
+  /**
+   * 银行卡
+   */
+  BankCard: string
+
+  /**
+   * 手机号码
+   */
+  Phone: string
+
+  /**
+   * 开户证件号，与CertType参数的证件类型一致，如：身份证，则传入身份证号。
+   */
+  IdCard: string
+
+  /**
       * 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
 目前默认：0 身份证，其他证件类型需求可以联系小助手faceid001确认。
       */
-    CertType?: number;
+  CertType?: number
 }
 
 /**
  * GetActionSequence返回参数结构体
  */
 export interface GetActionSequenceResponse {
+  /**
+   * 动作顺序(2,1 or 1,2) 。1代表张嘴，2代表闭眼。
+   */
+  ActionSequence?: string
 
-    /**
-      * 动作顺序(2,1 or 1,2) 。1代表张嘴，2代表闭眼。
-      */
-    ActionSequence?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * MinorsVerification请求参数结构体
  */
 export interface MinorsVerificationRequest {
-
-    /**
+  /**
       * 参与校验的参数类型。
 0：使用手机号进行校验；
 1：使用姓名与身份证号进行校验。
       */
-    Type: string;
-        
-    /**
+  Type: string
+
+  /**
       * 手机号，11位数字，
 特别提示：
 手机号验证只限制在腾讯健康守护可信模型覆盖的数据范围内，与手机号本身在运营商是否实名无关联，不在范围会提示“手机号未实名”，建议客户与传入姓名和身份证号信息组合使用。
       */
-    Mobile?: string;
-        
-    /**
-      * 身份证号码。
-      */
-    IdCard?: string;
-        
-    /**
-      * 姓名。
-      */
-    Name?: string;
+  Mobile?: string
+
+  /**
+   * 身份证号码。
+   */
+  IdCard?: string
+
+  /**
+   * 姓名。
+   */
+  Name?: string
 }
 
 /**
  * ImageRecognition返回参数结构体
  */
 export interface ImageRecognitionResponse {
+  /**
+   * 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
+   */
+  Sim?: number
 
-    /**
-      * 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）
-      */
-    Sim?: number;
-        
-    /**
-      * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
-      */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  /**
+   * 业务错误码，成功情况返回Success, 错误情况请参考下方错误码 列表中FailedOperation部分
+   */
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * GetActionSequence请求参数结构体
  */
 export interface GetActionSequenceRequest {
-
-    /**
-      * 默认不需要使用
-      */
-    ActionType?: string;
+  /**
+   * 默认不需要使用
+   */
+  ActionType?: string
 }
 
 /**
  * GetDetectInfo返回参数结构体
  */
 export interface GetDetectInfoResponse {
-
-    /**
+  /**
       * JSON字符串。
 {
   // 文本类信息
@@ -1251,59 +1216,56 @@ export interface GetDetectInfoResponse {
   }
 }
       */
-    DetectInfo?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  DetectInfo?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * GetLiveCode返回参数结构体
  */
 export interface GetLiveCodeResponse {
+  /**
+   * 数字验证码，如：1234
+   */
+  LiveCode?: string
 
-    /**
-      * 数字验证码，如：1234
-      */
-    LiveCode?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * GetDetectInfo请求参数结构体
  */
 export interface GetDetectInfoRequest {
+  /**
+   * 人脸核身流程的标识，调用DetectAuth接口时生成。
+   */
+  BizToken: string
 
-    /**
-      * 人脸核身流程的标识，调用DetectAuth接口时生成。
-      */
-    BizToken: string;
-        
-    /**
-      * 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请加慧眼小助手微信（faceid001）进行咨询。
-      */
-    RuleId: string;
-        
-    /**
+  /**
+   * 用于细分客户使用场景，申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。如有疑问，请加慧眼小助手微信（faceid001）进行咨询。
+   */
+  RuleId: string
+
+  /**
       * 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证正反面；3：视频最佳截图照片；4：视频）。
 如 134表示拉取文本类、视频最佳截图照片、视频。
 默认值：0
       */
-    InfoType?: string;
+  InfoType?: string
 }
 
 /**
  * BankCard2EVerification返回参数结构体
  */
 export interface BankCard2EVerificationResponse {
-
-    /**
+  /**
       * 认证结果码
 计费结果码：
   '0': '认证通过'
@@ -1325,25 +1287,24 @@ export interface BankCard2EVerificationResponse {
   '-3': '银行卡号码有误'
   '-16': '验证中心服务繁忙'
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * IdCardVerification返回参数结构体
  */
 export interface IdCardVerificationResponse {
-
-    /**
+  /**
       * 认证结果码，收费情况如下。
 收费结果码：
 0: 姓名和身份证号一致
@@ -1354,169 +1315,165 @@ export interface IdCardVerificationResponse {
 -4: 证件库服务异常
 -5: 证件库中无此身份证记录
       */
-    Result?: string;
-        
-    /**
-      * 业务结果描述。
-      */
-    Description?: string;
-        
-    /**
-      * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-      */
-    RequestId?: string;
+  Result?: string
+
+  /**
+   * 业务结果描述。
+   */
+  Description?: string
+
+  /**
+   * 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+   */
+  RequestId?: string
 }
 
 /**
  * 核身身份证图片信息
  */
 export interface DetectInfoIdCardData {
-
-    /**
+  /**
       * OCR正面照片的base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrFront: string;
-        
-    /**
+  OcrFront: string
+
+  /**
       * OCR反面照片的base64编码
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    OcrBack: string;
-        
-    /**
+  OcrBack: string
+
+  /**
       * 旋转裁边后的正面照片base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    ProcessedFrontImage: string;
-        
-    /**
+  ProcessedFrontImage: string
+
+  /**
       * 旋转裁边后的背面照片base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    ProcessedBackImage: string;
-        
-    /**
+  ProcessedBackImage: string
+
+  /**
       * 身份证正面人像图base64编码。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Avatar: string;
+  Avatar: string
 }
 
 /**
  * LivenessCompare请求参数结构体
  */
 export interface LivenessCompareRequest {
-
-    /**
+  /**
       * 用于人脸比对的照片，图片的BASE64值；
 BASE64编码后的图片数据大小不超过3M，仅支持jpg、png格式。
       */
-    ImageBase64: string;
-        
-    /**
+  ImageBase64: string
+
+  /**
       * 用于活体检测的视频，视频的BASE64值；
 BASE64编码后的大小不超过8M，支持mp4、avi、flv格式。
       */
-    VideoBase64: string;
-        
-    /**
+  VideoBase64: string
+
+  /**
       * 活体检测类型，取值：LIP/ACTION/SILENT。
 LIP为数字模式，ACTION为动作模式，SILENT为静默模式，三种模式选择一种传入。
       */
-    LivenessType: string;
-        
-    /**
+  LivenessType: string
+
+  /**
       * 数字模式传参：数字验证码(1234)，需先调用接口获取数字验证码；
 动作模式传参：传动作顺序(2,1 or 1,2)，需先调用接口获取动作顺序；
 静默模式传参：空。
       */
-    ValidateData?: string;
-        
-    /**
+  ValidateData?: string
+
+  /**
       * 额外配置，传入JSON字符串。
 {
 "BestFrameNum": 2  //需要返回多张最佳截图，取值范围1-10
 }
       */
-    Optional?: string;
+  Optional?: string
 }
 
 /**
  * 活体一比一详情
  */
 export interface DetectDetail {
-
-    /**
+  /**
       * 请求时间戳。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    ReqTime: string;
-        
-    /**
+  ReqTime: string
+
+  /**
       * 本次活体一比一请求的唯一标记。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Seq: string;
-        
-    /**
+  Seq: string
+
+  /**
       * 参与本次活体一比一的身份证号。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Idcard: string;
-        
-    /**
+  Idcard: string
+
+  /**
       * 参与本次活体一比一的姓名。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Name: string;
-        
-    /**
+  Name: string
+
+  /**
       * 本次活体一比一的相似度。
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Sim: string;
-        
-    /**
+  Sim: string
+
+  /**
       * 本次活体一比一是否收费
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    IsNeedCharge: boolean;
-        
-    /**
+  IsNeedCharge: boolean
+
+  /**
       * 本次活体一比一最终结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Errcode: number;
-        
-    /**
+  Errcode: number
+
+  /**
       * 本次活体一比一最终结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Errmsg: string;
-        
-    /**
+  Errmsg: string
+
+  /**
       * 本次活体结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Livestatus: number;
-        
-    /**
+  Livestatus: number
+
+  /**
       * 本次活体结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Livemsg: string;
-        
-    /**
+  Livemsg: string
+
+  /**
       * 本次一比一结果。0为成功
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Comparestatus: number;
-        
-    /**
+  Comparestatus: number
+
+  /**
       * 本次一比一结果描述。（仅描述用，文案更新时不会通知。）
 注意：此字段可能返回 null，表示取不到有效值。
       */
-    Comparemsg: string;
+  Comparemsg: string
 }
-

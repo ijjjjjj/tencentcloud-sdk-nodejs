@@ -17,96 +17,95 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   Candidate,
-   VerifyFaceResponse,
-   SearchPersonsReturnsByGroupResponse,
-   CreatePersonRequest,
-   CreateFaceResponse,
-   FaceHairAttributesInfo,
-   CreateFaceRequest,
-   CreateGroupRequest,
-   GetPersonGroupInfoRequest,
-   FaceInfo,
-   CheckSimilarPersonRequest,
-   FaceShape,
-   GetGroupListRequest,
-   GetUpgradeGroupFaceModelVersionJobListRequest,
-   GetUpgradeGroupFaceModelVersionResultResponse,
-   AnalyzeFaceRequest,
-   CreatePersonResponse,
-   SearchFacesResponse,
-   CopyPersonResponse,
-   EstimateCheckSimilarPersonCostTimeResponse,
-   GroupCandidate,
-   DeleteFaceResponse,
-   DeletePersonRequest,
-   DetectLiveFaceResponse,
-   DeleteFaceRequest,
-   ModifyGroupRequest,
-   DeleteGroupRequest,
-   EstimateCheckSimilarPersonCostTimeRequest,
-   FaceQualityCompleteness,
-   DetectLiveFaceRequest,
-   GetPersonBaseInfoResponse,
-   GetSimilarPersonResultRequest,
-   SearchPersonsResponse,
-   GetUpgradeGroupFaceModelVersionResultRequest,
-   GroupInfo,
-   FaceQualityInfo,
-   SearchFacesReturnsByGroupResponse,
-   CopyPersonRequest,
-   SearchPersonsReturnsByGroupRequest,
-   DeletePersonFromGroupResponse,
-   GetCheckSimilarPersonJobIdListResponse,
-   ResultsReturnsByGroup,
-   Point,
-   GetPersonListNumResponse,
-   DeletePersonFromGroupRequest,
-   VerifyFaceRequest,
-   GetPersonListResponse,
-   GetPersonListNumRequest,
-   Result,
-   GetPersonGroupInfoResponse,
-   UpgradeGroupFaceModelVersionResponse,
-   SearchFacesReturnsByGroupRequest,
-   ModifyPersonBaseInfoResponse,
-   GetSimilarPersonResultResponse,
-   ModifyPersonGroupInfoRequest,
-   RevertGroupFaceModelVersionRequest,
-   UpgradeGroupFaceModelVersionRequest,
-   FaceAttributesInfo,
-   VerifyPersonRequest,
-   ModifyPersonBaseInfoRequest,
-   JobIdInfo,
-   SearchFacesRequest,
-   GetCheckSimilarPersonJobIdListRequest,
-   SearchPersonsRequest,
-   PersonInfo,
-   GroupExDescriptionInfo,
-   AnalyzeFaceResponse,
-   DetectFaceRequest,
-   GetPersonBaseInfoRequest,
-   DeletePersonResponse,
-   PersonExDescriptionInfo,
-   GetUpgradeGroupFaceModelVersionJobListResponse,
-   GetGroupListResponse,
-   PersonGroupInfo,
-   GetGroupInfoResponse,
-   CompareFaceResponse,
-   RevertGroupFaceModelVersionResponse,
-   DeleteGroupResponse,
-   CompareFaceRequest,
-   VerifyPersonResponse,
-   DetectFaceResponse,
-   CheckSimilarPersonResponse,
-   GetGroupInfoRequest,
-   UpgradeJobInfo,
-   ModifyGroupResponse,
-   GetPersonListRequest,
-   FaceRect,
-   ModifyPersonGroupInfoResponse,
-   CreateGroupResponse,
-
+  Candidate,
+  VerifyFaceResponse,
+  SearchPersonsReturnsByGroupResponse,
+  CreatePersonRequest,
+  CreateFaceResponse,
+  FaceHairAttributesInfo,
+  CreateFaceRequest,
+  CreateGroupRequest,
+  GetPersonGroupInfoRequest,
+  FaceInfo,
+  CheckSimilarPersonRequest,
+  FaceShape,
+  GetGroupListRequest,
+  GetUpgradeGroupFaceModelVersionJobListRequest,
+  GetUpgradeGroupFaceModelVersionResultResponse,
+  AnalyzeFaceRequest,
+  CreatePersonResponse,
+  SearchFacesResponse,
+  CopyPersonResponse,
+  EstimateCheckSimilarPersonCostTimeResponse,
+  GroupCandidate,
+  DeleteFaceResponse,
+  DeletePersonRequest,
+  DetectLiveFaceResponse,
+  DeleteFaceRequest,
+  ModifyGroupRequest,
+  DeleteGroupRequest,
+  EstimateCheckSimilarPersonCostTimeRequest,
+  FaceQualityCompleteness,
+  DetectLiveFaceRequest,
+  GetPersonBaseInfoResponse,
+  GetSimilarPersonResultRequest,
+  SearchPersonsResponse,
+  GetUpgradeGroupFaceModelVersionResultRequest,
+  GroupInfo,
+  FaceQualityInfo,
+  SearchFacesReturnsByGroupResponse,
+  CopyPersonRequest,
+  SearchPersonsReturnsByGroupRequest,
+  DeletePersonFromGroupResponse,
+  GetCheckSimilarPersonJobIdListResponse,
+  ResultsReturnsByGroup,
+  Point,
+  GetPersonListNumResponse,
+  DeletePersonFromGroupRequest,
+  VerifyFaceRequest,
+  GetPersonListResponse,
+  GetPersonListNumRequest,
+  Result,
+  GetPersonGroupInfoResponse,
+  UpgradeGroupFaceModelVersionResponse,
+  SearchFacesReturnsByGroupRequest,
+  ModifyPersonBaseInfoResponse,
+  GetSimilarPersonResultResponse,
+  ModifyPersonGroupInfoRequest,
+  RevertGroupFaceModelVersionRequest,
+  UpgradeGroupFaceModelVersionRequest,
+  FaceAttributesInfo,
+  VerifyPersonRequest,
+  ModifyPersonBaseInfoRequest,
+  JobIdInfo,
+  SearchFacesRequest,
+  GetCheckSimilarPersonJobIdListRequest,
+  SearchPersonsRequest,
+  PersonInfo,
+  GroupExDescriptionInfo,
+  AnalyzeFaceResponse,
+  DetectFaceRequest,
+  GetPersonBaseInfoRequest,
+  DeletePersonResponse,
+  PersonExDescriptionInfo,
+  GetUpgradeGroupFaceModelVersionJobListResponse,
+  GetGroupListResponse,
+  PersonGroupInfo,
+  GetGroupInfoResponse,
+  CompareFaceResponse,
+  RevertGroupFaceModelVersionResponse,
+  DeleteGroupResponse,
+  CompareFaceRequest,
+  VerifyPersonResponse,
+  DetectFaceResponse,
+  CheckSimilarPersonResponse,
+  GetGroupInfoRequest,
+  UpgradeJobInfo,
+  ModifyGroupResponse,
+  GetPersonListRequest,
+  FaceRect,
+  ModifyPersonGroupInfoResponse,
+  CreateGroupResponse,
 } from "./iai_models"
 
 /**
@@ -114,20 +113,22 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("iai.tencentcloudapi.com", "2020-03-03", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("iai.tencentcloudapi.com", "2020-03-03", clientConfig);
-    }
-    
-    /**
-     * 从某人员库中删除人员，此操作仅影响该人员库。若该人员仅存在于指定的人员库中，该人员将被删除，其所有的人脸信息也将被删除。
-     * @public
-     */
-    async DeletePersonFromGroup(req: DeletePersonFromGroupRequest, cb?: (error: string, rep: DeletePersonFromGroupResponse) => void): Promise<DeletePersonFromGroupResponse> {
-        return await this.request("DeletePersonFromGroup", req, cb);
-    }
+  /**
+   * 从某人员库中删除人员，此操作仅影响该人员库。若该人员仅存在于指定的人员库中，该人员将被删除，其所有的人脸信息也将被删除。
+   * @public
+   */
+  async DeletePersonFromGroup(
+    req: DeletePersonFromGroupRequest,
+    cb?: (error: string, rep: DeletePersonFromGroupResponse) => void
+  ): Promise<DeletePersonFromGroupResponse> {
+    return this.request("DeletePersonFromGroup", req, cb)
+  }
 
-    /**
+  /**
      * 用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照**人员库的维度**以人员相似度从大到小顺序排列。
 
 支持一次性识别图片中的最多 10 张人脸，支持跨人员库（Group）搜索。
@@ -144,11 +145,14 @@ export class Client extends AbstractClient {
 
      * @public
      */
-    async SearchFacesReturnsByGroup(req: SearchFacesReturnsByGroupRequest, cb?: (error: string, rep: SearchFacesReturnsByGroupResponse) => void): Promise<SearchFacesReturnsByGroupResponse> {
-        return await this.request("SearchFacesReturnsByGroup", req, cb);
-    }
+  async SearchFacesReturnsByGroup(
+    req: SearchFacesReturnsByGroupRequest,
+    cb?: (error: string, rep: SearchFacesReturnsByGroupResponse) => void
+  ): Promise<SearchFacesReturnsByGroupResponse> {
+    return this.request("SearchFacesReturnsByGroup", req, cb)
+  }
 
-    /**
+  /**
      * 用于创建一个空的人员库，如果人员库已存在返回错误。
 可根据需要创建自定义描述字段，用于辅助描述该人员库下的人员信息。
 
@@ -157,29 +161,38 @@ export class Client extends AbstractClient {
 不同算法模型版本（FaceModelVersion）的人员库（Group）最多可包含人脸（Face）数不同。算法模型版本为2.0的人员库最多包含100万张人脸，算法模型版本为3.0的人员库最多可包含300万张人脸。
      * @public
      */
-    async CreateGroup(req: CreateGroupRequest, cb?: (error: string, rep: CreateGroupResponse) => void): Promise<CreateGroupResponse> {
-        return await this.request("CreateGroup", req, cb);
-    }
+  async CreateGroup(
+    req: CreateGroupRequest,
+    cb?: (error: string, rep: CreateGroupResponse) => void
+  ): Promise<CreateGroupResponse> {
+    return this.request("CreateGroup", req, cb)
+  }
 
-    /**
+  /**
      * 获取人员查重任务列表，按任务创建时间逆序（最新的在前面）。
 
 只保留最近1年的数据。
      * @public
      */
-    async GetCheckSimilarPersonJobIdList(req: GetCheckSimilarPersonJobIdListRequest, cb?: (error: string, rep: GetCheckSimilarPersonJobIdListResponse) => void): Promise<GetCheckSimilarPersonJobIdListResponse> {
-        return await this.request("GetCheckSimilarPersonJobIdList", req, cb);
-    }
+  async GetCheckSimilarPersonJobIdList(
+    req: GetCheckSimilarPersonJobIdListRequest,
+    cb?: (error: string, rep: GetCheckSimilarPersonJobIdListResponse) => void
+  ): Promise<GetCheckSimilarPersonJobIdListResponse> {
+    return this.request("GetCheckSimilarPersonJobIdList", req, cb)
+  }
 
-    /**
-     * 获取指定人员的信息，包括姓名、性别、人脸等。
-     * @public
-     */
-    async GetPersonBaseInfo(req: GetPersonBaseInfoRequest, cb?: (error: string, rep: GetPersonBaseInfoResponse) => void): Promise<GetPersonBaseInfoResponse> {
-        return await this.request("GetPersonBaseInfo", req, cb);
-    }
+  /**
+   * 获取指定人员的信息，包括姓名、性别、人脸等。
+   * @public
+   */
+  async GetPersonBaseInfo(
+    req: GetPersonBaseInfoRequest,
+    cb?: (error: string, rep: GetPersonBaseInfoResponse) => void
+  ): Promise<GetPersonBaseInfoResponse> {
+    return this.request("GetPersonBaseInfo", req, cb)
+  }
 
-    /**
+  /**
      * 用于对用户上传的静态图片进行人脸活体检测。与动态活体检测的区别是：静态活体检测中，用户不需要通过唇语或摇头眨眼等动作来识别。
 
 静态活体检测适用于手机自拍的场景，或对防攻击要求不高的场景。如果对活体检测有更高安全性要求，请使用[人脸核身·云智慧眼](https://cloud.tencent.com/product/faceid)产品。
@@ -191,57 +204,75 @@ export class Client extends AbstractClient {
 - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
      * @public
      */
-    async DetectLiveFace(req: DetectLiveFaceRequest, cb?: (error: string, rep: DetectLiveFaceResponse) => void): Promise<DetectLiveFaceResponse> {
-        return await this.request("DetectLiveFace", req, cb);
-    }
+  async DetectLiveFace(
+    req: DetectLiveFaceRequest,
+    cb?: (error: string, rep: DetectLiveFaceResponse) => void
+  ): Promise<DetectLiveFaceResponse> {
+    return this.request("DetectLiveFace", req, cb)
+  }
 
-    /**
+  /**
      * 将一组人脸图片添加到一个人员中。一个人员最多允许包含 5 张图片。若该人员存在多个人员库中，所有人员库中该人员图片均会增加。
 
 >     
 - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
      * @public
      */
-    async CreateFace(req: CreateFaceRequest, cb?: (error: string, rep: CreateFaceResponse) => void): Promise<CreateFaceResponse> {
-        return await this.request("CreateFace", req, cb);
-    }
+  async CreateFace(
+    req: CreateFaceRequest,
+    cb?: (error: string, rep: CreateFaceResponse) => void
+  ): Promise<CreateFaceResponse> {
+    return this.request("CreateFace", req, cb)
+  }
 
-    /**
-     * 获取指定人员库中人员数量。
-     * @public
-     */
-    async GetPersonListNum(req: GetPersonListNumRequest, cb?: (error: string, rep: GetPersonListNumResponse) => void): Promise<GetPersonListNumResponse> {
-        return await this.request("GetPersonListNum", req, cb);
-    }
+  /**
+   * 获取指定人员库中人员数量。
+   * @public
+   */
+  async GetPersonListNum(
+    req: GetPersonListNumRequest,
+    cb?: (error: string, rep: GetPersonListNumResponse) => void
+  ): Promise<GetPersonListNumResponse> {
+    return this.request("GetPersonListNum", req, cb)
+  }
 
-    /**
-     * 获取指定人员的信息，包括加入的人员库、描述内容等。
-     * @public
-     */
-    async GetPersonGroupInfo(req: GetPersonGroupInfoRequest, cb?: (error: string, rep: GetPersonGroupInfoResponse) => void): Promise<GetPersonGroupInfoResponse> {
-        return await this.request("GetPersonGroupInfo", req, cb);
-    }
+  /**
+   * 获取指定人员的信息，包括加入的人员库、描述内容等。
+   * @public
+   */
+  async GetPersonGroupInfo(
+    req: GetPersonGroupInfoRequest,
+    cb?: (error: string, rep: GetPersonGroupInfoResponse) => void
+  ): Promise<GetPersonGroupInfoResponse> {
+    return this.request("GetPersonGroupInfo", req, cb)
+  }
 
-    /**
+  /**
      * 对请求图片进行五官定位（也称人脸关键点定位），计算构成人脸轮廓的 90 个点，包括眉毛（左右各 8 点）、眼睛（左右各 8 点）、鼻子（13 点）、嘴巴（22 点）、脸型轮廓（21 点）、眼珠[或瞳孔]（2点）。
 
 >     
 - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
      * @public
      */
-    async AnalyzeFace(req: AnalyzeFaceRequest, cb?: (error: string, rep: AnalyzeFaceResponse) => void): Promise<AnalyzeFaceResponse> {
-        return await this.request("AnalyzeFace", req, cb);
-    }
+  async AnalyzeFace(
+    req: AnalyzeFaceRequest,
+    cb?: (error: string, rep: AnalyzeFaceResponse) => void
+  ): Promise<AnalyzeFaceResponse> {
+    return this.request("AnalyzeFace", req, cb)
+  }
 
-    /**
-     * 修改人员信息，包括名称、性别等。人员名称和性别修改会同步到包含该人员的所有人员库。
-     * @public
-     */
-    async ModifyPersonBaseInfo(req: ModifyPersonBaseInfoRequest, cb?: (error: string, rep: ModifyPersonBaseInfoResponse) => void): Promise<ModifyPersonBaseInfoResponse> {
-        return await this.request("ModifyPersonBaseInfo", req, cb);
-    }
+  /**
+   * 修改人员信息，包括名称、性别等。人员名称和性别修改会同步到包含该人员的所有人员库。
+   * @public
+   */
+  async ModifyPersonBaseInfo(
+    req: ModifyPersonBaseInfoRequest,
+    cb?: (error: string, rep: ModifyPersonBaseInfoResponse) => void
+  ): Promise<ModifyPersonBaseInfoResponse> {
+    return this.request("ModifyPersonBaseInfo", req, cb)
+  }
 
-    /**
+  /**
      * 用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，识别结果按照相似度从大到小排序。
 
 支持一次性识别图片中的最多 10 张人脸，支持一次性跨 100 个人员库（Group）搜索。
@@ -257,21 +288,27 @@ export class Client extends AbstractClient {
 - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
      * @public
      */
-    async SearchFaces(req: SearchFacesRequest, cb?: (error: string, rep: SearchFacesResponse) => void): Promise<SearchFacesResponse> {
-        return await this.request("SearchFaces", req, cb);
-    }
+  async SearchFaces(
+    req: SearchFacesRequest,
+    cb?: (error: string, rep: SearchFacesResponse) => void
+  ): Promise<SearchFacesResponse> {
+    return this.request("SearchFaces", req, cb)
+  }
 
-    /**
+  /**
      * 将已存在于某人员库的人员复制到其他人员库，该人员的描述信息不会被复制。单个人员最多只能同时存在100个人员库中。
 >     
 - 注：若该人员创建时算法模型版本为2.0，复制到非2.0算法模型版本的Group中时，复制操作将会失败。
      * @public
      */
-    async CopyPerson(req: CopyPersonRequest, cb?: (error: string, rep: CopyPersonResponse) => void): Promise<CopyPersonResponse> {
-        return await this.request("CopyPerson", req, cb);
-    }
+  async CopyPerson(
+    req: CopyPersonRequest,
+    cb?: (error: string, rep: CopyPersonResponse) => void
+  ): Promise<CopyPersonResponse> {
+    return this.request("CopyPerson", req, cb)
+  }
 
-    /**
+  /**
      * 对指定的人员库进行人员查重，给出疑似相同人的信息。
 
 可以使用本接口对已有的单个人员库进行人员查重，避免同一人在单个人员库中拥有多个身份；也可以使用本接口对已有的多个人员库进行人员查重，查询同一人是否同时存在多个人员库中。
@@ -285,54 +322,72 @@ export class Client extends AbstractClient {
 - 查重的人员库状态为腾讯云开始进行查重任务的那一刻，即您可以理解为当您发起查重请求后，若您的查重任务需要排队，在排队期间您对人员库的增删操作均会会影响查重的结果。腾讯云将以开始进行查重任务的那一刻人员库的状态进行查重。查重任务开始后，您对人员库的任何操作均不影响查重任务的进行。但建议查重任务开始后，请不要对人员库中人员和人脸进行增删操作。
      * @public
      */
-    async CheckSimilarPerson(req: CheckSimilarPersonRequest, cb?: (error: string, rep: CheckSimilarPersonResponse) => void): Promise<CheckSimilarPersonResponse> {
-        return await this.request("CheckSimilarPerson", req, cb);
-    }
+  async CheckSimilarPerson(
+    req: CheckSimilarPersonRequest,
+    cb?: (error: string, rep: CheckSimilarPersonResponse) => void
+  ): Promise<CheckSimilarPersonResponse> {
+    return this.request("CheckSimilarPerson", req, cb)
+  }
 
-    /**
+  /**
      * 删除该人员库及包含的所有的人员。同时，人员对应的所有人脸信息将被删除。若某人员同时存在多个人员库中，该人员不会被删除，但属于该人员库中的自定义描述字段信息会被删除，属于其他人员库的自定义描述字段信息不受影响。
 
      * @public
      */
-    async DeleteGroup(req: DeleteGroupRequest, cb?: (error: string, rep: DeleteGroupResponse) => void): Promise<DeleteGroupResponse> {
-        return await this.request("DeleteGroup", req, cb);
-    }
+  async DeleteGroup(
+    req: DeleteGroupRequest,
+    cb?: (error: string, rep: DeleteGroupResponse) => void
+  ): Promise<DeleteGroupResponse> {
+    return this.request("DeleteGroup", req, cb)
+  }
 
-    /**
-     * 删除该人员信息，此操作会导致所有人员库均删除此人员。同时，该人员的所有人脸信息将被删除。
-     * @public
-     */
-    async DeletePerson(req: DeletePersonRequest, cb?: (error: string, rep: DeletePersonResponse) => void): Promise<DeletePersonResponse> {
-        return await this.request("DeletePerson", req, cb);
-    }
+  /**
+   * 删除该人员信息，此操作会导致所有人员库均删除此人员。同时，该人员的所有人脸信息将被删除。
+   * @public
+   */
+  async DeletePerson(
+    req: DeletePersonRequest,
+    cb?: (error: string, rep: DeletePersonResponse) => void
+  ): Promise<DeletePersonResponse> {
+    return this.request("DeletePerson", req, cb)
+  }
 
-    /**
-     * 修改人员库名称、备注、自定义描述字段名称。
-     * @public
-     */
-    async ModifyGroup(req: ModifyGroupRequest, cb?: (error: string, rep: ModifyGroupResponse) => void): Promise<ModifyGroupResponse> {
-        return await this.request("ModifyGroup", req, cb);
-    }
+  /**
+   * 修改人员库名称、备注、自定义描述字段名称。
+   * @public
+   */
+  async ModifyGroup(
+    req: ModifyGroupRequest,
+    cb?: (error: string, rep: ModifyGroupResponse) => void
+  ): Promise<ModifyGroupResponse> {
+    return this.request("ModifyGroup", req, cb)
+  }
 
-    /**
+  /**
      * 升级人员库。升级过程中，人员库仍然为原算法版本，人员库相关操作仍然支持。升级完成后，人员库为新算法版本。
 单个人员库有且仅支持一次回滚操作。
 注：此处QPS限制为10。
      * @public
      */
-    async UpgradeGroupFaceModelVersion(req: UpgradeGroupFaceModelVersionRequest, cb?: (error: string, rep: UpgradeGroupFaceModelVersionResponse) => void): Promise<UpgradeGroupFaceModelVersionResponse> {
-        return await this.request("UpgradeGroupFaceModelVersion", req, cb);
-    }
+  async UpgradeGroupFaceModelVersion(
+    req: UpgradeGroupFaceModelVersionRequest,
+    cb?: (error: string, rep: UpgradeGroupFaceModelVersionResponse) => void
+  ): Promise<UpgradeGroupFaceModelVersionResponse> {
+    return this.request("UpgradeGroupFaceModelVersion", req, cb)
+  }
 
-    /**
-     * 获取人员查重接口（CheckSimilarPerson）结果。
-     * @public
-     */
-    async GetSimilarPersonResult(req: GetSimilarPersonResultRequest, cb?: (error: string, rep: GetSimilarPersonResultResponse) => void): Promise<GetSimilarPersonResultResponse> {
-        return await this.request("GetSimilarPersonResult", req, cb);
-    }
+  /**
+   * 获取人员查重接口（CheckSimilarPerson）结果。
+   * @public
+   */
+  async GetSimilarPersonResult(
+    req: GetSimilarPersonResultRequest,
+    cb?: (error: string, rep: GetSimilarPersonResultResponse) => void
+  ): Promise<GetSimilarPersonResultResponse> {
+    return this.request("GetSimilarPersonResult", req, cb)
+  }
 
-    /**
+  /**
      * 本接口用于回滚人员库的人脸识别算法模型版本。单个人员库有且仅有一次回滚机会。
 
 回滚操作会在10s内生效，回滚操作中，您对人员库的操作可能会失效。
@@ -340,39 +395,51 @@ export class Client extends AbstractClient {
 注：给客户我会写10s内生效，我们实际上越快越好。待讨论。
      * @public
      */
-    async RevertGroupFaceModelVersion(req: RevertGroupFaceModelVersionRequest, cb?: (error: string, rep: RevertGroupFaceModelVersionResponse) => void): Promise<RevertGroupFaceModelVersionResponse> {
-        return await this.request("RevertGroupFaceModelVersion", req, cb);
-    }
+  async RevertGroupFaceModelVersion(
+    req: RevertGroupFaceModelVersionRequest,
+    cb?: (error: string, rep: RevertGroupFaceModelVersionResponse) => void
+  ): Promise<RevertGroupFaceModelVersionResponse> {
+    return this.request("RevertGroupFaceModelVersion", req, cb)
+  }
 
-    /**
+  /**
      * 创建人员，添加人脸、姓名、性别及其他相关信息。
 
 >     
 - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
      * @public
      */
-    async CreatePerson(req: CreatePersonRequest, cb?: (error: string, rep: CreatePersonResponse) => void): Promise<CreatePersonResponse> {
-        return await this.request("CreatePerson", req, cb);
-    }
+  async CreatePerson(
+    req: CreatePersonRequest,
+    cb?: (error: string, rep: CreatePersonResponse) => void
+  ): Promise<CreatePersonResponse> {
+    return this.request("CreatePerson", req, cb)
+  }
 
-    /**
+  /**
      * 获取人员库升级任务列表
 
      * @public
      */
-    async GetUpgradeGroupFaceModelVersionJobList(req: GetUpgradeGroupFaceModelVersionJobListRequest, cb?: (error: string, rep: GetUpgradeGroupFaceModelVersionJobListResponse) => void): Promise<GetUpgradeGroupFaceModelVersionJobListResponse> {
-        return await this.request("GetUpgradeGroupFaceModelVersionJobList", req, cb);
-    }
+  async GetUpgradeGroupFaceModelVersionJobList(
+    req: GetUpgradeGroupFaceModelVersionJobListRequest,
+    cb?: (error: string, rep: GetUpgradeGroupFaceModelVersionJobListResponse) => void
+  ): Promise<GetUpgradeGroupFaceModelVersionJobListResponse> {
+    return this.request("GetUpgradeGroupFaceModelVersionJobList", req, cb)
+  }
 
-    /**
-     * 获取人员库信息。
-     * @public
-     */
-    async GetGroupInfo(req: GetGroupInfoRequest, cb?: (error: string, rep: GetGroupInfoResponse) => void): Promise<GetGroupInfoResponse> {
-        return await this.request("GetGroupInfo", req, cb);
-    }
+  /**
+   * 获取人员库信息。
+   * @public
+   */
+  async GetGroupInfo(
+    req: GetGroupInfoRequest,
+    cb?: (error: string, rep: GetGroupInfoResponse) => void
+  ): Promise<GetGroupInfoResponse> {
+    return this.request("GetGroupInfo", req, cb)
+  }
 
-    /**
+  /**
      * 检测给定图片中的人脸（Face）的位置、相应的面部属性和人脸质量信息，位置包括 (x，y，w，h)，面部属性包括性别（gender）、年龄（age）、表情（expression）、魅力（beauty）、眼镜（glass）、发型（hair）、口罩（mask）和姿态 (pitch，roll，yaw)，人脸质量信息包括整体质量分（score）、模糊分（sharpness）、光照分（brightness）和五官遮挡分（completeness）。
 
  
@@ -392,19 +459,25 @@ export class Client extends AbstractClient {
 
      * @public
      */
-    async DetectFace(req: DetectFaceRequest, cb?: (error: string, rep: DetectFaceResponse) => void): Promise<DetectFaceResponse> {
-        return await this.request("DetectFace", req, cb);
-    }
+  async DetectFace(
+    req: DetectFaceRequest,
+    cb?: (error: string, rep: DetectFaceResponse) => void
+  ): Promise<DetectFaceResponse> {
+    return this.request("DetectFace", req, cb)
+  }
 
-    /**
-     * 获取指定人员库中的人员列表。
-     * @public
-     */
-    async GetPersonList(req: GetPersonListRequest, cb?: (error: string, rep: GetPersonListResponse) => void): Promise<GetPersonListResponse> {
-        return await this.request("GetPersonList", req, cb);
-    }
+  /**
+   * 获取指定人员库中的人员列表。
+   * @public
+   */
+  async GetPersonList(
+    req: GetPersonListRequest,
+    cb?: (error: string, rep: GetPersonListResponse) => void
+  ): Promise<GetPersonListResponse> {
+    return this.request("GetPersonList", req, cb)
+  }
 
-    /**
+  /**
      * 给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/45015)。
 本接口会将该人员（Person）下的所有人脸（Face）进行融合特征处理，即若某个Person下有4张 Face，本接口会将4张 Face 的特征进行融合处理，生成对应这个 Person 的特征，使人员验证（确定待识别的人脸图片是某人员）更加准确。
 
@@ -416,28 +489,37 @@ export class Client extends AbstractClient {
 - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
      * @public
      */
-    async VerifyPerson(req: VerifyPersonRequest, cb?: (error: string, rep: VerifyPersonResponse) => void): Promise<VerifyPersonResponse> {
-        return await this.request("VerifyPerson", req, cb);
-    }
+  async VerifyPerson(
+    req: VerifyPersonRequest,
+    cb?: (error: string, rep: VerifyPersonResponse) => void
+  ): Promise<VerifyPersonResponse> {
+    return this.request("VerifyPerson", req, cb)
+  }
 
-    /**
+  /**
      * 人员库升级结果查询
 
      * @public
      */
-    async GetUpgradeGroupFaceModelVersionResult(req: GetUpgradeGroupFaceModelVersionResultRequest, cb?: (error: string, rep: GetUpgradeGroupFaceModelVersionResultResponse) => void): Promise<GetUpgradeGroupFaceModelVersionResultResponse> {
-        return await this.request("GetUpgradeGroupFaceModelVersionResult", req, cb);
-    }
+  async GetUpgradeGroupFaceModelVersionResult(
+    req: GetUpgradeGroupFaceModelVersionResultRequest,
+    cb?: (error: string, rep: GetUpgradeGroupFaceModelVersionResultResponse) => void
+  ): Promise<GetUpgradeGroupFaceModelVersionResultResponse> {
+    return this.request("GetUpgradeGroupFaceModelVersionResult", req, cb)
+  }
 
-    /**
-     * 修改指定人员库人员描述内容。
-     * @public
-     */
-    async ModifyPersonGroupInfo(req: ModifyPersonGroupInfoRequest, cb?: (error: string, rep: ModifyPersonGroupInfoResponse) => void): Promise<ModifyPersonGroupInfoResponse> {
-        return await this.request("ModifyPersonGroupInfo", req, cb);
-    }
+  /**
+   * 修改指定人员库人员描述内容。
+   * @public
+   */
+  async ModifyPersonGroupInfo(
+    req: ModifyPersonGroupInfoRequest,
+    cb?: (error: string, rep: ModifyPersonGroupInfoResponse) => void
+  ): Promise<ModifyPersonGroupInfoResponse> {
+    return this.request("ModifyPersonGroupInfo", req, cb)
+  }
 
-    /**
+  /**
      * 给定一张人脸图片和一个 PersonId，判断图片中的人和 PersonId 对应的人是否为同一人。PersonId 请参考[人员库管理相关接口](https://cloud.tencent.com/document/product/867/45015)。 
 
 与[人脸比对](https://cloud.tencent.com/document/product/867/44987)接口不同的是，人脸验证用于判断 “此人是否是此人”，“此人”的信息已存于人员库中，“此人”可能存在多张人脸图片；而[人脸比对](https://cloud.tencent.com/document/product/867/44987)用于判断两张人脸的相似度。
@@ -448,11 +530,14 @@ export class Client extends AbstractClient {
 - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
      * @public
      */
-    async VerifyFace(req: VerifyFaceRequest, cb?: (error: string, rep: VerifyFaceResponse) => void): Promise<VerifyFaceResponse> {
-        return await this.request("VerifyFace", req, cb);
-    }
+  async VerifyFace(
+    req: VerifyFaceRequest,
+    cb?: (error: string, rep: VerifyFaceResponse) => void
+  ): Promise<VerifyFaceResponse> {
+    return this.request("VerifyFace", req, cb)
+  }
 
-    /**
+  /**
      * 用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照相似度从大到小排列。
 
 支持一次性识别图片中的最多 10 张人脸，支持一次性跨 100 个人员库（Group）搜索。
@@ -466,11 +551,14 @@ export class Client extends AbstractClient {
 - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
      * @public
      */
-    async SearchPersons(req: SearchPersonsRequest, cb?: (error: string, rep: SearchPersonsResponse) => void): Promise<SearchPersonsResponse> {
-        return await this.request("SearchPersons", req, cb);
-    }
+  async SearchPersons(
+    req: SearchPersonsRequest,
+    cb?: (error: string, rep: SearchPersonsResponse) => void
+  ): Promise<SearchPersonsResponse> {
+    return this.request("SearchPersons", req, cb)
+  }
 
-    /**
+  /**
      * 对两张图片中的人脸进行相似度比对，返回人脸相似度分数。
 
 若您需要判断 “此人是否是某人”，即验证某张图片中的人是否是已知身份的某人，如常见的人脸登录场景，建议使用[人脸验证](https://cloud.tencent.com/document/product/867/44983)或[人员验证](https://cloud.tencent.com/document/product/867/44982)接口。
@@ -479,11 +567,14 @@ export class Client extends AbstractClient {
 - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
      * @public
      */
-    async CompareFace(req: CompareFaceRequest, cb?: (error: string, rep: CompareFaceResponse) => void): Promise<CompareFaceResponse> {
-        return await this.request("CompareFace", req, cb);
-    }
+  async CompareFace(
+    req: CompareFaceRequest,
+    cb?: (error: string, rep: CompareFaceResponse) => void
+  ): Promise<CompareFaceResponse> {
+    return this.request("CompareFace", req, cb)
+  }
 
-    /**
+  /**
      * 用于对一张待识别的人脸图片，在一个或多个人员库中识别出最相似的 TopK 人员，按照**人员库的维度**以人员相似度从大到小顺序排列。
 
 支持一次性识别图片中的最多 10 张人脸，支持跨人员库（Group）搜索。
@@ -496,19 +587,25 @@ export class Client extends AbstractClient {
 - 仅支持算法模型版本（FaceModelVersion）为3.0的人员库。
      * @public
      */
-    async SearchPersonsReturnsByGroup(req: SearchPersonsReturnsByGroupRequest, cb?: (error: string, rep: SearchPersonsReturnsByGroupResponse) => void): Promise<SearchPersonsReturnsByGroupResponse> {
-        return await this.request("SearchPersonsReturnsByGroup", req, cb);
-    }
+  async SearchPersonsReturnsByGroup(
+    req: SearchPersonsReturnsByGroupRequest,
+    cb?: (error: string, rep: SearchPersonsReturnsByGroupResponse) => void
+  ): Promise<SearchPersonsReturnsByGroupResponse> {
+    return this.request("SearchPersonsReturnsByGroup", req, cb)
+  }
 
-    /**
-     * 获取人员库列表。
-     * @public
-     */
-    async GetGroupList(req: GetGroupListRequest, cb?: (error: string, rep: GetGroupListResponse) => void): Promise<GetGroupListResponse> {
-        return await this.request("GetGroupList", req, cb);
-    }
+  /**
+   * 获取人员库列表。
+   * @public
+   */
+  async GetGroupList(
+    req: GetGroupListRequest,
+    cb?: (error: string, rep: GetGroupListResponse) => void
+  ): Promise<GetGroupListResponse> {
+    return this.request("GetGroupList", req, cb)
+  }
 
-    /**
+  /**
      * 获取若要开始一个人员查重任务，这个任务结束的预估时间。
 
 若EndTimestamp符合您预期，请您尽快发起人员查重请求，否则导致可能需要更多处理时间。
@@ -516,17 +613,21 @@ export class Client extends AbstractClient {
 若预估时间超过5小时，则无法使用人员查重功能。
      * @public
      */
-    async EstimateCheckSimilarPersonCostTime(req: EstimateCheckSimilarPersonCostTimeRequest, cb?: (error: string, rep: EstimateCheckSimilarPersonCostTimeResponse) => void): Promise<EstimateCheckSimilarPersonCostTimeResponse> {
-        return await this.request("EstimateCheckSimilarPersonCostTime", req, cb);
-    }
+  async EstimateCheckSimilarPersonCostTime(
+    req: EstimateCheckSimilarPersonCostTimeRequest,
+    cb?: (error: string, rep: EstimateCheckSimilarPersonCostTimeResponse) => void
+  ): Promise<EstimateCheckSimilarPersonCostTimeResponse> {
+    return this.request("EstimateCheckSimilarPersonCostTime", req, cb)
+  }
 
-    /**
-     * 删除一个人员下的人脸图片。如果该人员只有一张人脸图片，则返回错误。
-     * @public
-     */
-    async DeleteFace(req: DeleteFaceRequest, cb?: (error: string, rep: DeleteFaceResponse) => void): Promise<DeleteFaceResponse> {
-        return await this.request("DeleteFace", req, cb);
-    }
-
-
+  /**
+   * 删除一个人员下的人脸图片。如果该人员只有一张人脸图片，则返回错误。
+   * @public
+   */
+  async DeleteFace(
+    req: DeleteFaceRequest,
+    cb?: (error: string, rep: DeleteFaceResponse) => void
+  ): Promise<DeleteFaceResponse> {
+    return this.request("DeleteFace", req, cb)
+  }
 }

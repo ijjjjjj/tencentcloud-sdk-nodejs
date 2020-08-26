@@ -17,49 +17,48 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribeProjectResponse,
-   CheckStaffChUserRequest,
-   DescribeResourceTemplateHeadersResponse,
-   DeleteProjectRequest,
-   ReplenishProjectStockResponse,
-   SendWxTouchTaskResponse,
-   DescribeCustomersRequest,
-   DescribeProjectsRequest,
-   ModifyProjectRequest,
-   OffLineProjectRequest,
-   DescribeSubProjectRequest,
-   ExpireFlowRequest,
-   CopyActivityChannelRequest,
-   CopyActivityChannelResponse,
-   DescribeProjectsResponse,
-   ReplenishProjectStockRequest,
-   ProjectStock,
-   DescribeProjectStockResponse,
-   CheckStaffChUserResponse,
-   DescribeCustomerRequest,
-   ProductInfo,
-   SubProjectInfo,
-   ResourceTemplateHeader,
-   CreateSubProjectResponse,
-   Filters,
-   ProjectInfo,
-   DescribeCustomerResponse,
-   DescribeCustomersResponse,
-   CreateSubProjectRequest,
-   ModifyProjectResponse,
-   CreateProjectResponse,
-   DescribeProjectStockRequest,
-   DeleteProjectResponse,
-   SendWxTouchTaskRequest,
-   DescribeProjectRequest,
-   OffLineProjectResponse,
-   CustomerInfo,
-   ActivityInfo,
-   DescribeResourceTemplateHeadersRequest,
-   ExpireFlowResponse,
-   DescribeSubProjectResponse,
-   CreateProjectRequest,
-
+  DescribeProjectResponse,
+  CheckStaffChUserRequest,
+  DescribeResourceTemplateHeadersResponse,
+  DeleteProjectRequest,
+  ReplenishProjectStockResponse,
+  SendWxTouchTaskResponse,
+  DescribeCustomersRequest,
+  DescribeProjectsRequest,
+  ModifyProjectRequest,
+  OffLineProjectRequest,
+  DescribeSubProjectRequest,
+  ExpireFlowRequest,
+  CopyActivityChannelRequest,
+  CopyActivityChannelResponse,
+  DescribeProjectsResponse,
+  ReplenishProjectStockRequest,
+  ProjectStock,
+  DescribeProjectStockResponse,
+  CheckStaffChUserResponse,
+  DescribeCustomerRequest,
+  ProductInfo,
+  SubProjectInfo,
+  ResourceTemplateHeader,
+  CreateSubProjectResponse,
+  Filters,
+  ProjectInfo,
+  DescribeCustomerResponse,
+  DescribeCustomersResponse,
+  CreateSubProjectRequest,
+  ModifyProjectResponse,
+  CreateProjectResponse,
+  DescribeProjectStockRequest,
+  DeleteProjectResponse,
+  SendWxTouchTaskRequest,
+  DescribeProjectRequest,
+  OffLineProjectResponse,
+  CustomerInfo,
+  ActivityInfo,
+  DescribeResourceTemplateHeadersRequest,
+  ExpireFlowResponse,
+  DescribeSubProjectResponse,
+  CreateProjectRequest,
 } from "./solar_models"
 
 /**
@@ -67,146 +66,194 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("solar.tencentcloudapi.com", "2018-10-11", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("solar.tencentcloudapi.com", "2018-10-11", clientConfig);
-    }
-    
-    /**
-     * 子项目详情
-     * @public
-     */
-    async DescribeSubProject(req: DescribeSubProjectRequest, cb?: (error: string, rep: DescribeSubProjectResponse) => void): Promise<DescribeSubProjectResponse> {
-        return await this.request("DescribeSubProject", req, cb);
-    }
+  /**
+   * 子项目详情
+   * @public
+   */
+  async DescribeSubProject(
+    req: DescribeSubProjectRequest,
+    cb?: (error: string, rep: DescribeSubProjectResponse) => void
+  ): Promise<DescribeSubProjectResponse> {
+    return this.request("DescribeSubProject", req, cb)
+  }
 
-    /**
-     * 项目库存详情
-     * @public
-     */
-    async DescribeProjectStock(req: DescribeProjectStockRequest, cb?: (error: string, rep: DescribeProjectStockResponse) => void): Promise<DescribeProjectStockResponse> {
-        return await this.request("DescribeProjectStock", req, cb);
-    }
+  /**
+   * 项目库存详情
+   * @public
+   */
+  async DescribeProjectStock(
+    req: DescribeProjectStockRequest,
+    cb?: (error: string, rep: DescribeProjectStockResponse) => void
+  ): Promise<DescribeProjectStockResponse> {
+    return this.request("DescribeProjectStock", req, cb)
+  }
 
-    /**
-     * 项目详情展示
-     * @public
-     */
-    async DescribeProject(req: DescribeProjectRequest, cb?: (error: string, rep: DescribeProjectResponse) => void): Promise<DescribeProjectResponse> {
-        return await this.request("DescribeProject", req, cb);
-    }
+  /**
+   * 项目详情展示
+   * @public
+   */
+  async DescribeProject(
+    req: DescribeProjectRequest,
+    cb?: (error: string, rep: DescribeProjectResponse) => void
+  ): Promise<DescribeProjectResponse> {
+    return this.request("DescribeProject", req, cb)
+  }
 
-    /**
-     * 素材查询服务号模板的列表（样例）
-     * @public
-     */
-    async DescribeResourceTemplateHeaders(req: DescribeResourceTemplateHeadersRequest, cb?: (error: string, rep: DescribeResourceTemplateHeadersResponse) => void): Promise<DescribeResourceTemplateHeadersResponse> {
-        return await this.request("DescribeResourceTemplateHeaders", req, cb);
-    }
+  /**
+   * 素材查询服务号模板的列表（样例）
+   * @public
+   */
+  async DescribeResourceTemplateHeaders(
+    req: DescribeResourceTemplateHeadersRequest,
+    cb?: (error: string, rep: DescribeResourceTemplateHeadersResponse) => void
+  ): Promise<DescribeResourceTemplateHeadersResponse> {
+    return this.request("DescribeResourceTemplateHeaders", req, cb)
+  }
 
-    /**
-     * 查询客户档案列表
-     * @public
-     */
-    async DescribeCustomers(req: DescribeCustomersRequest, cb?: (error: string, rep: DescribeCustomersResponse) => void): Promise<DescribeCustomersResponse> {
-        return await this.request("DescribeCustomers", req, cb);
-    }
+  /**
+   * 查询客户档案列表
+   * @public
+   */
+  async DescribeCustomers(
+    req: DescribeCustomersRequest,
+    cb?: (error: string, rep: DescribeCustomersResponse) => void
+  ): Promise<DescribeCustomersResponse> {
+    return this.request("DescribeCustomers", req, cb)
+  }
 
-    /**
-     * 发送企业微信触达任务
-     * @public
-     */
-    async SendWxTouchTask(req: SendWxTouchTaskRequest, cb?: (error: string, rep: SendWxTouchTaskResponse) => void): Promise<SendWxTouchTaskResponse> {
-        return await this.request("SendWxTouchTask", req, cb);
-    }
+  /**
+   * 发送企业微信触达任务
+   * @public
+   */
+  async SendWxTouchTask(
+    req: SendWxTouchTaskRequest,
+    cb?: (error: string, rep: SendWxTouchTaskResponse) => void
+  ): Promise<SendWxTouchTaskResponse> {
+    return this.request("SendWxTouchTask", req, cb)
+  }
 
-    /**
-     * 创建项目
-     * @public
-     */
-    async CreateProject(req: CreateProjectRequest, cb?: (error: string, rep: CreateProjectResponse) => void): Promise<CreateProjectResponse> {
-        return await this.request("CreateProject", req, cb);
-    }
+  /**
+   * 创建项目
+   * @public
+   */
+  async CreateProject(
+    req: CreateProjectRequest,
+    cb?: (error: string, rep: CreateProjectResponse) => void
+  ): Promise<CreateProjectResponse> {
+    return this.request("CreateProject", req, cb)
+  }
 
-    /**
-     * 补充子项目库存
-     * @public
-     */
-    async ReplenishProjectStock(req: ReplenishProjectStockRequest, cb?: (error: string, rep: ReplenishProjectStockResponse) => void): Promise<ReplenishProjectStockResponse> {
-        return await this.request("ReplenishProjectStock", req, cb);
-    }
+  /**
+   * 补充子项目库存
+   * @public
+   */
+  async ReplenishProjectStock(
+    req: ReplenishProjectStockRequest,
+    cb?: (error: string, rep: ReplenishProjectStockResponse) => void
+  ): Promise<ReplenishProjectStockResponse> {
+    return this.request("ReplenishProjectStock", req, cb)
+  }
 
-    /**
-     * 项目列表展示
-     * @public
-     */
-    async DescribeProjects(req: DescribeProjectsRequest, cb?: (error: string, rep: DescribeProjectsResponse) => void): Promise<DescribeProjectsResponse> {
-        return await this.request("DescribeProjects", req, cb);
-    }
+  /**
+   * 项目列表展示
+   * @public
+   */
+  async DescribeProjects(
+    req: DescribeProjectsRequest,
+    cb?: (error: string, rep: DescribeProjectsResponse) => void
+  ): Promise<DescribeProjectsResponse> {
+    return this.request("DescribeProjects", req, cb)
+  }
 
-    /**
-     * 下线项目
-     * @public
-     */
-    async OffLineProject(req: OffLineProjectRequest, cb?: (error: string, rep: OffLineProjectResponse) => void): Promise<OffLineProjectResponse> {
-        return await this.request("OffLineProject", req, cb);
-    }
+  /**
+   * 下线项目
+   * @public
+   */
+  async OffLineProject(
+    req: OffLineProjectRequest,
+    cb?: (error: string, rep: OffLineProjectResponse) => void
+  ): Promise<OffLineProjectResponse> {
+    return this.request("OffLineProject", req, cb)
+  }
 
-    /**
-     * 把审批中的工单置为已失效
-     * @public
-     */
-    async ExpireFlow(req: ExpireFlowRequest, cb?: (error: string, rep: ExpireFlowResponse) => void): Promise<ExpireFlowResponse> {
-        return await this.request("ExpireFlow", req, cb);
-    }
+  /**
+   * 把审批中的工单置为已失效
+   * @public
+   */
+  async ExpireFlow(
+    req: ExpireFlowRequest,
+    cb?: (error: string, rep: ExpireFlowResponse) => void
+  ): Promise<ExpireFlowResponse> {
+    return this.request("ExpireFlow", req, cb)
+  }
 
-    /**
-     * 删除项目
-     * @public
-     */
-    async DeleteProject(req: DeleteProjectRequest, cb?: (error: string, rep: DeleteProjectResponse) => void): Promise<DeleteProjectResponse> {
-        return await this.request("DeleteProject", req, cb);
-    }
+  /**
+   * 删除项目
+   * @public
+   */
+  async DeleteProject(
+    req: DeleteProjectRequest,
+    cb?: (error: string, rep: DeleteProjectResponse) => void
+  ): Promise<DeleteProjectResponse> {
+    return this.request("DeleteProject", req, cb)
+  }
 
-    /**
-     * 员工渠道更改员工状态
-     * @public
-     */
-    async CheckStaffChUser(req: CheckStaffChUserRequest, cb?: (error: string, rep: CheckStaffChUserResponse) => void): Promise<CheckStaffChUserResponse> {
-        return await this.request("CheckStaffChUser", req, cb);
-    }
+  /**
+   * 员工渠道更改员工状态
+   * @public
+   */
+  async CheckStaffChUser(
+    req: CheckStaffChUserRequest,
+    cb?: (error: string, rep: CheckStaffChUserResponse) => void
+  ): Promise<CheckStaffChUserResponse> {
+    return this.request("CheckStaffChUser", req, cb)
+  }
 
-    /**
-     * 客户档案查询客户详情
-     * @public
-     */
-    async DescribeCustomer(req: DescribeCustomerRequest, cb?: (error: string, rep: DescribeCustomerResponse) => void): Promise<DescribeCustomerResponse> {
-        return await this.request("DescribeCustomer", req, cb);
-    }
+  /**
+   * 客户档案查询客户详情
+   * @public
+   */
+  async DescribeCustomer(
+    req: DescribeCustomerRequest,
+    cb?: (error: string, rep: DescribeCustomerResponse) => void
+  ): Promise<DescribeCustomerResponse> {
+    return this.request("DescribeCustomer", req, cb)
+  }
 
-    /**
-     * 修改项目
-     * @public
-     */
-    async ModifyProject(req: ModifyProjectRequest, cb?: (error: string, rep: ModifyProjectResponse) => void): Promise<ModifyProjectResponse> {
-        return await this.request("ModifyProject", req, cb);
-    }
+  /**
+   * 修改项目
+   * @public
+   */
+  async ModifyProject(
+    req: ModifyProjectRequest,
+    cb?: (error: string, rep: ModifyProjectResponse) => void
+  ): Promise<ModifyProjectResponse> {
+    return this.request("ModifyProject", req, cb)
+  }
 
-    /**
-     * 创建子项目
-     * @public
-     */
-    async CreateSubProject(req: CreateSubProjectRequest, cb?: (error: string, rep: CreateSubProjectResponse) => void): Promise<CreateSubProjectResponse> {
-        return await this.request("CreateSubProject", req, cb);
-    }
+  /**
+   * 创建子项目
+   * @public
+   */
+  async CreateSubProject(
+    req: CreateSubProjectRequest,
+    cb?: (error: string, rep: CreateSubProjectResponse) => void
+  ): Promise<CreateSubProjectResponse> {
+    return this.request("CreateSubProject", req, cb)
+  }
 
-    /**
-     * 复制活动渠道的策略
-     * @public
-     */
-    async CopyActivityChannel(req: CopyActivityChannelRequest, cb?: (error: string, rep: CopyActivityChannelResponse) => void): Promise<CopyActivityChannelResponse> {
-        return await this.request("CopyActivityChannel", req, cb);
-    }
-
-
+  /**
+   * 复制活动渠道的策略
+   * @public
+   */
+  async CopyActivityChannel(
+    req: CopyActivityChannelRequest,
+    cb?: (error: string, rep: CopyActivityChannelResponse) => void
+  ): Promise<CopyActivityChannelResponse> {
+    return this.request("CopyActivityChannel", req, cb)
+  }
 }

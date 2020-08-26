@@ -17,53 +17,52 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   PullSmsReplyStatusRequest,
-   DeleteSmsTemplateResponse,
-   ModifySmsTemplateResponse,
-   ModifySmsSignRequest,
-   AddSmsSignRequest,
-   AddTemplateStatus,
-   DescribeSmsTemplateListResponse,
-   PullSmsSendStatusByPhoneNumberRequest,
-   AddSmsTemplateRequest,
-   ModifySmsTemplateRequest,
-   PullSmsReplyStatus,
-   CallbackStatusStatisticsResponse,
-   PullSmsSendStatusRequest,
-   SmsPackagesStatistics,
-   PullSmsSendStatusByPhoneNumberResponse,
-   ModifySignStatus,
-   DescribeSignListStatus,
-   SendSmsResponse,
-   SendStatusStatisticsResponse,
-   SendSmsRequest,
-   SendStatusStatistics,
-   CallbackStatusStatisticsRequest,
-   DeleteTemplateStatus,
-   DescribeSmsSignListRequest,
-   SmsPackagesStatisticsRequest,
-   DescribeTemplateListStatus,
-   AddSmsTemplateResponse,
-   PullSmsSendStatus,
-   DescribeSmsSignListResponse,
-   DescribeSmsTemplateListRequest,
-   CallbackStatusStatistics,
-   SendStatusStatisticsRequest,
-   DeleteSmsTemplateRequest,
-   PullSmsReplyStatusByPhoneNumberResponse,
-   SendStatus,
-   DeleteSmsSignResponse,
-   AddSmsSignResponse,
-   DeleteSmsSignRequest,
-   PullSmsReplyStatusByPhoneNumberRequest,
-   ModifySmsSignResponse,
-   AddSignStatus,
-   ModifyTemplateStatus,
-   PullSmsSendStatusResponse,
-   SmsPackagesStatisticsResponse,
-   DeleteSignStatus,
-   PullSmsReplyStatusResponse,
-
+  PullSmsReplyStatusRequest,
+  DeleteSmsTemplateResponse,
+  ModifySmsTemplateResponse,
+  ModifySmsSignRequest,
+  AddSmsSignRequest,
+  AddTemplateStatus,
+  DescribeSmsTemplateListResponse,
+  PullSmsSendStatusByPhoneNumberRequest,
+  AddSmsTemplateRequest,
+  ModifySmsTemplateRequest,
+  PullSmsReplyStatus,
+  CallbackStatusStatisticsResponse,
+  PullSmsSendStatusRequest,
+  SmsPackagesStatistics,
+  PullSmsSendStatusByPhoneNumberResponse,
+  ModifySignStatus,
+  DescribeSignListStatus,
+  SendSmsResponse,
+  SendStatusStatisticsResponse,
+  SendSmsRequest,
+  SendStatusStatistics,
+  CallbackStatusStatisticsRequest,
+  DeleteTemplateStatus,
+  DescribeSmsSignListRequest,
+  SmsPackagesStatisticsRequest,
+  DescribeTemplateListStatus,
+  AddSmsTemplateResponse,
+  PullSmsSendStatus,
+  DescribeSmsSignListResponse,
+  DescribeSmsTemplateListRequest,
+  CallbackStatusStatistics,
+  SendStatusStatisticsRequest,
+  DeleteSmsTemplateRequest,
+  PullSmsReplyStatusByPhoneNumberResponse,
+  SendStatus,
+  DeleteSmsSignResponse,
+  AddSmsSignResponse,
+  DeleteSmsSignRequest,
+  PullSmsReplyStatusByPhoneNumberRequest,
+  ModifySmsSignResponse,
+  AddSignStatus,
+  ModifyTemplateStatus,
+  PullSmsSendStatusResponse,
+  SmsPackagesStatisticsResponse,
+  DeleteSignStatus,
+  PullSmsReplyStatusResponse,
 } from "./sms_models"
 
 /**
@@ -71,12 +70,11 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("sms.tencentcloudapi.com", "2019-07-11", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("sms.tencentcloudapi.com", "2019-07-11", clientConfig);
-    }
-    
-    /**
+  /**
      * 1. 修改短信签名，修改之前请先认证参阅 [腾讯云短信签名审核标准](https://cloud.tencent.com/document/product/382/39022)。
 2. ⚠️注意：个人认证用户不支持使用 API 修改短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 修改短信签名。
 3. 修改短信签名，仅当签名为**待审核**或**已拒绝**状态时，才能进行修改，**已审核通过**的签名不支持修改。
@@ -84,22 +82,28 @@ export class Client extends AbstractClient {
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
      * @public
      */
-    async ModifySmsSign(req: ModifySmsSignRequest, cb?: (error: string, rep: ModifySmsSignResponse) => void): Promise<ModifySmsSignResponse> {
-        return await this.request("ModifySmsSign", req, cb);
-    }
+  async ModifySmsSign(
+    req: ModifySmsSignRequest,
+    cb?: (error: string, rep: ModifySmsSignResponse) => void
+  ): Promise<ModifySmsSignResponse> {
+    return this.request("ModifySmsSign", req, cb)
+  }
 
-    /**
+  /**
      * 1. 添加短信签名，申请之前请先认真参阅 [腾讯云短信签名审核标准](https://cloud.tencent.com/document/product/382/39022)。
 2. ⚠️注意：个人认证用户不支持使用 API 申请短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录控制台申请短信签名。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
      * @public
      */
-    async AddSmsSign(req: AddSmsSignRequest, cb?: (error: string, rep: AddSmsSignResponse) => void): Promise<AddSmsSignResponse> {
-        return await this.request("AddSmsSign", req, cb);
-    }
+  async AddSmsSign(
+    req: AddSmsSignRequest,
+    cb?: (error: string, rep: AddSmsSignResponse) => void
+  ): Promise<AddSmsSignResponse> {
+    return this.request("AddSmsSign", req, cb)
+  }
 
-    /**
+  /**
      * 拉取短信下发状态。
 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
@@ -107,75 +111,96 @@ export class Client extends AbstractClient {
 
      * @public
      */
-    async PullSmsSendStatus(req: PullSmsSendStatusRequest, cb?: (error: string, rep: PullSmsSendStatusResponse) => void): Promise<PullSmsSendStatusResponse> {
-        return await this.request("PullSmsSendStatus", req, cb);
-    }
+  async PullSmsSendStatus(
+    req: PullSmsSendStatusRequest,
+    cb?: (error: string, rep: PullSmsSendStatusResponse) => void
+  ): Promise<PullSmsSendStatusResponse> {
+    return this.request("PullSmsSendStatus", req, cb)
+  }
 
-    /**
+  /**
      * 短信发送接口，用户给用户发短信验证码、通知类短信或营销短信。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
 
      * @public
      */
-    async SendSms(req: SendSmsRequest, cb?: (error: string, rep: SendSmsResponse) => void): Promise<SendSmsResponse> {
-        return await this.request("SendSms", req, cb);
-    }
+  async SendSms(
+    req: SendSmsRequest,
+    cb?: (error: string, rep: SendSmsResponse) => void
+  ): Promise<SendSmsResponse> {
+    return this.request("SendSms", req, cb)
+  }
 
-    /**
+  /**
      * ⚠️注意：个人认证用户不支持使用 API 删除短信正文模版，请登录 [控制台](https://console.cloud.tencent.com/smsv2) 删除短信正文模版，如需了解请参阅 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
      * @public
      */
-    async DeleteSmsTemplate(req: DeleteSmsTemplateRequest, cb?: (error: string, rep: DeleteSmsTemplateResponse) => void): Promise<DeleteSmsTemplateResponse> {
-        return await this.request("DeleteSmsTemplate", req, cb);
-    }
+  async DeleteSmsTemplate(
+    req: DeleteSmsTemplateRequest,
+    cb?: (error: string, rep: DeleteSmsTemplateResponse) => void
+  ): Promise<DeleteSmsTemplateResponse> {
+    return this.request("DeleteSmsTemplate", req, cb)
+  }
 
-    /**
+  /**
      * 用户套餐包信息统计。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
 
      * @public
      */
-    async SmsPackagesStatistics(req: SmsPackagesStatisticsRequest, cb?: (error: string, rep: SmsPackagesStatisticsResponse) => void): Promise<SmsPackagesStatisticsResponse> {
-        return await this.request("SmsPackagesStatistics", req, cb);
-    }
+  async SmsPackagesStatistics(
+    req: SmsPackagesStatisticsRequest,
+    cb?: (error: string, rep: SmsPackagesStatisticsResponse) => void
+  ): Promise<SmsPackagesStatisticsResponse> {
+    return this.request("SmsPackagesStatistics", req, cb)
+  }
 
-    /**
+  /**
      * 统计用户发送短信的数据。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
 
      * @public
      */
-    async SendStatusStatistics(req: SendStatusStatisticsRequest, cb?: (error: string, rep: SendStatusStatisticsResponse) => void): Promise<SendStatusStatisticsResponse> {
-        return await this.request("SendStatusStatistics", req, cb);
-    }
+  async SendStatusStatistics(
+    req: SendStatusStatisticsRequest,
+    cb?: (error: string, rep: SendStatusStatisticsResponse) => void
+  ): Promise<SendStatusStatisticsResponse> {
+    return this.request("SendStatusStatistics", req, cb)
+  }
 
-    /**
+  /**
      * 统计用户回执的数据。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
      * @public
      */
-    async CallbackStatusStatistics(req: CallbackStatusStatisticsRequest, cb?: (error: string, rep: CallbackStatusStatisticsResponse) => void): Promise<CallbackStatusStatisticsResponse> {
-        return await this.request("CallbackStatusStatistics", req, cb);
-    }
+  async CallbackStatusStatistics(
+    req: CallbackStatusStatisticsRequest,
+    cb?: (error: string, rep: CallbackStatusStatisticsResponse) => void
+  ): Promise<CallbackStatusStatisticsResponse> {
+    return this.request("CallbackStatusStatistics", req, cb)
+  }
 
-    /**
+  /**
      * ⚠️注意：个人认证用户不支持使用 API 查询短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
 
      * @public
      */
-    async DescribeSmsTemplateList(req: DescribeSmsTemplateListRequest, cb?: (error: string, rep: DescribeSmsTemplateListResponse) => void): Promise<DescribeSmsTemplateListResponse> {
-        return await this.request("DescribeSmsTemplateList", req, cb);
-    }
+  async DescribeSmsTemplateList(
+    req: DescribeSmsTemplateListRequest,
+    cb?: (error: string, rep: DescribeSmsTemplateListResponse) => void
+  ): Promise<DescribeSmsTemplateListResponse> {
+    return this.request("DescribeSmsTemplateList", req, cb)
+  }
 
-    /**
+  /**
      * 拉取短信回复状态。
 目前也支持 [配置回复回调](https://cloud.tencent.com/document/product/382/42907) 的方式来获取上行回复。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
@@ -183,22 +208,28 @@ export class Client extends AbstractClient {
 
      * @public
      */
-    async PullSmsReplyStatus(req: PullSmsReplyStatusRequest, cb?: (error: string, rep: PullSmsReplyStatusResponse) => void): Promise<PullSmsReplyStatusResponse> {
-        return await this.request("PullSmsReplyStatus", req, cb);
-    }
+  async PullSmsReplyStatus(
+    req: PullSmsReplyStatusRequest,
+    cb?: (error: string, rep: PullSmsReplyStatusResponse) => void
+  ): Promise<PullSmsReplyStatusResponse> {
+    return this.request("PullSmsReplyStatus", req, cb)
+  }
 
-    /**
+  /**
      * ⚠️注意：个人认证用户不支持使用 API 查询短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629),如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 查询短信签名。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
 
      * @public
      */
-    async DescribeSmsSignList(req: DescribeSmsSignListRequest, cb?: (error: string, rep: DescribeSmsSignListResponse) => void): Promise<DescribeSmsSignListResponse> {
-        return await this.request("DescribeSmsSignList", req, cb);
-    }
+  async DescribeSmsSignList(
+    req: DescribeSmsSignListRequest,
+    cb?: (error: string, rep: DescribeSmsSignListResponse) => void
+  ): Promise<DescribeSmsSignListResponse> {
+    return this.request("DescribeSmsSignList", req, cb)
+  }
 
-    /**
+  /**
      * 拉取单个号码短信下发状态。
 目前也支持 [配置回调](https://cloud.tencent.com/document/product/382/37809#.E8.AE.BE.E7.BD.AE.E4.BA.8B.E4.BB.B6.E5.9B.9E.E8.B0.83.E9.85.8D.E7.BD.AE) 的方式来获取下发状态。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
@@ -206,11 +237,14 @@ export class Client extends AbstractClient {
 
      * @public
      */
-    async PullSmsSendStatusByPhoneNumber(req: PullSmsSendStatusByPhoneNumberRequest, cb?: (error: string, rep: PullSmsSendStatusByPhoneNumberResponse) => void): Promise<PullSmsSendStatusByPhoneNumberResponse> {
-        return await this.request("PullSmsSendStatusByPhoneNumber", req, cb);
-    }
+  async PullSmsSendStatusByPhoneNumber(
+    req: PullSmsSendStatusByPhoneNumberRequest,
+    cb?: (error: string, rep: PullSmsSendStatusByPhoneNumberResponse) => void
+  ): Promise<PullSmsSendStatusByPhoneNumberResponse> {
+    return this.request("PullSmsSendStatusByPhoneNumber", req, cb)
+  }
 
-    /**
+  /**
      * 1. 修改短信正文模版，修改之前请先认真参阅 [腾讯云短信正文模版审核标准](https://cloud.tencent.com/document/product/382/39023)。
 2. ⚠️注意：个人认证用户不支持使用 API 修改短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 修改短信正文模版。
 3. 修改短信签名，仅当正文模版为**待审核**或**已拒绝**状态时，才能进行修改，**已审核通过**的正文模版不支持修改。
@@ -219,11 +253,14 @@ export class Client extends AbstractClient {
 
      * @public
      */
-    async ModifySmsTemplate(req: ModifySmsTemplateRequest, cb?: (error: string, rep: ModifySmsTemplateResponse) => void): Promise<ModifySmsTemplateResponse> {
-        return await this.request("ModifySmsTemplate", req, cb);
-    }
+  async ModifySmsTemplate(
+    req: ModifySmsTemplateRequest,
+    cb?: (error: string, rep: ModifySmsTemplateResponse) => void
+  ): Promise<ModifySmsTemplateResponse> {
+    return this.request("ModifySmsTemplate", req, cb)
+  }
 
-    /**
+  /**
      * 拉取单个号码短信回复状态。
 目前也支持 [配置回复回调](https://cloud.tencent.com/document/product/382/42907) 的方式来获取上行回复。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
@@ -231,30 +268,37 @@ export class Client extends AbstractClient {
 
      * @public
      */
-    async PullSmsReplyStatusByPhoneNumber(req: PullSmsReplyStatusByPhoneNumberRequest, cb?: (error: string, rep: PullSmsReplyStatusByPhoneNumberResponse) => void): Promise<PullSmsReplyStatusByPhoneNumberResponse> {
-        return await this.request("PullSmsReplyStatusByPhoneNumber", req, cb);
-    }
+  async PullSmsReplyStatusByPhoneNumber(
+    req: PullSmsReplyStatusByPhoneNumberRequest,
+    cb?: (error: string, rep: PullSmsReplyStatusByPhoneNumberResponse) => void
+  ): Promise<PullSmsReplyStatusByPhoneNumberResponse> {
+    return this.request("PullSmsReplyStatusByPhoneNumber", req, cb)
+  }
 
-    /**
+  /**
      * ⚠️注意：个人认证用户不支持使用 API 删除短信签名，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，请登录 [控制台](https://console.cloud.tencent.com/smsv2) 删除短信签名。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
      * @public
      */
-    async DeleteSmsSign(req: DeleteSmsSignRequest, cb?: (error: string, rep: DeleteSmsSignResponse) => void): Promise<DeleteSmsSignResponse> {
-        return await this.request("DeleteSmsSign", req, cb);
-    }
+  async DeleteSmsSign(
+    req: DeleteSmsSignRequest,
+    cb?: (error: string, rep: DeleteSmsSignResponse) => void
+  ): Promise<DeleteSmsSignResponse> {
+    return this.request("DeleteSmsSign", req, cb)
+  }
 
-    /**
+  /**
      * 1. 添加短信模版，申请之前请先认真参阅 [腾讯云短信正文模版审核标准](https://cloud.tencent.com/document/product/382/39023)。
 2. ⚠️注意：个人认证用户不支持使用 API 申请短信正文模版，请参阅了解 [实名认证基本介绍](https://cloud.tencent.com/document/product/378/3629)，如果为个人认证请登录 [控制台](https://console.cloud.tencent.com/smsv2) 申请短信正文模版。
 >- 注：由于云 **API3.0 安全性**有所提升，所以**接口鉴权**较为复杂，建议使用 [SDK](https://cloud.tencent.com/document/product/382/43193) 来使用云短信服务。
 >- 您可以在 [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms) 中直接运行该接口，可以先免去签名计算步骤。运行成功后，API Explorer可以**自动生成**SDK代码示例。
      * @public
      */
-    async AddSmsTemplate(req: AddSmsTemplateRequest, cb?: (error: string, rep: AddSmsTemplateResponse) => void): Promise<AddSmsTemplateResponse> {
-        return await this.request("AddSmsTemplate", req, cb);
-    }
-
-
+  async AddSmsTemplate(
+    req: AddSmsTemplateRequest,
+    cb?: (error: string, rep: AddSmsTemplateResponse) => void
+  ): Promise<AddSmsTemplateResponse> {
+    return this.request("AddSmsTemplate", req, cb)
+  }
 }

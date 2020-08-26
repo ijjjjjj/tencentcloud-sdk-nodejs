@@ -17,21 +17,20 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DayStreamPlayInfo,
-   DescribeWorkersResponse,
-   ForbidLiveStreamResponse,
-   WorkerRegionInfo,
-   RegisterIMRequest,
-   StopGameResponse,
-   ForbidLiveStreamRequest,
-   StopGameRequest,
-   RegisterIMResponse,
-   DescribeWorkersRequest,
-   CreateSessionResponse,
-   DescribeStreamPlayInfoListResponse,
-   CreateSessionRequest,
-   DescribeStreamPlayInfoListRequest,
-
+  DayStreamPlayInfo,
+  DescribeWorkersResponse,
+  ForbidLiveStreamResponse,
+  WorkerRegionInfo,
+  RegisterIMRequest,
+  StopGameResponse,
+  ForbidLiveStreamRequest,
+  StopGameRequest,
+  RegisterIMResponse,
+  DescribeWorkersRequest,
+  CreateSessionResponse,
+  DescribeStreamPlayInfoListResponse,
+  CreateSessionRequest,
+  DescribeStreamPlayInfoListRequest,
 } from "./bizlive_models"
 
 /**
@@ -39,58 +38,73 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("bizlive.tencentcloudapi.com", "2019-03-13", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("bizlive.tencentcloudapi.com", "2019-03-13", clientConfig);
-    }
-    
-    /**
-     * 禁止某条流的推送，可以预设某个时刻将流恢复。
-     * @public
-     */
-    async ForbidLiveStream(req: ForbidLiveStreamRequest, cb?: (error: string, rep: ForbidLiveStreamResponse) => void): Promise<ForbidLiveStreamResponse> {
-        return await this.request("ForbidLiveStream", req, cb);
-    }
+  /**
+   * 禁止某条流的推送，可以预设某个时刻将流恢复。
+   * @public
+   */
+  async ForbidLiveStream(
+    req: ForbidLiveStreamRequest,
+    cb?: (error: string, rep: ForbidLiveStreamResponse) => void
+  ): Promise<ForbidLiveStreamResponse> {
+    return this.request("ForbidLiveStream", req, cb)
+  }
 
-    /**
-     * 强制退出游戏
-     * @public
-     */
-    async StopGame(req: StopGameRequest, cb?: (error: string, rep: StopGameResponse) => void): Promise<StopGameResponse> {
-        return await this.request("StopGame", req, cb);
-    }
+  /**
+   * 强制退出游戏
+   * @public
+   */
+  async StopGame(
+    req: StopGameRequest,
+    cb?: (error: string, rep: StopGameResponse) => void
+  ): Promise<StopGameResponse> {
+    return this.request("StopGame", req, cb)
+  }
 
-    /**
-     * 注册聊天室
-     * @public
-     */
-    async RegisterIM(req: RegisterIMRequest, cb?: (error: string, rep: RegisterIMResponse) => void): Promise<RegisterIMResponse> {
-        return await this.request("RegisterIM", req, cb);
-    }
+  /**
+   * 注册聊天室
+   * @public
+   */
+  async RegisterIM(
+    req: RegisterIMRequest,
+    cb?: (error: string, rep: RegisterIMResponse) => void
+  ): Promise<RegisterIMResponse> {
+    return this.request("RegisterIM", req, cb)
+  }
 
-    /**
-     * 查询空闲机器数量
-     * @public
-     */
-    async DescribeWorkers(req: DescribeWorkersRequest, cb?: (error: string, rep: DescribeWorkersResponse) => void): Promise<DescribeWorkersResponse> {
-        return await this.request("DescribeWorkers", req, cb);
-    }
+  /**
+   * 查询空闲机器数量
+   * @public
+   */
+  async DescribeWorkers(
+    req: DescribeWorkersRequest,
+    cb?: (error: string, rep: DescribeWorkersResponse) => void
+  ): Promise<DescribeWorkersResponse> {
+    return this.request("DescribeWorkers", req, cb)
+  }
 
-    /**
-     * 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
-     * @public
-     */
-    async DescribeStreamPlayInfoList(req: DescribeStreamPlayInfoListRequest, cb?: (error: string, rep: DescribeStreamPlayInfoListResponse) => void): Promise<DescribeStreamPlayInfoListResponse> {
-        return await this.request("DescribeStreamPlayInfoList", req, cb);
-    }
+  /**
+   * 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据。
+   * @public
+   */
+  async DescribeStreamPlayInfoList(
+    req: DescribeStreamPlayInfoListRequest,
+    cb?: (error: string, rep: DescribeStreamPlayInfoListResponse) => void
+  ): Promise<DescribeStreamPlayInfoListResponse> {
+    return this.request("DescribeStreamPlayInfoList", req, cb)
+  }
 
-    /**
-     * 创建会话
-     * @public
-     */
-    async CreateSession(req: CreateSessionRequest, cb?: (error: string, rep: CreateSessionResponse) => void): Promise<CreateSessionResponse> {
-        return await this.request("CreateSession", req, cb);
-    }
-
-
+  /**
+   * 创建会话
+   * @public
+   */
+  async CreateSession(
+    req: CreateSessionRequest,
+    cb?: (error: string, rep: CreateSessionResponse) => void
+  ): Promise<CreateSessionResponse> {
+    return this.request("CreateSession", req, cb)
+  }
 }

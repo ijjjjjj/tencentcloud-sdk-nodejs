@@ -17,38 +17,37 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   TagTaskResult,
-   TagTaskResultItem,
-   CosInfo,
-   SaveInfo,
-   StripTaskResultItem,
-   CosAuthMode,
-   TagEditingInfo,
-   OpeningEndingTaskResultItem,
-   DownInfo,
-   ClassificationEditingInfo,
-   DescribeEditingTaskResultRequest,
-   CoverTaskResultItem,
-   StripEditingInfo,
-   EditingInfo,
-   CreateEditingTaskRequest,
-   HighlightsTaskResult,
-   OpeningEndingTaskResult,
-   DescribeEditingTaskResultResponse,
-   CreateEditingTaskResponse,
-   UrlInfo,
-   ClassificationTaskResultItem,
-   EditingTaskResult,
-   StripTaskResult,
-   HighlightsEditingInfo,
-   ClassificationTaskResult,
-   HighlightsTaskResultItem,
-   HighlightsTaskResultItemSegment,
-   CoverEditingInfo,
-   CallbackInfo,
-   OpeningEndingEditingInfo,
-   CoverTaskResult,
-
+  TagTaskResult,
+  TagTaskResultItem,
+  CosInfo,
+  SaveInfo,
+  StripTaskResultItem,
+  CosAuthMode,
+  TagEditingInfo,
+  OpeningEndingTaskResultItem,
+  DownInfo,
+  ClassificationEditingInfo,
+  DescribeEditingTaskResultRequest,
+  CoverTaskResultItem,
+  StripEditingInfo,
+  EditingInfo,
+  CreateEditingTaskRequest,
+  HighlightsTaskResult,
+  OpeningEndingTaskResult,
+  DescribeEditingTaskResultResponse,
+  CreateEditingTaskResponse,
+  UrlInfo,
+  ClassificationTaskResultItem,
+  EditingTaskResult,
+  StripTaskResult,
+  HighlightsEditingInfo,
+  ClassificationTaskResult,
+  HighlightsTaskResultItem,
+  HighlightsTaskResultItemSegment,
+  CoverEditingInfo,
+  CallbackInfo,
+  OpeningEndingEditingInfo,
+  CoverTaskResult,
 } from "./ie_models"
 
 /**
@@ -56,26 +55,29 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("ie.tencentcloudapi.com", "2020-03-04", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("ie.tencentcloudapi.com", "2020-03-04", clientConfig);
-    }
-    
-    /**
-     * 获取智能编辑任务结果。
-     * @public
-     */
-    async DescribeEditingTaskResult(req: DescribeEditingTaskResultRequest, cb?: (error: string, rep: DescribeEditingTaskResultResponse) => void): Promise<DescribeEditingTaskResultResponse> {
-        return await this.request("DescribeEditingTaskResult", req, cb);
-    }
+  /**
+   * 获取智能编辑任务结果。
+   * @public
+   */
+  async DescribeEditingTaskResult(
+    req: DescribeEditingTaskResultRequest,
+    cb?: (error: string, rep: DescribeEditingTaskResultResponse) => void
+  ): Promise<DescribeEditingTaskResultResponse> {
+    return this.request("DescribeEditingTaskResult", req, cb)
+  }
 
-    /**
-     * 创建智能编辑任务，可以同时选择视频标签识别、分类识别、智能拆条、智能集锦、智能封面和片头片尾识别中的一项或者多项能力。
-     * @public
-     */
-    async CreateEditingTask(req: CreateEditingTaskRequest, cb?: (error: string, rep: CreateEditingTaskResponse) => void): Promise<CreateEditingTaskResponse> {
-        return await this.request("CreateEditingTask", req, cb);
-    }
-
-
+  /**
+   * 创建智能编辑任务，可以同时选择视频标签识别、分类识别、智能拆条、智能集锦、智能封面和片头片尾识别中的一项或者多项能力。
+   * @public
+   */
+  async CreateEditingTask(
+    req: CreateEditingTaskRequest,
+    cb?: (error: string, rep: CreateEditingTaskResponse) => void
+  ): Promise<CreateEditingTaskResponse> {
+    return this.request("CreateEditingTask", req, cb)
+  }
 }

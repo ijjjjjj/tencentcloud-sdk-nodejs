@@ -16,29 +16,25 @@
  * under the License.
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
-import {
-   QueryRegisterProtectionResponse,
-   QueryRegisterProtectionRequest,
-
-} from "./rp_models"
+import { QueryRegisterProtectionResponse, QueryRegisterProtectionRequest } from "./rp_models"
 
 /**
  * rp client
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("rp.tencentcloudapi.com", "2020-02-24", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("rp.tencentcloudapi.com", "2020-02-24", clientConfig);
-    }
-    
-    /**
-     * 注册保护服务（RegisterProtection，RP）针对网站、APP 的线上注册场景，遇到 “恶意注册” 、“小号注册” 、“注册器注册” 等恶意行为，提供基于天御 DNA 算法的恶意防护引擎，从账号、设备、行为三个维度有效识别 “恶意注册”，从“源头”上防范业务风险。  
-     * @public
-     */
-    async QueryRegisterProtection(req: QueryRegisterProtectionRequest, cb?: (error: string, rep: QueryRegisterProtectionResponse) => void): Promise<QueryRegisterProtectionResponse> {
-        return await this.request("QueryRegisterProtection", req, cb);
-    }
-
-
+  /**
+   * 注册保护服务（RegisterProtection，RP）针对网站、APP 的线上注册场景，遇到 “恶意注册” 、“小号注册” 、“注册器注册” 等恶意行为，提供基于天御 DNA 算法的恶意防护引擎，从账号、设备、行为三个维度有效识别 “恶意注册”，从“源头”上防范业务风险。
+   * @public
+   */
+  async QueryRegisterProtection(
+    req: QueryRegisterProtectionRequest,
+    cb?: (error: string, rep: QueryRegisterProtectionResponse) => void
+  ): Promise<QueryRegisterProtectionResponse> {
+    return this.request("QueryRegisterProtection", req, cb)
+  }
 }

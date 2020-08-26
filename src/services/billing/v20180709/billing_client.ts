@@ -17,71 +17,70 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   CostComponentSet,
-   DescribeCostSummaryByProductRequest,
-   DescribeCostSummaryByProjectResponse,
-   DescribeDosageDetailByDateRequest,
-   ProjectSummaryOverviewItem,
-   ConditionRegion,
-   DescribeBillSummaryByProductRequest,
-   ConsumptionBusinessSummaryDataItem,
-   DetailPoint,
-   CostDetail,
-   DescribeBillSummaryByPayModeResponse,
-   BillResourceSummary,
-   DescribeBillSummaryByTagRequest,
-   Conditions,
-   DescribeBillSummaryByProductResponse,
-   BillTagInfo,
-   DescribeBillSummaryByRegionResponse,
-   DetailSet,
-   BillTransactionInfo,
-   RegionSummaryOverviewItem,
-   ConsumptionResourceSummaryDataItem,
-   DescribeAccountBalanceRequest,
-   DescribeBillDetailRequest,
-   ConsumptionProjectSummaryDataItem,
-   DescribeCostSummaryByProductResponse,
-   ProductInfo,
-   DescribeDosageDetailByDateResponse,
-   DescribeBillListResponse,
-   DescribeAccountBalanceResponse,
-   DescribeCostSummaryByRegionRequest,
-   BusinessSummaryOverviewItem,
-   BillDetailComponent,
-   ConsumptionSummaryTrend,
-   DescribeBillSummaryByRegionRequest,
-   DescribeBillSummaryByPayModeRequest,
-   DescribeCostSummaryByProjectRequest,
-   ConsumptionRegionSummaryDataItem,
-   DescribeBillResourceSummaryResponse,
-   ActionSummaryOverviewItem,
-   ConditionPayMode,
-   DescribeDealsByCondRequest,
-   DescribeBillResourceSummaryRequest,
-   DescribeBillListRequest,
-   PayDealsResponse,
-   BillDetail,
-   DescribeBillSummaryByTagResponse,
-   TagSummaryOverviewItem,
-   DescribeCostSummaryByResourceResponse,
-   DescribeBillDetailResponse,
-   ConsumptionResourceSummaryConditionValue,
-   Deal,
-   DescribeCostDetailRequest,
-   DescribeDealsByCondResponse,
-   ConditionProject,
-   ConsumptionSummaryTotal,
-   DescribeBillSummaryByProjectRequest,
-   DescribeBillSummaryByProjectResponse,
-   ConditionBusiness,
-   DescribeCostSummaryByResourceRequest,
-   DescribeCostDetailResponse,
-   PayDealsRequest,
-   PayModeSummaryOverviewItem,
-   BusinessSummaryTotal,
-   DescribeCostSummaryByRegionResponse,
-
+  CostComponentSet,
+  DescribeCostSummaryByProductRequest,
+  DescribeCostSummaryByProjectResponse,
+  DescribeDosageDetailByDateRequest,
+  ProjectSummaryOverviewItem,
+  ConditionRegion,
+  DescribeBillSummaryByProductRequest,
+  ConsumptionBusinessSummaryDataItem,
+  DetailPoint,
+  CostDetail,
+  DescribeBillSummaryByPayModeResponse,
+  BillResourceSummary,
+  DescribeBillSummaryByTagRequest,
+  Conditions,
+  DescribeBillSummaryByProductResponse,
+  BillTagInfo,
+  DescribeBillSummaryByRegionResponse,
+  DetailSet,
+  BillTransactionInfo,
+  RegionSummaryOverviewItem,
+  ConsumptionResourceSummaryDataItem,
+  DescribeAccountBalanceRequest,
+  DescribeBillDetailRequest,
+  ConsumptionProjectSummaryDataItem,
+  DescribeCostSummaryByProductResponse,
+  ProductInfo,
+  DescribeDosageDetailByDateResponse,
+  DescribeBillListResponse,
+  DescribeAccountBalanceResponse,
+  DescribeCostSummaryByRegionRequest,
+  BusinessSummaryOverviewItem,
+  BillDetailComponent,
+  ConsumptionSummaryTrend,
+  DescribeBillSummaryByRegionRequest,
+  DescribeBillSummaryByPayModeRequest,
+  DescribeCostSummaryByProjectRequest,
+  ConsumptionRegionSummaryDataItem,
+  DescribeBillResourceSummaryResponse,
+  ActionSummaryOverviewItem,
+  ConditionPayMode,
+  DescribeDealsByCondRequest,
+  DescribeBillResourceSummaryRequest,
+  DescribeBillListRequest,
+  PayDealsResponse,
+  BillDetail,
+  DescribeBillSummaryByTagResponse,
+  TagSummaryOverviewItem,
+  DescribeCostSummaryByResourceResponse,
+  DescribeBillDetailResponse,
+  ConsumptionResourceSummaryConditionValue,
+  Deal,
+  DescribeCostDetailRequest,
+  DescribeDealsByCondResponse,
+  ConditionProject,
+  ConsumptionSummaryTotal,
+  DescribeBillSummaryByProjectRequest,
+  DescribeBillSummaryByProjectResponse,
+  ConditionBusiness,
+  DescribeCostSummaryByResourceRequest,
+  DescribeCostDetailResponse,
+  PayDealsRequest,
+  PayModeSummaryOverviewItem,
+  BusinessSummaryTotal,
+  DescribeCostSummaryByRegionResponse,
 } from "./billing_models"
 
 /**
@@ -89,146 +88,194 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("billing.tencentcloudapi.com", "2018-07-09", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("billing.tencentcloudapi.com", "2018-07-09", clientConfig);
-    }
-    
-    /**
-     * 获取云账户余额信息。
-     * @public
-     */
-    async DescribeAccountBalance(req: DescribeAccountBalanceRequest, cb?: (error: string, rep: DescribeAccountBalanceResponse) => void): Promise<DescribeAccountBalanceResponse> {
-        return await this.request("DescribeAccountBalance", req, cb);
-    }
+  /**
+   * 获取云账户余额信息。
+   * @public
+   */
+  async DescribeAccountBalance(
+    req: DescribeAccountBalanceRequest,
+    cb?: (error: string, rep: DescribeAccountBalanceResponse) => void
+  ): Promise<DescribeAccountBalanceResponse> {
+    return this.request("DescribeAccountBalance", req, cb)
+  }
 
-    /**
-     * 按日期获取产品用量明细
-     * @public
-     */
-    async DescribeDosageDetailByDate(req: DescribeDosageDetailByDateRequest, cb?: (error: string, rep: DescribeDosageDetailByDateResponse) => void): Promise<DescribeDosageDetailByDateResponse> {
-        return await this.request("DescribeDosageDetailByDate", req, cb);
-    }
+  /**
+   * 按日期获取产品用量明细
+   * @public
+   */
+  async DescribeDosageDetailByDate(
+    req: DescribeDosageDetailByDateRequest,
+    cb?: (error: string, rep: DescribeDosageDetailByDateResponse) => void
+  ): Promise<DescribeDosageDetailByDateResponse> {
+    return this.request("DescribeDosageDetailByDate", req, cb)
+  }
 
-    /**
-     * 获取按资源汇总消耗详情
-     * @public
-     */
-    async DescribeCostSummaryByResource(req: DescribeCostSummaryByResourceRequest, cb?: (error: string, rep: DescribeCostSummaryByResourceResponse) => void): Promise<DescribeCostSummaryByResourceResponse> {
-        return await this.request("DescribeCostSummaryByResource", req, cb);
-    }
+  /**
+   * 获取按资源汇总消耗详情
+   * @public
+   */
+  async DescribeCostSummaryByResource(
+    req: DescribeCostSummaryByResourceRequest,
+    cb?: (error: string, rep: DescribeCostSummaryByResourceResponse) => void
+  ): Promise<DescribeCostSummaryByResourceResponse> {
+    return this.request("DescribeCostSummaryByResource", req, cb)
+  }
 
-    /**
-     * 获取收支明细列表，支持翻页和参数过滤
-     * @public
-     */
-    async DescribeBillList(req: DescribeBillListRequest, cb?: (error: string, rep: DescribeBillListResponse) => void): Promise<DescribeBillListResponse> {
-        return await this.request("DescribeBillList", req, cb);
-    }
+  /**
+   * 获取收支明细列表，支持翻页和参数过滤
+   * @public
+   */
+  async DescribeBillList(
+    req: DescribeBillListRequest,
+    cb?: (error: string, rep: DescribeBillListResponse) => void
+  ): Promise<DescribeBillListResponse> {
+    return this.request("DescribeBillList", req, cb)
+  }
 
-    /**
-     * 查询账单明细数据
-     * @public
-     */
-    async DescribeBillDetail(req: DescribeBillDetailRequest, cb?: (error: string, rep: DescribeBillDetailResponse) => void): Promise<DescribeBillDetailResponse> {
-        return await this.request("DescribeBillDetail", req, cb);
-    }
+  /**
+   * 查询账单明细数据
+   * @public
+   */
+  async DescribeBillDetail(
+    req: DescribeBillDetailRequest,
+    cb?: (error: string, rep: DescribeBillDetailResponse) => void
+  ): Promise<DescribeBillDetailResponse> {
+    return this.request("DescribeBillDetail", req, cb)
+  }
 
-    /**
-     * 查询订单
-     * @public
-     */
-    async DescribeDealsByCond(req: DescribeDealsByCondRequest, cb?: (error: string, rep: DescribeDealsByCondResponse) => void): Promise<DescribeDealsByCondResponse> {
-        return await this.request("DescribeDealsByCond", req, cb);
-    }
+  /**
+   * 查询订单
+   * @public
+   */
+  async DescribeDealsByCond(
+    req: DescribeDealsByCondRequest,
+    cb?: (error: string, rep: DescribeDealsByCondResponse) => void
+  ): Promise<DescribeDealsByCondResponse> {
+    return this.request("DescribeDealsByCond", req, cb)
+  }
 
-    /**
-     * 获取按项目汇总消耗详情
-     * @public
-     */
-    async DescribeCostSummaryByProject(req: DescribeCostSummaryByProjectRequest, cb?: (error: string, rep: DescribeCostSummaryByProjectResponse) => void): Promise<DescribeCostSummaryByProjectResponse> {
-        return await this.request("DescribeCostSummaryByProject", req, cb);
-    }
+  /**
+   * 获取按项目汇总消耗详情
+   * @public
+   */
+  async DescribeCostSummaryByProject(
+    req: DescribeCostSummaryByProjectRequest,
+    cb?: (error: string, rep: DescribeCostSummaryByProjectResponse) => void
+  ): Promise<DescribeCostSummaryByProjectResponse> {
+    return this.request("DescribeCostSummaryByProject", req, cb)
+  }
 
-    /**
-     * 获取按付费模式汇总费用分布
-     * @public
-     */
-    async DescribeBillSummaryByPayMode(req: DescribeBillSummaryByPayModeRequest, cb?: (error: string, rep: DescribeBillSummaryByPayModeResponse) => void): Promise<DescribeBillSummaryByPayModeResponse> {
-        return await this.request("DescribeBillSummaryByPayMode", req, cb);
-    }
+  /**
+   * 获取按付费模式汇总费用分布
+   * @public
+   */
+  async DescribeBillSummaryByPayMode(
+    req: DescribeBillSummaryByPayModeRequest,
+    cb?: (error: string, rep: DescribeBillSummaryByPayModeResponse) => void
+  ): Promise<DescribeBillSummaryByPayModeResponse> {
+    return this.request("DescribeBillSummaryByPayMode", req, cb)
+  }
 
-    /**
-     * 查询账单资源汇总数据 
-     * @public
-     */
-    async DescribeBillResourceSummary(req: DescribeBillResourceSummaryRequest, cb?: (error: string, rep: DescribeBillResourceSummaryResponse) => void): Promise<DescribeBillResourceSummaryResponse> {
-        return await this.request("DescribeBillResourceSummary", req, cb);
-    }
+  /**
+   * 查询账单资源汇总数据
+   * @public
+   */
+  async DescribeBillResourceSummary(
+    req: DescribeBillResourceSummaryRequest,
+    cb?: (error: string, rep: DescribeBillResourceSummaryResponse) => void
+  ): Promise<DescribeBillResourceSummaryResponse> {
+    return this.request("DescribeBillResourceSummary", req, cb)
+  }
 
-    /**
-     * 获取按地域汇总消耗详情
-     * @public
-     */
-    async DescribeCostSummaryByRegion(req: DescribeCostSummaryByRegionRequest, cb?: (error: string, rep: DescribeCostSummaryByRegionResponse) => void): Promise<DescribeCostSummaryByRegionResponse> {
-        return await this.request("DescribeCostSummaryByRegion", req, cb);
-    }
+  /**
+   * 获取按地域汇总消耗详情
+   * @public
+   */
+  async DescribeCostSummaryByRegion(
+    req: DescribeCostSummaryByRegionRequest,
+    cb?: (error: string, rep: DescribeCostSummaryByRegionResponse) => void
+  ): Promise<DescribeCostSummaryByRegionResponse> {
+    return this.request("DescribeCostSummaryByRegion", req, cb)
+  }
 
-    /**
-     * 获取按地域汇总费用分布
-     * @public
-     */
-    async DescribeBillSummaryByRegion(req: DescribeBillSummaryByRegionRequest, cb?: (error: string, rep: DescribeBillSummaryByRegionResponse) => void): Promise<DescribeBillSummaryByRegionResponse> {
-        return await this.request("DescribeBillSummaryByRegion", req, cb);
-    }
+  /**
+   * 获取按地域汇总费用分布
+   * @public
+   */
+  async DescribeBillSummaryByRegion(
+    req: DescribeBillSummaryByRegionRequest,
+    cb?: (error: string, rep: DescribeBillSummaryByRegionResponse) => void
+  ): Promise<DescribeBillSummaryByRegionResponse> {
+    return this.request("DescribeBillSummaryByRegion", req, cb)
+  }
 
-    /**
-     * 获取按项目汇总费用分布
-     * @public
-     */
-    async DescribeBillSummaryByProject(req: DescribeBillSummaryByProjectRequest, cb?: (error: string, rep: DescribeBillSummaryByProjectResponse) => void): Promise<DescribeBillSummaryByProjectResponse> {
-        return await this.request("DescribeBillSummaryByProject", req, cb);
-    }
+  /**
+   * 获取按项目汇总费用分布
+   * @public
+   */
+  async DescribeBillSummaryByProject(
+    req: DescribeBillSummaryByProjectRequest,
+    cb?: (error: string, rep: DescribeBillSummaryByProjectResponse) => void
+  ): Promise<DescribeBillSummaryByProjectResponse> {
+    return this.request("DescribeBillSummaryByProject", req, cb)
+  }
 
-    /**
-     * 获取产品汇总费用分布
-     * @public
-     */
-    async DescribeBillSummaryByProduct(req: DescribeBillSummaryByProductRequest, cb?: (error: string, rep: DescribeBillSummaryByProductResponse) => void): Promise<DescribeBillSummaryByProductResponse> {
-        return await this.request("DescribeBillSummaryByProduct", req, cb);
-    }
+  /**
+   * 获取产品汇总费用分布
+   * @public
+   */
+  async DescribeBillSummaryByProduct(
+    req: DescribeBillSummaryByProductRequest,
+    cb?: (error: string, rep: DescribeBillSummaryByProductResponse) => void
+  ): Promise<DescribeBillSummaryByProductResponse> {
+    return this.request("DescribeBillSummaryByProduct", req, cb)
+  }
 
-    /**
-     * 获取按标签汇总费用分布
-     * @public
-     */
-    async DescribeBillSummaryByTag(req: DescribeBillSummaryByTagRequest, cb?: (error: string, rep: DescribeBillSummaryByTagResponse) => void): Promise<DescribeBillSummaryByTagResponse> {
-        return await this.request("DescribeBillSummaryByTag", req, cb);
-    }
+  /**
+   * 获取按标签汇总费用分布
+   * @public
+   */
+  async DescribeBillSummaryByTag(
+    req: DescribeBillSummaryByTagRequest,
+    cb?: (error: string, rep: DescribeBillSummaryByTagResponse) => void
+  ): Promise<DescribeBillSummaryByTagResponse> {
+    return this.request("DescribeBillSummaryByTag", req, cb)
+  }
 
-    /**
-     * 获取按产品汇总消耗详情
-     * @public
-     */
-    async DescribeCostSummaryByProduct(req: DescribeCostSummaryByProductRequest, cb?: (error: string, rep: DescribeCostSummaryByProductResponse) => void): Promise<DescribeCostSummaryByProductResponse> {
-        return await this.request("DescribeCostSummaryByProduct", req, cb);
-    }
+  /**
+   * 获取按产品汇总消耗详情
+   * @public
+   */
+  async DescribeCostSummaryByProduct(
+    req: DescribeCostSummaryByProductRequest,
+    cb?: (error: string, rep: DescribeCostSummaryByProductResponse) => void
+  ): Promise<DescribeCostSummaryByProductResponse> {
+    return this.request("DescribeCostSummaryByProduct", req, cb)
+  }
 
-    /**
-     * 查询消耗明细
-     * @public
-     */
-    async DescribeCostDetail(req: DescribeCostDetailRequest, cb?: (error: string, rep: DescribeCostDetailResponse) => void): Promise<DescribeCostDetailResponse> {
-        return await this.request("DescribeCostDetail", req, cb);
-    }
+  /**
+   * 查询消耗明细
+   * @public
+   */
+  async DescribeCostDetail(
+    req: DescribeCostDetailRequest,
+    cb?: (error: string, rep: DescribeCostDetailResponse) => void
+  ): Promise<DescribeCostDetailResponse> {
+    return this.request("DescribeCostDetail", req, cb)
+  }
 
-    /**
-     * 支付订单
-     * @public
-     */
-    async PayDeals(req: PayDealsRequest, cb?: (error: string, rep: PayDealsResponse) => void): Promise<PayDealsResponse> {
-        return await this.request("PayDeals", req, cb);
-    }
-
-
+  /**
+   * 支付订单
+   * @public
+   */
+  async PayDeals(
+    req: PayDealsRequest,
+    cb?: (error: string, rep: PayDealsResponse) => void
+  ): Promise<PayDealsResponse> {
+    return this.request("PayDeals", req, cb)
+  }
 }

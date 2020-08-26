@@ -17,26 +17,25 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribePermissionRequest,
-   VerifyChipBurnInfoResponse,
-   DeliverTidsResponse,
-   BurnTidNotifyResponse,
-   DescribeAvailableLibCountResponse,
-   UploadDeviceUniqueCodeResponse,
-   AuthTestTidResponse,
-   DeliverTidNotifyResponse,
-   AuthTestTidRequest,
-   BurnTidNotifyRequest,
-   VerifyChipBurnInfoRequest,
-   UploadDeviceUniqueCodeRequest,
-   DescribeAvailableLibCountRequest,
-   DeliverTidsRequest,
-   DeliverTidNotifyRequest,
-   TidKeysInfo,
-   DescribePermissionResponse,
-   DownloadTidsRequest,
-   DownloadTidsResponse,
-
+  DescribePermissionRequest,
+  VerifyChipBurnInfoResponse,
+  DeliverTidsResponse,
+  BurnTidNotifyResponse,
+  DescribeAvailableLibCountResponse,
+  UploadDeviceUniqueCodeResponse,
+  AuthTestTidResponse,
+  DeliverTidNotifyResponse,
+  AuthTestTidRequest,
+  BurnTidNotifyRequest,
+  VerifyChipBurnInfoRequest,
+  UploadDeviceUniqueCodeRequest,
+  DescribeAvailableLibCountRequest,
+  DeliverTidsRequest,
+  DeliverTidNotifyRequest,
+  TidKeysInfo,
+  DescribePermissionResponse,
+  DownloadTidsRequest,
+  DownloadTidsResponse,
 } from "./iottid_models"
 
 /**
@@ -44,82 +43,106 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("iottid.tencentcloudapi.com", "2019-04-11", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("iottid.tencentcloudapi.com", "2019-04-11", clientConfig);
-    }
-    
-    /**
-     * 单向认证测试TID 
-     * @public
-     */
-    async AuthTestTid(req: AuthTestTidRequest, cb?: (error: string, rep: AuthTestTidResponse) => void): Promise<AuthTestTidResponse> {
-        return await this.request("AuthTestTid", req, cb);
-    }
+  /**
+   * 单向认证测试TID
+   * @public
+   */
+  async AuthTestTid(
+    req: AuthTestTidRequest,
+    cb?: (error: string, rep: AuthTestTidResponse) => void
+  ): Promise<AuthTestTidResponse> {
+    return this.request("AuthTestTid", req, cb)
+  }
 
-    /**
-     * 上传硬件唯一标识码，是软加固设备身份参数。本接口如遇到错误数据，则所有当次上传数据失效。
-     * @public
-     */
-    async UploadDeviceUniqueCode(req: UploadDeviceUniqueCodeRequest, cb?: (error: string, rep: UploadDeviceUniqueCodeResponse) => void): Promise<UploadDeviceUniqueCodeResponse> {
-        return await this.request("UploadDeviceUniqueCode", req, cb);
-    }
+  /**
+   * 上传硬件唯一标识码，是软加固设备身份参数。本接口如遇到错误数据，则所有当次上传数据失效。
+   * @public
+   */
+  async UploadDeviceUniqueCode(
+    req: UploadDeviceUniqueCodeRequest,
+    cb?: (error: string, rep: UploadDeviceUniqueCodeResponse) => void
+  ): Promise<UploadDeviceUniqueCodeResponse> {
+    return this.request("UploadDeviceUniqueCode", req, cb)
+  }
 
-    /**
-     * 下载控制台验证芯片烧录信息，保证TID与中心信息一致 
-     * @public
-     */
-    async VerifyChipBurnInfo(req: VerifyChipBurnInfoRequest, cb?: (error: string, rep: VerifyChipBurnInfoResponse) => void): Promise<VerifyChipBurnInfoResponse> {
-        return await this.request("VerifyChipBurnInfo", req, cb);
-    }
+  /**
+   * 下载控制台验证芯片烧录信息，保证TID与中心信息一致
+   * @public
+   */
+  async VerifyChipBurnInfo(
+    req: VerifyChipBurnInfoRequest,
+    cb?: (error: string, rep: VerifyChipBurnInfoResponse) => void
+  ): Promise<VerifyChipBurnInfoResponse> {
+    return this.request("VerifyChipBurnInfo", req, cb)
+  }
 
-    /**
-     * 设备服务商请求空发产品订单的TID信息 
-     * @public
-     */
-    async DeliverTids(req: DeliverTidsRequest, cb?: (error: string, rep: DeliverTidsResponse) => void): Promise<DeliverTidsResponse> {
-        return await this.request("DeliverTids", req, cb);
-    }
+  /**
+   * 设备服务商请求空发产品订单的TID信息
+   * @public
+   */
+  async DeliverTids(
+    req: DeliverTidsRequest,
+    cb?: (error: string, rep: DeliverTidsResponse) => void
+  ): Promise<DeliverTidsResponse> {
+    return this.request("DeliverTids", req, cb)
+  }
 
-    /**
-     * 安全芯片TID烧录回执 
-     * @public
-     */
-    async BurnTidNotify(req: BurnTidNotifyRequest, cb?: (error: string, rep: BurnTidNotifyResponse) => void): Promise<BurnTidNotifyResponse> {
-        return await this.request("BurnTidNotify", req, cb);
-    }
+  /**
+   * 安全芯片TID烧录回执
+   * @public
+   */
+  async BurnTidNotify(
+    req: BurnTidNotifyRequest,
+    cb?: (error: string, rep: BurnTidNotifyResponse) => void
+  ): Promise<BurnTidNotifyResponse> {
+    return this.request("BurnTidNotify", req, cb)
+  }
 
-    /**
-     * 查询企业用户TID平台控制台权限 
-     * @public
-     */
-    async DescribePermission(req: DescribePermissionRequest, cb?: (error: string, rep: DescribePermissionResponse) => void): Promise<DescribePermissionResponse> {
-        return await this.request("DescribePermission", req, cb);
-    }
+  /**
+   * 查询企业用户TID平台控制台权限
+   * @public
+   */
+  async DescribePermission(
+    req: DescribePermissionRequest,
+    cb?: (error: string, rep: DescribePermissionResponse) => void
+  ): Promise<DescribePermissionResponse> {
+    return this.request("DescribePermission", req, cb)
+  }
 
-    /**
-     * 安全芯片为载体的TID空发回执，绑定TID与订单号。 
-     * @public
-     */
-    async DeliverTidNotify(req: DeliverTidNotifyRequest, cb?: (error: string, rep: DeliverTidNotifyResponse) => void): Promise<DeliverTidNotifyResponse> {
-        return await this.request("DeliverTidNotify", req, cb);
-    }
+  /**
+   * 安全芯片为载体的TID空发回执，绑定TID与订单号。
+   * @public
+   */
+  async DeliverTidNotify(
+    req: DeliverTidNotifyRequest,
+    cb?: (error: string, rep: DeliverTidNotifyResponse) => void
+  ): Promise<DeliverTidNotifyResponse> {
+    return this.request("DeliverTidNotify", req, cb)
+  }
 
-    /**
-     * 下载芯片订单的TID 
-     * @public
-     */
-    async DownloadTids(req: DownloadTidsRequest, cb?: (error: string, rep: DownloadTidsResponse) => void): Promise<DownloadTidsResponse> {
-        return await this.request("DownloadTids", req, cb);
-    }
+  /**
+   * 下载芯片订单的TID
+   * @public
+   */
+  async DownloadTids(
+    req: DownloadTidsRequest,
+    cb?: (error: string, rep: DownloadTidsResponse) => void
+  ): Promise<DownloadTidsResponse> {
+    return this.request("DownloadTids", req, cb)
+  }
 
-    /**
-     * 查询指定订单的可空发的白盒密钥数量
-     * @public
-     */
-    async DescribeAvailableLibCount(req: DescribeAvailableLibCountRequest, cb?: (error: string, rep: DescribeAvailableLibCountResponse) => void): Promise<DescribeAvailableLibCountResponse> {
-        return await this.request("DescribeAvailableLibCount", req, cb);
-    }
-
-
+  /**
+   * 查询指定订单的可空发的白盒密钥数量
+   * @public
+   */
+  async DescribeAvailableLibCount(
+    req: DescribeAvailableLibCountRequest,
+    cb?: (error: string, rep: DescribeAvailableLibCountResponse) => void
+  ): Promise<DescribeAvailableLibCountResponse> {
+    return this.request("DescribeAvailableLibCount", req, cb)
+  }
 }

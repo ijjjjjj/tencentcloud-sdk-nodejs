@@ -17,30 +17,29 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribeTopSpaceTableTimeSeriesResponse,
-   DescribeDBDiagHistoryResponse,
-   DescribeDBSpaceStatusRequest,
-   DescribeSlowLogTimeSeriesStatsResponse,
-   TimeSlice,
-   MonitorFloatMetric,
-   MonitorMetric,
-   TableSpaceTimeSeries,
-   DescribeTopSpaceTablesRequest,
-   DescribeSlowLogTimeSeriesStatsRequest,
-   DescribeDBDiagEventRequest,
-   DescribeDBSpaceStatusResponse,
-   DescribeDBDiagEventResponse,
-   DescribeDBDiagHistoryRequest,
-   DescribeTopSpaceTableTimeSeriesRequest,
-   MonitorMetricSeriesData,
-   DiagHistoryEventItem,
-   SlowLogTopSqlItem,
-   MonitorFloatMetricSeriesData,
-   DescribeSlowLogTopSqlsRequest,
-   TableSpaceData,
-   DescribeSlowLogTopSqlsResponse,
-   DescribeTopSpaceTablesResponse,
-
+  DescribeTopSpaceTableTimeSeriesResponse,
+  DescribeDBDiagHistoryResponse,
+  DescribeDBSpaceStatusRequest,
+  DescribeSlowLogTimeSeriesStatsResponse,
+  TimeSlice,
+  MonitorFloatMetric,
+  MonitorMetric,
+  TableSpaceTimeSeries,
+  DescribeTopSpaceTablesRequest,
+  DescribeSlowLogTimeSeriesStatsRequest,
+  DescribeDBDiagEventRequest,
+  DescribeDBSpaceStatusResponse,
+  DescribeDBDiagEventResponse,
+  DescribeDBDiagHistoryRequest,
+  DescribeTopSpaceTableTimeSeriesRequest,
+  MonitorMetricSeriesData,
+  DiagHistoryEventItem,
+  SlowLogTopSqlItem,
+  MonitorFloatMetricSeriesData,
+  DescribeSlowLogTopSqlsRequest,
+  TableSpaceData,
+  DescribeSlowLogTopSqlsResponse,
+  DescribeTopSpaceTablesResponse,
 } from "./dbbrain_models"
 
 /**
@@ -48,66 +47,84 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("dbbrain.tencentcloudapi.com", "2019-10-16", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("dbbrain.tencentcloudapi.com", "2019-10-16", clientConfig);
-    }
-    
-    /**
-     * 获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
-     * @public
-     */
-    async DescribeTopSpaceTableTimeSeries(req: DescribeTopSpaceTableTimeSeriesRequest, cb?: (error: string, rep: DescribeTopSpaceTableTimeSeriesResponse) => void): Promise<DescribeTopSpaceTableTimeSeriesResponse> {
-        return await this.request("DescribeTopSpaceTableTimeSeries", req, cb);
-    }
+  /**
+   * 获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
+   * @public
+   */
+  async DescribeTopSpaceTableTimeSeries(
+    req: DescribeTopSpaceTableTimeSeriesRequest,
+    cb?: (error: string, rep: DescribeTopSpaceTableTimeSeriesResponse) => void
+  ): Promise<DescribeTopSpaceTableTimeSeriesResponse> {
+    return this.request("DescribeTopSpaceTableTimeSeries", req, cb)
+  }
 
-    /**
-     * 获取慢日志统计柱状图
-     * @public
-     */
-    async DescribeSlowLogTimeSeriesStats(req: DescribeSlowLogTimeSeriesStatsRequest, cb?: (error: string, rep: DescribeSlowLogTimeSeriesStatsResponse) => void): Promise<DescribeSlowLogTimeSeriesStatsResponse> {
-        return await this.request("DescribeSlowLogTimeSeriesStats", req, cb);
-    }
+  /**
+   * 获取慢日志统计柱状图
+   * @public
+   */
+  async DescribeSlowLogTimeSeriesStats(
+    req: DescribeSlowLogTimeSeriesStatsRequest,
+    cb?: (error: string, rep: DescribeSlowLogTimeSeriesStatsResponse) => void
+  ): Promise<DescribeSlowLogTimeSeriesStatsResponse> {
+    return this.request("DescribeSlowLogTimeSeriesStats", req, cb)
+  }
 
-    /**
-     * 获取实例诊断事件的列表。
-     * @public
-     */
-    async DescribeDBDiagHistory(req: DescribeDBDiagHistoryRequest, cb?: (error: string, rep: DescribeDBDiagHistoryResponse) => void): Promise<DescribeDBDiagHistoryResponse> {
-        return await this.request("DescribeDBDiagHistory", req, cb);
-    }
+  /**
+   * 获取实例诊断事件的列表。
+   * @public
+   */
+  async DescribeDBDiagHistory(
+    req: DescribeDBDiagHistoryRequest,
+    cb?: (error: string, rep: DescribeDBDiagHistoryResponse) => void
+  ): Promise<DescribeDBDiagHistoryResponse> {
+    return this.request("DescribeDBDiagHistory", req, cb)
+  }
 
-    /**
-     * 获取指定时间段内的实例空间使用概览，包括磁盘增长量(MB)、磁盘剩余(MB)、磁盘总量(MB)及预计可用天数。
-     * @public
-     */
-    async DescribeDBSpaceStatus(req: DescribeDBSpaceStatusRequest, cb?: (error: string, rep: DescribeDBSpaceStatusResponse) => void): Promise<DescribeDBSpaceStatusResponse> {
-        return await this.request("DescribeDBSpaceStatus", req, cb);
-    }
+  /**
+   * 获取指定时间段内的实例空间使用概览，包括磁盘增长量(MB)、磁盘剩余(MB)、磁盘总量(MB)及预计可用天数。
+   * @public
+   */
+  async DescribeDBSpaceStatus(
+    req: DescribeDBSpaceStatusRequest,
+    cb?: (error: string, rep: DescribeDBSpaceStatusResponse) => void
+  ): Promise<DescribeDBSpaceStatusResponse> {
+    return this.request("DescribeDBSpaceStatus", req, cb)
+  }
 
-    /**
-     * 获取实例异常诊断事件的详情信息。
-     * @public
-     */
-    async DescribeDBDiagEvent(req: DescribeDBDiagEventRequest, cb?: (error: string, rep: DescribeDBDiagEventResponse) => void): Promise<DescribeDBDiagEventResponse> {
-        return await this.request("DescribeDBDiagEvent", req, cb);
-    }
+  /**
+   * 获取实例异常诊断事件的详情信息。
+   * @public
+   */
+  async DescribeDBDiagEvent(
+    req: DescribeDBDiagEventRequest,
+    cb?: (error: string, rep: DescribeDBDiagEventResponse) => void
+  ): Promise<DescribeDBDiagEventResponse> {
+    return this.request("DescribeDBDiagEvent", req, cb)
+  }
 
-    /**
-     * 获取实例Top表的实时空间统计信息，默认返回按大小排序。
-     * @public
-     */
-    async DescribeTopSpaceTables(req: DescribeTopSpaceTablesRequest, cb?: (error: string, rep: DescribeTopSpaceTablesResponse) => void): Promise<DescribeTopSpaceTablesResponse> {
-        return await this.request("DescribeTopSpaceTables", req, cb);
-    }
+  /**
+   * 获取实例Top表的实时空间统计信息，默认返回按大小排序。
+   * @public
+   */
+  async DescribeTopSpaceTables(
+    req: DescribeTopSpaceTablesRequest,
+    cb?: (error: string, rep: DescribeTopSpaceTablesResponse) => void
+  ): Promise<DescribeTopSpaceTablesResponse> {
+    return this.request("DescribeTopSpaceTables", req, cb)
+  }
 
-    /**
-     * 按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
-     * @public
-     */
-    async DescribeSlowLogTopSqls(req: DescribeSlowLogTopSqlsRequest, cb?: (error: string, rep: DescribeSlowLogTopSqlsResponse) => void): Promise<DescribeSlowLogTopSqlsResponse> {
-        return await this.request("DescribeSlowLogTopSqls", req, cb);
-    }
-
-
+  /**
+   * 按照Sql模板+schema的聚合方式，统计排序指定时间段内的top慢sql。
+   * @public
+   */
+  async DescribeSlowLogTopSqls(
+    req: DescribeSlowLogTopSqlsRequest,
+    cb?: (error: string, rep: DescribeSlowLogTopSqlsResponse) => void
+  ): Promise<DescribeSlowLogTopSqlsResponse> {
+    return this.request("DescribeSlowLogTopSqls", req, cb)
+  }
 }

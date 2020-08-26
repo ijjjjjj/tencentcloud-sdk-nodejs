@@ -17,33 +17,32 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   SetVocabStateResponse,
-   GetAsrVocabResponse,
-   HotWord,
-   GetAsrVocabRequest,
-   DescribeTaskStatusResponse,
-   DownloadAsrVocabResponse,
-   CreateRecTaskResponse,
-   UpdateAsrVocabResponse,
-   DeleteAsrVocabResponse,
-   GetAsrVocabListRequest,
-   CreateRecTaskRequest,
-   SentenceDetail,
-   DownloadAsrVocabRequest,
-   SetVocabStateRequest,
-   Vocab,
-   Task,
-   TaskStatus,
-   DeleteAsrVocabRequest,
-   SentenceRecognitionRequest,
-   CreateAsrVocabRequest,
-   UpdateAsrVocabRequest,
-   CreateAsrVocabResponse,
-   SentenceRecognitionResponse,
-   DescribeTaskStatusRequest,
-   GetAsrVocabListResponse,
-   SentenceWords,
-
+  SetVocabStateResponse,
+  GetAsrVocabResponse,
+  HotWord,
+  GetAsrVocabRequest,
+  DescribeTaskStatusResponse,
+  DownloadAsrVocabResponse,
+  CreateRecTaskResponse,
+  UpdateAsrVocabResponse,
+  DeleteAsrVocabResponse,
+  GetAsrVocabListRequest,
+  CreateRecTaskRequest,
+  SentenceDetail,
+  DownloadAsrVocabRequest,
+  SetVocabStateRequest,
+  Vocab,
+  Task,
+  TaskStatus,
+  DeleteAsrVocabRequest,
+  SentenceRecognitionRequest,
+  CreateAsrVocabRequest,
+  UpdateAsrVocabRequest,
+  CreateAsrVocabResponse,
+  SentenceRecognitionResponse,
+  DescribeTaskStatusRequest,
+  GetAsrVocabListResponse,
+  SentenceWords,
 } from "./asr_models"
 
 /**
@@ -51,20 +50,22 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("asr.tencentcloudapi.com", "2019-06-14", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("asr.tencentcloudapi.com", "2019-06-14", clientConfig);
-    }
-    
-    /**
-     * 用户通过该接口，可获得所有的热词表及其信息。
-     * @public
-     */
-    async GetAsrVocabList(req: GetAsrVocabListRequest, cb?: (error: string, rep: GetAsrVocabListResponse) => void): Promise<GetAsrVocabListResponse> {
-        return await this.request("GetAsrVocabList", req, cb);
-    }
+  /**
+   * 用户通过该接口，可获得所有的热词表及其信息。
+   * @public
+   */
+  async GetAsrVocabList(
+    req: GetAsrVocabListRequest,
+    cb?: (error: string, rep: GetAsrVocabListResponse) => void
+  ): Promise<GetAsrVocabListResponse> {
+    return this.request("GetAsrVocabList", req, cb)
+  }
 
-    /**
+  /**
      * 本接口服务对时长5小时以内的录音文件进行识别，异步返回识别全部结果， HTTP RESTful 形式。
 <br>• 支持中文普通话、英语、粤语和日语
 <br>• 支持通用、音视频领域
@@ -75,46 +76,61 @@ export class Client extends AbstractClient {
 <br>• 支持回调或轮询的方式获取结果，结果获取请参考[ 录音文件识别结果查询](https://cloud.tencent.com/document/product/1093/37822)。
      * @public
      */
-    async CreateRecTask(req: CreateRecTaskRequest, cb?: (error: string, rep: CreateRecTaskResponse) => void): Promise<CreateRecTaskResponse> {
-        return await this.request("CreateRecTask", req, cb);
-    }
+  async CreateRecTask(
+    req: CreateRecTaskRequest,
+    cb?: (error: string, rep: CreateRecTaskResponse) => void
+  ): Promise<CreateRecTaskResponse> {
+    return this.request("CreateRecTask", req, cb)
+  }
 
-    /**
-     * 用户根据词表的ID可以获取对应的热词表信息
-     * @public
-     */
-    async GetAsrVocab(req: GetAsrVocabRequest, cb?: (error: string, rep: GetAsrVocabResponse) => void): Promise<GetAsrVocabResponse> {
-        return await this.request("GetAsrVocab", req, cb);
-    }
+  /**
+   * 用户根据词表的ID可以获取对应的热词表信息
+   * @public
+   */
+  async GetAsrVocab(
+    req: GetAsrVocabRequest,
+    cb?: (error: string, rep: GetAsrVocabResponse) => void
+  ): Promise<GetAsrVocabResponse> {
+    return this.request("GetAsrVocab", req, cb)
+  }
 
-    /**
+  /**
      * 在调用录音文件识别请求接口后，有回调和轮询两种方式获取识别结果。
 <br>• 当采用回调方式时，识别完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见[ 录音识别结果回调 ](https://cloud.tencent.com/document/product/1093/37139#callback)。
 <br>• 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见下文说明。
 
      * @public
      */
-    async DescribeTaskStatus(req: DescribeTaskStatusRequest, cb?: (error: string, rep: DescribeTaskStatusResponse) => void): Promise<DescribeTaskStatusResponse> {
-        return await this.request("DescribeTaskStatus", req, cb);
-    }
+  async DescribeTaskStatus(
+    req: DescribeTaskStatusRequest,
+    cb?: (error: string, rep: DescribeTaskStatusResponse) => void
+  ): Promise<DescribeTaskStatusResponse> {
+    return this.request("DescribeTaskStatus", req, cb)
+  }
 
-    /**
-     * 用户通过该接口可以设置热词表的默认状态。初始状态为0，用户可设置状态为1，即为默认状态。默认状态表示用户在请求识别时，如不设置热词表ID，则默认使用状态为1的热词表。
-     * @public
-     */
-    async SetVocabState(req: SetVocabStateRequest, cb?: (error: string, rep: SetVocabStateResponse) => void): Promise<SetVocabStateResponse> {
-        return await this.request("SetVocabState", req, cb);
-    }
+  /**
+   * 用户通过该接口可以设置热词表的默认状态。初始状态为0，用户可设置状态为1，即为默认状态。默认状态表示用户在请求识别时，如不设置热词表ID，则默认使用状态为1的热词表。
+   * @public
+   */
+  async SetVocabState(
+    req: SetVocabStateRequest,
+    cb?: (error: string, rep: SetVocabStateResponse) => void
+  ): Promise<SetVocabStateResponse> {
+    return this.request("SetVocabState", req, cb)
+  }
 
-    /**
-     * 用户通过本接口进行对应的词表信息更新。
-     * @public
-     */
-    async UpdateAsrVocab(req: UpdateAsrVocabRequest, cb?: (error: string, rep: UpdateAsrVocabResponse) => void): Promise<UpdateAsrVocabResponse> {
-        return await this.request("UpdateAsrVocab", req, cb);
-    }
+  /**
+   * 用户通过本接口进行对应的词表信息更新。
+   * @public
+   */
+  async UpdateAsrVocab(
+    req: UpdateAsrVocabRequest,
+    cb?: (error: string, rep: UpdateAsrVocabResponse) => void
+  ): Promise<UpdateAsrVocabResponse> {
+    return this.request("UpdateAsrVocab", req, cb)
+  }
 
-    /**
+  /**
      * 用户通过本接口进行热词表的创建。
 <br>•   默认最多可创建30个热词表。
 <br>•   每个热词表最多可添加128个词，每个词最长10个字，不能超出限制。
@@ -123,27 +139,36 @@ export class Client extends AbstractClient {
 <br>•   热词权重取值范围为[1,10]之间的整数，权重越大代表该词被识别出来的概率越大。
      * @public
      */
-    async CreateAsrVocab(req: CreateAsrVocabRequest, cb?: (error: string, rep: CreateAsrVocabResponse) => void): Promise<CreateAsrVocabResponse> {
-        return await this.request("CreateAsrVocab", req, cb);
-    }
+  async CreateAsrVocab(
+    req: CreateAsrVocabRequest,
+    cb?: (error: string, rep: CreateAsrVocabResponse) => void
+  ): Promise<CreateAsrVocabResponse> {
+    return this.request("CreateAsrVocab", req, cb)
+  }
 
-    /**
-     * 用户通过本接口进行热词表的下载，获得词表权重文件形式的 base64 值，文件形式为通过 “|” 分割的词和权重，即 word|weight 的形式。
-     * @public
-     */
-    async DownloadAsrVocab(req: DownloadAsrVocabRequest, cb?: (error: string, rep: DownloadAsrVocabResponse) => void): Promise<DownloadAsrVocabResponse> {
-        return await this.request("DownloadAsrVocab", req, cb);
-    }
+  /**
+   * 用户通过本接口进行热词表的下载，获得词表权重文件形式的 base64 值，文件形式为通过 “|” 分割的词和权重，即 word|weight 的形式。
+   * @public
+   */
+  async DownloadAsrVocab(
+    req: DownloadAsrVocabRequest,
+    cb?: (error: string, rep: DownloadAsrVocabResponse) => void
+  ): Promise<DownloadAsrVocabResponse> {
+    return this.request("DownloadAsrVocab", req, cb)
+  }
 
-    /**
-     * 用户通过本接口进行热词表的删除。
-     * @public
-     */
-    async DeleteAsrVocab(req: DeleteAsrVocabRequest, cb?: (error: string, rep: DeleteAsrVocabResponse) => void): Promise<DeleteAsrVocabResponse> {
-        return await this.request("DeleteAsrVocab", req, cb);
-    }
+  /**
+   * 用户通过本接口进行热词表的删除。
+   * @public
+   */
+  async DeleteAsrVocab(
+    req: DeleteAsrVocabRequest,
+    cb?: (error: string, rep: DeleteAsrVocabResponse) => void
+  ): Promise<DeleteAsrVocabResponse> {
+    return this.request("DeleteAsrVocab", req, cb)
+  }
 
-    /**
+  /**
      * 本接口用于对60秒之内的短音频文件进行识别。
 <br>•   支持中文普通话、英语、粤语、日语。
 <br>•   支持本地语音文件上传和语音URL上传两种请求方式，音频时长不能超过60s。
@@ -152,9 +177,10 @@ export class Client extends AbstractClient {
 <br>•   所有请求参数放在POST请求的body中，编码类型采用x-www-form-urlencoded，参数进行urlencode编码后传输。
      * @public
      */
-    async SentenceRecognition(req: SentenceRecognitionRequest, cb?: (error: string, rep: SentenceRecognitionResponse) => void): Promise<SentenceRecognitionResponse> {
-        return await this.request("SentenceRecognition", req, cb);
-    }
-
-
+  async SentenceRecognition(
+    req: SentenceRecognitionRequest,
+    cb?: (error: string, rep: SentenceRecognitionResponse) => void
+  ): Promise<SentenceRecognitionResponse> {
+    return this.request("SentenceRecognition", req, cb)
+  }
 }

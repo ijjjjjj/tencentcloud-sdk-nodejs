@@ -17,76 +17,75 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DisableRsgAsGroupRequest,
-   ExposeServiceResponse,
-   RsgAsActivityRelatedInstance,
-   DeleteJobResponse,
-   DeleteRuntimeResponse,
-   CreateJobRequest,
-   ExposeServiceRequest,
-   DescribeServiceConfigsResponse,
-   Scaler,
-   CreateJobResponse,
-   DeleteServiceResponse,
-   DescribeRsgAsGroupsResponse,
-   UpdateServiceResponse,
-   Instance,
-   UpdateRsgAsGroupResponse,
-   DescribeServicesResponse,
-   DescribeResourceGroupsResponse,
-   DescribeRsgAsGroupsRequest,
-   DeleteResourceGroupRequest,
-   Conditions,
-   DescribeServiceConfigsRequest,
-   DeleteRsgAsGroupRequest,
-   ReplicaInfo,
-   DeleteServiceConfigResponse,
-   UpdateRsgAsGroupRequest,
-   DeleteRsgAsGroupResponse,
-   Config,
-   Option,
-   PredictInput,
-   CreateRuntimeResponse,
-   Job,
-   UpdateJobRequest,
-   DescribeResourceGroupsRequest,
-   DescribeRuntimesResponse,
-   DeleteInstanceResponse,
-   DescribeInstancesResponse,
-   DeleteResourceGroupResponse,
-   DisableRsgAsGroupResponse,
-   DescribeInstancesRequest,
-   CreateServiceResponse,
-   CreateServiceRequest,
-   EnableRsgAsGroupResponse,
-   JobStatus,
-   UpdateServiceRequest,
-   Filter,
-   CreateServiceConfigResponse,
-   ExposeInfo,
-   RsgAsGroup,
-   DeleteServiceRequest,
-   Runtime,
-   CreateRsgAsGroupResponse,
-   ServiceStatus,
-   RsgAsGroupActivity,
-   DescribeRsgAsGroupActivitiesRequest,
-   ResourceGroup,
-   DeleteJobRequest,
-   DeleteInstanceRequest,
-   CreateRsgAsGroupRequest,
-   DescribeRuntimesRequest,
-   EnableRsgAsGroupRequest,
-   CreateServiceConfigRequest,
-   QuantizationInput,
-   UpdateJobResponse,
-   CreateRuntimeRequest,
-   ModelService,
-   DeleteServiceConfigRequest,
-   DeleteRuntimeRequest,
-   DescribeRsgAsGroupActivitiesResponse,
-   DescribeServicesRequest,
-
+  DisableRsgAsGroupRequest,
+  ExposeServiceResponse,
+  RsgAsActivityRelatedInstance,
+  DeleteJobResponse,
+  DeleteRuntimeResponse,
+  CreateJobRequest,
+  ExposeServiceRequest,
+  DescribeServiceConfigsResponse,
+  Scaler,
+  CreateJobResponse,
+  DeleteServiceResponse,
+  DescribeRsgAsGroupsResponse,
+  UpdateServiceResponse,
+  Instance,
+  UpdateRsgAsGroupResponse,
+  DescribeServicesResponse,
+  DescribeResourceGroupsResponse,
+  DescribeRsgAsGroupsRequest,
+  DeleteResourceGroupRequest,
+  Conditions,
+  DescribeServiceConfigsRequest,
+  DeleteRsgAsGroupRequest,
+  ReplicaInfo,
+  DeleteServiceConfigResponse,
+  UpdateRsgAsGroupRequest,
+  DeleteRsgAsGroupResponse,
+  Config,
+  Option,
+  PredictInput,
+  CreateRuntimeResponse,
+  Job,
+  UpdateJobRequest,
+  DescribeResourceGroupsRequest,
+  DescribeRuntimesResponse,
+  DeleteInstanceResponse,
+  DescribeInstancesResponse,
+  DeleteResourceGroupResponse,
+  DisableRsgAsGroupResponse,
+  DescribeInstancesRequest,
+  CreateServiceResponse,
+  CreateServiceRequest,
+  EnableRsgAsGroupResponse,
+  JobStatus,
+  UpdateServiceRequest,
+  Filter,
+  CreateServiceConfigResponse,
+  ExposeInfo,
+  RsgAsGroup,
+  DeleteServiceRequest,
+  Runtime,
+  CreateRsgAsGroupResponse,
+  ServiceStatus,
+  RsgAsGroupActivity,
+  DescribeRsgAsGroupActivitiesRequest,
+  ResourceGroup,
+  DeleteJobRequest,
+  DeleteInstanceRequest,
+  CreateRsgAsGroupRequest,
+  DescribeRuntimesRequest,
+  EnableRsgAsGroupRequest,
+  CreateServiceConfigRequest,
+  QuantizationInput,
+  UpdateJobResponse,
+  CreateRuntimeRequest,
+  ModelService,
+  DeleteServiceConfigRequest,
+  DeleteRuntimeRequest,
+  DescribeRsgAsGroupActivitiesResponse,
+  DescribeServicesRequest,
 } from "./tiems_models"
 
 /**
@@ -94,210 +93,282 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("tiems.tencentcloudapi.com", "2019-04-16", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("tiems.tencentcloudapi.com", "2019-04-16", clientConfig);
-    }
-    
-    /**
-     * 创建服务
-     * @public
-     */
-    async CreateService(req: CreateServiceRequest, cb?: (error: string, rep: CreateServiceResponse) => void): Promise<CreateServiceResponse> {
-        return await this.request("CreateService", req, cb);
-    }
+  /**
+   * 创建服务
+   * @public
+   */
+  async CreateService(
+    req: CreateServiceRequest,
+    cb?: (error: string, rep: CreateServiceResponse) => void
+  ): Promise<CreateServiceResponse> {
+    return this.request("CreateService", req, cb)
+  }
 
-    /**
-     * 创建服务配置
-     * @public
-     */
-    async CreateServiceConfig(req: CreateServiceConfigRequest, cb?: (error: string, rep: CreateServiceConfigResponse) => void): Promise<CreateServiceConfigResponse> {
-        return await this.request("CreateServiceConfig", req, cb);
-    }
+  /**
+   * 创建服务配置
+   * @public
+   */
+  async CreateServiceConfig(
+    req: CreateServiceConfigRequest,
+    cb?: (error: string, rep: CreateServiceConfigResponse) => void
+  ): Promise<CreateServiceConfigResponse> {
+    return this.request("CreateServiceConfig", req, cb)
+  }
 
-    /**
-     * 创建资源组的伸缩组。当前一个资源组仅允许创建一个伸缩组。
-     * @public
-     */
-    async CreateRsgAsGroup(req: CreateRsgAsGroupRequest, cb?: (error: string, rep: CreateRsgAsGroupResponse) => void): Promise<CreateRsgAsGroupResponse> {
-        return await this.request("CreateRsgAsGroup", req, cb);
-    }
+  /**
+   * 创建资源组的伸缩组。当前一个资源组仅允许创建一个伸缩组。
+   * @public
+   */
+  async CreateRsgAsGroup(
+    req: CreateRsgAsGroupRequest,
+    cb?: (error: string, rep: CreateRsgAsGroupResponse) => void
+  ): Promise<CreateRsgAsGroupResponse> {
+    return this.request("CreateRsgAsGroup", req, cb)
+  }
 
-    /**
-     * 删除资源组中的节点。目前仅支持删除已经到期的预付费节点，和按量付费节点。
-     * @public
-     */
-    async DeleteInstance(req: DeleteInstanceRequest, cb?: (error: string, rep: DeleteInstanceResponse) => void): Promise<DeleteInstanceResponse> {
-        return await this.request("DeleteInstance", req, cb);
-    }
+  /**
+   * 删除资源组中的节点。目前仅支持删除已经到期的预付费节点，和按量付费节点。
+   * @public
+   */
+  async DeleteInstance(
+    req: DeleteInstanceRequest,
+    cb?: (error: string, rep: DeleteInstanceResponse) => void
+  ): Promise<DeleteInstanceResponse> {
+    return this.request("DeleteInstance", req, cb)
+  }
 
-    /**
-     * 删除服务
-     * @public
-     */
-    async DeleteService(req: DeleteServiceRequest, cb?: (error: string, rep: DeleteServiceResponse) => void): Promise<DeleteServiceResponse> {
-        return await this.request("DeleteService", req, cb);
-    }
+  /**
+   * 删除服务
+   * @public
+   */
+  async DeleteService(
+    req: DeleteServiceRequest,
+    cb?: (error: string, rep: DeleteServiceResponse) => void
+  ): Promise<DeleteServiceResponse> {
+    return this.request("DeleteService", req, cb)
+  }
 
-    /**
-     * 创建任务
-     * @public
-     */
-    async CreateJob(req: CreateJobRequest, cb?: (error: string, rep: CreateJobResponse) => void): Promise<CreateJobResponse> {
-        return await this.request("CreateJob", req, cb);
-    }
+  /**
+   * 创建任务
+   * @public
+   */
+  async CreateJob(
+    req: CreateJobRequest,
+    cb?: (error: string, rep: CreateJobResponse) => void
+  ): Promise<CreateJobResponse> {
+    return this.request("CreateJob", req, cb)
+  }
 
-    /**
-     * 更新资源组的伸缩组
-     * @public
-     */
-    async UpdateRsgAsGroup(req: UpdateRsgAsGroupRequest, cb?: (error: string, rep: UpdateRsgAsGroupResponse) => void): Promise<UpdateRsgAsGroupResponse> {
-        return await this.request("UpdateRsgAsGroup", req, cb);
-    }
+  /**
+   * 更新资源组的伸缩组
+   * @public
+   */
+  async UpdateRsgAsGroup(
+    req: UpdateRsgAsGroupRequest,
+    cb?: (error: string, rep: UpdateRsgAsGroupResponse) => void
+  ): Promise<UpdateRsgAsGroupResponse> {
+    return this.request("UpdateRsgAsGroup", req, cb)
+  }
 
-    /**
-     * 描述服务
-     * @public
-     */
-    async DescribeServices(req: DescribeServicesRequest, cb?: (error: string, rep: DescribeServicesResponse) => void): Promise<DescribeServicesResponse> {
-        return await this.request("DescribeServices", req, cb);
-    }
+  /**
+   * 描述服务
+   * @public
+   */
+  async DescribeServices(
+    req: DescribeServicesRequest,
+    cb?: (error: string, rep: DescribeServicesResponse) => void
+  ): Promise<DescribeServicesResponse> {
+    return this.request("DescribeServices", req, cb)
+  }
 
-    /**
-     * 停用资源组的伸缩组
-     * @public
-     */
-    async DisableRsgAsGroup(req: DisableRsgAsGroupRequest, cb?: (error: string, rep: DisableRsgAsGroupResponse) => void): Promise<DisableRsgAsGroupResponse> {
-        return await this.request("DisableRsgAsGroup", req, cb);
-    }
+  /**
+   * 停用资源组的伸缩组
+   * @public
+   */
+  async DisableRsgAsGroup(
+    req: DisableRsgAsGroupRequest,
+    cb?: (error: string, rep: DisableRsgAsGroupResponse) => void
+  ): Promise<DisableRsgAsGroupResponse> {
+    return this.request("DisableRsgAsGroup", req, cb)
+  }
 
-    /**
-     * 更新服务
-     * @public
-     */
-    async UpdateService(req: UpdateServiceRequest, cb?: (error: string, rep: UpdateServiceResponse) => void): Promise<UpdateServiceResponse> {
-        return await this.request("UpdateService", req, cb);
-    }
+  /**
+   * 更新服务
+   * @public
+   */
+  async UpdateService(
+    req: UpdateServiceRequest,
+    cb?: (error: string, rep: UpdateServiceResponse) => void
+  ): Promise<UpdateServiceResponse> {
+    return this.request("UpdateService", req, cb)
+  }
 
-    /**
-     * 创建运行环境
-     * @public
-     */
-    async CreateRuntime(req: CreateRuntimeRequest, cb?: (error: string, rep: CreateRuntimeResponse) => void): Promise<CreateRuntimeResponse> {
-        return await this.request("CreateRuntime", req, cb);
-    }
+  /**
+   * 创建运行环境
+   * @public
+   */
+  async CreateRuntime(
+    req: CreateRuntimeRequest,
+    cb?: (error: string, rep: CreateRuntimeResponse) => void
+  ): Promise<CreateRuntimeResponse> {
+    return this.request("CreateRuntime", req, cb)
+  }
 
-    /**
-     * 删除服务配置
-     * @public
-     */
-    async DeleteServiceConfig(req: DeleteServiceConfigRequest, cb?: (error: string, rep: DeleteServiceConfigResponse) => void): Promise<DeleteServiceConfigResponse> {
-        return await this.request("DeleteServiceConfig", req, cb);
-    }
+  /**
+   * 删除服务配置
+   * @public
+   */
+  async DeleteServiceConfig(
+    req: DeleteServiceConfigRequest,
+    cb?: (error: string, rep: DeleteServiceConfigResponse) => void
+  ): Promise<DeleteServiceConfigResponse> {
+    return this.request("DeleteServiceConfig", req, cb)
+  }
 
-    /**
-     * 获取节点列表
-     * @public
-     */
-    async DescribeInstances(req: DescribeInstancesRequest, cb?: (error: string, rep: DescribeInstancesResponse) => void): Promise<DescribeInstancesResponse> {
-        return await this.request("DescribeInstances", req, cb);
-    }
+  /**
+   * 获取节点列表
+   * @public
+   */
+  async DescribeInstances(
+    req: DescribeInstancesRequest,
+    cb?: (error: string, rep: DescribeInstancesResponse) => void
+  ): Promise<DescribeInstancesResponse> {
+    return this.request("DescribeInstances", req, cb)
+  }
 
-    /**
-     * 查询伸缩组活动
-     * @public
-     */
-    async DescribeRsgAsGroupActivities(req: DescribeRsgAsGroupActivitiesRequest, cb?: (error: string, rep: DescribeRsgAsGroupActivitiesResponse) => void): Promise<DescribeRsgAsGroupActivitiesResponse> {
-        return await this.request("DescribeRsgAsGroupActivities", req, cb);
-    }
+  /**
+   * 查询伸缩组活动
+   * @public
+   */
+  async DescribeRsgAsGroupActivities(
+    req: DescribeRsgAsGroupActivitiesRequest,
+    cb?: (error: string, rep: DescribeRsgAsGroupActivitiesResponse) => void
+  ): Promise<DescribeRsgAsGroupActivitiesResponse> {
+    return this.request("DescribeRsgAsGroupActivities", req, cb)
+  }
 
-    /**
-     * 描述服务运行环境
-     * @public
-     */
-    async DescribeRuntimes(req: DescribeRuntimesRequest, cb?: (error: string, rep: DescribeRuntimesResponse) => void): Promise<DescribeRuntimesResponse> {
-        return await this.request("DescribeRuntimes", req, cb);
-    }
+  /**
+   * 描述服务运行环境
+   * @public
+   */
+  async DescribeRuntimes(
+    req: DescribeRuntimesRequest,
+    cb?: (error: string, rep: DescribeRuntimesResponse) => void
+  ): Promise<DescribeRuntimesResponse> {
+    return this.request("DescribeRuntimes", req, cb)
+  }
 
-    /**
-     * 获取资源组列表
-     * @public
-     */
-    async DescribeResourceGroups(req: DescribeResourceGroupsRequest, cb?: (error: string, rep: DescribeResourceGroupsResponse) => void): Promise<DescribeResourceGroupsResponse> {
-        return await this.request("DescribeResourceGroups", req, cb);
-    }
+  /**
+   * 获取资源组列表
+   * @public
+   */
+  async DescribeResourceGroups(
+    req: DescribeResourceGroupsRequest,
+    cb?: (error: string, rep: DescribeResourceGroupsResponse) => void
+  ): Promise<DescribeResourceGroupsResponse> {
+    return this.request("DescribeResourceGroups", req, cb)
+  }
 
-    /**
-     * 更新任务
-     * @public
-     */
-    async UpdateJob(req: UpdateJobRequest, cb?: (error: string, rep: UpdateJobResponse) => void): Promise<UpdateJobResponse> {
-        return await this.request("UpdateJob", req, cb);
-    }
+  /**
+   * 更新任务
+   * @public
+   */
+  async UpdateJob(
+    req: UpdateJobRequest,
+    cb?: (error: string, rep: UpdateJobResponse) => void
+  ): Promise<UpdateJobResponse> {
+    return this.request("UpdateJob", req, cb)
+  }
 
-    /**
-     * 伸缩
-     * @public
-     */
-    async DeleteRsgAsGroup(req: DeleteRsgAsGroupRequest, cb?: (error: string, rep: DeleteRsgAsGroupResponse) => void): Promise<DeleteRsgAsGroupResponse> {
-        return await this.request("DeleteRsgAsGroup", req, cb);
-    }
+  /**
+   * 伸缩
+   * @public
+   */
+  async DeleteRsgAsGroup(
+    req: DeleteRsgAsGroupRequest,
+    cb?: (error: string, rep: DeleteRsgAsGroupResponse) => void
+  ): Promise<DeleteRsgAsGroupResponse> {
+    return this.request("DeleteRsgAsGroup", req, cb)
+  }
 
-    /**
-     * 删除资源组
-     * @public
-     */
-    async DeleteResourceGroup(req: DeleteResourceGroupRequest, cb?: (error: string, rep: DeleteResourceGroupResponse) => void): Promise<DeleteResourceGroupResponse> {
-        return await this.request("DeleteResourceGroup", req, cb);
-    }
+  /**
+   * 删除资源组
+   * @public
+   */
+  async DeleteResourceGroup(
+    req: DeleteResourceGroupRequest,
+    cb?: (error: string, rep: DeleteResourceGroupResponse) => void
+  ): Promise<DeleteResourceGroupResponse> {
+    return this.request("DeleteResourceGroup", req, cb)
+  }
 
-    /**
-     * 删除运行环境
-     * @public
-     */
-    async DeleteRuntime(req: DeleteRuntimeRequest, cb?: (error: string, rep: DeleteRuntimeResponse) => void): Promise<DeleteRuntimeResponse> {
-        return await this.request("DeleteRuntime", req, cb);
-    }
+  /**
+   * 删除运行环境
+   * @public
+   */
+  async DeleteRuntime(
+    req: DeleteRuntimeRequest,
+    cb?: (error: string, rep: DeleteRuntimeResponse) => void
+  ): Promise<DeleteRuntimeResponse> {
+    return this.request("DeleteRuntime", req, cb)
+  }
 
-    /**
-     * 暴露服务
-     * @public
-     */
-    async ExposeService(req: ExposeServiceRequest, cb?: (error: string, rep: ExposeServiceResponse) => void): Promise<ExposeServiceResponse> {
-        return await this.request("ExposeService", req, cb);
-    }
+  /**
+   * 暴露服务
+   * @public
+   */
+  async ExposeService(
+    req: ExposeServiceRequest,
+    cb?: (error: string, rep: ExposeServiceResponse) => void
+  ): Promise<ExposeServiceResponse> {
+    return this.request("ExposeService", req, cb)
+  }
 
-    /**
-     * 删除任务
-     * @public
-     */
-    async DeleteJob(req: DeleteJobRequest, cb?: (error: string, rep: DeleteJobResponse) => void): Promise<DeleteJobResponse> {
-        return await this.request("DeleteJob", req, cb);
-    }
+  /**
+   * 删除任务
+   * @public
+   */
+  async DeleteJob(
+    req: DeleteJobRequest,
+    cb?: (error: string, rep: DeleteJobResponse) => void
+  ): Promise<DeleteJobResponse> {
+    return this.request("DeleteJob", req, cb)
+  }
 
-    /**
-     * 启用资源组的伸缩组
-     * @public
-     */
-    async EnableRsgAsGroup(req: EnableRsgAsGroupRequest, cb?: (error: string, rep: EnableRsgAsGroupResponse) => void): Promise<EnableRsgAsGroupResponse> {
-        return await this.request("EnableRsgAsGroup", req, cb);
-    }
+  /**
+   * 启用资源组的伸缩组
+   * @public
+   */
+  async EnableRsgAsGroup(
+    req: EnableRsgAsGroupRequest,
+    cb?: (error: string, rep: EnableRsgAsGroupResponse) => void
+  ): Promise<EnableRsgAsGroupResponse> {
+    return this.request("EnableRsgAsGroup", req, cb)
+  }
 
-    /**
-     * 描述服务配置
-     * @public
-     */
-    async DescribeServiceConfigs(req: DescribeServiceConfigsRequest, cb?: (error: string, rep: DescribeServiceConfigsResponse) => void): Promise<DescribeServiceConfigsResponse> {
-        return await this.request("DescribeServiceConfigs", req, cb);
-    }
+  /**
+   * 描述服务配置
+   * @public
+   */
+  async DescribeServiceConfigs(
+    req: DescribeServiceConfigsRequest,
+    cb?: (error: string, rep: DescribeServiceConfigsResponse) => void
+  ): Promise<DescribeServiceConfigsResponse> {
+    return this.request("DescribeServiceConfigs", req, cb)
+  }
 
-    /**
-     * 查询资源组的伸缩组信息
-     * @public
-     */
-    async DescribeRsgAsGroups(req: DescribeRsgAsGroupsRequest, cb?: (error: string, rep: DescribeRsgAsGroupsResponse) => void): Promise<DescribeRsgAsGroupsResponse> {
-        return await this.request("DescribeRsgAsGroups", req, cb);
-    }
-
-
+  /**
+   * 查询资源组的伸缩组信息
+   * @public
+   */
+  async DescribeRsgAsGroups(
+    req: DescribeRsgAsGroupsRequest,
+    cb?: (error: string, rep: DescribeRsgAsGroupsResponse) => void
+  ): Promise<DescribeRsgAsGroupsResponse> {
+    return this.request("DescribeRsgAsGroups", req, cb)
+  }
 }

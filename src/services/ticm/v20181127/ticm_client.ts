@@ -17,34 +17,33 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   VodPoliticalOcrReviewResult,
-   Candidate,
-   TerrorismResult,
-   VodPoliticalAsrReviewResult,
-   VideoModerationResponse,
-   VodMetaData,
-   ImageModerationResponse,
-   VodVideoStreamItem,
-   ImageModerationRequest,
-   VideoModerationRequest,
-   VodPoliticalReviewSegmentItem,
-   VodPornReviewResult,
-   DisgustResult,
-   VodPornReviewSegmentItem,
-   VodPoliticalReviewResult,
-   VodAudioStreamItem,
-   VodOcrTextSegmentItem,
-   PoliticsResult,
-   VodAsrTextSegmentItem,
-   PornResult,
-   DescribeVideoTaskRequest,
-   VodTerrorismReviewResult,
-   FaceResult,
-   VodPornAsrReviewResult,
-   DescribeVideoTaskResponse,
-   FaceRect,
-   VodPornOcrResult,
-
+  VodPoliticalOcrReviewResult,
+  Candidate,
+  TerrorismResult,
+  VodPoliticalAsrReviewResult,
+  VideoModerationResponse,
+  VodMetaData,
+  ImageModerationResponse,
+  VodVideoStreamItem,
+  ImageModerationRequest,
+  VideoModerationRequest,
+  VodPoliticalReviewSegmentItem,
+  VodPornReviewResult,
+  DisgustResult,
+  VodPornReviewSegmentItem,
+  VodPoliticalReviewResult,
+  VodAudioStreamItem,
+  VodOcrTextSegmentItem,
+  PoliticsResult,
+  VodAsrTextSegmentItem,
+  PornResult,
+  DescribeVideoTaskRequest,
+  VodTerrorismReviewResult,
+  FaceResult,
+  VodPornAsrReviewResult,
+  DescribeVideoTaskResponse,
+  FaceRect,
+  VodPornOcrResult,
 } from "./ticm_models"
 
 /**
@@ -52,34 +51,40 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("ticm.tencentcloudapi.com", "2018-11-27", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("ticm.tencentcloudapi.com", "2018-11-27", clientConfig);
-    }
-    
-    /**
-     * 本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
-     * @public
-     */
-    async ImageModeration(req: ImageModerationRequest, cb?: (error: string, rep: ImageModerationResponse) => void): Promise<ImageModerationResponse> {
-        return await this.request("ImageModeration", req, cb);
-    }
+  /**
+   * 本接口提供多种维度的图像审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+   * @public
+   */
+  async ImageModeration(
+    req: ImageModerationRequest,
+    cb?: (error: string, rep: ImageModerationResponse) => void
+  ): Promise<ImageModerationResponse> {
+    return this.request("ImageModeration", req, cb)
+  }
 
-    /**
-     * 本接口提供多种维度的视频审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
-     * @public
-     */
-    async VideoModeration(req: VideoModerationRequest, cb?: (error: string, rep: VideoModerationResponse) => void): Promise<VideoModerationResponse> {
-        return await this.request("VideoModeration", req, cb);
-    }
+  /**
+   * 本接口提供多种维度的视频审核能力，支持色情和性感内容识别，政治人物和涉政敏感场景识别，以及暴恐人物、场景、旗帜标识等违禁内容的识别。
+   * @public
+   */
+  async VideoModeration(
+    req: VideoModerationRequest,
+    cb?: (error: string, rep: VideoModerationResponse) => void
+  ): Promise<VideoModerationResponse> {
+    return this.request("VideoModeration", req, cb)
+  }
 
-    /**
-     * 提交完视频审核任务后，可以通过本接口来获取当前处理的进度和结果
-     * @public
-     */
-    async DescribeVideoTask(req: DescribeVideoTaskRequest, cb?: (error: string, rep: DescribeVideoTaskResponse) => void): Promise<DescribeVideoTaskResponse> {
-        return await this.request("DescribeVideoTask", req, cb);
-    }
-
-
+  /**
+   * 提交完视频审核任务后，可以通过本接口来获取当前处理的进度和结果
+   * @public
+   */
+  async DescribeVideoTask(
+    req: DescribeVideoTaskRequest,
+    cb?: (error: string, rep: DescribeVideoTaskResponse) => void
+  ): Promise<DescribeVideoTaskResponse> {
+    return this.request("DescribeVideoTask", req, cb)
+  }
 }

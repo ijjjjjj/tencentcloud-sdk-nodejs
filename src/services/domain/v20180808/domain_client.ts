@@ -17,12 +17,11 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   CheckDomainResponse,
-   DescribeDomainPriceListResponse,
-   CheckDomainRequest,
-   PriceInfo,
-   DescribeDomainPriceListRequest,
-
+  CheckDomainResponse,
+  DescribeDomainPriceListResponse,
+  CheckDomainRequest,
+  PriceInfo,
+  DescribeDomainPriceListRequest,
 } from "./domain_models"
 
 /**
@@ -30,26 +29,29 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("domain.tencentcloudapi.com", "2018-08-08", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("domain.tencentcloudapi.com", "2018-08-08", clientConfig);
-    }
-    
-    /**
-     * 按照域名后缀获取对应的价格列表
-     * @public
-     */
-    async DescribeDomainPriceList(req: DescribeDomainPriceListRequest, cb?: (error: string, rep: DescribeDomainPriceListResponse) => void): Promise<DescribeDomainPriceListResponse> {
-        return await this.request("DescribeDomainPriceList", req, cb);
-    }
+  /**
+   * 按照域名后缀获取对应的价格列表
+   * @public
+   */
+  async DescribeDomainPriceList(
+    req: DescribeDomainPriceListRequest,
+    cb?: (error: string, rep: DescribeDomainPriceListResponse) => void
+  ): Promise<DescribeDomainPriceListResponse> {
+    return this.request("DescribeDomainPriceList", req, cb)
+  }
 
-    /**
-     * 检查域名是否可以注册。
-     * @public
-     */
-    async CheckDomain(req: CheckDomainRequest, cb?: (error: string, rep: CheckDomainResponse) => void): Promise<CheckDomainResponse> {
-        return await this.request("CheckDomain", req, cb);
-    }
-
-
+  /**
+   * 检查域名是否可以注册。
+   * @public
+   */
+  async CheckDomain(
+    req: CheckDomainRequest,
+    cb?: (error: string, rep: CheckDomainResponse) => void
+  ): Promise<CheckDomainResponse> {
+    return this.request("CheckDomain", req, cb)
+  }
 }

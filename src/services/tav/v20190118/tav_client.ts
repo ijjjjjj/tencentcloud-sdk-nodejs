@@ -17,15 +17,14 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   GetLocalEngineResponse,
-   ScanFileHashResponse,
-   ScanFileHashRequest,
-   ScanFileResponse,
-   GetScanResultResponse,
-   GetLocalEngineRequest,
-   GetScanResultRequest,
-   ScanFileRequest,
-
+  GetLocalEngineResponse,
+  ScanFileHashResponse,
+  ScanFileHashRequest,
+  ScanFileResponse,
+  GetScanResultResponse,
+  GetLocalEngineRequest,
+  GetScanResultRequest,
+  ScanFileRequest,
 } from "./tav_models"
 
 /**
@@ -33,42 +32,51 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("tav.tencentcloudapi.com", "2019-01-18", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("tav.tencentcloudapi.com", "2019-01-18", clientConfig);
-    }
-    
-    /**
-     * tav文件上传扫描结果查询
-     * @public
-     */
-    async GetScanResult(req: GetScanResultRequest, cb?: (error: string, rep: GetScanResultResponse) => void): Promise<GetScanResultResponse> {
-        return await this.request("GetScanResult", req, cb);
-    }
+  /**
+   * tav文件上传扫描结果查询
+   * @public
+   */
+  async GetScanResult(
+    req: GetScanResultRequest,
+    cb?: (error: string, rep: GetScanResultResponse) => void
+  ): Promise<GetScanResultResponse> {
+    return this.request("GetScanResult", req, cb)
+  }
 
-    /**
-     * 通过文件哈希值获取文件黑白属性
-     * @public
-     */
-    async ScanFileHash(req: ScanFileHashRequest, cb?: (error: string, rep: ScanFileHashResponse) => void): Promise<ScanFileHashResponse> {
-        return await this.request("ScanFileHash", req, cb);
-    }
+  /**
+   * 通过文件哈希值获取文件黑白属性
+   * @public
+   */
+  async ScanFileHash(
+    req: ScanFileHashRequest,
+    cb?: (error: string, rep: ScanFileHashResponse) => void
+  ): Promise<ScanFileHashResponse> {
+    return this.request("ScanFileHash", req, cb)
+  }
 
-    /**
-     * 获取TAV本地引擎
-     * @public
-     */
-    async GetLocalEngine(req: GetLocalEngineRequest, cb?: (error: string, rep: GetLocalEngineResponse) => void): Promise<GetLocalEngineResponse> {
-        return await this.request("GetLocalEngine", req, cb);
-    }
+  /**
+   * 获取TAV本地引擎
+   * @public
+   */
+  async GetLocalEngine(
+    req: GetLocalEngineRequest,
+    cb?: (error: string, rep: GetLocalEngineResponse) => void
+  ): Promise<GetLocalEngineResponse> {
+    return this.request("GetLocalEngine", req, cb)
+  }
 
-    /**
-     * tav文件上传扫描
-     * @public
-     */
-    async ScanFile(req: ScanFileRequest, cb?: (error: string, rep: ScanFileResponse) => void): Promise<ScanFileResponse> {
-        return await this.request("ScanFile", req, cb);
-    }
-
-
+  /**
+   * tav文件上传扫描
+   * @public
+   */
+  async ScanFile(
+    req: ScanFileRequest,
+    cb?: (error: string, rep: ScanFileResponse) => void
+  ): Promise<ScanFileResponse> {
+    return this.request("ScanFile", req, cb)
+  }
 }

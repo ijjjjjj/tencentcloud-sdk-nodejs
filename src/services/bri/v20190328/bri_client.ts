@@ -16,25 +16,18 @@
  * under the License.
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
-import {
-   DescribeBRIRequest,
-   BRIRequest,
-   DescribeBRIResponse,
-   BRIResponse,
-
-} from "./bri_models"
+import { DescribeBRIRequest, BRIRequest, DescribeBRIResponse, BRIResponse } from "./bri_models"
 
 /**
  * bri client
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("bri.tencentcloudapi.com", "2019-03-28", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("bri.tencentcloudapi.com", "2019-03-28", clientConfig);
-    }
-    
-    /**
+  /**
      * 输入业务名 (bri_num, bri_dev, bri_ip, bri_apk, bri_url 五种之一)  及其 相应字段, 获取业务风险分数和标签。
 
 当业务名为bri_num时，必须填PhoneNumber字段.
@@ -50,9 +43,10 @@ export class Client extends AbstractClient {
 当业务名为bri_social时，必须填QQ和Wechat字段两者其中一个或者两个.
      * @public
      */
-    async DescribeBRI(req: DescribeBRIRequest, cb?: (error: string, rep: DescribeBRIResponse) => void): Promise<DescribeBRIResponse> {
-        return await this.request("DescribeBRI", req, cb);
-    }
-
-
+  async DescribeBRI(
+    req: DescribeBRIRequest,
+    cb?: (error: string, rep: DescribeBRIResponse) => void
+  ): Promise<DescribeBRIResponse> {
+    return this.request("DescribeBRI", req, cb)
+  }
 }

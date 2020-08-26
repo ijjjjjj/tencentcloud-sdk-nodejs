@@ -17,13 +17,12 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   StopGameRequest,
-   TrylockWorkerResponse,
-   StopGameResponse,
-   CreateSessionResponse,
-   TrylockWorkerRequest,
-   CreateSessionRequest,
-
+  StopGameRequest,
+  TrylockWorkerResponse,
+  StopGameResponse,
+  CreateSessionResponse,
+  TrylockWorkerRequest,
+  CreateSessionRequest,
 } from "./gs_models"
 
 /**
@@ -31,34 +30,40 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("gs.tencentcloudapi.com", "2019-11-18", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("gs.tencentcloudapi.com", "2019-11-18", clientConfig);
-    }
-    
-    /**
-     * 创建会话
-     * @public
-     */
-    async CreateSession(req: CreateSessionRequest, cb?: (error: string, rep: CreateSessionResponse) => void): Promise<CreateSessionResponse> {
-        return await this.request("CreateSession", req, cb);
-    }
+  /**
+   * 创建会话
+   * @public
+   */
+  async CreateSession(
+    req: CreateSessionRequest,
+    cb?: (error: string, rep: CreateSessionResponse) => void
+  ): Promise<CreateSessionResponse> {
+    return this.request("CreateSession", req, cb)
+  }
 
-    /**
-     * 强制退出游戏
-     * @public
-     */
-    async StopGame(req: StopGameRequest, cb?: (error: string, rep: StopGameResponse) => void): Promise<StopGameResponse> {
-        return await this.request("StopGame", req, cb);
-    }
+  /**
+   * 强制退出游戏
+   * @public
+   */
+  async StopGame(
+    req: StopGameRequest,
+    cb?: (error: string, rep: StopGameResponse) => void
+  ): Promise<StopGameResponse> {
+    return this.request("StopGame", req, cb)
+  }
 
-    /**
-     * 尝试锁定机器
-     * @public
-     */
-    async TrylockWorker(req: TrylockWorkerRequest, cb?: (error: string, rep: TrylockWorkerResponse) => void): Promise<TrylockWorkerResponse> {
-        return await this.request("TrylockWorker", req, cb);
-    }
-
-
+  /**
+   * 尝试锁定机器
+   * @public
+   */
+  async TrylockWorker(
+    req: TrylockWorkerRequest,
+    cb?: (error: string, rep: TrylockWorkerResponse) => void
+  ): Promise<TrylockWorkerResponse> {
+    return this.request("TrylockWorker", req, cb)
+  }
 }

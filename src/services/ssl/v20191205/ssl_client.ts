@@ -17,42 +17,41 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   ApplyCertificateResponse,
-   DeleteCertificateRequest,
-   DescribeCertificateOperateLogsResponse,
-   CommitCertificateInformationRequest,
-   CommitCertificateInformationResponse,
-   ReplaceCertificateResponse,
-   DownloadCertificateRequest,
-   CancelCertificateOrderRequest,
-   ModifyCertificateProjectResponse,
-   Certificates,
-   CertificateExtra,
-   DescribeCertificateResponse,
-   OperationLog,
-   UploadCertificateRequest,
-   DescribeCertificateDetailRequest,
-   ApplyCertificateRequest,
-   ReplaceCertificateRequest,
-   DeleteCertificateResponse,
-   DvAuthDetail,
-   ModifyCertificateProjectRequest,
-   DvAuths,
-   ModifyCertificateAliasRequest,
-   DescribeCertificateRequest,
-   ProjectInfo,
-   DescribeCertificateOperateLogsRequest,
-   CancelCertificateOrderResponse,
-   SubmitCertificateInformationResponse,
-   DescribeCertificatesResponse,
-   DownloadCertificateResponse,
-   UploadCertificateResponse,
-   DescribeCertificateDetailResponse,
-   ModifyCertificateAliasResponse,
-   SubmitCertificateInformationRequest,
-   SubmittedData,
-   DescribeCertificatesRequest,
-
+  ApplyCertificateResponse,
+  DeleteCertificateRequest,
+  DescribeCertificateOperateLogsResponse,
+  CommitCertificateInformationRequest,
+  CommitCertificateInformationResponse,
+  ReplaceCertificateResponse,
+  DownloadCertificateRequest,
+  CancelCertificateOrderRequest,
+  ModifyCertificateProjectResponse,
+  Certificates,
+  CertificateExtra,
+  DescribeCertificateResponse,
+  OperationLog,
+  UploadCertificateRequest,
+  DescribeCertificateDetailRequest,
+  ApplyCertificateRequest,
+  ReplaceCertificateRequest,
+  DeleteCertificateResponse,
+  DvAuthDetail,
+  ModifyCertificateProjectRequest,
+  DvAuths,
+  ModifyCertificateAliasRequest,
+  DescribeCertificateRequest,
+  ProjectInfo,
+  DescribeCertificateOperateLogsRequest,
+  CancelCertificateOrderResponse,
+  SubmitCertificateInformationResponse,
+  DescribeCertificatesResponse,
+  DownloadCertificateResponse,
+  UploadCertificateResponse,
+  DescribeCertificateDetailResponse,
+  ModifyCertificateAliasResponse,
+  SubmitCertificateInformationRequest,
+  SubmittedData,
+  DescribeCertificatesRequest,
 } from "./ssl_models"
 
 /**
@@ -60,122 +59,161 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("ssl.tencentcloudapi.com", "2019-12-05", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("ssl.tencentcloudapi.com", "2019-12-05", clientConfig);
-    }
-    
-    /**
-     * 本接口（DescribeCertificates）用于获取证书列表。
-     * @public
-     */
-    async DescribeCertificates(req: DescribeCertificatesRequest, cb?: (error: string, rep: DescribeCertificatesResponse) => void): Promise<DescribeCertificatesResponse> {
-        return await this.request("DescribeCertificates", req, cb);
-    }
+  /**
+   * 本接口（DescribeCertificates）用于获取证书列表。
+   * @public
+   */
+  async DescribeCertificates(
+    req: DescribeCertificatesRequest,
+    cb?: (error: string, rep: DescribeCertificatesResponse) => void
+  ): Promise<DescribeCertificatesResponse> {
+    return this.request("DescribeCertificates", req, cb)
+  }
 
-    /**
-     * 批量修改证书所属项目。
-     * @public
-     */
-    async ModifyCertificateProject(req: ModifyCertificateProjectRequest, cb?: (error: string, rep: ModifyCertificateProjectResponse) => void): Promise<ModifyCertificateProjectResponse> {
-        return await this.request("ModifyCertificateProject", req, cb);
-    }
+  /**
+   * 批量修改证书所属项目。
+   * @public
+   */
+  async ModifyCertificateProject(
+    req: ModifyCertificateProjectRequest,
+    cb?: (error: string, rep: ModifyCertificateProjectResponse) => void
+  ): Promise<ModifyCertificateProjectResponse> {
+    return this.request("ModifyCertificateProject", req, cb)
+  }
 
-    /**
-     * 本接口（UploadCertificate）用于上传证书。
-     * @public
-     */
-    async UploadCertificate(req: UploadCertificateRequest, cb?: (error: string, rep: UploadCertificateResponse) => void): Promise<UploadCertificateResponse> {
-        return await this.request("UploadCertificate", req, cb);
-    }
+  /**
+   * 本接口（UploadCertificate）用于上传证书。
+   * @public
+   */
+  async UploadCertificate(
+    req: UploadCertificateRequest,
+    cb?: (error: string, rep: UploadCertificateResponse) => void
+  ): Promise<UploadCertificateResponse> {
+    return this.request("UploadCertificate", req, cb)
+  }
 
-    /**
-     * 取消证书订单。
-     * @public
-     */
-    async CancelCertificateOrder(req: CancelCertificateOrderRequest, cb?: (error: string, rep: CancelCertificateOrderResponse) => void): Promise<CancelCertificateOrderResponse> {
-        return await this.request("CancelCertificateOrder", req, cb);
-    }
+  /**
+   * 取消证书订单。
+   * @public
+   */
+  async CancelCertificateOrder(
+    req: CancelCertificateOrderRequest,
+    cb?: (error: string, rep: CancelCertificateOrderResponse) => void
+  ): Promise<CancelCertificateOrderResponse> {
+    return this.request("CancelCertificateOrder", req, cb)
+  }
 
-    /**
-     * 提交证书订单。
-     * @public
-     */
-    async CommitCertificateInformation(req: CommitCertificateInformationRequest, cb?: (error: string, rep: CommitCertificateInformationResponse) => void): Promise<CommitCertificateInformationResponse> {
-        return await this.request("CommitCertificateInformation", req, cb);
-    }
+  /**
+   * 提交证书订单。
+   * @public
+   */
+  async CommitCertificateInformation(
+    req: CommitCertificateInformationRequest,
+    cb?: (error: string, rep: CommitCertificateInformationResponse) => void
+  ): Promise<CommitCertificateInformationResponse> {
+    return this.request("CommitCertificateInformation", req, cb)
+  }
 
-    /**
-     * 本接口（DeleteCertificate）用于删除证书。
-     * @public
-     */
-    async DeleteCertificate(req: DeleteCertificateRequest, cb?: (error: string, rep: DeleteCertificateResponse) => void): Promise<DeleteCertificateResponse> {
-        return await this.request("DeleteCertificate", req, cb);
-    }
+  /**
+   * 本接口（DeleteCertificate）用于删除证书。
+   * @public
+   */
+  async DeleteCertificate(
+    req: DeleteCertificateRequest,
+    cb?: (error: string, rep: DeleteCertificateResponse) => void
+  ): Promise<DeleteCertificateResponse> {
+    return this.request("DeleteCertificate", req, cb)
+  }
 
-    /**
-     * 用户传入证书id和备注来修改证书备注。
-     * @public
-     */
-    async ModifyCertificateAlias(req: ModifyCertificateAliasRequest, cb?: (error: string, rep: ModifyCertificateAliasResponse) => void): Promise<ModifyCertificateAliasResponse> {
-        return await this.request("ModifyCertificateAlias", req, cb);
-    }
+  /**
+   * 用户传入证书id和备注来修改证书备注。
+   * @public
+   */
+  async ModifyCertificateAlias(
+    req: ModifyCertificateAliasRequest,
+    cb?: (error: string, rep: ModifyCertificateAliasResponse) => void
+  ): Promise<ModifyCertificateAliasResponse> {
+    return this.request("ModifyCertificateAlias", req, cb)
+  }
 
-    /**
-     * 本接口（DownloadCertificate）用于下载证书。
-     * @public
-     */
-    async DownloadCertificate(req: DownloadCertificateRequest, cb?: (error: string, rep: DownloadCertificateResponse) => void): Promise<DownloadCertificateResponse> {
-        return await this.request("DownloadCertificate", req, cb);
-    }
+  /**
+   * 本接口（DownloadCertificate）用于下载证书。
+   * @public
+   */
+  async DownloadCertificate(
+    req: DownloadCertificateRequest,
+    cb?: (error: string, rep: DownloadCertificateResponse) => void
+  ): Promise<DownloadCertificateResponse> {
+    return this.request("DownloadCertificate", req, cb)
+  }
 
-    /**
-     * 本接口（ReplaceCertificate）用于重颁发证书。已申请的免费证书仅支持 RSA 算法、密钥对参数为2048的证书重颁发，并且目前仅支持1次重颁发。
-     * @public
-     */
-    async ReplaceCertificate(req: ReplaceCertificateRequest, cb?: (error: string, rep: ReplaceCertificateResponse) => void): Promise<ReplaceCertificateResponse> {
-        return await this.request("ReplaceCertificate", req, cb);
-    }
+  /**
+   * 本接口（ReplaceCertificate）用于重颁发证书。已申请的免费证书仅支持 RSA 算法、密钥对参数为2048的证书重颁发，并且目前仅支持1次重颁发。
+   * @public
+   */
+  async ReplaceCertificate(
+    req: ReplaceCertificateRequest,
+    cb?: (error: string, rep: ReplaceCertificateResponse) => void
+  ): Promise<ReplaceCertificateResponse> {
+    return this.request("ReplaceCertificate", req, cb)
+  }
 
-    /**
-     * 本接口（ApplyCertificate）用于免费证书申请。
-     * @public
-     */
-    async ApplyCertificate(req: ApplyCertificateRequest, cb?: (error: string, rep: ApplyCertificateResponse) => void): Promise<ApplyCertificateResponse> {
-        return await this.request("ApplyCertificate", req, cb);
-    }
+  /**
+   * 本接口（ApplyCertificate）用于免费证书申请。
+   * @public
+   */
+  async ApplyCertificate(
+    req: ApplyCertificateRequest,
+    cb?: (error: string, rep: ApplyCertificateResponse) => void
+  ): Promise<ApplyCertificateResponse> {
+    return this.request("ApplyCertificate", req, cb)
+  }
 
-    /**
-     * 获取用户账号下有关证书的操作日志。
-     * @public
-     */
-    async DescribeCertificateOperateLogs(req: DescribeCertificateOperateLogsRequest, cb?: (error: string, rep: DescribeCertificateOperateLogsResponse) => void): Promise<DescribeCertificateOperateLogsResponse> {
-        return await this.request("DescribeCertificateOperateLogs", req, cb);
-    }
+  /**
+   * 获取用户账号下有关证书的操作日志。
+   * @public
+   */
+  async DescribeCertificateOperateLogs(
+    req: DescribeCertificateOperateLogsRequest,
+    cb?: (error: string, rep: DescribeCertificateOperateLogsResponse) => void
+  ): Promise<DescribeCertificateOperateLogsResponse> {
+    return this.request("DescribeCertificateOperateLogs", req, cb)
+  }
 
-    /**
-     * 提交证书资料。
-     * @public
-     */
-    async SubmitCertificateInformation(req: SubmitCertificateInformationRequest, cb?: (error: string, rep: SubmitCertificateInformationResponse) => void): Promise<SubmitCertificateInformationResponse> {
-        return await this.request("SubmitCertificateInformation", req, cb);
-    }
+  /**
+   * 提交证书资料。
+   * @public
+   */
+  async SubmitCertificateInformation(
+    req: SubmitCertificateInformationRequest,
+    cb?: (error: string, rep: SubmitCertificateInformationResponse) => void
+  ): Promise<SubmitCertificateInformationResponse> {
+    return this.request("SubmitCertificateInformation", req, cb)
+  }
 
-    /**
-     * 获取证书详情。
-     * @public
-     */
-    async DescribeCertificateDetail(req: DescribeCertificateDetailRequest, cb?: (error: string, rep: DescribeCertificateDetailResponse) => void): Promise<DescribeCertificateDetailResponse> {
-        return await this.request("DescribeCertificateDetail", req, cb);
-    }
+  /**
+   * 获取证书详情。
+   * @public
+   */
+  async DescribeCertificateDetail(
+    req: DescribeCertificateDetailRequest,
+    cb?: (error: string, rep: DescribeCertificateDetailResponse) => void
+  ): Promise<DescribeCertificateDetailResponse> {
+    return this.request("DescribeCertificateDetail", req, cb)
+  }
 
-    /**
-     * 本接口（DescribeCertificate）用于获取证书信息。
-     * @public
-     */
-    async DescribeCertificate(req: DescribeCertificateRequest, cb?: (error: string, rep: DescribeCertificateResponse) => void): Promise<DescribeCertificateResponse> {
-        return await this.request("DescribeCertificate", req, cb);
-    }
-
-
+  /**
+   * 本接口（DescribeCertificate）用于获取证书信息。
+   * @public
+   */
+  async DescribeCertificate(
+    req: DescribeCertificateRequest,
+    cb?: (error: string, rep: DescribeCertificateResponse) => void
+  ): Promise<DescribeCertificateResponse> {
+    return this.request("DescribeCertificate", req, cb)
+  }
 }

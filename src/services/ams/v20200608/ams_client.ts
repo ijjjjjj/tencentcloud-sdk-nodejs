@@ -17,34 +17,33 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   ImageSegments,
-   ImageResultResult,
-   StorageInfo,
-   BucketInfo,
-   CreateAudioModerationTaskResponse,
-   CreateBizConfigRequest,
-   DescribeBizConfigRequest,
-   TaskResult,
-   DescribeTaskDetailResponse,
-   CreateAudioModerationTaskRequest,
-   CreateBizConfigResponse,
-   TaskInput,
-   DescribeTaskDetailRequest,
-   TaskLabel,
-   ImageResultsResultDetail,
-   InputInfo,
-   AudioResultDetailLanguageResult,
-   FileOutput,
-   AudioResultDetailTextResult,
-   AudioResult,
-   AudioResultDetailMoanResult,
-   DescribeBizConfigResponse,
-   MediaInfo,
-   MediaModerationConfig,
-   AudioSegments,
-   ImageResultsResultDetailLocation,
-   ImageResult,
-
+  ImageSegments,
+  ImageResultResult,
+  StorageInfo,
+  BucketInfo,
+  CreateAudioModerationTaskResponse,
+  CreateBizConfigRequest,
+  DescribeBizConfigRequest,
+  TaskResult,
+  DescribeTaskDetailResponse,
+  CreateAudioModerationTaskRequest,
+  CreateBizConfigResponse,
+  TaskInput,
+  DescribeTaskDetailRequest,
+  TaskLabel,
+  ImageResultsResultDetail,
+  InputInfo,
+  AudioResultDetailLanguageResult,
+  FileOutput,
+  AudioResultDetailTextResult,
+  AudioResult,
+  AudioResultDetailMoanResult,
+  DescribeBizConfigResponse,
+  MediaInfo,
+  MediaModerationConfig,
+  AudioSegments,
+  ImageResultsResultDetailLocation,
+  ImageResult,
 } from "./ams_models"
 
 /**
@@ -52,12 +51,11 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("ams.tencentcloudapi.com", "2020-06-08", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("ams.tencentcloudapi.com", "2020-06-08", clientConfig);
-    }
-    
-    /**
+  /**
      * 本接口（Audio Moderation）用于提交音频内容（包括音频文件或流地址）进行智能审核任务，使用前请您登陆控制台开通音频内容安全服务。
 
 ### 功能使用说明：
@@ -84,36 +82,46 @@ export class Client extends AbstractClient {
 - 支持音视频流分离并对音频流进行独立识别；
      * @public
      */
-    async CreateAudioModerationTask(req: CreateAudioModerationTaskRequest, cb?: (error: string, rep: CreateAudioModerationTaskResponse) => void): Promise<CreateAudioModerationTaskResponse> {
-        return await this.request("CreateAudioModerationTask", req, cb);
-    }
+  async CreateAudioModerationTask(
+    req: CreateAudioModerationTaskRequest,
+    cb?: (error: string, rep: CreateAudioModerationTaskResponse) => void
+  ): Promise<CreateAudioModerationTaskResponse> {
+    return this.request("CreateAudioModerationTask", req, cb)
+  }
 
-    /**
-     * 查看单个配置
-     * @public
-     */
-    async DescribeBizConfig(req: DescribeBizConfigRequest, cb?: (error: string, rep: DescribeBizConfigResponse) => void): Promise<DescribeBizConfigResponse> {
-        return await this.request("DescribeBizConfig", req, cb);
-    }
+  /**
+   * 查看单个配置
+   * @public
+   */
+  async DescribeBizConfig(
+    req: DescribeBizConfigRequest,
+    cb?: (error: string, rep: DescribeBizConfigResponse) => void
+  ): Promise<DescribeBizConfigResponse> {
+    return this.request("DescribeBizConfig", req, cb)
+  }
 
-    /**
+  /**
      * 创建业务配置，1个账号最多可以创建20个配置。在创建业务配置之前，你需要以下步骤：
 1. 开通COS存储捅功能，新建存储桶，cms_segments
 2. 授权天御对 cms_segments存储桶对读写权限。
 这个存储桶用来存储 视频转换过程中生成对音频和图片。
      * @public
      */
-    async CreateBizConfig(req: CreateBizConfigRequest, cb?: (error: string, rep: CreateBizConfigResponse) => void): Promise<CreateBizConfigResponse> {
-        return await this.request("CreateBizConfig", req, cb);
-    }
+  async CreateBizConfig(
+    req: CreateBizConfigRequest,
+    cb?: (error: string, rep: CreateBizConfigResponse) => void
+  ): Promise<CreateBizConfigResponse> {
+    return this.request("CreateBizConfig", req, cb)
+  }
 
-    /**
-     * 查看任务详情
-     * @public
-     */
-    async DescribeTaskDetail(req: DescribeTaskDetailRequest, cb?: (error: string, rep: DescribeTaskDetailResponse) => void): Promise<DescribeTaskDetailResponse> {
-        return await this.request("DescribeTaskDetail", req, cb);
-    }
-
-
+  /**
+   * 查看任务详情
+   * @public
+   */
+  async DescribeTaskDetail(
+    req: DescribeTaskDetailRequest,
+    cb?: (error: string, rep: DescribeTaskDetailResponse) => void
+  ): Promise<DescribeTaskDetailResponse> {
+    return this.request("DescribeTaskDetail", req, cb)
+  }
 }

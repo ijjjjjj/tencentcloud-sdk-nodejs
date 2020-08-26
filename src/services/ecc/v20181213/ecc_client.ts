@@ -17,23 +17,22 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   CorrectMultiImageResponse,
-   DescribeTaskRequest,
-   SentenceItem,
-   ECCResponse,
-   EHOCRResponse,
-   ErrorCoordinate,
-   ECCRequest,
-   SentenceCom,
-   SentenceSuggest,
-   CorrectData,
-   ScoreCategory,
-   Aspect,
-   CompostionContext,
-   DescribeTaskResponse,
-   EHOCRRequest,
-   CorrectMultiImageRequest,
-
+  CorrectMultiImageResponse,
+  DescribeTaskRequest,
+  SentenceItem,
+  ECCResponse,
+  EHOCRResponse,
+  ErrorCoordinate,
+  ECCRequest,
+  SentenceCom,
+  SentenceSuggest,
+  CorrectData,
+  ScoreCategory,
+  Aspect,
+  CompostionContext,
+  DescribeTaskResponse,
+  EHOCRRequest,
+  CorrectMultiImageRequest,
 } from "./ecc_models"
 
 /**
@@ -41,45 +40,51 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("ecc.tencentcloudapi.com", "2018-12-13", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("ecc.tencentcloudapi.com", "2018-12-13", clientConfig);
-    }
-    
-    /**
+  /**
      * https://ecc.tencentcloudapi.com/?Action=EHOCR
 图像识别批改接口
      * @public
      */
-    async EHOCR(req: EHOCRRequest, cb?: (error: string, rep: EHOCRResponse) => void): Promise<EHOCRResponse> {
-        return await this.request("EHOCR", req, cb);
-    }
+  async EHOCR(
+    req: EHOCRRequest,
+    cb?: (error: string, rep: EHOCRResponse) => void
+  ): Promise<EHOCRResponse> {
+    return this.request("EHOCR", req, cb)
+  }
 
-    /**
+  /**
      * 接口请求域名： ecc.tencentcloudapi.com 
 纯文本英语作文批改
      * @public
      */
-    async ECC(req: ECCRequest, cb?: (error: string, rep: ECCResponse) => void): Promise<ECCResponse> {
-        return await this.request("ECC", req, cb);
-    }
+  async ECC(req: ECCRequest, cb?: (error: string, rep: ECCResponse) => void): Promise<ECCResponse> {
+    return this.request("ECC", req, cb)
+  }
 
-    /**
-     * 异步任务结果查询接口
-     * @public
-     */
-    async DescribeTask(req: DescribeTaskRequest, cb?: (error: string, rep: DescribeTaskResponse) => void): Promise<DescribeTaskResponse> {
-        return await this.request("DescribeTask", req, cb);
-    }
+  /**
+   * 异步任务结果查询接口
+   * @public
+   */
+  async DescribeTask(
+    req: DescribeTaskRequest,
+    cb?: (error: string, rep: DescribeTaskResponse) => void
+  ): Promise<DescribeTaskResponse> {
+    return this.request("DescribeTask", req, cb)
+  }
 
-    /**
+  /**
      * https://ecc.tencentcloudapi.com/?Action=CorrectMultiImage
 多图像识别批改接口
      * @public
      */
-    async CorrectMultiImage(req: CorrectMultiImageRequest, cb?: (error: string, rep: CorrectMultiImageResponse) => void): Promise<CorrectMultiImageResponse> {
-        return await this.request("CorrectMultiImage", req, cb);
-    }
-
-
+  async CorrectMultiImage(
+    req: CorrectMultiImageRequest,
+    cb?: (error: string, rep: CorrectMultiImageResponse) => void
+  ): Promise<CorrectMultiImageResponse> {
+    return this.request("CorrectMultiImage", req, cb)
+  }
 }

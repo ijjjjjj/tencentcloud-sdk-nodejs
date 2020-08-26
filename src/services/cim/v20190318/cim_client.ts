@@ -16,29 +16,25 @@
  * under the License.
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
-import {
-   DescribeSdkAppidResponse,
-   DescribeSdkAppidRequest,
-
-} from "./cim_models"
+import { DescribeSdkAppidResponse, DescribeSdkAppidRequest } from "./cim_models"
 
 /**
  * cim client
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("cim.tencentcloudapi.com", "2019-03-18", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("cim.tencentcloudapi.com", "2019-03-18", clientConfig);
-    }
-    
-    /**
-     * 获取云通信IM中腾讯云账号对应的SDKAppID
-     * @public
-     */
-    async DescribeSdkAppid(req: DescribeSdkAppidRequest, cb?: (error: string, rep: DescribeSdkAppidResponse) => void): Promise<DescribeSdkAppidResponse> {
-        return await this.request("DescribeSdkAppid", req, cb);
-    }
-
-
+  /**
+   * 获取云通信IM中腾讯云账号对应的SDKAppID
+   * @public
+   */
+  async DescribeSdkAppid(
+    req: DescribeSdkAppidRequest,
+    cb?: (error: string, rep: DescribeSdkAppidResponse) => void
+  ): Promise<DescribeSdkAppidResponse> {
+    return this.request("DescribeSdkAppid", req, cb)
+  }
 }

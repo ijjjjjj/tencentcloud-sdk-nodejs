@@ -17,11 +17,10 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   DescribeStatusRequest,
-   StartAnalyseResponse,
-   StartAnalyseRequest,
-   DescribeStatusResponse,
-
+  DescribeStatusRequest,
+  StartAnalyseResponse,
+  StartAnalyseRequest,
+  DescribeStatusResponse,
 } from "./habo_models"
 
 /**
@@ -29,26 +28,29 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("habo.tencentcloudapi.com", "2018-12-03", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("habo.tencentcloudapi.com", "2018-12-03", clientConfig);
-    }
-    
-    /**
-     * 上传样本到哈勃进行分析，异步生成分析日志。
-     * @public
-     */
-    async StartAnalyse(req: StartAnalyseRequest, cb?: (error: string, rep: StartAnalyseResponse) => void): Promise<StartAnalyseResponse> {
-        return await this.request("StartAnalyse", req, cb);
-    }
+  /**
+   * 上传样本到哈勃进行分析，异步生成分析日志。
+   * @public
+   */
+  async StartAnalyse(
+    req: StartAnalyseRequest,
+    cb?: (error: string, rep: StartAnalyseResponse) => void
+  ): Promise<StartAnalyseResponse> {
+    return this.request("StartAnalyse", req, cb)
+  }
 
-    /**
-     * 查询指定md5样本是否分析完成，并获取分析日志下载地址。
-     * @public
-     */
-    async DescribeStatus(req: DescribeStatusRequest, cb?: (error: string, rep: DescribeStatusResponse) => void): Promise<DescribeStatusResponse> {
-        return await this.request("DescribeStatus", req, cb);
-    }
-
-
+  /**
+   * 查询指定md5样本是否分析完成，并获取分析日志下载地址。
+   * @public
+   */
+  async DescribeStatus(
+    req: DescribeStatusRequest,
+    cb?: (error: string, rep: DescribeStatusResponse) => void
+  ): Promise<DescribeStatusResponse> {
+    return this.request("DescribeStatus", req, cb)
+  }
 }

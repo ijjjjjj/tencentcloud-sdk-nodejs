@@ -17,27 +17,26 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   Album,
-   DescribeMusicResponse,
-   ImagePath,
-   DataInfo,
-   DescribeItemsResponse,
-   Music,
-   Artist,
-   DescribeLyricResponse,
-   DescribeItemByIdResponse,
-   ReportDataResponse,
-   DescribeItemsRequest,
-   DescribeStationsRequest,
-   Item,
-   Station,
-   Lyric,
-   DescribeLyricRequest,
-   DescribeStationsResponse,
-   ReportDataRequest,
-   DescribeItemByIdRequest,
-   DescribeMusicRequest,
-
+  Album,
+  DescribeMusicResponse,
+  ImagePath,
+  DataInfo,
+  DescribeItemsResponse,
+  Music,
+  Artist,
+  DescribeLyricResponse,
+  DescribeItemByIdResponse,
+  ReportDataResponse,
+  DescribeItemsRequest,
+  DescribeStationsRequest,
+  Item,
+  Station,
+  Lyric,
+  DescribeLyricRequest,
+  DescribeStationsResponse,
+  ReportDataRequest,
+  DescribeItemByIdRequest,
+  DescribeMusicRequest,
 } from "./ame_models"
 
 /**
@@ -45,58 +44,73 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("ame.tencentcloudapi.com", "2019-09-16", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("ame.tencentcloudapi.com", "2019-09-16", clientConfig);
-    }
-    
-    /**
-     * 根据歌曲ID查询歌曲信息
-     * @public
-     */
-    async DescribeItemById(req: DescribeItemByIdRequest, cb?: (error: string, rep: DescribeItemByIdResponse) => void): Promise<DescribeItemByIdResponse> {
-        return await this.request("DescribeItemById", req, cb);
-    }
+  /**
+   * 根据歌曲ID查询歌曲信息
+   * @public
+   */
+  async DescribeItemById(
+    req: DescribeItemByIdRequest,
+    cb?: (error: string, rep: DescribeItemByIdResponse) => void
+  ): Promise<DescribeItemByIdResponse> {
+    return this.request("DescribeItemById", req, cb)
+  }
 
-    /**
-     * 客户上报用户数据功能，为了更好的为用户提供优质服务
-     * @public
-     */
-    async ReportData(req: ReportDataRequest, cb?: (error: string, rep: ReportDataResponse) => void): Promise<ReportDataResponse> {
-        return await this.request("ReportData", req, cb);
-    }
+  /**
+   * 客户上报用户数据功能，为了更好的为用户提供优质服务
+   * @public
+   */
+  async ReportData(
+    req: ReportDataRequest,
+    cb?: (error: string, rep: ReportDataResponse) => void
+  ): Promise<ReportDataResponse> {
+    return this.request("ReportData", req, cb)
+  }
 
-    /**
-     * 根据接口的模式及歌曲ID来取得歌词信息。
-     * @public
-     */
-    async DescribeLyric(req: DescribeLyricRequest, cb?: (error: string, rep: DescribeLyricResponse) => void): Promise<DescribeLyricResponse> {
-        return await this.request("DescribeLyric", req, cb);
-    }
+  /**
+   * 根据接口的模式及歌曲ID来取得歌词信息。
+   * @public
+   */
+  async DescribeLyric(
+    req: DescribeLyricRequest,
+    cb?: (error: string, rep: DescribeLyricResponse) => void
+  ): Promise<DescribeLyricResponse> {
+    return this.request("DescribeLyric", req, cb)
+  }
 
-    /**
-     * 分类内容下歌曲列表获取，根据CategoryID或CategoryCode
-     * @public
-     */
-    async DescribeItems(req: DescribeItemsRequest, cb?: (error: string, rep: DescribeItemsResponse) => void): Promise<DescribeItemsResponse> {
-        return await this.request("DescribeItems", req, cb);
-    }
+  /**
+   * 分类内容下歌曲列表获取，根据CategoryID或CategoryCode
+   * @public
+   */
+  async DescribeItems(
+    req: DescribeItemsRequest,
+    cb?: (error: string, rep: DescribeItemsResponse) => void
+  ): Promise<DescribeItemsResponse> {
+    return this.request("DescribeItems", req, cb)
+  }
 
-    /**
-     * 根据接口的模式及歌曲ID来取得对应权限的歌曲播放地址等信息。
-     * @public
-     */
-    async DescribeMusic(req: DescribeMusicRequest, cb?: (error: string, rep: DescribeMusicResponse) => void): Promise<DescribeMusicResponse> {
-        return await this.request("DescribeMusic", req, cb);
-    }
+  /**
+   * 根据接口的模式及歌曲ID来取得对应权限的歌曲播放地址等信息。
+   * @public
+   */
+  async DescribeMusic(
+    req: DescribeMusicRequest,
+    cb?: (error: string, rep: DescribeMusicResponse) => void
+  ): Promise<DescribeMusicResponse> {
+    return this.request("DescribeMusic", req, cb)
+  }
 
-    /**
-     * 获取素材库列表时使用
-     * @public
-     */
-    async DescribeStations(req: DescribeStationsRequest, cb?: (error: string, rep: DescribeStationsResponse) => void): Promise<DescribeStationsResponse> {
-        return await this.request("DescribeStations", req, cb);
-    }
-
-
+  /**
+   * 获取素材库列表时使用
+   * @public
+   */
+  async DescribeStations(
+    req: DescribeStationsRequest,
+    cb?: (error: string, rep: DescribeStationsResponse) => void
+  ): Promise<DescribeStationsResponse> {
+    return this.request("DescribeStations", req, cb)
+  }
 }

@@ -17,44 +17,43 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   InstanceLog,
-   LocalDiskInfo,
-   TaskDetail,
-   NodeInfo,
-   DescribeInstanceOperationsRequest,
-   OperationDetail,
-   EsPublicAcl,
-   DictInfo,
-   RestartInstanceResponse,
-   CreateInstanceResponse,
-   DescribeInstanceLogsRequest,
-   UpgradeLicenseRequest,
-   CosBackup,
-   TagInfo,
-   KeyValue,
-   CreateInstanceRequest,
-   InstanceInfo,
-   DeleteInstanceResponse,
-   DescribeInstancesResponse,
-   DescribeInstanceLogsResponse,
-   UpdatePluginsResponse,
-   RestartInstanceRequest,
-   ZoneDetail,
-   DescribeInstancesRequest,
-   UpdateInstanceRequest,
-   EsDictionaryInfo,
-   DescribeInstanceOperationsResponse,
-   UpdatePluginsRequest,
-   UpgradeLicenseResponse,
-   EsAcl,
-   MasterNodeInfo,
-   DeleteInstanceRequest,
-   SubTaskDetail,
-   UpgradeInstanceResponse,
-   UpdateInstanceResponse,
-   UpgradeInstanceRequest,
-   Operation,
-
+  InstanceLog,
+  LocalDiskInfo,
+  TaskDetail,
+  NodeInfo,
+  DescribeInstanceOperationsRequest,
+  OperationDetail,
+  EsPublicAcl,
+  DictInfo,
+  RestartInstanceResponse,
+  CreateInstanceResponse,
+  DescribeInstanceLogsRequest,
+  UpgradeLicenseRequest,
+  CosBackup,
+  TagInfo,
+  KeyValue,
+  CreateInstanceRequest,
+  InstanceInfo,
+  DeleteInstanceResponse,
+  DescribeInstancesResponse,
+  DescribeInstanceLogsResponse,
+  UpdatePluginsResponse,
+  RestartInstanceRequest,
+  ZoneDetail,
+  DescribeInstancesRequest,
+  UpdateInstanceRequest,
+  EsDictionaryInfo,
+  DescribeInstanceOperationsResponse,
+  UpdatePluginsRequest,
+  UpgradeLicenseResponse,
+  EsAcl,
+  MasterNodeInfo,
+  DeleteInstanceRequest,
+  SubTaskDetail,
+  UpgradeInstanceResponse,
+  UpdateInstanceResponse,
+  UpgradeInstanceRequest,
+  Operation,
 } from "./es_models"
 
 /**
@@ -62,60 +61,77 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("es.tencentcloudapi.com", "2018-04-16", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("es.tencentcloudapi.com", "2018-04-16", clientConfig);
-    }
-    
-    /**
-     * 查询实例指定条件下的操作记录
-     * @public
-     */
-    async DescribeInstanceOperations(req: DescribeInstanceOperationsRequest, cb?: (error: string, rep: DescribeInstanceOperationsResponse) => void): Promise<DescribeInstanceOperationsResponse> {
-        return await this.request("DescribeInstanceOperations", req, cb);
-    }
+  /**
+   * 查询实例指定条件下的操作记录
+   * @public
+   */
+  async DescribeInstanceOperations(
+    req: DescribeInstanceOperationsRequest,
+    cb?: (error: string, rep: DescribeInstanceOperationsResponse) => void
+  ): Promise<DescribeInstanceOperationsResponse> {
+    return this.request("DescribeInstanceOperations", req, cb)
+  }
 
-    /**
-     * 查询用户该地域下符合条件的所有实例
-     * @public
-     */
-    async DescribeInstances(req: DescribeInstancesRequest, cb?: (error: string, rep: DescribeInstancesResponse) => void): Promise<DescribeInstancesResponse> {
-        return await this.request("DescribeInstances", req, cb);
-    }
+  /**
+   * 查询用户该地域下符合条件的所有实例
+   * @public
+   */
+  async DescribeInstances(
+    req: DescribeInstancesRequest,
+    cb?: (error: string, rep: DescribeInstancesResponse) => void
+  ): Promise<DescribeInstancesResponse> {
+    return this.request("DescribeInstances", req, cb)
+  }
 
-    /**
-     * 变更插件列表
-     * @public
-     */
-    async UpdatePlugins(req: UpdatePluginsRequest, cb?: (error: string, rep: UpdatePluginsResponse) => void): Promise<UpdatePluginsResponse> {
-        return await this.request("UpdatePlugins", req, cb);
-    }
+  /**
+   * 变更插件列表
+   * @public
+   */
+  async UpdatePlugins(
+    req: UpdatePluginsRequest,
+    cb?: (error: string, rep: UpdatePluginsResponse) => void
+  ): Promise<UpdatePluginsResponse> {
+    return this.request("UpdatePlugins", req, cb)
+  }
 
-    /**
-     * 创建指定规格的ES集群实例
-     * @public
-     */
-    async CreateInstance(req: CreateInstanceRequest, cb?: (error: string, rep: CreateInstanceResponse) => void): Promise<CreateInstanceResponse> {
-        return await this.request("CreateInstance", req, cb);
-    }
+  /**
+   * 创建指定规格的ES集群实例
+   * @public
+   */
+  async CreateInstance(
+    req: CreateInstanceRequest,
+    cb?: (error: string, rep: CreateInstanceResponse) => void
+  ): Promise<CreateInstanceResponse> {
+    return this.request("CreateInstance", req, cb)
+  }
 
-    /**
-     * 升级ES集群版本
-     * @public
-     */
-    async UpgradeInstance(req: UpgradeInstanceRequest, cb?: (error: string, rep: UpgradeInstanceResponse) => void): Promise<UpgradeInstanceResponse> {
-        return await this.request("UpgradeInstance", req, cb);
-    }
+  /**
+   * 升级ES集群版本
+   * @public
+   */
+  async UpgradeInstance(
+    req: UpgradeInstanceRequest,
+    cb?: (error: string, rep: UpgradeInstanceResponse) => void
+  ): Promise<UpgradeInstanceResponse> {
+    return this.request("UpgradeInstance", req, cb)
+  }
 
-    /**
-     * 升级ES商业特性
-     * @public
-     */
-    async UpgradeLicense(req: UpgradeLicenseRequest, cb?: (error: string, rep: UpgradeLicenseResponse) => void): Promise<UpgradeLicenseResponse> {
-        return await this.request("UpgradeLicense", req, cb);
-    }
+  /**
+   * 升级ES商业特性
+   * @public
+   */
+  async UpgradeLicense(
+    req: UpgradeLicenseRequest,
+    cb?: (error: string, rep: UpgradeLicenseResponse) => void
+  ): Promise<UpgradeLicenseResponse> {
+    return this.request("UpgradeLicense", req, cb)
+  }
 
-    /**
+  /**
      * 对集群进行节点规格变更，修改实例名称，修改配置，重置密码， 添加Kibana黑白名单等操作。参数中InstanceId为必传参数，ForceRestart为选填参数，剩余参数传递组合及含义如下：
 - InstanceName：修改实例名称(仅用于标识实例)
 - NodeInfoList: 修改节点配置（节点横向扩缩容，纵向扩缩容，增加主节点，增加冷节点等）
@@ -126,33 +142,43 @@ export class Client extends AbstractClient {
 以上参数组合只能传递一种，多传或少传均会导致请求失败
      * @public
      */
-    async UpdateInstance(req: UpdateInstanceRequest, cb?: (error: string, rep: UpdateInstanceResponse) => void): Promise<UpdateInstanceResponse> {
-        return await this.request("UpdateInstance", req, cb);
-    }
+  async UpdateInstance(
+    req: UpdateInstanceRequest,
+    cb?: (error: string, rep: UpdateInstanceResponse) => void
+  ): Promise<UpdateInstanceResponse> {
+    return this.request("UpdateInstance", req, cb)
+  }
 
-    /**
-     * 销毁集群实例 
-     * @public
-     */
-    async DeleteInstance(req: DeleteInstanceRequest, cb?: (error: string, rep: DeleteInstanceResponse) => void): Promise<DeleteInstanceResponse> {
-        return await this.request("DeleteInstance", req, cb);
-    }
+  /**
+   * 销毁集群实例
+   * @public
+   */
+  async DeleteInstance(
+    req: DeleteInstanceRequest,
+    cb?: (error: string, rep: DeleteInstanceResponse) => void
+  ): Promise<DeleteInstanceResponse> {
+    return this.request("DeleteInstance", req, cb)
+  }
 
-    /**
-     * 重启ES集群实例(用于系统版本更新等操作) 
-     * @public
-     */
-    async RestartInstance(req: RestartInstanceRequest, cb?: (error: string, rep: RestartInstanceResponse) => void): Promise<RestartInstanceResponse> {
-        return await this.request("RestartInstance", req, cb);
-    }
+  /**
+   * 重启ES集群实例(用于系统版本更新等操作)
+   * @public
+   */
+  async RestartInstance(
+    req: RestartInstanceRequest,
+    cb?: (error: string, rep: RestartInstanceResponse) => void
+  ): Promise<RestartInstanceResponse> {
+    return this.request("RestartInstance", req, cb)
+  }
 
-    /**
-     * 查询用户该地域下符合条件的ES集群的日志
-     * @public
-     */
-    async DescribeInstanceLogs(req: DescribeInstanceLogsRequest, cb?: (error: string, rep: DescribeInstanceLogsResponse) => void): Promise<DescribeInstanceLogsResponse> {
-        return await this.request("DescribeInstanceLogs", req, cb);
-    }
-
-
+  /**
+   * 查询用户该地域下符合条件的ES集群的日志
+   * @public
+   */
+  async DescribeInstanceLogs(
+    req: DescribeInstanceLogsRequest,
+    cb?: (error: string, rep: DescribeInstanceLogsResponse) => void
+  ): Promise<DescribeInstanceLogsResponse> {
+    return this.request("DescribeInstanceLogs", req, cb)
+  }
 }

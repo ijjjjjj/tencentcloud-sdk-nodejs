@@ -17,26 +17,25 @@
  */
 import { AbstractClient, ClientConfig } from "../../../common/abstract_client"
 import {
-   CrowdAntiRushInfo,
-   QueryActivityAntiRushResponse,
-   OutputActivityAntiRushAdvancedValue,
-   QQAccountInfo,
-   ManageMarketingRiskRequest,
-   OutputManageMarketingRisk,
-   OnlineScamInfo,
-   InputManageMarketingRisk,
-   InputActivityAntiRushAdvanced,
-   OtherAccountInfo,
-   AccountInfo,
-   QueryActivityAntiRushAdvancedResponse,
-   ManageMarketingRiskResponse,
-   SponsorInfo,
-   QueryActivityAntiRushRequest,
-   OutputActivityAntiRushAdvanced,
-   OutputManageMarketingRiskValue,
-   WeChatAccountInfo,
-   QueryActivityAntiRushAdvancedRequest,
-
+  CrowdAntiRushInfo,
+  QueryActivityAntiRushResponse,
+  OutputActivityAntiRushAdvancedValue,
+  QQAccountInfo,
+  ManageMarketingRiskRequest,
+  OutputManageMarketingRisk,
+  OnlineScamInfo,
+  InputManageMarketingRisk,
+  InputActivityAntiRushAdvanced,
+  OtherAccountInfo,
+  AccountInfo,
+  QueryActivityAntiRushAdvancedResponse,
+  ManageMarketingRiskResponse,
+  SponsorInfo,
+  QueryActivityAntiRushRequest,
+  OutputActivityAntiRushAdvanced,
+  OutputManageMarketingRiskValue,
+  WeChatAccountInfo,
+  QueryActivityAntiRushAdvancedRequest,
 } from "./aa_models"
 
 /**
@@ -44,34 +43,40 @@ import {
  * @class
  */
 export class Client extends AbstractClient {
+  constructor(clientConfig: ClientConfig) {
+    super("aa.tencentcloudapi.com", "2020-02-24", clientConfig)
+  }
 
-    constructor(clientConfig: ClientConfig) {
-        super("aa.tencentcloudapi.com", "2020-02-24", clientConfig);
-    }
-    
-    /**
-     * 腾讯云活动防刷（ActivityAntiRush，AA）是针对电商、O2O、P2P、游戏、支付等行业在促销活动中遇到“羊毛党”恶意刷取优惠福利的行为时，通过防刷引擎，精准识别出“薅羊毛”恶意行为的活动防刷服务，避免了企业被刷带来的巨大经济损失。
-     * @public
-     */
-    async QueryActivityAntiRush(req: QueryActivityAntiRushRequest, cb?: (error: string, rep: QueryActivityAntiRushResponse) => void): Promise<QueryActivityAntiRushResponse> {
-        return await this.request("QueryActivityAntiRush", req, cb);
-    }
+  /**
+   * 腾讯云活动防刷（ActivityAntiRush，AA）是针对电商、O2O、P2P、游戏、支付等行业在促销活动中遇到“羊毛党”恶意刷取优惠福利的行为时，通过防刷引擎，精准识别出“薅羊毛”恶意行为的活动防刷服务，避免了企业被刷带来的巨大经济损失。
+   * @public
+   */
+  async QueryActivityAntiRush(
+    req: QueryActivityAntiRushRequest,
+    cb?: (error: string, rep: QueryActivityAntiRushResponse) => void
+  ): Promise<QueryActivityAntiRushResponse> {
+    return this.request("QueryActivityAntiRush", req, cb)
+  }
 
-    /**
-     * 活动防刷、注册保护、登录保护等营销产品的高级版本
-     * @public
-     */
-    async ManageMarketingRisk(req: ManageMarketingRiskRequest, cb?: (error: string, rep: ManageMarketingRiskResponse) => void): Promise<ManageMarketingRiskResponse> {
-        return await this.request("ManageMarketingRisk", req, cb);
-    }
+  /**
+   * 活动防刷、注册保护、登录保护等营销产品的高级版本
+   * @public
+   */
+  async ManageMarketingRisk(
+    req: ManageMarketingRiskRequest,
+    cb?: (error: string, rep: ManageMarketingRiskResponse) => void
+  ): Promise<ManageMarketingRiskResponse> {
+    return this.request("ManageMarketingRisk", req, cb)
+  }
 
-    /**
-     * 活动防刷高级版，支持对网赚众包、网赚防刷、引流反诈骗场景的检测识别
-     * @public
-     */
-    async QueryActivityAntiRushAdvanced(req: QueryActivityAntiRushAdvancedRequest, cb?: (error: string, rep: QueryActivityAntiRushAdvancedResponse) => void): Promise<QueryActivityAntiRushAdvancedResponse> {
-        return await this.request("QueryActivityAntiRushAdvanced", req, cb);
-    }
-
-
+  /**
+   * 活动防刷高级版，支持对网赚众包、网赚防刷、引流反诈骗场景的检测识别
+   * @public
+   */
+  async QueryActivityAntiRushAdvanced(
+    req: QueryActivityAntiRushAdvancedRequest,
+    cb?: (error: string, rep: QueryActivityAntiRushAdvancedResponse) => void
+  ): Promise<QueryActivityAntiRushAdvancedResponse> {
+    return this.request("QueryActivityAntiRushAdvanced", req, cb)
+  }
 }
