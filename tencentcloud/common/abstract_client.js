@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AbstractClient = void 0;
 const sdk_version_1 = require("./sdk_version");
 const sign_1 = require("./sign");
 const http_connection_1 = require("./http/http_connection");

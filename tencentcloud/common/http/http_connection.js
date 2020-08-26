@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.HttpConnection = void 0;
 const QueryString = require("querystring");
 const url_1 = require("url");
 const isStream = require("is-stream");

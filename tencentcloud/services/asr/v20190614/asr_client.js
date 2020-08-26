@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Client = void 0;
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /*
  * Copyright (c) 2018 THL A29 Limited, a Tencent company. All Rights Reserved.
