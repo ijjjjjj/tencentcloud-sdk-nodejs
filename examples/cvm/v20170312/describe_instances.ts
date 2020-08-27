@@ -23,20 +23,18 @@ const client = new CvmClient({
 
 // 通过client对象调用想要访问的接口，需要传入请求对象以及响应回调函数
 client
-  .DescribeInstances(
-    {
-      Filters: [
-        {
-          Name: "zone",
-          Values: ["ap-shanghai-1", "ap-shanghai-2"],
-        },
-        {
-          Name: "instance-charge-type",
-          Values: ["POSTPAID_BY_HOUR"],
-        },
-      ],
-    }
-  )
+  .DescribeInstances({
+    Filters: [
+      {
+        Name: "zone",
+        Values: ["ap-shanghai-1", "ap-shanghai-2"],
+      },
+      {
+        Name: "instance-charge-type",
+        Values: ["POSTPAID_BY_HOUR"],
+      },
+    ],
+  })
   .then(
     (data) => {
       console.log(data)

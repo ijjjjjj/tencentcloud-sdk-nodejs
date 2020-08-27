@@ -119,8 +119,8 @@ export class AbstractClient {
       cb && cb(null, result)
       return result
     } catch (e) {
-      cb && cb(e && e.message, null)
-      throw e.message
+      cb && cb(e, null)
+      throw e
     }
   }
 
@@ -133,7 +133,7 @@ export class AbstractClient {
     options?: RequestOptions
   ): Promise<ResponseData> {
     if (this.profile.signMethod === "TC3-HMAC-SHA256") {
-      return await this.doRequestWithSign3(action, req, options)
+      return this.doRequestWithSign3(action, req, options)
     }
     let params = this.mergeData(req)
     params = this.formatRequestData(action, params)
@@ -148,7 +148,7 @@ export class AbstractClient {
     } catch (error) {
       throw new TencentCloudSDKHttpException(error.message)
     }
-    return await this.parseResponse(res)
+    return this.parseResponse(res)
   }
 
   /**
@@ -179,7 +179,7 @@ export class AbstractClient {
     } catch (e) {
       throw new TencentCloudSDKHttpException(e.message)
     }
-    return await this.parseResponse(res)
+    return this.parseResponse(res)
   }
 
   private async parseResponse(res: Response): Promise<ResponseData> {

@@ -62,8 +62,8 @@ class AbstractClient {
             return result;
         }
         catch (e) {
-            cb && cb(e && e.message, null);
-            throw e.message;
+            cb && cb(e, null);
+            throw e;
         }
     }
     /**
@@ -71,7 +71,7 @@ class AbstractClient {
      */
     async doRequest(action, req, options) {
         if (this.profile.signMethod === "TC3-HMAC-SHA256") {
-            return await this.doRequestWithSign3(action, req, options);
+            return this.doRequestWithSign3(action, req, options);
         }
         let params = this.mergeData(req);
         params = this.formatRequestData(action, params);
@@ -87,7 +87,7 @@ class AbstractClient {
         catch (error) {
             throw new tencent_cloud_sdk_exception_1.default(error.message);
         }
-        return await this.parseResponse(res);
+        return this.parseResponse(res);
     }
     /**
      * @inner
@@ -114,7 +114,7 @@ class AbstractClient {
         catch (e) {
             throw new tencent_cloud_sdk_exception_1.default(e.message);
         }
-        return await this.parseResponse(res);
+        return this.parseResponse(res);
     }
     async parseResponse(res) {
         if (res.status !== 200) {

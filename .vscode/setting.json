@@ -1,8 +1,8 @@
 {
-  "eslint.enable": true, //是否开启vscode的eslint
-  "eslint.autoFixOnSave": true, //是否在保存的时候自动fix
+  "eslint.enable": true, // 是否开启vscode的eslint
+  "eslint.autoFixOnSave": true, // 是否在保存的时候自动fix
   "eslint.options": {
-    //指定vscode的eslint所处理的文件的后缀
+    // 指定vscode的eslint所处理的文件的后缀
     "extensions": [
       ".js",
       // ".vue",
