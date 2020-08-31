@@ -9,7 +9,7 @@
     "prettier": "prettier --config prettier.config.js --write 'src/**/*.{tsx,ts,jsx,js,css,json,vue}'"
   },
   "engines": {
-    "node": ">=7.10.0"
+    "node": ">=10"
   },
   "keywords": [
     "tencentcloudapi",
